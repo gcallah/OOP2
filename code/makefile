@@ -1,5 +1,3 @@
-all: calc
-
 CXXFLAGS=-g -std=c++11
 CC=$(CXX)
 INCS=$(shell ls *.h)
