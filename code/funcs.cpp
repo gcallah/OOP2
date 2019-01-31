@@ -1,30 +1,39 @@
 #include <iostream>
 using namespace std;
 
-void f(int n)
+void pass_by_value(int n)
 {
     n++;
 }
 
 
-void f1(int& n)
+void pass_by_ref(int& n)
 {
     n++;
 }
 
 
-void f2(const int& n)
+int call_with_ret(int n)
 {
-    n++;
+    return(n * n);
 }
+
+
+// uncomment the following function, and you will find it will
+// not compile: if `n` is const, we can't modify it!
+// void pass_by_constref(const int& n)
+// {
+//    n++;
+// }
 
 
 int main()
 {
-    cout << "Hello world!\n";
     int n = 7;
-    f(n);
-    cout << n << endl;
-    f1(n);
-    cout << n << endl;
+    pass_by_value(n);
+    cout << "after pass_by_value, n = " << n << endl;
+    pass_by_ref(n);
+    cout << "after pass_by_ref, n = " << n << endl;
+    int n2 = call_with_ret(n);
+    cout << "after call_with_ret, n2 = " << n2 << endl;
 }
