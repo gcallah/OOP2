@@ -9,6 +9,8 @@ hello: hello.cpp
 hello_nm: hello_nm.cpp 
 
 repo:
-	./all_tests.sh
 	-git commit -a 
 	git push origin master
+
+nocrud:
+	rm *~
