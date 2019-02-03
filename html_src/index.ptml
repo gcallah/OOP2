@@ -13,5 +13,16 @@
             Object-Oriented Programming in C++
         </h1>
 
+        <p class="leadquote">
+            "Programming is understanding." -- Kristen Nygaard
+        </p>
+
+        <hr>
+
+        <p>
+            This website is a collection of aids to teaching 
+            object-oriented programming in the C++ programming language.
+            They are organized by topic in the menu above.
+        </p>
     </body>
 </html>

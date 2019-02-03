@@ -71,6 +71,18 @@ p {
     line-height: 140%;
 }
 
+p.leadquote {
+    font-style: italic;
+    text-align: center;
+    margin: 1em 1em 1em 2em;
+    font-size: 1.1em;
+    color: #336;
+}
+
+hr {
+    margin: 1em 4em 1em 4em;
+}
+
 h1,h2,h3,h4,h5 {
     font-weight: bold;
 }

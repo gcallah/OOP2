@@ -13,5 +13,12 @@
             About This Site
         </h1>
 
+        <p>
+            This site was created by Eugene Callahan to aid students in CS2124
+            at the NYU Tandon School of Engineering. However, we hope it
+            will be of use to other students of C++ and object-oriented 
+            programming as well.
+        </p>
+
     </body>
 </html>
