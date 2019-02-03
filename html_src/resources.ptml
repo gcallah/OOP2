@@ -13,5 +13,29 @@
             C++ Resources
         </h1>
 
+        <p>
+            The following links are to C++ resources that students may
+            find valuable:
+        </p>
+
+        <ul>
+            <li>
+                <a href="http://www.cplusplus.com">
+                    CPlusPlus.com
+                </a>
+                <br />
+                A site devoted to the C++ language.
+            </li>
+
+            <li>
+                <a href="https://www.youtube.com/watch?v=86xWVb4XIyE">
+                    The Essence of C++
+                </a>
+                <br />
+                A video by Bjarne Stroustrup, the creator of C++,
+                on his vision for the language.
+            </li>
+        </ul>
+
     </body>
 </html>
