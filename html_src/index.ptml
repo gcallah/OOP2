@@ -1,0 +1,17 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Object-Oriented Programming in C++
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Object-Oriented Programming in C++
+        </h1>
+
+    </body>
+</html>

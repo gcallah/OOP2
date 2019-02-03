@@ -1,0 +1,9 @@
+<p class="menu">
+	<a href="index.html">Home</a>
+	&nbsp;|&nbsp;
+	<a href="code.html">Code</a>
+	&nbsp;|&nbsp;
+	<a href="resources.html">Resources</a>
+	&nbsp;|&nbsp;
+	<a href="about.html">About</a>
+</p>
