@@ -2,6 +2,8 @@ CXXFLAGS=-g -std=c++11
 CC=$(CXX)
 INCS=$(shell ls *.h)
 
+complex: complex.cpp 
+
 funcs: funcs.cpp 
 
 hello: hello.cpp 
