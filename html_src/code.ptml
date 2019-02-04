@@ -50,6 +50,17 @@
                 and get a result from that function.
             </li>
 
+            <li>
+                <a href="">Using vectors</a>
+                Entering values into a vector then getting their mean.
+            </li>
+
+            <li>
+                <a href="">
+                    Creating a new type using <span class="code">struct</span>
+                </a>
+            </li>
+
         </ul>
 
     </body>

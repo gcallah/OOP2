@@ -10,6 +10,8 @@ hello: hello.cpp
 
 hello_nm: hello_nm.cpp 
 
+mean: mean.cpp 
+
 repo:
 	-git commit -a 
 	git push origin master

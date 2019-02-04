@@ -153,6 +153,12 @@ span.proposed {
     color: #805;
 }
 
+span.code {
+    font-family: monospace;
+    background: inherit;
+    color: #958;
+}
+
 .center-img {
     margin: .6em 0em 1.8em 0em;
     display: block;
