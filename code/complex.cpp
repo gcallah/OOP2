@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+const bool DEBUG = true;
+
 struct Complex
 {
     double real;
@@ -30,9 +32,18 @@ int main()
     cout << "Input a complex number:\n";
     Complex c1;
     cin >> c1.real >> c1.imaginary;
-    printComplex(c1);
+    if(DEBUG)
+    {
+        cout << "c1 = ";
+        printComplex(c1);
+    }
 
     Complex c2{43.2, 58.9};
+    if(DEBUG) 
+    {
+        cout << "c2 = ";
+        printComplex(c2);
+    }
 
     Complex c3 = add(c1, c2);
     printComplex(c3);
