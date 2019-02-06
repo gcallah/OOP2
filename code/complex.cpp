@@ -1,3 +1,4 @@
+// Creating a new type using struct:
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -59,5 +60,4 @@ Complex add(const Complex& c1, const Complex& c2)
     result.imaginary = c1.imaginary + c2.imaginary;
     return result;
 }
-
 
