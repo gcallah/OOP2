@@ -28,13 +28,35 @@
             </li>
 
             <li>
-                <a href="https://www.youtube.com/watch?v=86xWVb4XIyE">
-                    The Essence of C++
-                </a>
-                <br />
-                A video by Bjarne Stroustrup, the creator of C++,
-                on his vision for the language.
+                <a href="http://www.stroustrup.com/index.html">
+                    The homepage of Bjarne Stroustrup
+                </a> (creator of C++)
             </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/86xWVb4XIyE"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br />
+                A video by Bjarne Stroustrup on his vision for the C++ language.
+            </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/ZDZHSGFMdw0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br />
+                A history of C++
+            </li>
+
         </ul>
 
     </body>
