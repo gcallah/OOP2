@@ -4,6 +4,8 @@ INCS=$(shell ls *.h)
 
 complex: complex.cpp 
 
+complex_class: complex_class.cpp 
+
 funcs: funcs.cpp 
 
 hello: hello.cpp 

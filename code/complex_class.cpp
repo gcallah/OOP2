@@ -6,16 +6,22 @@ using namespace std;
 
 const bool DEBUG = true;
 
-struct Complex
+class Complex
 {
-    double real;
-    double imaginary;
+    public:
+        double real;
+        double imaginary;
+    
+        Complex operator+(const Complex& c)
+        {
+            Complex sum{real + c.real, imaginary + c.imaginary};
+            return sum;
+        }
 };
 
 
 void printVector(const vector<Complex>& v);
 void printComplex(const Complex& c);
-Complex add(const Complex& c1, const Complex& c2);
 
 
 int main()
@@ -43,7 +49,7 @@ int main()
         printComplex(c2);
     }
 
-    Complex c3 = add(c1, c2);
+    Complex c3 = c1 + c2;
     printComplex(c3);
 
     vector<Complex> v{c1, c2, c3};
@@ -65,14 +71,5 @@ void printVector(const vector<Complex>& v)
     {
         printComplex(c);
     }
-}
-
-
-Complex add(const Complex& c1, const Complex& c2)
-{
-    Complex result;
-    result.real = c1.real + c2.real;
-    result.imaginary = c1.imaginary + c2.imaginary;
-    return result;
 }
 
