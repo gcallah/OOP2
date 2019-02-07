@@ -42,6 +42,13 @@
             </li>
 
             <li>
+                <a
+                    href="https://www.geeksforgeeks.org/this-pointer-in-c/"><span
+                    class="code">this</span> pointer in C++
+                </a>
+            </li>
+
+            <li>
                 <br />
                 <iframe width="560" height="315"
                     src="https://www.youtube.com/embed/86xWVb4XIyE"
