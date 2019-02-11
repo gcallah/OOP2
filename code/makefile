@@ -14,6 +14,8 @@ hello_nm: hello_nm.cpp
 
 mean: mean.cpp 
 
+weather: weather.cpp
+
 repo:
 	-git commit -a 
 	git push origin master
