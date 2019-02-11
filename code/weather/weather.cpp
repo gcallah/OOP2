@@ -1,6 +1,8 @@
-// Creating a new type using struct:
+// Weather: take readings from a weather station.
+// This is the starting, minimal version.
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -30,9 +32,12 @@ int main()
     {
         cout << "input file name is: " << filenm << endl;
     }
-//    if(!fin)
-//    {
-//        cerr << "Bad input file\n";
-//        exit(1);
-//    }
+    ifstream readings(filenm);
+    if(!readings)
+    {
+        cerr << "Could not read input file: " << filenm << endl;
+        exit(1);
+    }
+
+    readings.close();
 }
