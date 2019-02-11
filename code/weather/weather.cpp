@@ -2,7 +2,6 @@
 // This is the starting, minimal version.
 #include <iostream>
 #include <iomanip>
-#include <fstream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -35,7 +34,7 @@ int main()
     ifstream readings(filenm);
     if(!readings)
     {
-        cerr << "Could not read input file: " << filenm << endl;
+        cerr << "Could not read input file.\n";
         exit(1);
     }
 
