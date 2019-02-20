@@ -44,6 +44,7 @@ public:
           windspeed{ws}, prev{p}
     {
     }
+    Reading* set_tempF(double t) { temperature = t; return this; }
     double get_tempF() const { return temperature; }
     double get_tempC() const
     {
@@ -105,9 +106,10 @@ int main()
     while(rfile >> m >> d >> y >> temp >> hum >> ws)
     {
         Date date{m, d, y};
-        Reading* rd = new Reading{date, temp, hum, ws, prev};
+        const Reading* rd = new Reading{date, temp, hum, ws, prev};
+        Reading* rd2 = rd->set_tempF(98.6);
         readings.push_back(*rd);
-        if(DEBUG2) cout << *rd << endl;
+        if(DEBUG) cout << "Returned pointer to reading = " << *rd2 << endl;
         prev = rd;
         if(DEBUG) cout << prev << endl;
     }

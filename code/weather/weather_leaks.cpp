@@ -51,7 +51,7 @@ public:
     }
     double get_temp_changeF() const
     {
-        if(prev == NULL) return 0.0;
+        if(prev == nullptr) return 0.0;
         else return get_tempF() - prev->get_tempF();
     }
     double get_hum() const { return humidity; }
@@ -100,13 +100,23 @@ int main()
     int m, d, y;
     double temp, hum, ws;
     vector<Reading*> readings;
-    Reading* prev = NULL;
+    Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
-    // const int LOOPS = 1; 
-    const int LOOPS = 100000000;
+    const int LOOPS = 5; 
+    // const int LOOPS = 100000000;
     for(int i = 0; i < LOOPS; i++)
     {
-        // for(Reading* rd : readings) delete rd;  // free mem we don't need!
+        if(readings.size() > 0)
+        {
+            cout << "Before delete: ";
+            cout << *(readings[0]) << endl;
+        }
+        for(Reading* rd : readings) delete rd;  // free mem we don't need!
+        if(readings.size() > 0)
+        {
+            cout << "After delete: ";
+            cout << *(readings[0]) << endl;
+        }
         readings.clear();  // so the vector isn't the memory eater!
 
         while(rfile >> m >> d >> y >> temp >> hum >> ws)
