@@ -51,7 +51,7 @@ public:
     }
     double get_temp_changeF() const
     {
-        if(prev == NULL) return 0.0;
+        if(prev == nullptr) return 0.0;
         else return get_tempF() - prev->get_tempF();
     }
     double get_hum() const { return humidity; }
@@ -91,21 +91,22 @@ int main()
         cout << "input file name is: " << filenm << endl;
         cout << "C_TO_F_RATIO is: " << C_TO_F_RATIO << endl;
     }
-    ifstream readings(filenm);
-    if(!readings)
+    ifstream rfile(filenm);
+    if(!rfile)
     {
         cerr << "Could not read input file: " << filenm << endl;
         exit(1);
     }
     int m, d, y;
     double temp, hum, ws;
-    vector<Reading> read_recs;
-    Reading* prev = NULL;
-    while(readings >> m >> d >> y >> temp >> hum >> ws)
+    vector<Reading> readings;
+    Reading* prev = nullptr;
+    cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
+    while(rfile >> m >> d >> y >> temp >> hum >> ws)
     {
         Date date{m, d, y};
         Reading* rd = new Reading{date, temp, hum, ws, prev};
-        read_recs.push_back(*rd);
+        readings.push_back(*rd);
         if(DEBUG2) cout << *rd << endl;
         prev = rd;
         if(DEBUG) cout << prev << endl;
@@ -113,11 +114,11 @@ int main()
 
     if(DEBUG)
     {
-        for(Reading rd : read_recs)
+        for(Reading rd : readings)
         {
             cout << rd << endl;
         }
     }
 
-    readings.close();
+    rfile.close();
 }
