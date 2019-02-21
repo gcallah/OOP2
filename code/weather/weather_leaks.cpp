@@ -44,7 +44,6 @@ public:
           windspeed{ws}, prev{p}
     {
     }
-    Reading* set_tempF(double t) { temperature = t; return this; }
     double get_tempF() const { return temperature; }
     double get_tempC() const
     {
@@ -100,25 +99,44 @@ int main()
     }
     int m, d, y;
     double temp, hum, ws;
-    vector<Reading> readings;
+    vector<Reading*> readings;
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
-    while(rfile >> m >> d >> y >> temp >> hum >> ws)
+    const int LOOPS = 5; 
+    // const int LOOPS = 100000000;
+    for(int i = 0; i < LOOPS; i++)
     {
-        Date date{m, d, y};
-        const Reading* rd = new Reading{date, temp, hum, ws, prev};
-        Reading* rd2 = rd->set_tempF(98.6);
-        readings.push_back(*rd);
-        if(DEBUG) cout << "Returned pointer to reading = " << *rd2 << endl;
-        prev = rd;
-        if(DEBUG) cout << prev << endl;
+        if(readings.size() > 0)
+        {
+            cout << "Before delete: ";
+            cout << *(readings[0]) << endl;
+        }
+        for(Reading* rd : readings) delete rd;  // free mem we don't need!
+        if(readings.size() > 0)
+        {
+            cout << "After delete: ";
+            cout << *(readings[0]) << endl;
+        }
+        readings.clear();  // so the vector isn't the memory eater!
+
+        while(rfile >> m >> d >> y >> temp >> hum >> ws)
+        {
+            Date date{m, d, y};
+            Reading* rd = new Reading{date, temp, hum, ws, prev};
+            readings.push_back(rd);
+            if(DEBUG2) cout << *rd << endl;
+            prev = rd;
+            if(DEBUG) cout << prev << endl;
+        }
+        rfile.clear();
+        rfile.seekg(0, ios::beg);
     }
 
     if(DEBUG)
     {
-        for(Reading rd : readings)
+        for(Reading* rd : readings)
         {
-            cout << rd << endl;
+            cout << *rd << endl;
         }
     }
 

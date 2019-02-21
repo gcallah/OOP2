@@ -1,4 +1,4 @@
-CXXFLAGS=-g -std=c++11
+CXXFLAGS=-g -std=c++14
 CC=$(CXX)
 INCS=$(shell ls *.h)
 

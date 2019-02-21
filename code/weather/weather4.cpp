@@ -44,7 +44,6 @@ public:
           windspeed{ws}, prev{p}
     {
     }
-    Reading* set_tempF(double t) { temperature = t; return this; }
     double get_tempF() const { return temperature; }
     double get_tempC() const
     {
@@ -52,7 +51,7 @@ public:
     }
     double get_temp_changeF() const
     {
-        if(prev == nullptr) return 0.0;
+        if(prev == NULL) return 0.0;
         else return get_tempF() - prev->get_tempF();
     }
     double get_hum() const { return humidity; }
@@ -101,15 +100,14 @@ int main()
     int m, d, y;
     double temp, hum, ws;
     vector<Reading> readings;
-    Reading* prev = nullptr;
+    Reading* prev = NULL;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
     while(rfile >> m >> d >> y >> temp >> hum >> ws)
     {
         Date date{m, d, y};
-        const Reading* rd = new Reading{date, temp, hum, ws, prev};
-        Reading* rd2 = rd->set_tempF(98.6);
+        Reading* rd = new Reading{date, temp, hum, ws, prev};
         readings.push_back(*rd);
-        if(DEBUG) cout << "Returned pointer to reading = " << *rd2 << endl;
+        if(DEBUG2) cout << *rd << endl;
         prev = rd;
         if(DEBUG) cout << prev << endl;
     }
