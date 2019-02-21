@@ -63,9 +63,23 @@
             </li>
 
             <li>
-                <a href="">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/complex.cpp">
                     Creating a new type using <span class="code">struct</span>
                 </a>
+            </li>
+
+            <li>
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/complex_class.cpp">
+                    Turning the <span class="code">struct</span> into a class.
+                </a>
+            </li>
+
+            <li>
+                <a href="https://github.com/gcallah/OOP2/tree/master/code/weather">
+                    Code for gathering weather data.
+                </a>
+                <br />
+                (The numbered files are various iterations of the program.)
             </li>
 
         </ul>
