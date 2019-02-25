@@ -6,36 +6,36 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <cstring>
 using namespace std;
 
 const bool DEBUG = true;
 const bool DEBUG2 = false;
 
-const double C_TO_F_RATIO = 5.0 / 9.0;
-
+constexpr double C_TO_F_RATIO = 5.0 / 9.0;
 
 class Image
 {
  public:
     Image(int width, int height, string flnm) : width(width), height(height)
     {
-        image_buf = new unsigned char[width * height];
+        image_buf = new unsigned char[image_sz()];
     }
 
     // copy constructor:
-//    Image(const Image& img2)
-//    {
-//        width = img2.width;
-//        height = img2.height;
-//        image_buf = new unsigned char[width * height];
-//        memcpy(image_buf, img2.image_buf, width * height);
-//    }
+    Image(const Image& img2)
+    {
+        width = img2.width;
+        height = img2.height;
+        image_buf = new unsigned char[image_sz()];
+        memcpy(image_buf, img2.image_buf, image_sz());
+    }
 
     ~Image()
     {
         if (image_buf != nullptr) delete image_buf;
     }
+
+    int image_sz() { return width * height; }
 
  private:
     int width;
@@ -95,6 +95,7 @@ class Reading
     }
     double get_hum() const { return humidity; }
     double get_ws() const { return windspeed; }
+    Image get_image() { return image; }
 
  private:
     Date date;
@@ -119,9 +120,9 @@ ostream& operator<<(ostream& os, const Reading& r)
 }
 
 
-void process_image(Reading rd)
+void process_image(Image img)
 {
-    cout << "In process function for " << rd << endl;
+    cout << "Pretending to process image!" << endl;
 }
 
 
@@ -148,8 +149,9 @@ int main()
     vector<Reading*> readings;
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
-    const int LOOPS = 100000000;
-    // const int LOOPS = 2;
+    cout << "Image size is " << sizeof(Image) << endl;
+    // const int LOOPS = 100000000;
+    const int LOOPS = 2;
     for (int i = 0; i < LOOPS; i++)
     {
         if (readings.size() > 0)
@@ -166,8 +168,8 @@ int main()
             Reading* rd = new Reading{date, temp, hum, ws, prev};
             readings.push_back(rd);
             prev = rd;
-            if (DEBUG) cout << "prev = " << prev << endl;
-            process_image(*rd);
+            if (DEBUG2) cout << "prev = " << prev << endl;
+            process_image(rd->get_image());
         }
         // reset file for next time around loop
         rfile.clear();
