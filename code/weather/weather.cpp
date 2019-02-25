@@ -1,3 +1,4 @@
+// Copyright 2019 Gene Callahan
 // Weather: take readings from a weather station.
 // This is the starting, minimal version.
 #include <iostream>
@@ -14,28 +15,28 @@ constexpr double C_TO_F_RATIO = 5.0 / 9.0;
 
 class Image
 {
-    public:
-        Image(int width, int height, string flnm) : width(width), height(height)
-        {
-            image_buf = new unsigned char[width * height];
-        }
+ public:
+    Image(int width, int height, string flnm) : width(width), height(height)
+    {
+        image_buf = new unsigned char[width * height];
+    }
 
-    private:
-        int width;
-        int height;
-        unsigned char* image_buf;
+ private:
+    int width;
+    int height;
+    unsigned char* image_buf;
 };
 
 
 class Date
 {
     friend ostream& operator<<(ostream& os, const Date& date);
-public:
+ public:
     Date(int m, int d, int y) : month(m), day(d), year(y)
     {
     }
 
-private:
+ private:
     int month;
     int day;
     int year;
@@ -55,7 +56,7 @@ const int DEF_WIDTH = 1000;
 class Reading
 {
     friend ostream& operator<<(ostream& os, const Reading& r);
-public:
+ public:
     Reading(Date dt, double temp, double hum,
             double ws, Reading* p)
         : date{dt}, temperature{temp}, humidity{hum},
@@ -72,13 +73,14 @@ public:
     }
     double get_temp_changeF() const
     {
-        if(prev == nullptr) return 0.0;
-        else return get_tempF() - prev->get_tempF();
+        if (prev == nullptr) return 0.0;
+        else
+            return get_tempF() - prev->get_tempF();
     }
     double get_hum() const { return humidity; }
     double get_ws() const { return windspeed; }
 
-private:
+ private:
     Date date;
     double temperature;
     double humidity;
@@ -108,37 +110,47 @@ int main()
     string filenm;
     cout << "Input weather reading file name: ";
     cin >> filenm;
-    if(DEBUG2)
+    if (DEBUG2)
     {
         cout << "input file name is: " << filenm << endl;
         cout << "C_TO_F_RATIO is: " << C_TO_F_RATIO << endl;
     }
     ifstream rfile(filenm);
-    if(!rfile)
+    if (!rfile)
     {
         cerr << "Could not read input file: " << filenm << endl;
         exit(1);
     }
     int m, d, y;
     double temp, hum, ws;
-    vector<Reading> readings;
+    vector<Reading*> readings;
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
-    while(rfile >> m >> d >> y >> temp >> hum >> ws)
+    // const int LOOPS = 100000000;
+    const int LOOPS = 2;
+    for (int i = 0; i < LOOPS; i++)
     {
-        Date date{m, d, y};
-        Reading* rd = new Reading{date, temp, hum, ws, prev};
-        // Reading* rd2 = rd->set_tempF(98.6);
-        readings.push_back(*rd);
-        prev = rd;
-        if(DEBUG) cout << prev << endl;
+        if (readings.size() > 0)
+        {
+            cout << "Before delete: ";
+            cout << *(readings[0]) << endl;
+        }
+        for (Reading* rd : readings) delete rd;  // free mem we don't need!
+        while (rfile >> m >> d >> y >> temp >> hum >> ws)
+        {
+            Date date{m, d, y};
+            Reading* rd = new Reading{date, temp, hum, ws, prev};
+            readings.push_back(rd);
+            prev = rd;
+            if (DEBUG) cout << prev << endl;
+        }
     }
 
-    if(DEBUG)
+    if (DEBUG)
     {
-        for(Reading rd : readings)
+        for (Reading* rd : readings)
         {
-            cout << rd << endl;
+            cout << *rd << endl;
         }
     }
 
