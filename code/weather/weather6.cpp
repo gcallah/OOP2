@@ -122,7 +122,7 @@ ostream& operator<<(ostream& os, const Reading& r)
 
 void process_image(Image img)
 {
-    cout << "Pretending to process image!" << endl;
+    cout << "Pretending to process image\n";
 }
 
 
@@ -149,9 +149,9 @@ int main()
     vector<Reading*> readings;
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
-    cout << "Image size is " << sizeof(Image) << endl;
-    // const int LOOPS = 100000000;
-    const int LOOPS = 2;
+    cout << "An image is " << sizeof(Image) << " bytes in size\n";
+    const int LOOPS = 100000000;
+    // const int LOOPS = 2;
     for (int i = 0; i < LOOPS; i++)
     {
         if (readings.size() > 0)
@@ -168,7 +168,7 @@ int main()
             Reading* rd = new Reading{date, temp, hum, ws, prev};
             readings.push_back(rd);
             prev = rd;
-            if (DEBUG2) cout << "prev = " << prev << endl;
+            if (DEBUG) cout << "prev = " << prev << endl;
             process_image(rd->get_image());
         }
         // reset file for next time around loop
