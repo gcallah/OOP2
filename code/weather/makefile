@@ -3,7 +3,7 @@ CC=$(CXX)
 LINTFLAGS=--filter=-whitespace/braces,-build/namespaces
 INCS=$(shell ls *.h)
 
-weather: weather.cpp
+weather: weather.cpp image.cpp
 
 weather_leaks: weather_leaks.cpp
 
