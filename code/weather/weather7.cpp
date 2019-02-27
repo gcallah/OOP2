@@ -6,52 +6,13 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include "image.h"
 using namespace std;
 
 const bool DEBUG = true;
 const bool DEBUG2 = false;
 
 constexpr double C_TO_F_RATIO = 5.0 / 9.0;
-
-class Image
-{
- public:
-    Image(int width, int height, string flnm) : width(width), height(height)
-    {
-        image_buf = new unsigned char[image_sz()];
-    }
-
-    // copy constructor:
-    Image(const Image& img2)
-    {
-        width = img2.width;
-        height = img2.height;
-        image_buf = new unsigned char[image_sz()];
-        memcpy(image_buf, img2.image_buf, image_sz());
-    }
-
-    ~Image()
-    {
-        if (image_buf != nullptr) delete image_buf;
-    }
-
-    Image& operator=(const Image& img2)
-    {
-        delete image_buf;
-        width = img2.width;
-        height = img2.height;
-        image_buf = new unsigned char[image_sz()];
-        memcpy(image_buf, img2.image_buf, image_sz());
-        return *this;
-    }
-
-    int image_sz() { return width * height; }
-
- private:
-    int width;
-    int height;
-    unsigned char* image_buf;
-};
 
 
 class Date
@@ -70,7 +31,8 @@ class Date
 
 ostream& operator<<(ostream& os, const Date& date)
 {
-    os << date.month << "/" << date.day << "/" << date.year;
+    os << date.month << "/" << date.day
+        << "/" << date.year;
     return os;
 }
 
@@ -132,20 +94,26 @@ ostream& operator<<(ostream& os, const Reading& r)
 void process_image(Image img)
 {
     cout << "Pretending to process image\n";
-    Image image2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
-    image2 = img;
+    Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
+    img2 = img;
 }
 
 
-void get_readings(vector<Reading*>& readings, ifstream& rfile)
+void read_records(string filenm, vector<Reading*>& readings)
 {
+    ifstream rfile(filenm);
+    if (!rfile)
+    {
+        cerr << "Could not read input file: " << filenm << endl;
+        exit(1);
+    }
     int m, d, y;
     double temp, hum, ws;
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
     cout << "An image is " << sizeof(Image) << " bytes in size\n";
-    // const int LOOPS = 100000000;
-    const int LOOPS = 10;
+    const int LOOPS = 100000000;
+    // const int LOOPS = 2;
     for (int i = 0; i < LOOPS; i++)
     {
         if (readings.size() > 0)
@@ -169,6 +137,20 @@ void get_readings(vector<Reading*>& readings, ifstream& rfile)
         rfile.clear();
         rfile.seekg(0, ios::beg);
     }
+    rfile.close();
+}
+
+void process_records(vector<Reading*> readings)
+{
+}
+
+
+void output_records(vector<Reading*> readings)
+{
+    for (Reading* rd : readings)
+    {
+        cout << *rd << endl;
+    }
 }
 
 
@@ -179,22 +161,9 @@ int main()
     string filenm;
     cout << "Input weather reading file name: ";
     cin >> filenm;
-    ifstream rfile(filenm);
-    if (!rfile)
-    {
-        cerr << "Could not read input file: " << filenm << endl;
-        exit(1);
-    }
+
     vector<Reading*> readings;
-    get_readings(readings, rfile);
-
-    if (DEBUG)
-    {
-        for (Reading* rd : readings)
-        {
-            cout << *rd << endl;
-        }
-    }
-
-    rfile.close();
+    read_records(filenm, readings);
+    process_records(readings);
+    output_records(readings);
 }
