@@ -17,10 +17,8 @@ class MyVec {
     }
 
     MyVec& operator=(const MyVec& v2) {
-        if (&v2 != this) {
-            delete [] data;
-            copy(v2);
-        }
+        delete [] data;
+        copy(v2);
         return *this;
     }
 
@@ -32,9 +30,9 @@ class MyVec {
         return data[i];
     }
 
-    void push_back(int i) {
+    void push_back(int val) {
         sz++;
-        if (sz == capac) {  // we're about to up it!
+        if (sz > capac) {
             cout << "Increasing capacity\n";
             int* old_data = data;
             data = new int[capac * 2];
@@ -44,7 +42,7 @@ class MyVec {
             capac *= 2;
             delete [] old_data;
         }
-        data[sz - 1] = i;
+        data[sz - 1] = val;
     }
 
     size_t size() { return sz; }
@@ -69,9 +67,9 @@ int main()
     cout << "Testing my_vec:\n";
 
     MyVec v1 = MyVec();
-    v1.push_back(4);
-    v1.push_back(8);
-    v1.push_back(16);
+    for(int i = 0; i < 16; i++) {
+        v1.push_back(i * 2);
+    }
 
     MyVec v2 = MyVec(v1);
     MyVec v3 = MyVec();
@@ -80,8 +78,8 @@ int main()
     cout << "Size of v3 is: " << v3.size() << endl;
     for(int i = 0; i < v2.size(); i++)
         cout << v2[i] << endl;
-    for(int i = 0; i < v3.size(); i++)
-        cout << v3[i] << endl;
+//    for(int i = 0; i < v3.size(); i++)
+//        cout << v3[i] << endl;
 
     cout << "Done with test!\n";
     return 0;
