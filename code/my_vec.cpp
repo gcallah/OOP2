@@ -17,8 +17,10 @@ class MyVec {
     }
 
     MyVec& operator=(const MyVec& v2) {
-        delete [] data;
-        copy(v2);
+        if (this != &v2) {
+            delete [] data;
+            copy(v2);
+        }
         return *this;
     }
 
