@@ -15,5 +15,6 @@ int main()
     double mean = total / temps.size();
     cout << "Your mean temperature for the last " << temps.size()
          << " days was " << mean << '\n';
+    cout << temps[10000];
     return 0;
 }
