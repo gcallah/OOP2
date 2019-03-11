@@ -96,6 +96,7 @@ void process_image(Image img)
 {
     cout << "Pretending to process image\n";
     Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
+    mess_with_image(img);
     img2 = img;
 }
 

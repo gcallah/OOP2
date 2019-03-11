@@ -6,6 +6,9 @@ INCS=$(shell ls *.h)
 weather_pre: weather.cpp
 	clang --preprocess -std=c++14 weather.cpp
 
+weather_comp: weather.cpp
+	clang --compile -std=c++14 weather.cpp
+
 weather: weather.cpp image.cpp
 
 weather_leaks: weather_leaks.cpp

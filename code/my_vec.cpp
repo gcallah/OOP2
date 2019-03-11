@@ -14,10 +14,9 @@ class MyVec {
         data = new int[DEF_VCAPACITY];
     }
 
-    explicit MyVec(size_t sz, int val=0) : sz(sz) {
-        capac = max(sz * CAPACITY_MULT, DEF_VCAPACITY);
+    explicit MyVec(size_t sz, int val=0) : sz{sz} {
+        capac = max(DEF_VCAPACITY, sz * CAPACITY_MULT);
         data = new int[capac];
-        cout << "data address = " << data << endl;
         for (size_t i = 0; i < sz; i++) data[i] = val;
     }
 
@@ -96,8 +95,9 @@ int main()
     MyVec v2 = MyVec(v1);
     MyVec v3 = MyVec();
     v3 = v1;
-    // MyVec v4 = MyVec(0);
-    MyVec v4 = MyVec(10);
+    v2 = v2;
+    // MyVec v4 = 12;
+    MyVec v4 = MyVec(12);
     
     cout << "Size of v3 is: " << v3.size() << endl;
     cout << "v2 = \n";
@@ -107,6 +107,7 @@ int main()
     print_vec(v3);
     cout << "v4 = \n";
     print_vec(v4);
+    v2 = v2;
 
     cout << "Done with test!\n";
     return 0;

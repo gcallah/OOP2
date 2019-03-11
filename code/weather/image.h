@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+
 class Image
 {
  public:
@@ -19,4 +20,6 @@ class Image
     void copy_fields(const Image& img2);
 };
 
+
+void mess_with_image(Image img);
 
