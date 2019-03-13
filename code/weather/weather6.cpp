@@ -8,12 +8,40 @@
 #include <string>
 using namespace std;
 
-#include "image.h"
-
 const bool DEBUG = true;
 const bool DEBUG2 = false;
 
 constexpr double C_TO_F_RATIO = 5.0 / 9.0;
+
+class Image
+{
+ public:
+    Image(int width, int height, string flnm) : width(width), height(height)
+    {
+        image_buf = new unsigned char[image_sz()];
+    }
+
+    // copy constructor:
+    Image(const Image& img2)
+    {
+        width = img2.width;
+        height = img2.height;
+        image_buf = new unsigned char[image_sz()];
+        memcpy(image_buf, img2.image_buf, image_sz());
+    }
+
+    ~Image()
+    {
+        if (image_buf != nullptr) delete image_buf;
+    }
+
+    int image_sz() { return width * height; }
+
+ private:
+    int width;
+    int height;
+    unsigned char* image_buf;
+};
 
 
 class Date
@@ -95,14 +123,21 @@ ostream& operator<<(ostream& os, const Reading& r)
 void process_image(Image img)
 {
     cout << "Pretending to process image\n";
-    Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
-    mess_with_image(img);
-    img2 = img;
 }
 
 
-void read_records(string filenm, vector<Reading*>& readings)
+int main()
 {
+    // A program to collect and output weather station
+    // readings.
+    string filenm;
+    cout << "Input weather reading file name: ";
+    cin >> filenm;
+    if (DEBUG2)
+    {
+        cout << "input file name is: " << filenm << endl;
+        cout << "C_TO_F_RATIO is: " << C_TO_F_RATIO << endl;
+    }
     ifstream rfile(filenm);
     if (!rfile)
     {
@@ -111,11 +146,12 @@ void read_records(string filenm, vector<Reading*>& readings)
     }
     int m, d, y;
     double temp, hum, ws;
+    vector<Reading*> readings;
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
     cout << "An image is " << sizeof(Image) << " bytes in size\n";
-    // const int LOOPS = 100000000;
-    const int LOOPS = 2;
+    const int LOOPS = 100000000;
+    // const int LOOPS = 2;
     for (int i = 0; i < LOOPS; i++)
     {
         if (readings.size() > 0)
@@ -139,35 +175,14 @@ void read_records(string filenm, vector<Reading*>& readings)
         rfile.clear();
         rfile.seekg(0, ios::beg);
     }
-    rfile.close();
-}
 
-
-void process_records(vector<Reading*>& readings)
-{
-    cout << "Processing records.\n";
-}
-
-
-void output_records(vector<Reading*>& readings)
-{
-    for (Reading* rd : readings)
+    if (DEBUG)
     {
-        cout << *rd << endl;
+        for (Reading* rd : readings)
+        {
+            cout << *rd << endl;
+        }
     }
-}
 
-
-int main()
-{
-    // A program to collect and output weather station
-    // readings.
-    string filenm;
-    cout << "Input weather reading file name: ";
-    cin >> filenm;
-
-    vector<Reading*> readings;
-    read_records(filenm, readings);
-    process_records(readings);
-    output_records(readings);
+    rfile.close();
 }

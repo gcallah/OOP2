@@ -6,9 +6,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
-using namespace std;
-
 #include "image.h"
+using namespace std;
 
 const bool DEBUG = true;
 const bool DEBUG2 = false;
@@ -96,7 +95,6 @@ void process_image(Image img)
 {
     cout << "Pretending to process image\n";
     Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
-    mess_with_image(img);
     img2 = img;
 }
 
@@ -114,8 +112,8 @@ void read_records(string filenm, vector<Reading*>& readings)
     Reading* prev = nullptr;
     cout << "A reading is " << sizeof(Reading) << " bytes in size\n";
     cout << "An image is " << sizeof(Image) << " bytes in size\n";
-    // const int LOOPS = 100000000;
-    const int LOOPS = 2;
+    const int LOOPS = 100000000;
+    // const int LOOPS = 2;
     for (int i = 0; i < LOOPS; i++)
     {
         if (readings.size() > 0)
@@ -142,14 +140,12 @@ void read_records(string filenm, vector<Reading*>& readings)
     rfile.close();
 }
 
-
-void process_records(vector<Reading*>& readings)
+void process_records(vector<Reading*> readings)
 {
-    cout << "Processing records.\n";
 }
 
 
-void output_records(vector<Reading*>& readings)
+void output_records(vector<Reading*> readings)
 {
     for (Reading* rd : readings)
     {
