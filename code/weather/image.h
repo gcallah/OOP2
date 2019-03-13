@@ -1,6 +1,12 @@
 // header file for image class
+#ifndef WEATHER_IMAGE
+#define WEATHER_IMAGE 1
+
 #include <string>
 using namespace std;
+
+const int DEF_HEIGHT = 1600;
+const int DEF_WIDTH = 2400;
 
 
 class Image
@@ -23,3 +29,4 @@ class Image
 
 void mess_with_image(Image img);
 
+#endif

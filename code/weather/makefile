@@ -9,7 +9,9 @@ weather_pre: weather.cpp
 weather_comp: weather.cpp
 	clang --compile -std=c++14 weather.cpp
 
-weather: weather.cpp image.cpp
+date_test: date.cpp date_test.cpp
+
+weather: weather.cpp image.cpp date.cpp reading.cpp
 
 weather_leaks: weather_leaks.cpp
 

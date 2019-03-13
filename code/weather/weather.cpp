@@ -6,97 +6,21 @@
 #include <fstream>
 #include <vector>
 #include <string>
-using namespace std;
 
+#include "date.h"
 #include "image.h"
+#include "reading.h"
+
+using namespace std;
 
 const bool DEBUG = true;
 const bool DEBUG2 = false;
-
-constexpr double C_TO_F_RATIO = 5.0 / 9.0;
-
-
-class Date
-{
-    friend ostream& operator<<(ostream& os, const Date& date);
- public:
-    Date(int m, int d, int y) : month(m), day(d), year(y)
-    {
-    }
-
- private:
-    int month;
-    int day;
-    int year;
-};
-
-ostream& operator<<(ostream& os, const Date& date)
-{
-    os << date.month << "/" << date.day
-        << "/" << date.year;
-    return os;
-}
-
-
-const int DEF_HEIGHT = 1600;
-const int DEF_WIDTH = 2400;
-
-class Reading
-{
-    friend ostream& operator<<(ostream& os, const Reading& r);
- public:
-    Reading(Date dt, double temp, double hum,
-            double ws, Reading* p)
-        : date{dt}, temperature{temp}, humidity{hum},
-          windspeed{ws}, prev{p},
-        // just making up file name!
-          image{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"}
-    {
-    }
-    void set_tempF(double t) { temperature = t; }
-    double get_tempF() const { return temperature; }
-    double get_tempC() const
-    {
-        return (temperature - 32) * C_TO_F_RATIO;
-    }
-    double get_temp_changeF() const
-    {
-        if (prev == nullptr) return 0.0;
-        else
-            return get_tempF() - prev->get_tempF();
-    }
-    double get_hum() const { return humidity; }
-    double get_ws() const { return windspeed; }
-    Image get_image() { return image; }
-
- private:
-    Date date;
-    double temperature;
-    double humidity;
-    double windspeed;
-    Reading* prev;
-    Image image;   // perhaps we have photos from the weather station
-};
-
-ostream& operator<<(ostream& os, const Reading& r)
-{
-    os << fixed << setprecision(2)
-        << "Weather reading: "
-        << r.date
-        << "; Temp: " << r.get_tempF() << "F "
-        << " (change = " << r.get_temp_changeF() << "); "
-        << r.get_tempC() << "C"
-        << " Hum: " << r.get_hum()
-        << " Wind: " << r.get_ws();
-    return os;
-}
 
 
 void process_image(Image img)
 {
     cout << "Pretending to process image\n";
     Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
-    mess_with_image(img);
     img2 = img;
 }
 
