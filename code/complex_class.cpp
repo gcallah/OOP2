@@ -8,20 +8,42 @@ const bool DEBUG = true;
 
 class Complex
 {
+    friend ostream& operator<< (ostream& os, const Complex& c);
+    friend istream& operator>> (istream& is, Complex& c);
+
     public:
-        double real;
-        double imaginary;
     
+        Complex(double real=0.0, double imag=0.0) : real{real}, imag{imag}
+        {}
+
         Complex operator+(const Complex& c)
         {
-            Complex sum{real + c.real, imaginary + c.imaginary};
+            Complex sum{real + c.real, imag + c.imag};
             return sum;
         }
+
+    private:
+        double real;
+        double imag;
 };
 
 
+ostream& operator<< (ostream& os, const Complex& c)
+{
+    os << setprecision(10) << c.real << showpos 
+         << c.imag << "i" << noshowpos << endl;
+    return os;
+}
+
+
+istream& operator>> (istream& is, Complex& c)
+{
+    is >> c.real >> c.imag;
+    return is;
+}
+
+
 void printVector(const vector<Complex>& v);
-void printComplex(const Complex& c);
 
 
 int main()
@@ -30,7 +52,7 @@ int main()
     // We will work with complex numbers.
     cout << "Input a complex number:\n";
     Complex c1;
-    cin >> c1.real >> c1.imaginary;
+    cin >> c1;
     if(!cin)
     {
         cerr << "Bad input format\n";
@@ -38,19 +60,16 @@ int main()
     }
     if(DEBUG)
     {
-        cout << "c1 = ";
-        printComplex(c1);
+        cout << "c1 = " << c1 << endl;
     }
 
     Complex c2{43.2, 58.9};
     if(DEBUG) 
     {
-        cout << "c2 = ";
-        printComplex(c2);
+        cout << "c2 = " << c2 << endl;
     }
 
     Complex c3 = c1 + c2;
-    printComplex(c3);
 
     vector<Complex> v{c1, c2, c3};
     cout << "Printing vector\n";
@@ -58,18 +77,12 @@ int main()
 }
 
 
-void printComplex(const Complex& c)
-{
-    cout << setprecision(10) << "R: " << c.real << " I: " 
-         << c.imaginary << endl;
-}
-
 
 void printVector(const vector<Complex>& v)
 {
     for(auto c : v)
     {
-        printComplex(c);
+        cout << c;
     }
 }
 
