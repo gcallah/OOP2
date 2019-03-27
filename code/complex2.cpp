@@ -10,6 +10,10 @@ class Complex
 {
     friend ostream& operator<< (ostream& os, const Complex& c);
     friend istream& operator>> (istream& is, Complex& c);
+    friend bool operator== (const Complex& c1, const Complex& c2)
+    {
+        return ((c1.real == c2.real) && (c1.imag == c2.imag));
+    }
 
     public:
     
@@ -18,6 +22,7 @@ class Complex
 
         // we will write:
         // +=, ==, *=, *, -, -=, /, /=
+        // ++ (pre and post), ==
         // we will re-write +
 
         Complex operator+(const Complex& c)
@@ -74,6 +79,10 @@ int main()
     }
 
     Complex c3 = c1 + c2;
+
+    Complex c4 = Complex();
+    (1 == c4) ? cout << "c4 == 1 is true\n" 
+        : cout << "c4 == 1 is false\n";
 
     vector<Complex> v{c1, c2, c3};
     cout << "Printing vector\n";
