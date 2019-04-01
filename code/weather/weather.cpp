@@ -7,9 +7,9 @@
 #include <vector>
 #include <string>
 
-#include "date.h"
-#include "image.h"
-#include "reading.h"
+#include "./date.h"
+#include "./image.h"
+#include "./reading.h"
 
 using namespace std;
 

@@ -1,3 +1,4 @@
+// Copyright 2019 Gene Callahan
 #ifndef WEATHER_READING
 #define WEATHER_READING 1
 

@@ -1,3 +1,4 @@
+// Copyright 2019 Gene Callahan
 // header file for image class
 #ifndef WEATHER_IMAGE
 #define WEATHER_IMAGE 1
@@ -18,6 +19,7 @@ class Image
     ~Image();
     Image& operator=(const Image& img2);
     int image_sz();
+    virtual void display();
 
  private:
     int width;
@@ -27,6 +29,14 @@ class Image
 };
 
 
-void mess_with_image(Image img);
+class Gif : public Image
+{
+ public:
+    Gif(int width, int height, string flnm);
+    void display();
+};
+
+
+void mess_with_image(Image& img);
 
 #endif

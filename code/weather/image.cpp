@@ -1,9 +1,11 @@
+// Copyright 2019 Gene Callahan
 #include <string>
+#include <iostream>
 using namespace std;
-#include "image.h"
+#include "code/weather/image.h"
 
 
-Image::Image(int width, int height, string flnm) 
+Image::Image(int width, int height, string flnm)
     : width(width), height(height)
 {
     image_buf = new unsigned char[image_sz()];
@@ -27,6 +29,9 @@ Image& Image::operator=(const Image& img2)
     return *this;
 }
 
+
+void Image::display() { cout << "displayed\n"; }
+
 int Image::image_sz() { return width * height; }
 
 void Image::copy_fields(const Image& img2)
@@ -38,4 +43,8 @@ void Image::copy_fields(const Image& img2)
 }
 
 
+Gif::Gif(int width, int height, string flnm) : Image(width, height, flnm)
+{
+}
 
+void Gif::display() { cout << "GIF displayed\n"; }

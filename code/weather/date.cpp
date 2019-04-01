@@ -1,6 +1,7 @@
+// Copyright 2019 Gene Callahan
 #include <iostream>
 
-#include "date.h"
+#include "code/weather/date.h"
 
 using namespace std;
 

@@ -1,3 +1,4 @@
+// Copyright 2019 Gene Callahan
 #ifndef WEATHER_DATE
 #define WEATHER_DATE
 

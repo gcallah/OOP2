@@ -1,8 +1,9 @@
+// Copyright 2019 Gene Callahan
 
 #include <iostream>
 #include <iomanip>
 
-#include "reading.h"
+#include "code/weather/reading.h"
 
 using namespace std;
 
