@@ -32,11 +32,28 @@ class Image
 class Gif : public Image
 {
  public:
-    Gif(int width, int height, string flnm);
-    void display();
+    Gif(int width, int height, string flnm) : Image(width, height, flnm) {}
+    void display() override;
 };
 
 
 void mess_with_image(Image& img);
+
+
+class Jpeg : public Image
+{
+ public:
+    Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {}
+    void display() override;
+};
+
+
+class Png : public Image
+{
+ public:
+    Png(int width, int height, string flnm) : Image(width, height, flnm) {}
+    void display() override;
+};
+
 
 #endif

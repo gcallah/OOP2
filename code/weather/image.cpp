@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-#include "code/weather/image.h"
+#include "./image.h"
 
 
 Image::Image(int width, int height, string flnm)
@@ -43,8 +43,19 @@ void Image::copy_fields(const Image& img2)
 }
 
 
-Gif::Gif(int width, int height, string flnm) : Image(width, height, flnm)
-{
+void Gif::display() { 
+    cout << "GIF "; 
+    Image::display();
 }
 
-void Gif::display() { cout << "GIF displayed\n"; }
+
+void Jpeg::display() { 
+    cout << "JPEG "; 
+    Image::display();
+}
+
+
+void Png::display() { 
+    cout << "PNG "; 
+    Image::display();
+}
