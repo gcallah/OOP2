@@ -1,7 +1,8 @@
 // Copyright 2019 Gene Callahan
 #include <iostream>
+#include <string>
 
-#include "code/weather/date.h"
+#include "./date.h"
 
 using namespace std;
 
@@ -11,6 +12,12 @@ Date::Date(int m, int d, int y) : month(m), day(d), year(y)
 }
 
 void Date::add_years(int y) { year += y; }
+
+std::string Date::to_string() const
+{
+    return(std::to_string(month) + "/" + std::to_string(day)
+        + "/" + std::to_string(year));
+}
 
 ostream& operator<<(ostream& os, const Date& date)
 {

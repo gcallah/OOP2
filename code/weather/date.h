@@ -3,6 +3,7 @@
 #define WEATHER_DATE
 
 #include <iostream>
+#include <string>
 
 class Date
 {
@@ -10,6 +11,7 @@ class Date
  public:
     Date(int m, int d, int y);
     void add_years(int);
+    std::string to_string() const;
 
  private:
     int month;

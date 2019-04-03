@@ -10,18 +10,22 @@ weather_pre: weather.cpp
 weather_comp: weather.cpp
 	clang --compile -std=c++14 weather.cpp
 
-date_test: date.cpp date_test.cpp
+test_date: date.cpp test_date.cpp
 
-image_test: image.cpp image_test.cpp
+test_image: image.cpp test_image.cpp
 
 weather: $(CPP_FILES)
 
 weather_leaks: weather_leaks.cpp
 
+tests: test_date test_image
+	./test_date
+	./test_image
+
 lint:
 	cpplint $(LINTFLAGS) $(CPP_FILES)
 
-repo: lint
+prod: tests
 	-git commit -a 
 	git push origin master
 
