@@ -45,7 +45,8 @@ void Image::copy_fields(const Image& img2)
 
 
 void Gif::display() { 
-    cout << "GIF of size " << image_sz() << " "; 
+    cout << "GIF of height " << get_height() << " and width "
+        << get_width() << " "; 
     Image::display();
 }
 

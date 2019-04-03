@@ -20,6 +20,8 @@ class Image
     Image& operator=(const Image& img2);
     int image_sz();
     virtual void display() = 0;
+    int get_height() { return height; }
+    int get_width() { return width; }
 
  private:
     int width;
@@ -34,6 +36,7 @@ class Gif : public Image
  public:
     Gif(int width, int height, string flnm) : Image(width, height, flnm) {}
     void display() override;
+    void animate() { cout << "Running animated gif\n"; }
 };
 
 

@@ -14,6 +14,7 @@ void show(Image& img)
 
 int main()
 {
+    // Image img(2000, 2000, "base class");
     Gif gif(2000, 2000, "derived class");
     show(gif);
     Jpeg jpeg(2000, 2000, "Jpeg class");
@@ -21,12 +22,13 @@ int main()
     Png png(2000, 2000, "png class");
     show(png);
 
-    cout << "\n_______________\n";
+    cout << "\n_______________\n\nVector:\n";
 
     vector<Image*> images;
     images.push_back(&gif);
     images.push_back(&jpeg);
     images.push_back(&png);
-    for(Image* img : images)
+    for(Image* img : images) {
         img->display();
+    }
 }
