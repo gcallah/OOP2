@@ -14,18 +14,17 @@ void show(Image& img)
 
 int main()
 {
-    Image base(2000, 2000, "Base class");
-    show(base);
-    Gif derived(2000, 2000, "derived class");
-    show(derived);
+    Gif gif(2000, 2000, "derived class");
+    show(gif);
     Jpeg jpeg(2000, 2000, "Jpeg class");
     show(jpeg);
     Png png(2000, 2000, "png class");
     show(png);
 
+    cout << "\n_______________\n";
+
     vector<Image*> images;
-    images.push_back(&base);
-    images.push_back(&derived);
+    images.push_back(&gif);
     images.push_back(&jpeg);
     images.push_back(&png);
     for(Image* img : images)

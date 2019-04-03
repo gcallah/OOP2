@@ -19,7 +19,7 @@ class Image
     ~Image();
     Image& operator=(const Image& img2);
     int image_sz();
-    virtual void display();
+    virtual void display() = 0;
 
  private:
     int width;
