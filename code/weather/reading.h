@@ -10,8 +10,12 @@
 constexpr double C_TO_F_RATIO = 5.0 / 9.0;
 
 
-class Reading
-{
+class Reading {
+    /*
+     * This is the class that holds readings from our weather stations,
+     * and contains display and conversions methods for
+     * those readings.
+     * */
     friend std::ostream& operator<<(std::ostream& os,
             const Reading& r);
  public:

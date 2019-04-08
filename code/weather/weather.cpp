@@ -17,16 +17,17 @@ const bool DEBUG = true;
 const bool DEBUG2 = false;
 
 
-void process_image(Image img)
-{
+void process_image(Image img) {
     cout << "Pretending to process image\n";
     Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
     img2 = img;
 }
 
 
-void read_records(string filenm, vector<Reading*>& readings)
-{
+void read_records(string filenm, vector<Reading*>& readings) {
+    /*
+     * Read all weather station records from `filenm`.
+     * */
     ifstream rfile(filenm);
     if (!rfile)
     {
@@ -67,14 +68,12 @@ void read_records(string filenm, vector<Reading*>& readings)
 }
 
 
-void process_records(vector<Reading*>& readings)
-{
+void process_records(vector<Reading*>& readings) {
     cout << "Processing records.\n";
 }
 
 
-void output_records(vector<Reading*>& readings)
-{
+void output_records(vector<Reading*>& readings) {
     for (Reading* rd : readings)
     {
         cout << *rd << endl;
@@ -82,10 +81,11 @@ void output_records(vector<Reading*>& readings)
 }
 
 
-int main()
-{
-    // A program to collect and output weather station
-    // readings.
+int main() {
+    /*
+     * This is the framework program that runs our weather station
+     * sample code.
+     * */
     string filenm;
     cout << "Input weather reading file name: ";
     cin >> filenm;

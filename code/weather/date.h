@@ -5,11 +5,15 @@
 #include <iostream>
 #include <string>
 
-class Date
-{
+class Date {
+    /*
+     * This is a class to hold dates. It should be extended to 
+     * support multiple I/O formats.
+     * */
     friend std::ostream& operator<<(std::ostream& os, const Date& date);
  public:
     Date(int m, int d, int y);
+    void add_months(int);
     void add_years(int);
     std::string to_string() const;
 

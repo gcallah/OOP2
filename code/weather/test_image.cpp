@@ -12,9 +12,13 @@ void show(Image& img)
     img.display();
 }
 
-int main()
-{
-    // Image img(2000, 2000, "base class");
+int main() {
+    /*
+     * Run some tests on our Image class.
+     * Because Image is abstract, we can't construct an Image:
+     * Image img(2000, 2000, "base class");
+     * The above line won't compile.
+     * */
     Gif gif(2000, 2000, "derived class");
     show(gif);
     Jpeg jpeg(2000, 2000, "Jpeg class");
