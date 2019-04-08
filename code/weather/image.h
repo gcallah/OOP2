@@ -21,7 +21,9 @@ class Image {
     ~Image();
     Image& operator=(const Image& img2);
     int image_sz();
-    virtual void display();
+    virtual void display() = 0;
+    int get_height() { return height; }
+    int get_width() { return width; }
 
  private:
     int width;
@@ -45,6 +47,7 @@ class Gif : public Image {
      * typos!
      * */
     void display() override;
+    void animate() { cout << "Running animated gif\n"; }
 };
 
 

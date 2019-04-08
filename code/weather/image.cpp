@@ -29,8 +29,9 @@ Image& Image::operator=(const Image& img2)
     return *this;
 }
 
-
-void Image::display() { cout << "displayed\n"; }
+void Image::display() {
+    cout << "displayed\n";
+}
 
 int Image::image_sz() { return width * height; }
 
@@ -44,7 +45,8 @@ void Image::copy_fields(const Image& img2)
 
 
 void Gif::display() { 
-    cout << "GIF "; 
+    cout << "GIF of height " << get_height() << " and width "
+        << get_width() << " "; 
     Image::display();
 }
 
