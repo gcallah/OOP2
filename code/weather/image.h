@@ -10,8 +10,10 @@ const int DEF_HEIGHT = 1600;
 const int DEF_WIDTH = 2400;
 
 
-class Image
-{
+class Image {
+    /*
+     * This will be the base class for all types of images.
+     * */
  public:
     Image(int width, int height, string flnm);
     // copy constructor:
@@ -29,10 +31,19 @@ class Image
 };
 
 
-class Gif : public Image
-{
+class Gif : public Image {
+    /*
+     * Here we have a descendant of Image that overrides certain
+     * methods.
+     * We don't need copy control here because our parent has it.
+     * */
  public:
     Gif(int width, int height, string flnm) : Image(width, height, flnm) {}
+    /*
+     * display() overrides the parent class display().
+     * Notice the key word `override`: it is a safety mechanism to catch 
+     * typos!
+     * */
     void display() override;
 };
 
