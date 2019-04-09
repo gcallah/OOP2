@@ -63,13 +63,14 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/complex.cpp">
+                <a
+                    href="https://github.com/gcallah/OOP2/blob/master/code/complex_struct.cpp">
                     Creating a new type using <span class="code">struct</span>
                 </a>
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/complex_class.cpp">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/complex.cpp">
                     Turning the <span class="code">struct</span> into a class.
                 </a>
             </li>

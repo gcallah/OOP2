@@ -1,3 +1,4 @@
+// Copyright 2019 Gene Callahan
 // Weather: take readings from a weather station.
 // This is the starting, minimal version.
 #include <iostream>

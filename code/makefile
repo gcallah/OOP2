@@ -2,9 +2,11 @@ CXXFLAGS=-g -std=c++14
 CC=$(CXX)
 INCS=$(shell ls *.h)
 
+complex_struct: complex_struct.cpp 
+
 complex: complex.cpp 
 
-complex_class: complex_class.cpp 
+struct_class: struct_class.cpp 
 
 funcs: funcs.cpp 
 

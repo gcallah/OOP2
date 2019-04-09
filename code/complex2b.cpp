@@ -11,39 +11,15 @@ class Complex
     friend ostream& operator<< (ostream& os, const Complex& c);
     friend istream& operator>> (istream& is, Complex& c);
 
-    friend bool operator== (const Complex& c1, const Complex& c2)
-    {
-        return ((c1.real == c2.real) && (c1.imag == c2.imag));
-    }
-
     public:
     
-        Complex(double real=0.0, double imag=0.0)
-            : real{real}, imag{imag}
+        Complex(double real=0.0, double imag=0.0) : real{real}, imag{imag}
         {}
 
         // we will write:
         // +=, ==, *=, *, -, -=, /, /=
-        // ++ (pre and post), ==
+        // bool()
         // we will re-write +
-
-        explicit operator bool() const
-        {
-            return ((real != 0) || (imag != 0));
-        }
-
-        Complex& operator++()  // pre-increment
-        {
-            ++real;
-            return (*this);
-        }
-
-        Complex operator++(int dummy)  // post-increment
-        {
-            Complex temp(*this);
-            real++;
-            return temp;
-        }
 
         Complex operator+(const Complex& c)
         {
@@ -77,8 +53,6 @@ void printVector(const vector<Complex>& v);
 
 int main()
 {
-    // A program to introduce `struct`.
-    // We will work with complex numbers.
     cout << "Input a complex number:\n";
     Complex c1;
     cin >> c1;
@@ -99,16 +73,13 @@ int main()
     }
 
     Complex c3 = c1 + c2;
-
-    Complex c4 = Complex();
-    c4++;
-    (1 == c4) ? cout << "c4 == 1 is true\n" 
-        : cout << "c4 == 1 is false\n";
+    Complex c4 = 1;
 
     vector<Complex> v{c1, c2, c3, c4};
     cout << "Printing vector\n";
     printVector(v);
 }
+
 
 
 void printVector(const vector<Complex>& v)
