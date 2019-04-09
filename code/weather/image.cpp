@@ -68,6 +68,22 @@ void Gif::display() {
 }
 
 
+void Gif::compress(int i) {
+    cout << "compressing at level: " << i << endl;
+}
+
+
+void AnimGif::display() { 
+    /*
+     * Specialized over-ridden display method for AnimGif.
+     * In it we call the parent display method with
+     * `Image::display()`.
+     * */
+    cout << "AnimGif "; 
+    Image::display();
+}
+
+
 void Jpeg::display() { 
     /*
      * Specialized over-ridden display method for Jpeg.

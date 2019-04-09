@@ -7,10 +7,17 @@
 
 using namespace std;
 
-void show(Image& img)
-{
+void show(Image& img) {
+    cout << "In show(Image)\n";
     img.display();
 }
+
+
+void show(Gif& img) {
+    cout << "In show(Gif)\n";
+    img.display();
+}
+
 
 int main() {
     /*
@@ -19,12 +26,19 @@ int main() {
      * Image img(2000, 2000, "base class");
      * The above line won't compile.
      * */
-    Gif gif(2000, 2000, "derived class");
-    show(gif);
+    AnimGif gif(2000, 2000, "derived class");
     Jpeg jpeg(2000, 2000, "Jpeg class");
-    show(jpeg);
     Png png(2000, 2000, "png class");
-    show(png);
+
+    Image* img = &gif;
+
+    // this illustrates the interaction of overloading
+    // and class heirarachies:
+    show(gif);
+    show(jpeg);
+    show(*img);
+
+    gif.compress();
 
     cout << "\n_______________\n\nVector:\n";
 
@@ -32,6 +46,12 @@ int main() {
     images.push_back(&gif);
     images.push_back(&jpeg);
     images.push_back(&png);
+    /*
+     * This is a classic example of when we want 
+     * *polymorphism*! We want to have a collection of
+     * base-class pointers, but get the right `display()`
+     * method for each specific object.
+     * */
     for(Image* img : images) {
         img->display();
     }

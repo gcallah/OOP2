@@ -27,6 +27,12 @@ class Image {
      * class that can't be implemented.
      * */
     virtual void display() = 0;
+    /*
+     * If we don't want virtual method lookup, we
+     * could just declare:
+     * void display();
+     * */
+    virtual void compress() { cout << "Compressing!\n"; }
     int get_height() { return height; }
     int get_width() { return width; }
 
@@ -52,7 +58,8 @@ class Gif : public Image {
      * typos!
      * */
     void display() override;
-    void animate() { cout << "Running animated gif\n"; }
+    void compress(int level);
+    using Image::compress;
 };
 
 
@@ -60,6 +67,9 @@ class AnimGif : public Gif {
     /*
      * This will be a "grandchild" class.
      * */
+ public:
+    AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {}
+    void display() override;
 };
 
 
