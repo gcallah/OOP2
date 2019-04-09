@@ -3,7 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "code/weather/reading.h"
+#include "./reading.h"
 
 using namespace std;
 
@@ -11,9 +11,7 @@ using namespace std;
 Reading::Reading(Date dt, double temp, double hum,
         double ws, Reading* p)
     : date{dt}, temperature{temp}, humidity{hum},
-      windspeed{ws}, prev{p},
-    // just making up file name!
-      image{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"} {
+      windspeed{ws}, prev{p} {
   /*
    * Constructor for reading that just does inits.
    * */
@@ -35,7 +33,8 @@ double Reading::get_temp_changeF() const {
 
 double Reading::get_hum() const { return humidity; }
 double Reading::get_ws() const { return windspeed; }
-Image Reading::get_image() { return image; }
+Image& Reading::get_image() { return *image; }
+void Reading::set_image(Image* img) { image = img; }
 
 ostream& operator<<(ostream& os, const Reading& r) {
     /*

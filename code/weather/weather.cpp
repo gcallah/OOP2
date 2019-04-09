@@ -17,10 +17,8 @@ const bool DEBUG = true;
 const bool DEBUG2 = false;
 
 
-void process_image(Image img) {
+void process_image(Image& img) {
     cout << "Pretending to process image\n";
-    Image img2{DEF_HEIGHT, DEF_WIDTH, "weather.jpg"};
-    img2 = img;
 }
 
 

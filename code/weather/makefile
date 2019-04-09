@@ -1,4 +1,4 @@
-CXXFLAGS=-g -std=c++14
+CXXFLAGS=-g -std=c++14 -Wall
 CC=$(CXX)
 LINTFLAGS=--filter=-whitespace/braces,-build/namespaces,-runtime/references
 INCS=$(shell ls *.h)

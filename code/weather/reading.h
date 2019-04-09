@@ -19,15 +19,15 @@ class Reading {
     friend std::ostream& operator<<(std::ostream& os,
             const Reading& r);
  public:
-    Reading(Date dt, double temp, double hum,
-            double ws, Reading* p);
+    Reading(Date dt, double temp, double hum, double ws, Reading* p);
     void set_tempF(double t);
     double get_tempF() const;
     double get_tempC() const;
     double get_temp_changeF() const;
     double get_hum() const;
     double get_ws() const;
-    Image get_image();
+    Image& get_image();
+    void set_image(Image* img);
 
  private:
     Date date;
@@ -35,7 +35,7 @@ class Reading {
     double humidity;
     double windspeed;
     Reading* prev;
-    Image image;   // perhaps we have photos from the weather station
+    Image* image;   // perhaps we have photos from the weather station
 };
 
 std::ostream& operator<<(std::ostream& os, const Reading& r);
