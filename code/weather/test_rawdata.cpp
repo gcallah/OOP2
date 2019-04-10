@@ -19,15 +19,16 @@ int main() {
     Csv csv;
     Json json;
 
-    Binary* bptr = new Binary();
+    RawData* bptr = new Binary();
+    delete bptr;
 
     cout << "\n_______________\n\nVector:\n";
 
     vector<RawData*> rds;
+    rds.push_back(&rd);
     rds.push_back(&binary);
     rds.push_back(&csv);
     rds.push_back(&json);
-    rds.push_back(bptr);
     /*
      * This is a classic example of when we want 
      * *polymorphism*! We want to have a collection of
@@ -36,5 +37,6 @@ int main() {
      * */
     for(RawData* rd : rds) {
         cout << *rd << endl;
+        // cout << rd << endl;
     }
 }

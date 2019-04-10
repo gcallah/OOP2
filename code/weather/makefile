@@ -14,7 +14,7 @@ test_date: date.cpp test_date.cpp
 
 test_image: image.cpp test_image.cpp
 
-test_raw_data: raw_data.cpp test_raw_data.cpp
+test_rawdata: rawdata.cpp test_rawdata.cpp
 
 weather: $(CPP_FILES)
 

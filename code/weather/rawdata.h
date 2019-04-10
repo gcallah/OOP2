@@ -13,7 +13,7 @@ class RawData {
      * */
     friend std::ostream& operator<<(std::ostream& os, const RawData& rd);
  public:
-    RawData() {}
+    RawData() : len(0) {}
 
     // copy constructor:
     RawData(const RawData& img2) { cout << "RawData copy constr\n"; }
@@ -23,6 +23,8 @@ class RawData {
 
     // assignment operator:
     RawData& operator=(const RawData& img2);
+
+    int size() const { return len; }
 
  private:
     /*
@@ -41,7 +43,11 @@ class Binary : public RawData {
      * */
     friend std::ostream& operator<<(std::ostream& os, const Binary& rd);
  public:
+    // default constructor:
     Binary() : RawData() {}
+
+    // destructor:
+    ~Binary() { cout << "Binary destructor\n"; }
 };
 
 std::ostream& operator<<(std::ostream& os, const Binary& rd);
@@ -53,7 +59,11 @@ class Csv : public RawData {
      * clearer.
      * */
  public:
+    // default constructor:
     Csv() : RawData() {}
+
+    // destructor:
+    ~Csv() { cout << "CSV destructor\n"; }
 };
 
 
