@@ -15,18 +15,31 @@ int main() {
      * a class heirarchy.
      * */
     RawData rd;
+    cout << "___________\n";
     Binary binary;
+    cout << "___________\n";
+    BinEncr bencr;
+    cout << "___________\n";
     Csv csv;
+    cout << "___________\n";
     Json json;
+    cout << "___________\n";
 
-    RawData* bptr = new Binary();
+    RawData* bptr = new BinEncr();
+    cout << "\nDeleting binary encrypted pointer\n";
     delete bptr;
+
+//    cout << "\n_______________\n\nCopy Constructor:\n";
+//    json.set_len(17);
+//    Json json2 = json;
+//    cout << "Json2: " << json2 << endl;
 
     cout << "\n_______________\n\nVector:\n";
 
     vector<RawData*> rds;
     rds.push_back(&rd);
     rds.push_back(&binary);
+    rds.push_back(&bencr);
     rds.push_back(&csv);
     rds.push_back(&json);
     /*
@@ -37,6 +50,7 @@ int main() {
      * */
     for(RawData* rd : rds) {
         cout << *rd << endl;
-        // cout << rd << endl;
     }
+
+    cout << "\nReaching end of main; expect some destructors:\n";
 }
