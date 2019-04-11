@@ -29,10 +29,10 @@ int main() {
     cout << "\nDeleting binary encrypted pointer\n";
     delete bptr;
 
-//    cout << "\n_______________\n\nCopy Constructor:\n";
-//    json.set_len(17);
-//    Json json2 = json;
-//    cout << "Json2: " << json2 << endl;
+    cout << "\n_______________\n\nCopy Constructor:\n";
+    json.set_len(17);
+    Json json2 = json;
+    cout << "Json2: " << json2 << endl;
 
     cout << "\n_______________\n\nVector:\n";
 

@@ -25,6 +25,7 @@ class RawData {
     RawData& operator=(const RawData& rd2)  { len = rd2.len; return *this; }
 
     void set_len(int l)  { len = l; }
+    int get_len()  const { return len; }
     int size() const { return len; }
     virtual string to_string() const { return "Raw data"; }
 
@@ -102,12 +103,12 @@ class Json : public RawData {
     Json() : RawData() { cout << "Json default cons\n"; }
 
     // copy constructor:
-    Json(const Json& rd2) { cout << "BinEncr copy constr\n"; }
+    Json(const Json& rd2) : RawData(rd2) { cout << "BinEncr copy constr\n"; }
 
     // destructor:
     ~Json() { cout << "Json destructor\n"; }
 
-    string to_string() const { return "Json"; }
+    string to_string() const { return "Json; len = " + std::to_string(get_len()); }
 };
 
 
