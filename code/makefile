@@ -18,7 +18,8 @@ mean: mean.cpp
 
 my_vec: my_vec.cpp 
 
-repo:
+prod:
+	cd weather; make prod
 	-git commit -a 
 	git push origin master
 
