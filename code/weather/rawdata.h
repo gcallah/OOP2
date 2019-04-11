@@ -43,7 +43,6 @@ class Binary : public RawData {
      * Here we have a descendant of RawData that overrides certain
      * methods.
      * */
-    friend std::ostream& operator<<(std::ostream& os, const Binary& rd);
  public:
     // default constructor:
     Binary() : RawData() { cout << "Binary default cons\n"; }
@@ -77,8 +76,6 @@ class BinEncr : public Binary {
     string to_string() const { return "Binary encrypted"; }
 };
 
-std::ostream& operator<<(std::ostream& os, const Binary& rd);
-
 
 class Csv : public RawData {
     /*
@@ -91,6 +88,8 @@ class Csv : public RawData {
 
     // destructor:
     ~Csv() { cout << "CSV destructor\n"; }
+
+    string to_string() const { return "Csv"; }
 };
 
 
@@ -107,6 +106,8 @@ class Json : public RawData {
 
     // destructor:
     ~Json() { cout << "Json destructor\n"; }
+
+    string to_string() const { return "Json"; }
 };
 
 
