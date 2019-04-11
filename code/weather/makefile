@@ -1,8 +1,8 @@
-CXXFLAGS=-g -std=c++14 -Wall
+CXXFLAGS=-g -std=c++14 -Wall -pedantic
 CC=$(CXX)
 LINTFLAGS=--filter=-whitespace/braces,-build/namespaces,-runtime/references
 INCS=$(shell ls *.h)
-CPP_FILES=weather.cpp image.cpp date.cpp reading.cpp
+CPP_FILES=weather.cpp image.cpp date.cpp reading.cpp rawdata.cpp
 
 weather_pre: weather.cpp
 	clang --preprocess -std=c++14 weather.cpp
@@ -13,6 +13,8 @@ weather_comp: weather.cpp
 test_date: date.cpp test_date.cpp
 
 test_image: image.cpp test_image.cpp
+
+test_rawdata: rawdata.cpp test_rawdata.cpp
 
 weather: $(CPP_FILES)
 

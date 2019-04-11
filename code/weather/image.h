@@ -58,7 +58,18 @@ class Gif : public Image {
      * typos!
      * */
     void display() override;
+
+    /*
+     * The following line of code *hides* `compress()` from
+     * our base class:
+     * */
     void compress(int level);
+
+    /*
+     * The line below makes `compress()` available in Gif.
+     * We could also have written:
+     * void compress() { Image::compress(); }
+     * */
     using Image::compress;
 };
 
@@ -101,6 +112,12 @@ class Png : public Image {
 void mess_with_image(Image& img);
 void f(Image& img);
 void f(Gif& img);
+
+/*
+ * Below doesn't work: can't overload on const vs. non-const
+ * param.
+void f(const Gif& img) { cout << "Const gif f()\n"; }
+ * */
 
 
 #endif
