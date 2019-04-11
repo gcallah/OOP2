@@ -66,6 +66,10 @@ ul.centered {
     list-style-position: inside;
 }
 
+ol.nested, ul.nested, dl.nested {
+    font-size: .86em;
+}
+
 p {
     padding: 0;
     line-height: 140%;
@@ -151,6 +155,10 @@ span.contrib {
 
 span.proposed {
     color: #805;
+}
+
+span.hilight {
+    color: #906;
 }
 
 span.code {

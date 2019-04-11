@@ -66,8 +66,12 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/mean.cpp">Using vectors</a>
-                Entering values into a vector then getting their mean.
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/mean.cpp">
+                    Using vectors
+                </a>
+                <br />
+                Entering values into a vector then getting the mean of
+                all values in the vector.
             </li>
 
             <li>
@@ -88,6 +92,7 @@
                 <a href="https://github.com/gcallah/OOP2/blob/master/code/complex.cpp">
                     Turning the <span class="code">struct</span> into a class.
                 </a>
+                This file is used to demonstrate operator over-loading.
             </li>
 
             <li>
@@ -96,6 +101,81 @@
                 </a>
                 <br />
                 (The numbered files are various iterations of the program.)
+                <br />
+                Within this program, particular classes / files address
+                particular C++ features:
+                <br />
+                <ul class="nested">
+                    <li>
+                        Copy control: Allocating and freeing memory.
+                        <br />
+                        <span class="hilight">Code examples:</span>
+                        <br />
+                        <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/image.cpp">
+                            image.cpp</a>
+                        allocates a buffer for its image, and uses copy control
+                        to manage that buffer properly.
+                    </li>
+
+                    <li>
+                        Multiple compilation units.
+                        <br />
+                        <span class="hilight">Code examples:</span>
+                        <br />
+                        The entire project illustrates breaking code into
+                        multiple compilation units.
+                    </li>
+
+                    <li>
+                        Class heirarchies.
+                        <br />
+                        <span class="hilight">Code examples:</span>
+                        <br />
+                        Both
+                        <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/image.h">
+                            image.h
+                        </a>
+                        and
+                        <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/rawdata.h">
+                            rawdata.h
+                        </a>
+                        create a class heirarchy.
+                    </li>
+
+                    <li>
+                        Polymorphism and virtual functions.
+                        <br />
+                        <span class="hilight">Code examples:</span>
+                        <a href="">test_image.cpp</a>
+                        is designed to illustrate
+                        <a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)">
+                            polymorphism</a>.
+                        We can create a `vector` of `Image` pointers, and
+                        expect that right sub-class method to be called if we
+                        ask to `display()` one of them, so long as `display` is
+                        declared `virtual` in the base (Image) class.
+                    </li>
+
+                    <li>
+                        How polymorphism interacts with copy control.
+                        <br />
+                        <span class="hilight">Code examples:</span>
+                        <br />
+                        <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/rawdata.h">
+                            rawdata.h
+                        </a>
+                        and
+                        <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/rawdata.cpp">
+                            rawdata.cpp
+                        </a>
+                        aloong with their test harness
+                        <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/test_rawdata.cpp">
+                            test_rawdata.cpp
+                        </a>,
+                        are built to illustrate this theme.
+                    </li>
+                </ul>
+
             </li>
 
         </ul>
