@@ -2,9 +2,10 @@
 #include <string>
 using namespace std;
 
-int main()
-{
-    // say hello to the user, not the world
+int main() {
+    /*
+     * This program demonstrates how to get input in C++.
+     * */
     cout << "What is your name?\n";
     string name;
     cin >> name;

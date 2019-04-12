@@ -1,4 +1,7 @@
-// Creating a new type using struct:
+/*
+ * Creating a new type using class.
+ * This is just an intermediate in-class version.
+ * */
 #include <iostream>
 #include <iomanip>
 #include <vector>

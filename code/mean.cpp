@@ -2,8 +2,10 @@
 #include <vector>
 using namespace std;
 
-int main()
-{
+int main() {
+    /*
+     * This code demonstrates basic `vector` handling in C++.
+     * */
     cout << "Enter recent temperatures and we will calulate their average:\n";
     
     vector<double> temps;
