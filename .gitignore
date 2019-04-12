@@ -8,3 +8,8 @@ hello_nm
 weather/test_date
 weather/test_image
 weather/weather
+code/.ipynb_checkpoints/
+code/.ropeproject/
+code/weather/test_date
+code/weather/test_image
+code/weather/weather
