@@ -22,6 +22,7 @@ class Image {
     ~Image();
     Image& operator=(const Image& img2);
     int image_sz();
+
     /*
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
@@ -32,6 +33,7 @@ class Image {
      * could just declare:
      * void display();
      * */
+
     virtual void compress() { cout << "Compressing!\n"; }
     int get_height() { return height; }
     int get_width() { return width; }
