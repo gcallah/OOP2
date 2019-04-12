@@ -2,3 +2,9 @@
 *~
 *.o
 .*.swp
+funcs
+hello
+hello_nm
+weather/test_date
+weather/test_image
+weather/weather
