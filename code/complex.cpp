@@ -135,9 +135,11 @@ int main() {
     Complex c4 = Complex();
     // test post-increment:
     c4++;
-    // test bool():
+    // test equality operator:
     (1 == c4) ? cout << "c4 == 1 is true\n" 
         : cout << "c4 == 1 is false\n";
+    // test bool() operator:
+    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
 
     vector<Complex> v{c1, c2, c3, c4};
     cout << "Printing vector\n";
@@ -152,4 +154,9 @@ void printVector(const vector<Complex>& v)
         cout << c;
     }
 }
+
+
+
+
+
 

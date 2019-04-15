@@ -25,6 +25,10 @@ int main() {
     Json json;
     cout << "___________\n";
 
+    /*
+     * This following works because base class destructor is virtual!
+     * If it were not, we'd only get ~RawData().
+     * */
     RawData* bptr = new BinEncr();
     cout << "\nDeleting binary encrypted pointer\n";
     delete bptr;
