@@ -1,3 +1,7 @@
+/*
+ * This file illustrates how we might implement our own 
+ * version of std::vector.
+ * */
 #include <iostream>
 using namespace std;
 
@@ -6,26 +10,45 @@ const int CAPACITY_MULT = 2;
 
 
 class MyVec {
+    /*
+     * The MyVec class that is a partial version of std::vector.
+     * */
  public:
-    // default constructor:
     MyVec() {
+        /*
+         * This if the default constructor for the class.
+         * */
         sz = 0;
         capac = DEF_VCAPACITY;
         data = new int[DEF_VCAPACITY];
     }
 
     explicit MyVec(size_t sz, int val=0) : sz{sz} {
+        /*
+         * Another constructor: note the use of `explicit`:
+         * it means we can't accidentally get a "weird"
+         * interpretation of some code as implicitly calling
+         * this constructor.
+         * */
         capac = max(DEF_VCAPACITY, sz * CAPACITY_MULT);
         data = new int[capac];
         for (size_t i = 0; i < sz; i++) data[i] = val;
     }
 
-    // copy constructor:
     MyVec(const MyVec& v2) {
+        /*
+         * This is the copy constructor for our class.
+         * It calls a method called `copy` so that we can share
+         * that code with assignment.
+         * */
         copy(v2);
     }
 
     MyVec& operator=(const MyVec& v2) {
+        /*
+         * The assignment operator essentially combines the
+         * destructor and the copy constructor.
+         * */
         if (this != &v2) {
             delete [] data;
             copy(v2);
@@ -34,18 +57,36 @@ class MyVec {
     }
 
     ~MyVec() {
+        /*
+         * The destructor for this class.
+         * */
         delete [] data;
     }
 
     int operator[](int i) const {
+        /*
+         * This version of the [] operator is const, so it
+         * is used when we are just getting the value of
+         * a vector element.
+         * */
         return data[i];
     }
 
     int& operator[](int i) {
+        /*
+         * This version of the [] operator is not const,
+         * so it is used when we are setting the value of
+         * a vector element.
+         * */
         return data[i];
     }
 
     void push_back(int val) {
+        /*
+         * This method puts a val on the end of our vector:
+         * it may need to increase the vector's capacity
+         * in order to do this.
+         * */
         sz++;
         if (sz > capac) {
             cout << "Increasing capacity\n";
@@ -83,8 +124,7 @@ void print_vec(const MyVec& v) {
 }
 
 
-int main()
-{
+int main() {
     cout << "Testing my_vec:\n";
 
     MyVec v1 = MyVec();

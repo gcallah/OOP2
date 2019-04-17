@@ -61,8 +61,12 @@
                     C++ function calls
                 </a>
                 <br />
-                Explore the various ways we can pass values to a C++ function 
-                and get a result from that function.
+                Explore the various ways
+                   (<span class="hilight">pass-by-value</span>
+                and
+                <span class="hilight">pass-by-reference</span>)
+                we can pass values to a C++ function 
+                and get a result returned from that function.
             </li>
 
             <li>
@@ -70,13 +74,13 @@
                     Using vectors
                 </a>
                 <br />
-                Entering values into a vector then getting the mean of
-                all values in the vector.
+                Entering values into a <span class="code">vector</span>
+                then getting the mean of all values in the vector.
             </li>
 
             <li>
                 <a href="https://github.com/gcallah/OOP2/blob/master/code/PythonListExploration.ipynb">
-                    Python loop over vectors</a>
+                    Python loop over a vector</a>
                 <br />
                 For comparison to the similar C++ loop.
             </li>
@@ -92,7 +96,31 @@
                 <a href="https://github.com/gcallah/OOP2/blob/master/code/complex.cpp">
                     Turning the <span class="code">struct</span> into a class.
                 </a>
-                This file is used to demonstrate operator over-loading.
+                <br />
+                This file is also used to demonstrate
+                <span class="hilight">operator over-loading</span>.
+            </li>
+
+            <li>
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/my_vec.cpp">
+                    Implementing a class like <span class="code">vector</span>
+                    on our own.
+                </a>
+                <br />
+                Here we do more
+                <span class="hilight">operator over-loading</span>, 
+                including the <span class="code">[]</span> operator.
+            </li>
+
+            <li>
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/base_by_val.cpp">
+                    Passing a derived class to a function expecting the base
+                    class.
+                </a>
+                <br />
+                Exploring <span class="hilight">polymorphism</span>
+                and the
+                <span class="hilight">virtual</span> keyword.
             </li>
 
             <li>
@@ -113,7 +141,8 @@
                         <br />
                         <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/image.cpp">
                             image.cpp</a>
-                        allocates a buffer for its image, and uses copy control
+                        allocates a buffer for its image, and uses
+                        <span class="hilight">copy control</span>
                         to manage that buffer properly.
                     </li>
 
@@ -123,7 +152,7 @@
                         <span class="hilight">Code examples:</span>
                         <br />
                         The entire project illustrates breaking code into
-                        multiple compilation units.
+                        <span class="hilight">separate compilation units</span>.
                     </li>
 
                     <li>
@@ -139,25 +168,32 @@
                         <a href="https://github.com/gcallah/OOP2/blob/master/code/weather/rawdata.h">
                             rawdata.h
                         </a>
-                        create a class heirarchy.
+                        create a <span class="hilight">class heirarchy</span>,
+                        which uses <span class="hilight">inheritance</span>.
                     </li>
 
                     <li>
-                        Polymorphism and virtual functions.
+                        <span class="hilight">Polymorphism</span>
+                        and <span class="hilight">virtual functions</span>.
                         <br />
                         <span class="hilight">Code examples:</span>
                         <a href="">test_image.cpp</a>
                         is designed to illustrate
                         <a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)">
                             polymorphism</a>.
-                        We can create a `vector` of `Image` pointers, and
+                        We can create a <span class="code">vector</span> of <span
+                        class="code">Image</span> pointers, and
                         expect that right sub-class method to be called if we
-                        ask to `display()` one of them, so long as `display` is
-                        declared `virtual` in the base (Image) class.
+                        ask to <span class="code">display()</span> one of them, so
+                        long as <span class="code">display</span> is
+                        declared <span class="code">virtual</span>
+                        in the base (Image) class.
                     </li>
 
                     <li>
-                        How polymorphism interacts with copy control.
+                        How <span class="hilight">polymorphism</span>
+                        interacts with <span class="hilight">copy
+                            control</span>.
                         <br />
                         <span class="hilight">Code examples:</span>
                         <br />

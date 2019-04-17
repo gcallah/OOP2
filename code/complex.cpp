@@ -105,10 +105,13 @@ istream& operator>> (istream& is, Complex& c) {
 void printVector(const vector<Complex>& v);
 
 
-int main()
-{
+int main() {
+    /*
+     * The code in main just exercizes the `Complex` class.
+     * */
     cout << "Input a complex number:\n";
     Complex c1;
+    // get a complex from stdin:
     cin >> c1;
     if(!cin)
     {
@@ -126,12 +129,17 @@ int main()
         cout << "c2 = " << c2 << endl;
     }
 
+    // see if `Complex` addition works:
     Complex c3 = c1 + c2;
 
     Complex c4 = Complex();
+    // test post-increment:
     c4++;
+    // test equality operator:
     (1 == c4) ? cout << "c4 == 1 is true\n" 
         : cout << "c4 == 1 is false\n";
+    // test bool() operator:
+    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
 
     vector<Complex> v{c1, c2, c3, c4};
     cout << "Printing vector\n";
@@ -141,9 +149,14 @@ int main()
 
 void printVector(const vector<Complex>& v)
 {
-    for(auto c : v)
-    {
+    // auto detects the type coming from the vector automatically:
+    for(auto c : v) {
         cout << c;
     }
 }
+
+
+
+
+
 

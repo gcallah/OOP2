@@ -1,3 +1,10 @@
+/*
+ * This file explores different ways to pass an arg to a function in C++:
+ * * pass by value
+ * * pass by reference
+ * * pass by constant reference
+ * It also illustrates the use of a return value from a function.
+ * */
 #include <iostream>
 using namespace std;
 
@@ -9,8 +16,7 @@ int call_with_ret(int n);
 void pass_by_constref(const int& n);
 
 
-int main()
-{
+int main() {
     int n = 7;
     pass_by_value(n);
     if(DEBUG)
@@ -24,26 +30,34 @@ int main()
     cout << "The square of " << n << " is " << n2 << endl;
 }
 
-void pass_by_value(int n)
-{
+void pass_by_value(int n) {
+    /*
+     * Demonstrate passing by value.
+     * */
     n++;
 }
 
 
-void pass_by_ref(int& n)
-{
+void pass_by_ref(int& n) {
+    /*
+     * Demonstrate passing by reference.
+     * */
     n++;
 }
 
 
-int call_with_ret(int n)
-{
+int call_with_ret(int n) {
+    /*
+     * Using a function's return value.
+     * */
     return(n * n);
 }
 
 
-// uncomment the following function, and you will find it will
-// not compile: if `n` is const, we can't modify it!
+/*
+ * Uncomment the following function, and you will find it will
+ * not compile: if `n` is const, we can't modify it!
+ * */
 // void pass_by_constref(const int& n)
 // {
 //    n++;
