@@ -4,7 +4,7 @@ INCS=$(shell ls *.h)
 
 FORCE:
 
-test_linked: test_linked.cpp linked1.cpp 
+test_linked: test_linked.cpp linked.cpp 
 
 tests: FORCE
 	test_linked
