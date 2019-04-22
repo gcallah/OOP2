@@ -23,7 +23,7 @@
 
         <ul>
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/hello.cpp">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/hello.cpp">
                     Hello World!
                 </a>
                 <br />
@@ -33,7 +33,7 @@
 
             <li>
                 <a
-                    href="https://github.com/gcallah/OOP2/blob/master/code/hello_nm.cpp">
+                    href="https://github.com/gcallah/OOP2/blob/master/code/misc/hello_nm.cpp">
                     Hello [YourName]!
                 </a>
                 <br />
@@ -42,7 +42,7 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/funcs.cpp">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/funcs.cpp">
                     C++ function calls
                 </a>
                 <br />
@@ -55,7 +55,7 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/mean.cpp">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/mean.cpp">
                     Using vectors
                 </a>
                 <br />
@@ -64,7 +64,7 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/PythonListExploration.ipynb">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/PythonListExploration.ipynb">
                     Python loop over a vector</a>
                 <br />
                 For comparison to the similar C++ loop.
@@ -72,13 +72,13 @@
 
             <li>
                 <a
-                    href="https://github.com/gcallah/OOP2/blob/master/code/complex_struct.cpp">
+                    href="https://github.com/gcallah/OOP2/blob/master/code/misc/complex_struct.cpp">
                     Creating a new type using <span class="code">struct</span>
                 </a>
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/complex.cpp">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/complex.cpp">
                     Turning the <span class="code">struct</span> into a class.
                 </a>
                 <br />
@@ -87,7 +87,8 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/my_vec.cpp">
+                <a
+                    href="https://github.com/gcallah/OOP2/blob/master/code/vector/my_vec.cpp">
                     Implementing a class like <span class="code">vector</span>
                     on our own.
                 </a>
@@ -98,7 +99,7 @@
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/base_by_val.cpp">
+                <a href="https://github.com/gcallah/OOP2/blob/master/code/mics/base_by_val.cpp">
                     Passing a derived class to a function expecting the base
                     class.
                 </a>

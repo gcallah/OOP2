@@ -16,7 +16,7 @@ HTMLFILES = $(shell ls $(PTML_DIR)/*.ptml | sed -e 's/.ptml/.html/' | sed -e 's/
 local: $(HTMLFILES)
 
 prod: $(INCS) $(HTMLFILES)
-	cd code; make tests
+	cd code/misc; make tests
 	-git commit -a 
 	git pull origin master
 	git push origin master
