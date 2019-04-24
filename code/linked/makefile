@@ -7,7 +7,7 @@ FORCE:
 test_linked: test_linked.cpp linked.cpp 
 
 tests: FORCE
-	test_linked
+	./test_linked
 
 prod: tests
 	-git commit -a 

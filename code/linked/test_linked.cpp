@@ -13,18 +13,20 @@ int main() {
     add_at_end(head, 128);
     add_at_end(head, 256);
     add_at_front(head, 8);
-    cout << "Last: " << last(head) << endl;
+    Node* lastp = last(head);
+    cout << "Last: " << lastp << endl;
     cout << "List: \n";
     print_list(cout, head);
+    Node* l2 = nullptr;
+    cout << "Last l2: " << last(l2) << endl;
     Node* head2 = duplicate(head);
-    Node* lempty = nullptr;
-    cout << "Last lempty: " << last(lempty) << endl;
-    del_head(lempty);
-    del_tail(head);
-    del_tail(head);
-    cout << "List: \n";
+    del_head(head);
+    del_tail(&head);
+    del_tail(&head);
+    cout << "List after deletes: \n";
     print_list(cout, head);
-    cout << "List 2: \n";
+    bool worked = del_head(l2);
+    cout << "Did it work? " << worked << endl;
     print_list(cout, head2);
 }
 

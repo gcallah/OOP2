@@ -4,10 +4,9 @@ INCS=$(shell ls *.h)
 
 FORCE:
 
-test_my_vec: test_my_vec.cpp my_vec.cpp 
+# test_my_vec: test_my_vec.cpp my_vec.cpp 
 
-tests: FORCE
-	test_my_vec
+tests: 
 
 prod: tests
 	-git commit -a 

@@ -6,10 +6,8 @@ using namespace std;
 
 
 ostream& operator<<(ostream& os, Node* nd) {
-    if (!nd)
-        os << "NULL";
-    else
-        os << nd->data;
+    if (!nd) os << "NULL";
+    else os << nd->data;
     return os;
 }
 
@@ -48,31 +46,8 @@ void print_list(ostream& os, Node* head) {
     os << endl;
 }
 
-
-Node* duplicate(Node* head) {
-    if (!head) return nullptr;
-
-    Node* new_head = nullptr;
-    Node* curr = head;
-    while (curr) {
-        add_at_end(new_head, curr->data);
-        curr = curr->next;
-    }
-    return new_head;
-}
-
-
-void del_node(Node** prev_next) {
-    if ((*prev_next) != nullptr) {
-        Node* temp = (*prev_next)->next;
-        delete (*prev_next);
-        *prev_next = temp;
-    }
-}
-
-
 bool del_head(Node*& head) {
-    if (head == nullptr) return false;
+    if (!head) return false;
     Node* temp = head;
     head = head->next;
     delete temp;
@@ -80,15 +55,30 @@ bool del_head(Node*& head) {
 }
 
 
-bool del_tail(Node*& head) {
-    if (head == nullptr) return false;
-    Node** prev_next = &head;
-    Node* curr = head;
+bool del_tail(Node** prev_next) {
+    if ((*prev_next) == nullptr) return false;
+    Node* curr = *prev_next;
     while (curr->next) {
-        prev_next = &(*prev_next)->next;
+        prev_next = &(curr->next);
         curr = curr->next;
     }
     delete curr;
-    *(prev_next) = nullptr;
+    (*prev_next) = nullptr;
     return true;
+}
+
+
+Node* duplicate1(Node* head) {
+    Node* new_head = nullptr;
+    Node* curr = head;
+    while(curr) {
+        add_at_end(new_head, curr->data);
+        curr = curr->next;
+    }
+    return new_head;
+}
+
+Node* duplicate(Node* head) {
+    if (!head) return nullptr;
+    else return new Node(head->data, duplicate(head->next));
 }
