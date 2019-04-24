@@ -23,18 +23,14 @@ class MyVec {
          * operator*
          * operator!=
          * */
-            friend bool operator!=(Iterator& rhs, Iterator& lhs) {
+            friend bool operator!=(const Iterator& rhs, const Iterator& lhs) {
                 return rhs.iptr != lhs.iptr;
-            }
-
-            friend bool operator==(Iterator& rhs, Iterator& lhs) {
-                return rhs.iptr == lhs.iptr;
             }
 
         public:
             Iterator(int* ip) : iptr(ip) {}
 
-            Iterator& operator++() {
+            Iterator operator++() {
                 ++iptr;
                 return *this;
             }
@@ -159,7 +155,7 @@ class MyVec {
 
 
 void print_vec(const MyVec& v) {
-    for(int i : v) cout << i << endl;
+    for(int val : v) cout << val << endl;
 }
 
 
@@ -179,11 +175,12 @@ int main() {
     MyVec v4 = MyVec(12);
     
     cout << "Size of v3 is: " << v3.size() << endl;
+    cout << "v2 = \n";
     v2[0] = 999;
-    cout << "v4 = \n";
-    // print_vec(v4);
-    v2 = v2;
     print_vec(v2);
+    v2 = v2;
+
+    for (int i : v2) cout << "i = " << i << endl;
 
     cout << "Done with test!\n";
     return 0;
