@@ -4,12 +4,14 @@
  * In particular, this version makes it a template.
  * */
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 const size_t DEF_VCAPACITY = 2;
 const int CAPACITY_MULT = 2;
 
 
+template <typename T>
 class MyVec {
     /*
      * The MyVec class that is a partial version of std::vector.
@@ -21,10 +23,10 @@ class MyVec {
          * */
         sz = 0;
         capac = DEF_VCAPACITY;
-        data = new int[DEF_VCAPACITY];
+        data = new T[DEF_VCAPACITY];
     }
 
-    explicit MyVec(size_t sz, int val=0) : sz{sz} {
+    explicit MyVec(size_t sz, T val=T()) : sz{sz} {
         /*
          * Another constructor: note the use of `explicit`:
          * it means we can't accidentally get a "weird"
@@ -32,7 +34,7 @@ class MyVec {
          * this constructor.
          * */
         capac = max(DEF_VCAPACITY, sz * CAPACITY_MULT);
-        data = new int[capac];
+        data = new T[capac];
         for (size_t i = 0; i < sz; i++) data[i] = val;
     }
 
@@ -64,7 +66,7 @@ class MyVec {
         delete [] data;
     }
 
-    int operator[](int i) const {
+    T operator[](int i) const {
         /*
          * This version of the [] operator is const, so it
          * is used when we are just getting the value of
@@ -73,7 +75,7 @@ class MyVec {
         return data[i];
     }
 
-    int& operator[](int i) {
+    T& operator[](int i) {
         /*
          * This version of the [] operator is not const,
          * so it is used when we are setting the value of
@@ -82,7 +84,7 @@ class MyVec {
         return data[i];
     }
 
-    void push_back(int val) {
+    void push_back(T val) {
         /*
          * This method puts a val on the end of our vector:
          * it may need to increase the vector's capacity
@@ -91,8 +93,8 @@ class MyVec {
         sz++;
         if (sz > capac) {
             cout << "Increasing capacity\n";
-            int* old_data = data;
-            data = new int[capac * CAPACITY_MULT];
+            T* old_data = data;
+            data = new T[capac * CAPACITY_MULT];
             for (int i = 0; i < sz; i++) {
                 data[i] = old_data[i];
             }
@@ -104,23 +106,32 @@ class MyVec {
 
     size_t size() const { return sz; }
 
+    T* begin() { return data; }
+    T* end()   { return data + size(); }
+
  private:
     size_t sz;
     size_t capac;
-    int* data;
+    T* data;
 
     void copy(const MyVec& v2) {
         sz = v2.sz;
         capac = v2.capac;
-        data = new int[capac];
+        data = new T[capac];
         for (int i = 0; i < sz; i++) {
             data[i] = v2.data[i];
         }
     }
 };
 
+struct Cat {
+    friend ostream& operator<<(ostream& os, const Cat& cat) {
+        return os << "meow ";
+    }
+};
 
-void print_vec(const MyVec& v) {
+template <typename T>
+void print_vec(const MyVec<T>& v) {
     for(int i = 0; i < v.size(); i++)
         cout << v[i] << endl;
 }
@@ -129,27 +140,29 @@ void print_vec(const MyVec& v) {
 int main() {
     cout << "Testing my_vec:\n";
 
-    MyVec v1 = MyVec();
+    MyVec<int> v1 = MyVec<int>();
     for(int i = 0; i < 16; i++) {
         v1.push_back(i * 2);
     }
 
-    MyVec v2 = MyVec(v1);
-    MyVec v3 = MyVec();
-    v3 = v1;
+    MyVec<int> v2 = MyVec<int>(v1);
+    MyVec<Cat> v_cat = MyVec<Cat>(5);
     v2 = v2;
-    // MyVec v4 = 12;
-    MyVec v4 = MyVec(12);
+    // MyVec<int> v4 = 12;
+    MyVec<int> v4 = MyVec<int>(12);
     
-    cout << "Size of v3 is: " << v3.size() << endl;
+    cout << "Size of v_cat is: " << v_cat.size() << endl;
     cout << "v2 = \n";
     v2[0] = 999;
     print_vec(v2);
-    cout << "v3 = \n";
-    print_vec(v3);
+    cout << "v_cat = \n";
+    print_vec(v_cat);
     cout << "v4 = \n";
     print_vec(v4);
     v2 = v2;
+    sort(v2.begin(), v2.end());
+    print_vec(v2);
+    print_vec(v_cat);
 
     cout << "Done with test!\n";
     return 0;
