@@ -16,7 +16,7 @@ hello_nm: hello_nm.cpp
 
 mean: mean.cpp 
 
-my_vec: my_vec.cpp 
+stl: stl.cpp
 
 tests:
 
