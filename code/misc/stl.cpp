@@ -34,12 +34,14 @@ int main() {
     cout << "C creator, 4th letter: " << s2[3] << "\n";
 
     int clen = 17;
-    sort(s, s + clen);
-
-    cout << s << "\n";
 
     // char lists:
     list<char> clist(s, s + clen);
+    list<char> clist2 = clist;
+    reverse(clist.begin(), clist.end());
+    cout << "Is clist a permutation of clist2? "
+        << is_permutation(clist.begin(), clist.end(), clist2.begin())
+        << endl; ;
     print_list(clist);
 
     // int lists:
