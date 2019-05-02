@@ -59,6 +59,10 @@ int main() {
         cout << "After increment, iter is at: " << *(iiter) << endl;
     }
 
+    /*
+     * Here we are going to pass a lambda to `find_if()`.
+     * The lambda starts with [].
+     * */
     list<int>::iterator if_iter = find_if(ilist.begin(),
             ilist.end(), [] (int n) { return (n % 2) != 0; });
     cout << "First odd number in list is: " << *if_iter << endl;
