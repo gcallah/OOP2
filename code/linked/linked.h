@@ -44,8 +44,8 @@ class LLIterator {
 class LinkedList {
     LinkedList() : head(nullptr) {}
 
-    const LLIterator& begin() const { return LLIterator(head); }
-    const LLIterator& end() const { return LLIterator(nullptr); }
+    const LLIterator begin() const { return LLIterator(head); }
+    const LLIterator end() const { return LLIterator(nullptr); }
 
     private:
         Node* head;
