@@ -29,4 +29,3 @@ int main() {
     cout << "Did it work? " << worked << endl;
     print_list(cout, head2);
 }
-

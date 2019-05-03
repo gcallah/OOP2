@@ -110,6 +110,15 @@
             </li>
 
             <li>
+                <a
+                    href="https://github.com/gcallah/OOP2/blob/master/code/vector/templ_vec.cpp">
+                    Now let's make our own <span class="code">vector</span> a 
+                    generic machine for creating vectors.
+                </a>
+                <br />
+            </li>
+
+            <li>
                 <a href="https://github.com/gcallah/OOP2/tree/master/code/weather">
                     Code for gathering weather data.
                 </a>

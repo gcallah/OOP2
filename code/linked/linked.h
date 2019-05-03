@@ -3,6 +3,17 @@
 
 const bool DEBUG = true;
 
+
+struct Node {
+    /*
+     * The basic element of a linked list.
+     * */
+    Node(int d, Node* n=nullptr) : data(d), next(n) {}
+    int data;
+    Node* next;
+};
+
+
 class LLIterator {
     /*
      * This class supports ranged for loops on linked lists.
@@ -30,20 +41,11 @@ class LLIterator {
         Node* nptr;
 };
 
-struct Node {
-    /*
-     * The basic element of a linked list.
-     * */
-    Node(int d, Node* n=nullptr) : data(d), next(n) {}
-    int data;
-    Node* next;
-};
-
 class LinkedList {
     LinkedList() : head(nullptr) {}
 
-    Iterator& begin() { return Iterator(head);
-    Iterator& end() { return Iterator(nullptr);
+    const LLIterator& begin() const { return LLIterator(head); }
+    const LLIterator& end() const { return LLIterator(nullptr); }
 
     private:
         Node* head;
