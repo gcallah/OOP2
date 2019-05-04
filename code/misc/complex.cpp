@@ -141,7 +141,14 @@ int main() {
     // test bool() operator:
     (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
 
-    vector<Complex> v{c1, c2, c3, c4};
+    /*
+     * The next line of code will implicitly
+     * construct a Complex out of 14.2 using the default
+     * imaginary component of 0.0.
+     * */
+    Complex c5 = 14.2;
+
+    vector<Complex> v{c1, c2, c3, c4, c5};
     cout << "Printing vector\n";
     printVector(v);
 }

@@ -54,6 +54,8 @@ class Gif : public Image {
      * */
  public:
     Gif(int width, int height, string flnm) : Image(width, height, flnm) {}
+    // copy constructor:
+    Gif(const Gif& img2);
     /*
      * display() overrides the parent class display().
      * Notice the key word `override`: it is a safety mechanism to catch 
@@ -70,7 +72,7 @@ class Gif : public Image {
     /*
      * The line below makes `compress()` available in Gif.
      * We could also have written:
-     * void compress() { Image::compress(); }
+     * void compress() override { Image::compress(); }
      * */
     using Image::compress;
 };

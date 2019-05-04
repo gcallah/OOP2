@@ -27,7 +27,7 @@ void print_list(const string name, const list<T>& l) {
 
 /*
  * But, we can go even more generic, and make a print that can print
- * *containers* of any type:
+ * *containers* of any sequential type:
  * */
 template <typename SequenceContainer>
 void print(const string name, const SequenceContainer& seq) {
@@ -38,11 +38,28 @@ void print(const string name, const SequenceContainer& seq) {
 }
 
 
+class Cat {
+    friend ostream& operator<<(ostream& os, const Cat& cat) {
+        os << "meow ";
+        return os;
+    }
+};
+
+
 /*
  * We could pass this `is_odd()` function in to a `find_if()`,
  * or pass a lambda instead.
  * */
 bool is_odd(int n) { return (n % 2) != 0; }
+
+
+/*
+ * Or, we could have a functor!
+ * */
+class IsOdd {
+    public:
+        bool operator()(int n) { return (n % 2) != 0; }
+};
 
 
 int main() {
@@ -73,6 +90,7 @@ int main() {
      * reverses an iterable structure:
      * */
     reverse(clist.begin(), clist.end());
+
     // We use print_list here just to make sure it works, but print()
     // is preferred!
     print_list("clist reversed", clist);
@@ -85,6 +103,13 @@ int main() {
         << endl; ;
 
     /*
+     * Cat list
+     * */
+    Cat catptr[] = { Cat(), Cat(), Cat() };
+    list<Cat> catlist(catptr, catptr + 3);
+    print_list("Cat list", catlist);
+
+    /*
      * int list:
      * */
     int ilen = 8;
@@ -95,6 +120,7 @@ int main() {
     /*
      * `sort()` does not work for lists, since they aren't random access.
      * Thus lists have their own `sort()` method, called below:
+     * This *won't* work: sort(ilist.begin(), ilist.end());
      * */
     ilist.sort();
     print("ilist sorted", ilist);
@@ -112,17 +138,25 @@ int main() {
     /*
      * Here we are going to pass `is_odd() to `find_if()`.
      * */
-    list<int>::iterator if_iter1 = find_if(ilist.begin(), ilist.end(), is_odd);
+    list<int>::iterator if_iter1 = find_if(ilist.begin(), ilist.end(),
+            is_odd);
     cout << "First is_odd() number in list is: " << *if_iter1 << endl;
+
+    /*
+     * Here we are going to pass functor IsOdd to `find_if()`.
+     * */
+    list<int>::iterator if_iter2 = find_if(ilist.begin(), ilist.end(),
+            IsOdd());
+    cout << "First IsOdd number in list is: " << *if_iter2 << endl;
 
     /*
      * Here we are going to pass a lambda to `find_if()`.
      * The lambda starts with []. The point here is to show
      * that this form and the one above are identical in effect.
      * */
-    list<int>::iterator if_iter2 = find_if(ilist.begin(),
+    list<int>::iterator if_iter3 = find_if(ilist.begin(),
             ilist.end(), [] (int n) { return (n % 2) != 0; });
-    cout << "First lambda odd number in list is: " << *if_iter2 << endl;
+    cout << "First lambda odd number in list is: " << *if_iter3 << endl;
 }
 
 
