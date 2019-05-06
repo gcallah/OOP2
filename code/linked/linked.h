@@ -1,4 +1,6 @@
-// Creating a new type using struct:
+#ifndef LINKED_H
+#define LINKED_H
+
 #include <iostream>
 
 const bool DEBUG = true;
@@ -60,3 +62,5 @@ void print_list(ostream& os, Node* head);
 bool del_head(Node*& head);
 bool del_tail(Node** prev_next);
 Node* duplicate(Node* head);
+
+#endif
