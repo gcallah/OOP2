@@ -3,14 +3,13 @@
 
 /*
  * Code for converting between bases.
- * We will start out hard-coding base to 16,
- * then make it generic.
+ * Right now we only go up to 16.
  * */
 #include <string>
 
-int OCT = 8;
-int DEC = 10;
-int HEX = 16;
+const int OCT = 8;
+const int DEC = 10;
+const int HEX = 16;
 
 
 std::string base_conv(int n, int to_base=HEX);

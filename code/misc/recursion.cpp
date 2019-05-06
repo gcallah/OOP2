@@ -23,6 +23,12 @@ int main() {
     for (int i = 0; i < 10; i++)
         cout << i << " factorial = " << factorial(i) << endl;
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 40; i++)
         cout << i << " in hex: " << base_conv(i) << endl;
+
+    for (int i = 0; i < 40; i++)
+        cout << i << " in oct: " << base_conv(i, OCT) << endl;
+
+    for (int i = 0; i < 40; i++)
+        cout << i << " in base-20: " << base_conv(i, 20) << endl;
 }
