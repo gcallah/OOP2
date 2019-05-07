@@ -20,6 +20,9 @@ FORCE:
 stl: FORCE
 	python3 $(UTILS_DIR)/cpp2html.py $(MISC_DIR)/stl.cpp > $(PTML_DIR)/stl.ptml
 
+recursion: FORCE
+	python3 $(UTILS_DIR)/cpp2html.py $(MISC_DIR)/recursion.cpp > $(PTML_DIR)/recursion.ptml
+
 local: $(HTMLFILES)
 
 prod: $(INCS) $(HTMLFILES)
