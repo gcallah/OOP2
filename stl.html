@@ -68,7 +68,7 @@ void print_list(const string name, const list&lt;T&gt;& l) {
                 </pre>
                 <p>
   But, we can go even more generic, and make a print that can print
-  containers of any type:
+  containers of any sequential type:
 
                 </p>
 
@@ -81,6 +81,13 @@ void print(const string name, const SequenceContainer& seq) {
     for(auto& item : seq) cout &lt;&lt; item &lt;&lt; " ";
     cout &lt;&lt; "\n_______" &lt;&lt; endl;
 }
+class Cat {
+    friend ostream& operator&lt;&lt;(ostream& os, const Cat& cat) {
+        os &lt;&lt; "meow ";
+        return os;
+    }
+};
+
 
 </code>
                 </pre>
@@ -94,11 +101,25 @@ void print(const string name, const SequenceContainer& seq) {
                 <code>
 bool is_odd(int n) { return (n % 2) != 0; }
 
+</code>
+                </pre>
+                <p>
+  Or, we could have a functor!
+
+                </p>
+
+                <pre>
+                <code>
+class IsOdd {
+    public:
+        bool operator()(int n) { return (n % 2) != 0; }
+};
+
 
 </code>
                 </pre>
                 <p>
-  Our main will exercise some of the STL capabilities.
+  Our main will exercise some STL capabilities.
 
                 </p>
 
@@ -182,7 +203,21 @@ int main() {
 </code>
                 </pre>
                 <p>
-      We will now create an int list:
+      Cat list
+
+                </p>
+
+                <pre>
+                <code>
+    Cat catptr[] = { Cat(), Cat(), Cat() };
+    list&lt;Cat&gt; catlist(catptr, catptr + 3);
+    print_list("Cat list", catlist);
+
+
+</code>
+                </pre>
+                <p>
+      int list:
 
                 </p>
 
@@ -208,6 +243,7 @@ int main() {
                 <p>
       `sort()` does not work for lists, since they aren't random access.
       Thus lists have their own `sort()` method, called below:
+      This won't work: sort(ilist.begin(), ilist.end());
 
                 </p>
 
@@ -215,7 +251,6 @@ int main() {
                 <code>
     ilist.sort();
     print("ilist sorted", ilist);
-
 
 </code>
                 </pre>
@@ -233,6 +268,7 @@ int main() {
         cout &lt;&lt; "After increment, iter is at: " &lt;&lt; *(iiter) &lt;&lt; endl;
     }
 
+
 </code>
                 </pre>
                 <p>
@@ -242,8 +278,22 @@ int main() {
 
                 <pre>
                 <code>
-    list&lt;int&gt;::iterator if_iter1 = find_if(ilist.begin(), ilist.end(), is_odd);
+    list&lt;int&gt;::iterator if_iter1 = find_if(ilist.begin(), ilist.end(),
+            is_odd);
     cout &lt;&lt; "First is_odd() number in list is: " &lt;&lt; *if_iter1 &lt;&lt; endl;
+
+</code>
+                </pre>
+                <p>
+      Here we are going to pass functor IsOdd to `find_if()`.
+
+                </p>
+
+                <pre>
+                <code>
+    list&lt;int&gt;::iterator if_iter2 = find_if(ilist.begin(), ilist.end(),
+            IsOdd());
+    cout &lt;&lt; "First IsOdd number in list is: " &lt;&lt; *if_iter2 &lt;&lt; endl;
 
 
 </code>
@@ -257,14 +307,10 @@ int main() {
 
                 <pre>
                 <code>
-    list&lt;int&gt;::iterator if_iter2 = find_if(ilist.begin(),
+    list&lt;int&gt;::iterator if_iter3 = find_if(ilist.begin(),
             ilist.end(), [] (int n) { return (n % 2) != 0; });
-    cout &lt;&lt; "First lambda odd number in list is: " &lt;&lt; *if_iter2 &lt;&lt; endl;
+    cout &lt;&lt; "First lambda odd number in list is: " &lt;&lt; *if_iter3 &lt;&lt; endl;
 }
-
-
-
-
 
 </code>
                 </pre>

@@ -56,6 +56,21 @@ void Image::copy_fields(const Image& img2) {
 }
 
 
+/*
+ * Correct way to call base class copy constructor:
+ * */
+Gif::Gif(const Gif& img2) : Image(img2) {
+}
+
+
+/*
+ * Incorrect wat to call it:
+Gif::Gif(const Gif& img2) {
+    Image(img2);
+}
+ * */
+
+
 void Gif::display() { 
     /*
      * Specialized over-ridden display method for Gif.

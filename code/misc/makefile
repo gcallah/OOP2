@@ -2,6 +2,8 @@ CXXFLAGS=-g -std=c++14
 CC=$(CXX)
 INCS=$(shell ls *.h)
 
+base_der: base_der.cpp 
+
 beam: beam.cpp 
 
 complex_struct: complex_struct.cpp 
@@ -17,6 +19,8 @@ hello: hello.cpp
 hello_nm: hello_nm.cpp 
 
 mean: mean.cpp 
+
+recursion: recursion.cpp base_conv.cpp
 
 stl: stl.cpp
 
