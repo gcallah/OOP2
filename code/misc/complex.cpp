@@ -18,58 +18,62 @@ class Complex {
     friend ostream& operator<< (ostream& os, const Complex& c);
     friend istream& operator>> (istream& is, Complex& c);
 
+    /*
+     * The equality operator is a friend since it is binary
+     * and symmetrical.
+     * */
     friend bool operator== (const Complex& c1, const Complex& c2) {
-        /*
-         * The equality operator is a friend since it is binary
-         * and symmetrical.
-         * */
         return ((c1.real == c2.real) && (c1.imag == c2.imag));
     }
 
     public:
     
+    /*
+     * Our sole constructor takes defaults of 0 for both `real` and 
+     * `imag`, so can be called with no arguments.
+     * */
         Complex(double real=0.0, double imag=0.0)
             : real{real}, imag{imag} {}
 
+        /*
+         * The `bool` operator tests to see if either
+         * data member is non-zero, and returns `true`
+         * if so.
+         * */
         explicit operator bool() const {
-            /*
-             * The `bool` operator tests to see if either
-             * data member is non-zero, and returns `true`
-             * if so.
-             * */
             return ((real != 0) || (imag != 0));
         }
 
+        /*
+         * This overload is pre-increment: pretty straightforward:
+         * bump up the `real` member, and return myself.
+         * Of course, it's not obvious that this is what incrementing
+         * a complex number *should* do: but we are teaching here,
+         * not writing a production Complex class.
+         * */
         Complex& operator++() {
-            /*
-             * This overload is pre-increment: pretty straightforward:
-             * bump up the `real` member, and return myself.
-             * Of course, it's not obvious that this is what incrementing
-             * a complex number *should* do: but we are teaching here,
-             * not writing a production Complex class.
-             * */
             ++real;
             return (*this);
         }
 
+        /*
+         * Post-increment is more complicated than pre: first
+         * of all, it takes a dummy int parameter (unused)
+         * just so the compiler can tell which inc operator is which.
+         * Secondly, since it returns the value from *before*
+         * the increment, we must store that in a temp var.
+         * */
         Complex operator++(int dummy) {
-            /*
-             * Post-increment is more complicated than pre: first
-             * of all, it takes a dummy int parameter (unused)
-             * just so the compiler can tell which inc operator is which.
-             * Secondly, since it returns the value from *before*
-             * the increment, we must store that in a temp var.
-             * */
             Complex temp(*this);
             real++;
             return temp;
         }
 
+        /*
+         * `+` is very straightforward, and should be the first operator
+         * taught.
+         * */
         Complex operator+(const Complex& c) {
-            /*
-             * `+` is very straightforward, and should be the first operator
-             * taught.
-             * */
             Complex sum{real + c.real, imag + c.imag};
             return sum;
         }
@@ -93,10 +97,10 @@ ostream& operator<< (ostream& os, const Complex& c) {
 }
 
 
+/*
+ * Read a `Complex` number from an input stream.
+ * */
 istream& operator>> (istream& is, Complex& c) {
-    /*
-     * Read a `Complex` number from an input stream.
-     * */
     is >> c.real >> c.imag;
     return is;
 }
@@ -105,10 +109,10 @@ istream& operator>> (istream& is, Complex& c) {
 void printVector(const vector<Complex>& v);
 
 
+/*
+ * The code in main just exercizes the `Complex` class.
+ * */
 int main() {
-    /*
-     * The code in main just exercizes the `Complex` class.
-     * */
     cout << "Input a complex number:\n";
     Complex c1;
     // get a complex from stdin:
@@ -154,6 +158,9 @@ int main() {
 }
 
 
+/*
+ * Print a vector of type Complex: templates haven't been taught yet!
+ * */
 void printVector(const vector<Complex>& v)
 {
     // auto detects the type coming from the vector automatically:
@@ -161,9 +168,5 @@ void printVector(const vector<Complex>& v)
         cout << c;
     }
 }
-
-
-
-
 
 

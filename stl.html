@@ -161,6 +161,7 @@ int main() {
                 <code>
     list&lt;char&gt; clist(s, s + bjarnelen);
     list&lt;char&gt; clist2 = clist;
+    list&lt;char&gt; clist3(s2, s2 + dennislen);
 
 </code>
                 </pre>
@@ -198,6 +199,9 @@ int main() {
                 <code>
     cout &lt;&lt; "Is clist a permutation of clist2? "
         &lt;&lt; is_permutation(clist.begin(), clist.end(), clist2.begin())
+        &lt;&lt; endl; ;
+    cout &lt;&lt; "Is clist a permutation of clist3? "
+        &lt;&lt; is_permutation(clist.begin(), clist.end(), clist3.begin())
         &lt;&lt; endl; ;
 
 </code>

@@ -12,28 +12,26 @@
 using namespace std;
 
 
-int recurse(int n) {
     /*
      * Test max stack depth with infinite recursion.
      * */
+int recurse(int n) {
     cout << "In call #: " << n << endl;
     return recurse(n + 1);
 }
 
 
-int factorial(int n) {
     /*
      * The natural way to do factorials:
-     * We haven't done any 
      * */
+int factorial(int n) {
     if (n == 0) return 1;
     return n * factorial(n - 1);
 }
 
-
-
-
-
+/*
+ * We memo-ize a recursive fibonacci call.
+ * */
 vector<int> fib_memos = vector<int>(100, -1);
 
 int fib(int n) {
@@ -48,6 +46,9 @@ int fib(int n) {
 }
 
 
+/*
+ * Towers of Hanoi, recursive style.
+ * */
 void towers(int n, int start = 0, int target = 1, int spare = 2) {
     if (n > 1) towers(n - 1, start, spare, target);
     cout << "Moving disk " << n << " to peg " << target << endl;
