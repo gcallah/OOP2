@@ -62,5 +62,6 @@ void print_list(ostream& os, Node* head);
 bool del_head(Node*& head);
 bool del_tail(Node** prev_next);
 Node* duplicate(Node* head);
+Node* reverse(Node* curr, Node* prev);
 
 #endif

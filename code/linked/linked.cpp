@@ -12,6 +12,14 @@ ostream& operator<<(ostream& os, Node* nd) {
 }
 
 
+Node* reverse(Node* curr, Node* prev) {
+    if (curr == nullptr) return prev;
+    else {
+        return reverse(curr->next, new Node(curr->data, prev));
+    }
+}
+
+
 void add_at_front(Node*& head, int d) {
     head = new Node(d, head);
 }

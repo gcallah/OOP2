@@ -14,7 +14,8 @@ string base_conv(int n, int to_base) {
     if (n < to_base) return string(1, digits[n]);
     else {
         int digit = n % to_base;
-        return base_conv(n / to_base) + string(1, digits[digit]);
+        return base_conv(n / to_base, to_base)
+            + string(1, digits[digit]);
     }
 }
 

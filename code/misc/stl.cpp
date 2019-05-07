@@ -85,6 +85,7 @@ int main() {
      * */
     list<char> clist(s, s + bjarnelen);
     list<char> clist2 = clist;
+    list<char> clist3(s2, s2 + dennislen);
     /*
      * The STL provides us with a `reverse()` functions that
      * reverses an iterable structure:
@@ -100,6 +101,9 @@ int main() {
      * */
     cout << "Is clist a permutation of clist2? "
         << is_permutation(clist.begin(), clist.end(), clist2.begin())
+        << endl; ;
+    cout << "Is clist a permutation of clist3? "
+        << is_permutation(clist.begin(), clist.end(), clist3.begin())
         << endl; ;
 
     /*

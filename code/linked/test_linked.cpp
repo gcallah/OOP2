@@ -17,6 +17,9 @@ int main() {
     cout << "Last: " << lastp << endl;
     cout << "List: \n";
     print_list(cout, head);
+    cout << "reverse: \n";
+    Node* rev = reverse(head, nullptr);
+    print_list(cout, rev);
     Node* l2 = nullptr;
     cout << "Last l2: " << last(l2) << endl;
     Node* head2 = duplicate(head);
