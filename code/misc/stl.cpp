@@ -1,5 +1,6 @@
 /*
  * Let's use the Standard Template Library!
+ * First, we will include the headers we need:
  * */
 #include <iostream>
 #include <string>
@@ -9,9 +10,8 @@
 
 using namespace std;
 
-
 /*
- * Make a template for a print_list that can handle
+ * Let's make a template for a print_list that can handle
  * lists of any type:
  * */
 template <typename T>
@@ -23,7 +23,6 @@ void print_list(const string name, const list<T>& l) {
 
     cout << "\n_______" << endl;
 }
-
 
 /*
  * But, we can go even more generic, and make a print that can print
@@ -37,14 +36,15 @@ void print(const string name, const SequenceContainer& seq) {
     cout << "\n_______" << endl;
 }
 
-
 /*
  * We could pass this `is_odd()` function in to a `find_if()`,
  * or pass a lambda instead.
  * */
 bool is_odd(int n) { return (n % 2) != 0; }
 
-
+/*
+ * Our main will exercise some of the STL capabilities.
+ * */
 int main() {
     int bjarnelen = 17;
     int dennislen = 14;
@@ -57,6 +57,7 @@ int main() {
 
     /*
      * Let's do some things with a vector.
+     * We will create it with a half-open range, and then sort it.
      * */
     vector<char> cvec(s2, s2 + dennislen);
     print("cvec", cvec);
@@ -64,7 +65,7 @@ int main() {
     print("sorted cvec", cvec);
 
     /*
-     * char list:
+     * Create a char list:
      * */
     list<char> clist(s, s + bjarnelen);
     list<char> clist2 = clist;
@@ -73,8 +74,10 @@ int main() {
      * reverses an iterable structure:
      * */
     reverse(clist.begin(), clist.end());
-    // We use print_list here just to make sure it works, but print()
-    // is preferred!
+    /*
+     * We use print_list here just to make sure it works, but print()
+     * is preferred!
+     * */
     print_list("clist reversed", clist);
     /*
      * But even after `clist` is reversed, `clist` and
@@ -85,12 +88,14 @@ int main() {
         << endl; ;
 
     /*
-     * int list:
+     * We will now create an int list:
      * */
     int ilen = 8;
     int iptr[] = { 16, 32, 64, 128, 2, 4, 8, 17 };
     list<int> ilist(iptr, iptr + ilen);
-    // Our print can work for lists as well as vectors:
+    /*
+     * Our print can work for lists as well as vectors:
+     * */
     print("ilist", ilist);
     /*
      * `sort()` does not work for lists, since they aren't random access.

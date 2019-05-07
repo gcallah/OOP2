@@ -83,6 +83,12 @@ p.leadquote {
     color: #336;
 }
 
+pre {
+    margin: 0em 6em 0em 6em;
+    color: #634;
+    font-size: 1.2em;
+}
+
 hr {
     margin: 1em 4em 1em 4em;
 }
