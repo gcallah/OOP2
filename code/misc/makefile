@@ -6,9 +6,11 @@ base_der: base_der.cpp
 
 beam: beam.cpp 
 
+complex: complex.cpp 
+
 complex_struct: complex_struct.cpp 
 
-complex: complex.cpp 
+exceptions: exceptions.cpp
 
 struct_class: struct_class.cpp 
 
