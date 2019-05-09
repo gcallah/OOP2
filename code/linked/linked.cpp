@@ -1,10 +1,17 @@
-// Creating a new type using struct:
+
+/*
+ * A linked list class, demonstrating the use of pointers,
+ * and several recursive methods.
+ * */
 #include <iostream>
 using namespace std;
 
-#include "linked1.h"
+#include "linked.h"
 
 
+/*
+ * Output a Node pointer.
+ * */
 ostream& operator<<(ostream& os, Node* nd) {
     if (!nd) os << "NULL";
     else os << nd->data;
@@ -12,6 +19,10 @@ ostream& operator<<(ostream& os, Node* nd) {
 }
 
 
+/*
+ * Reverse a linked list.
+ * This code creates a *copy* of the original list.
+ * */
 Node* reverse(Node* curr, Node* prev) {
     if (curr == nullptr) return prev;
     else {
@@ -20,11 +31,18 @@ Node* reverse(Node* curr, Node* prev) {
 }
 
 
+/*
+ * Add a node at the front of a linked list.
+ * */
 void add_at_front(Node*& head, int d) {
     head = new Node(d, head);
 }
 
 
+/*
+ * Get the last node of a list.
+ * Let's define this recursively!
+ * */
 Node* last(Node* head) {
     if (!head) return nullptr;
     Node* np = head;
@@ -33,6 +51,9 @@ Node* last(Node* head) {
 }
 
 
+/*
+ * Add a node to the end of a list.
+ * */
 void add_at_end(Node*& head, int d) {
     Node* end = last(head);
     if (!end)
@@ -42,18 +63,22 @@ void add_at_end(Node*& head, int d) {
 }
 
 
-void print_list(ostream& os, Node* head) {
-    /*
-     * Given the head of a list, print the whole thing.
-     * */
-    Node* np = head;
-    while (np) {
-        os << np << " ";
-        np = np->next;
+/*
+ * Given the head of a list, print the whole thing.
+ * Let's do this recursively!
+ * */
+void print_list(ostream& os, Node* curr) {
+    if (curr) {
+        os << curr << " ";
+        print_list(os, curr->next);
     }
-    os << endl;
+    else os << endl;
 }
 
+
+/*
+ * Delete the front of a list.
+ * */
 bool del_head(Node*& head) {
     if (!head) return false;
     Node* temp = head;
