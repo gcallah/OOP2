@@ -52,7 +52,8 @@ void Image::copy_fields(const Image& img2) {
     width = img2.width;
     height = img2.height;
     image_buf = new unsigned char[image_sz()];
-    memcpy(image_buf, img2.image_buf, image_sz());
+    for (int i = 0; i < image_sz(); i++)
+        image_buf[i] = img2.image_buf[i];
 }
 
 
