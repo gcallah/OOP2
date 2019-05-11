@@ -20,9 +20,10 @@ weather: $(CPP_FILES)
 
 weather_leaks: weather_leaks.cpp
 
-tests: test_date test_image
+tests: test_date test_image test_rawdata
 	./test_date
 	./test_image
+	./test_rawdata
 
 lint:
 	cpplint $(LINTFLAGS) $(CPP_FILES)

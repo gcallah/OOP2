@@ -2,6 +2,7 @@
 // date_test: test our date class
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 #include "image.h"
 
