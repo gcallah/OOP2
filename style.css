@@ -113,6 +113,14 @@ h2 {
     color: #355;
 }
 
+h2.toc-head {
+    color: #257;
+    text-align: center;
+    font-size: 1.6em;
+    padding: 1rem;
+    margin: 1em 0em .6em 0em;
+}
+
 h2.subhead {
     font-weight: normal;
     margin-top: 0;
