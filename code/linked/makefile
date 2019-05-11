@@ -6,7 +6,7 @@ FORCE:
 
 test_linked: test_linked.cpp linked.cpp 
 
-tests: FORCE
+tests: test_linked
 	./test_linked
 
 prod: tests
