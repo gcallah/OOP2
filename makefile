@@ -45,11 +45,13 @@ complex: FORCE
 
 local: $(HTMLFILES)
 
-prod: $(INCS) $(HTMLFILES)
+tests: FORCE
 	cd code/misc; make tests
 	cd code/weather; make tests
 	cd code/vector; make tests
 	cd code/linked; make tests
+
+prod: $(INCS) $(HTMLFILES) tests
 	-git commit -a 
 	git pull origin master
 	git push origin master

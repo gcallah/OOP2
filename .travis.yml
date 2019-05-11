@@ -1,0 +1,14 @@
+# Our YAML file for running Travis CI.
+language: cpp
+
+compiler:
+  - clang
+
+install:
+
+env:
+
+script:
+    - make tests
+
+notifications:
