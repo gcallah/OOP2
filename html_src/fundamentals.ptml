@@ -1,0 +1,54 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Fundamentals of Object-Oriented Programming
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Fundamentals of Object-Oriented Programming (OOP)
+        </h1>
+
+        <p>
+            The following are the most fundamental reasons for adopting OOP:
+        </p>
+
+        <ol>
+            <li>
+                <span class="hilight">Abstraction</span>
+                <br />
+                We can hide the particulars of the implementation of some type
+                behind the public interface to a class.
+            </li>
+
+            <li>
+                <span class="hilight">Inheritance</span>
+                <br />
+                We can create a hierarchy of classes, in which the methods of
+                an "ancestor" class are inherited by a "descendant" class,
+                unless they are over-ridden.
+            </li>
+
+            <li>
+                <span class="hilight">Encapsulation</span>
+                <br />
+                The data members associated with a class can be hidden from
+                view outside the class, so that they can only be accessed and
+                altered through the public interface of the class.
+            </li>
+
+            <li>
+                <span class="hilight">Polymorphism</span>
+                <br />
+                Given that a function has a parameter of type A, it 
+                can also accept as an argument any instance of a class
+                descended from A. Furthermore, when it calls some method on A,
+                the appropriate method of the descendant class will be called.
+            </li>
+        </ol>
+    </body>
+</html>
