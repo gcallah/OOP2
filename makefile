@@ -14,13 +14,6 @@ HTMLFILES = $(shell ls $(PTML_DIR)/*.ptml | sed -e 's/.ptml/.html/' | sed -e 's/
 
 FORCE:
 
-local: $(HTMLFILES) $(INCS)
-
-%.html: $(PTML_DIR)/%.ptml $(INCS)
-	python3 $(UTILS_DIR)/html_checker.py $< 
-	$(UTILS_DIR)/html_include.awk <$< >$@
-	git add $@
-
 code_pages: base_conv complex image recursion stl
 
 base_conv: $(PTML_DIR)/base_conv.ptml
@@ -43,6 +36,13 @@ $(PTML_DIR)/recursion.ptml: $(MISC_DIR)/recursion.cpp
 
 $(PTML_DIR)/stl.ptml: $(MISC_DIR)/stl.cpp
 	$(CPP2HTML) $< > $@
+
+local: $(HTMLFILES) $(INCS)
+
+%.html: $(PTML_DIR)/%.ptml $(INCS)
+	python3 $(UTILS_DIR)/html_checker.py $< 
+	$(UTILS_DIR)/html_include.awk <$< >$@
+	git add $@
 
 tests: FORCE
 	cd code/misc; make tests
