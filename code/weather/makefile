@@ -1,4 +1,6 @@
 CXXFLAGS=-g -std=c++14 -Wall -pedantic
+# to turn off assertions, use this:
+# CXXFLAGS=-g -std=c++14 -Wall -pedantic -DNDEBUG
 CC=$(CXX)
 LINTFLAGS=--filter=-whitespace/braces,-build/namespaces,-runtime/references
 INCS=$(shell ls *.h)
