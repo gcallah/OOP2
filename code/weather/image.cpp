@@ -1,4 +1,9 @@
 // Copyright 2019 Gene Callahan
+
+/*
+ * This is the implementation of our image class.
+ * It is designed to teach class hierarchy.
+ * */
 #include <string>
 #include <iostream>
 using namespace std;
@@ -89,6 +94,11 @@ string Gif::display(string s) {
 }
 
 
+/*
+ * Gif has its own `compress()` with an int parameter.
+ * It will hide the base class `compress()` unless we
+ * explicitly prevent it from doing so.
+ * */
 void Gif::compress(int i) {
     cout << "compressing at level: " << i << endl;
 }
