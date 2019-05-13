@@ -8,15 +8,15 @@
 
 using namespace std;
 
-void show(Image& img) {
-    cout << "In show(Image)\n";
-    img.display();
+string show(Image& img) {
+    cout << "In show(Image&)\n";
+    return img.display("");
 }
 
 
-void show(Gif& img) {
-    cout << "In show(Gif)\n";
-    img.display();
+string show(Gif& img) {
+    cout << "In show(Gif&)\n";
+    return img.display("");
 }
 
 
@@ -35,9 +35,13 @@ int main() {
 
     // this illustrates the interaction of overloading
     // and class heirarachies:
-    show(gif);
-    show(jpeg);
-    show(*img);
+    string ret;
+    ret = show(gif);
+    assert(ret == "AnimGif");
+    ret = show(jpeg);
+    assert(ret == "Jpeg");
+    ret = show(*img);
+    assert(ret == "AnimGif");
 
     gif.compress();
 
@@ -53,7 +57,9 @@ int main() {
      * base-class pointers, but get the right `display()`
      * method for each specific object.
      * */
+    ret = "";
     for(Image* img : images) {
-        img->display();
+        ret += img->display("");
     }
+    assert(ret == "AnimGifJpegPng");
 }

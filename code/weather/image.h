@@ -10,11 +10,11 @@ const int DEF_HEIGHT = 1600;
 const int DEF_WIDTH = 2400;
 
 
+/*
+ * This will be the base class for all types of images.
+ * It is an abstract class, due to the `display()` method.
+ * */
 class Image {
-    /*
-     * This will be the base class for all types of images.
-     * It is an abstract class, due to the `display()` method.
-     * */
  public:
     Image(int width, int height, string flnm);
     // copy constructor:
@@ -27,7 +27,7 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    virtual void display() = 0;
+    virtual string display(string s) = 0;
     /*
      * If we don't want virtual method lookup, we
      * could just declare:
@@ -61,7 +61,7 @@ class Gif : public Image {
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    void display() override;
+    string display(string s) override;
 
     /*
      * The following line of code *hides* `compress()` from
@@ -84,7 +84,7 @@ class AnimGif : public Gif {
      * */
  public:
     AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {}
-    void display() override;
+    string display(string s) override;
 };
 
 
@@ -95,7 +95,7 @@ class Jpeg : public Image {
      * */
  public:
     Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {}
-    void display() override;
+    string display(string s) override;
 };
 
 
@@ -106,7 +106,7 @@ class Png : public Image {
      * */
  public:
     Png(int width, int height, string flnm) : Image(width, height, flnm) {}
-    void display() override;
+    string display(string s) override;
 };
 
 

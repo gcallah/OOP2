@@ -5,50 +5,57 @@ using namespace std;
 #include "./image.h"
 
 
+/*
+ * "Ordinary" constructor initializing each field:
+ * */
 Image::Image(int width, int height, string flnm)
     : width(width), height(height) {
     image_buf = new unsigned char[image_sz()];
 }
 
+
+/*
+ * This is the Image copy constructor. We have to handle 
+ * properly copying the `image_buf` to the target object.
+ * */
 Image::Image(const Image& img2) {
-    /*
-     * This is the Image copy constructor. We have to handle 
-     * properly copying the `image_buf` to the target object.
-     * */
     copy_fields(img2);
 }
 
+
+/*
+ * Image destructor must free the image buf.
+ * */
 Image::~Image() {
-    /*
-     * Image destructor must free the image buf.
-     * */
     if (image_buf != nullptr) delete image_buf;
 }
 
+
+/*
+ * The Image assignment operator has to delete the image buf is
+ * not null, then do the copy like the copy constructor.
+ * */
 Image& Image::operator=(const Image& img2) {
-    /*
-     * The Image assignment operator has to delete the image buf is
-     * not null, then do the copy like the copy constructor.
-     * */
     if (image_buf != nullptr) delete image_buf;
     copy_fields(img2);
     return *this;
 }
 
 
-void Image::display() {
-    cout << "displayed\n";
+string Image::display(string s="Base") {
+    cout << s << endl;
+    return s;
 }
 
 
 int Image::image_sz() { return width * height; }
 
 
+/*
+ * We extract the copy into its own method so that it can be shared
+ * by the copy constructor and assignment.
+ * */
 void Image::copy_fields(const Image& img2) {
-    /*
-     * We extract the copy into its own method so that it can be shared
-     * by the copy constructor and assignment.
-     * */
     width = img2.width;
     height = img2.height;
     image_buf = new unsigned char[image_sz()];
@@ -72,15 +79,13 @@ Gif::Gif(const Gif& img2) {
  * */
 
 
-void Gif::display() { 
-    /*
-     * Specialized over-ridden display method for Gif.
-     * In it we call the parent display method with
-     * `Image::display()`.
-     * */
-    cout << "GIF of height " << get_height() << " and width "
-        << get_width() << " "; 
-    Image::display();
+/*
+ * Specialized over-ridden display method for Gif.
+ * In it we call the parent display method with
+ * `Image::display()`.
+ * */
+string Gif::display(string s) { 
+    return Image::display("Gif");
 }
 
 
@@ -89,34 +94,31 @@ void Gif::compress(int i) {
 }
 
 
-void AnimGif::display() { 
-    /*
-     * Specialized over-ridden display method for AnimGif.
-     * In it we call the parent display method with
-     * `Image::display()`.
-     * */
-    cout << "AnimGif "; 
-    Image::display();
+/*
+ * Specialized over-ridden display method for AnimGif.
+ * In it we call the parent display method with
+ * `Image::display()`.
+ * */
+string AnimGif::display(string s) { 
+    return Image::display("AnimGif");
 }
 
 
-void Jpeg::display() { 
-    /*
-     * Specialized over-ridden display method for Jpeg.
-     * In it we call the parent display method with
-     * `Image::display()`.
-     * */
-    cout << "JPEG "; 
-    Image::display();
+/*
+ * Specialized over-ridden display method for Jpeg.
+ * In it we call the parent display method with
+ * `Image::display()`.
+ * */
+string Jpeg::display(string s) { 
+    return Image::display("Jpeg");
 }
 
 
-void Png::display() { 
-    /*
-     * Specialized over-ridden display method for Png.
-     * In it we call the parent display method with
-     * `Image::display()`.
-     * */
-    cout << "PNG "; 
-    Image::display();
+/*
+ * Specialized over-ridden display method for Png.
+ * In it we call the parent display method with
+ * `Image::display()`.
+ * */
+string Png::display(string s) { 
+    return Image::display("Png");
 }
