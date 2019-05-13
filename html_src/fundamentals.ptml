@@ -22,7 +22,8 @@
                 <span class="hilight">Abstraction</span>
                 <br />
                 We can hide the particulars of the implementation of some type
-                behind the public interface to a class.
+                behind the public interface to a class. In C++ we
+                can abstract even further using templates.
             </li>
 
             <li>
@@ -36,9 +37,20 @@
             <li>
                 <span class="hilight">Encapsulation</span>
                 <br />
-                The data members associated with a class can be hidden from
+                The data and the code associated with some type are
+                packaged together (encapsulated), 
+            </li>
+
+            <li>
+                <span class="hilight">Data Hiding</span>
+                <br />
+                The data members of a class can be hidden from
                 view outside the class, so that they can only be accessed and
                 altered through the public interface of the class.
+                This property is closely associated with abstraction and
+                encapsulation. (We need encapsulation to achieve data hiding,
+                and it is partly through data hiding that we achieve
+                abstraction.)
             </li>
 
             <li>
