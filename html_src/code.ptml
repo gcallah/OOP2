@@ -38,9 +38,24 @@
             </li>
 
             <li>
+                <a href="image.html">
+                    A class hierarchy of images
+                </a>
+                <br>
+                This illustrates <span class="hilight">inheritance</span>,
+                <span class="hilight">overriding</span>, the use of the
+                <span class="hilight">virtual</span> keyword,
+                and a <span class="hilight">pure virtual</span> class.
+            </li>
+
+            <li>
                 <a href="stl.html">
                     Testing out the Standard Template Library
                 </a>
+                <br>
+                The Standard Template Library is how C++ enables
+                <a href="https://en.wikipedia.org/wiki/Generic_programming">
+                    Generic Programming</a>.
             </li>
 
             <li>
