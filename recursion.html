@@ -111,15 +111,21 @@ int fib(int n) {
 
                 <pre>
                 <code>
-void towers(int n, int start = 0, int target = 1, int spare = 2) {
-    if (n &gt; 1) towers(n - 1, start, spare, target);
+void towers(int n, int& moves,
+            int start=0, int target=1, int spare=2) {
+    if (n &gt; 1) towers(n - 1, moves, start, spare, target);
+    moves++;
     cout &lt;&lt; "Moving disk " &lt;&lt; n &lt;&lt; " to peg " &lt;&lt; target &lt;&lt; endl;
-    if (n &gt; 1) towers(n - 1, spare, target, start);
+    if (n &gt; 1) towers(n - 1, moves, spare, target, start);
 }
 
 int main() {
-    towers(3);
-    // recurse(INT_MAX - 4);
+    const int DISKS = 4;
+    int moves = 0;
+    towers(DISKS, moves);
+    cout &lt;&lt; "For " &lt;&lt; DISKS &lt;&lt; " we made " &lt;&lt; moves &lt;&lt; " moves\n\n";
+    // This is an infinite recursion:
+    // recurse(INT_MAX);
 
     int big_num = INT_MAX - 4;
     for(int i = 0; i &lt; 20; i++) {

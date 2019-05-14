@@ -72,7 +72,8 @@
                     allowfullscreen>
                 </iframe>
                 <br />
-                A video by Bjarne Stroustrup on his vision for the C++ language.
+                A video by Bjarne Stroustrup on his vision for the
+                C++ language.
             </li>
 
             <li>
@@ -109,6 +110,14 @@
                 </iframe>
                 <br />
                 C++ on Mars
+            </li>
+
+            <li>
+                <a href="https://www.geeksforgeeks.org/difference-between-const-int-const-int-const-and-int-const/">
+                    const int * versus int * const
+                </a>
+                <br />
+                A sticking point in the language for many.
             </li>
 
         </ul>
