@@ -55,13 +55,13 @@ class MyVec {
         data = new int[DEF_VCAPACITY];
     }
 
+    /*
+     * Another constructor: note the use of `explicit`:
+     * it means we can't accidentally get a "weird"
+     * interpretation of some code as implicitly calling
+     * this constructor.
+     * */
     explicit MyVec(size_t sz, int val=0) : sz{sz} {
-        /*
-         * Another constructor: note the use of `explicit`:
-         * it means we can't accidentally get a "weird"
-         * interpretation of some code as implicitly calling
-         * this constructor.
-         * */
         capac = max(DEF_VCAPACITY, sz * CAPACITY_MULT);
         data = new int[capac];
         for (size_t i = 0; i < sz; i++) data[i] = val;
@@ -175,7 +175,11 @@ int main() {
     MyVec v3 = MyVec();
     v3 = v1;
     v2 = v2;
-    // MyVec v4 = 12;
+    /*
+     * This line won't work if we have `explicit` on the
+     * constructor for MyVec(int, int):
+     * MyVec v4 = 12;
+     * */
     MyVec v4 = MyVec(12);
     
     cout << "Size of v3 is: " << v3.size() << endl;

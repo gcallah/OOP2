@@ -139,8 +139,13 @@ int main() {
     Complex c4 = Complex();
     // test post-increment:
     c4++;
-    // test equality operator:
-    (1 == c4) ? cout << "c4 == 1 is true\n" 
+    c4++;
+    /*
+     * Test equality operator. If we take the explicit off of
+     * bool() in class definition, then this will fail as ambiguous:
+     * the compiler won't know if we want bool or complex comparison.
+     * */
+    (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
         : cout << "c4 == 1 is false\n";
     // test bool() operator:
     (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";

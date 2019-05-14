@@ -32,10 +32,11 @@ int factorial(int n) {
 /*
  * We memo-ize a recursive fibonacci call.
  * */
-vector<int> fib_memos = vector<int>(100, -1);
+const int NOT_CALCULATED = -1;
+vector<int> fib_memos = vector<int>(100, NOT_CALCULATED);
 
 int fib(int n) {
-    if (fib_memos[n] == -1) {
+    if (fib_memos[n] == NOT_CALCULATED) {
         int ret = 0;
         if (n == 0 || n == 1) ret = 1;
         else ret = fib(n - 1) + fib(n - 2);
