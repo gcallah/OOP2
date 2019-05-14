@@ -23,10 +23,11 @@ ostream& operator<<(ostream& os, Node* nd) {
  * Reverse a linked list.
  * This code creates a *copy* of the original list.
  * */
-Node* reverse(Node* curr, Node* prev) {
-    if (curr == nullptr) return prev;
+Node* reverse(Node* curr, Node* new_next) {
+    if (curr == nullptr) return new_next;
     else {
-        return reverse(curr->next, new Node(curr->data, prev));
+        new_next = new Node(curr->data, new_next);
+        return reverse(curr->next, new_next);
     }
 }
 

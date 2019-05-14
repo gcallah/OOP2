@@ -49,17 +49,23 @@ int fib(int n) {
 /*
  * Towers of Hanoi, recursive style.
  * */
-void towers(int n, int start = 0, int target = 1, int spare = 2) {
-    if (n > 1) towers(n - 1, start, spare, target);
+void towers(int n, int& moves,
+            int start=0, int target=1, int spare=2) {
+    if (n > 1) towers(n - 1, moves, start, spare, target);
+    moves++;
     cout << "Moving disk " << n << " to peg " << target << endl;
-    if (n > 1) towers(n - 1, spare, target, start);
+    if (n > 1) towers(n - 1, moves, spare, target, start);
 }
 
 
 int main() {
-    towers(3);
+    const int DISKS = 4;
+    int moves = 0;
+    towers(DISKS, moves);
+    cout << "For " << DISKS << " we made " << moves << " moves\n\n";
 
-    // recurse(INT_MAX - 4);
+    // This is an infinite recursion:
+    // recurse(INT_MAX);
 
     int big_num = INT_MAX - 4;
     for(int i = 0; i < 20; i++) {
