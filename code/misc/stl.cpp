@@ -71,7 +71,7 @@ int main() {
     cout << "C creator, 4th letter: " << s2[3] << "\n";
 
     /*
-     * Let's do some things with a vector.
+     * Let's do some things with a `vector`.
      * We will create it with a half-open range, and then sort it.
      * */
     vector<char> cvec(s2, s2 + dennislen);
@@ -80,7 +80,7 @@ int main() {
     print("sorted cvec", cvec);
 
     /*
-     * Create a char list:
+     * Create a `char` list:
      * */
     list<char> clist(s, s + bjarnelen);
     list<char> clist2 = clist;
