@@ -141,9 +141,9 @@ int main() {
     c4++;
     c4++;
     /*
-     * Test equality operator. If we take the explicit off of
-     * bool() in class definition, then this will fail as ambiguous:
-     * the compiler won't know if we want bool or complex comparison.
+     * Test equality operator. If we take the `explicit` off of
+     * `bool()` in class definition, then this will fail as ambiguous:
+     * the compiler won't know if we want a `bool` or `Complex` comparison.
      * */
     (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
         : cout << "c4 == 1 is false\n";
@@ -152,7 +152,7 @@ int main() {
 
     /*
      * The next line of code will implicitly
-     * construct a Complex out of 14.2 using the default
+     * construct a `Complex` out of 14.2 using the default
      * imaginary component of 0.0.
      * */
     Complex c5 = 14.2;
@@ -164,11 +164,13 @@ int main() {
 
 
 /*
- * Print a vector of type Complex: templates haven't been taught yet!
+ * Print a vector of type `Complex`: templates haven't been taught yet!
  * */
 void printVector(const vector<Complex>& v)
 {
-    // auto detects the type coming from the vector automatically:
+    /*
+     * `auto` detects the type coming out of the `vector` automatically:
+     * */
     for(auto c : v) {
         cout << c;
     }

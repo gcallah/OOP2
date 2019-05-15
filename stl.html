@@ -29,7 +29,7 @@
         </h1>
 
                 <p>
-  Let's use the Standard Template Library!
+  Let's use the <i>Standard Template Library</i>!
   First, we will include the headers we need:
 
                 </p>
@@ -47,7 +47,7 @@
 </code>
                 </pre>
                 <p>
-  Let's make a template for a print_list that can handle
+  Let's make a template for a <span class="code">print_list</span> that can handle
   lists of any type:
 
                 </p>
@@ -67,8 +67,8 @@
 </code>
                 </pre>
                 <p>
-  But, we can go even more generic, and make a print that can print
-  containers of any sequential type:
+  But, we can go even more generic, and make a <span class="code">print</span> that can print
+  <i>containers</i> of any sequential type:
 
                 </p>
 
@@ -92,8 +92,8 @@
 </code>
                 </pre>
                 <p>
-  We could pass this `is_odd()` function in to a `find_if()`,
-  or pass a lambda instead.
+  We could pass this <span class="code">is_odd()</span> function in to a <span class="code">find_if()</span>,
+  or pass a <i>lambda</i> instead.
 
                 </p>
 
@@ -104,7 +104,7 @@
 </code>
                 </pre>
                 <p>
-  Or, we could have a functor!
+  Or, we could have a <i>functor</i>!
 
                 </p>
 
@@ -166,7 +166,7 @@
 </code>
                 </pre>
                 <p>
-      The STL provides us with a `reverse()` functions that
+      The STL provides us with a <span class="code">reverse()</span> functions that
       reverses an iterable structure:
 
                 </p>
@@ -190,8 +190,8 @@
 </code>
                 </pre>
                 <p>
-      But even after `clist` is reversed, `clist` and
-      `clist2` are still permutations of each other:
+      But even after <span class="code">clist</span> is reversed, <span class="code">clist</span> and
+      <span class="code">clist2</span> are still permutations of each other:
 
                 </p>
 
@@ -207,7 +207,7 @@
 </code>
                 </pre>
                 <p>
-      Cat list
+      Testing a list of Cats:
 
                 </p>
 
@@ -221,7 +221,7 @@
 </code>
                 </pre>
                 <p>
-      int list:
+      Testing an int list:
 
                 </p>
 
@@ -245,9 +245,9 @@
 </code>
                 </pre>
                 <p>
-      `sort()` does not work for lists, since they aren't random access.
-      Thus lists have their own `sort()` method, called below:
-      This won't work: sort(ilist.begin(), ilist.end());
+      <span class="code">sort()</span> does not work for lists, since they aren't random access.
+      Thus lists have their own <span class="code">sort()</span> method, called below:
+      This <i>won't</i> work: <span class="code">sort(ilist.begin(), ilist.end());</span>
 
                 </p>
 
@@ -259,7 +259,7 @@
 </code>
                 </pre>
                 <p>
-      Let's experiment with iterators a bit!
+      Let's experiment with <i>iterators</i> a bit!
 
                 </p>
 
@@ -276,7 +276,7 @@
 </code>
                 </pre>
                 <p>
-      Here we are going to pass `is_odd() to `find_if()`.
+      Here we are going to pass <span class="code">is_odd()</span> to <span class="code">find_if()</span>.
 
                 </p>
 
@@ -289,7 +289,7 @@
 </code>
                 </pre>
                 <p>
-      Here we are going to pass functor IsOdd to `find_if()`.
+      Here we are going to pass functor <span class="code">IsOdd</span> to <span class="code">find_if()</span>.
 
                 </p>
 
@@ -303,8 +303,8 @@
 </code>
                 </pre>
                 <p>
-      Here we are going to pass a lambda to `find_if()`.
-      The lambda starts with []. The point here is to show
+      Here we are going to pass a <i>lambda</i> to <span class="code">find_if()</span>.
+      The lambda starts with <span class="code">[]</span>. The point here is to show
       that this form and the one above are identical in effect.
 
                 </p>

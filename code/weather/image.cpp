@@ -20,7 +20,7 @@ Image::Image(int width, int height, string flnm)
 
 
 /*
- * This is the Image copy constructor. We have to handle 
+ * This is the `Image` *copy constructor*. We have to handle 
  * properly copying the `image_buf` to the target object.
  * */
 Image::Image(const Image& img2) {
@@ -29,7 +29,7 @@ Image::Image(const Image& img2) {
 
 
 /*
- * Image destructor must free the image buf.
+ * `Image` *destructor* must free the image buf.
  * */
 Image::~Image() {
     if (image_buf != nullptr) delete image_buf;
@@ -37,8 +37,8 @@ Image::~Image() {
 
 
 /*
- * The Image assignment operator has to delete the image buf is
- * not null, then do the copy like the copy constructor.
+ * The `Image` assignment operator has to delete the image buf is
+ * not null, then do the copy like the *copy constructor*.
  * */
 Image& Image::operator=(const Image& img2) {
     if (image_buf != nullptr) delete image_buf;

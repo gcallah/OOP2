@@ -67,8 +67,8 @@
 </code>
                 </pre>
                 <p>
-  This is the Image copy constructor. We have to handle 
-  properly copying the `image_buf` to the target object.
+  This is the <span class="code">Image</span> <i>copy constructor</i>. We have to handle 
+  properly copying the <span class="code">image_buf</span> to the target object.
 
                 </p>
 
@@ -82,7 +82,7 @@
 </code>
                 </pre>
                 <p>
-  Image destructor must free the image buf.
+  <span class="code">Image</span> <i>destructor</i> must free the image buf.
 
                 </p>
 
@@ -96,8 +96,8 @@
 </code>
                 </pre>
                 <p>
-  The Image assignment operator has to delete the image buf is
-  not null, then do the copy like the copy constructor.
+  The <span class="code">Image</span> assignment operator has to delete the image buf is
+  not null, then do the copy like the <i>copy constructor</i>.
 
                 </p>
 
@@ -168,7 +168,7 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for Gif.
   In it we call the parent display method with
-  `Image::display()`.
+  <span class="code">Image::display()</span>.
 
                 </p>
 
@@ -182,8 +182,8 @@ Gif::Gif(const Gif& img2) {
 </code>
                 </pre>
                 <p>
-  Gif has its own `compress()` with an int parameter.
-  It will hide the base class `compress()` unless we
+  Gif has its own <span class="code">compress()</span> with an int parameter.
+  It will hide the base class <span class="code">compress()</span> unless we
   explicitly prevent it from doing so.
 
                 </p>
@@ -200,7 +200,7 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for AnimGif.
   In it we call the parent display method with
-  `Image::display()`.
+  <span class="code">Image::display()</span>.
 
                 </p>
 
@@ -216,7 +216,7 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for Jpeg.
   In it we call the parent display method with
-  `Image::display()`.
+  <span class="code">Image::display()</span>.
 
                 </p>
 
@@ -232,7 +232,7 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for Png.
   In it we call the parent display method with
-  `Image::display()`.
+  <span class="code">Image::display()</span>.
 
                 </p>
 

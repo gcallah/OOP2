@@ -78,8 +78,8 @@
 </code>
                 </pre>
                 <p>
-      Our sole constructor takes defaults of 0 for both `real` and 
-      `imag`, so can be called with no arguments.
+      Our sole constructor takes defaults of 0 for both <span class="code">real</span> and 
+      <span class="code">imag</span>, so can be called with no arguments.
 
                 </p>
 
@@ -91,8 +91,8 @@
 </code>
                 </pre>
                 <p>
-          The `bool` operator tests to see if either
-          data member is non-zero, and returns `true`
+          The <span class="code">bool</span> operator tests to see if either
+          data member is non-zero, and returns <span class="code">true</span>
           if so.
 
                 </p>
@@ -108,9 +108,9 @@
                 </pre>
                 <p>
           This overload is pre-increment: pretty straightforward:
-          bump up the `real` member, and return myself.
+          bump up the <span class="code">real</span> member, and return myself.
           Of course, it's not obvious that this is what incrementing
-          a complex number should do: but we are teaching here,
+          a complex number <i>should</i> do: but we are teaching here,
           not writing a production Complex class.
 
                 </p>
@@ -128,7 +128,7 @@
           Post-increment is more complicated than pre: first
           of all, it takes a dummy int parameter (unused)
           just so the compiler can tell which inc operator is which.
-          Secondly, since it returns the value from before
+          Secondly, since it returns the value from <i>before</i>
           the increment, we must store that in a temp var.
 
                 </p>
@@ -145,7 +145,7 @@
 </code>
                 </pre>
                 <p>
-          `+` is very straightforward, and should be the first operator
+          <span class="code">+</span> is very straightforward, and should be the first operator
           taught.
 
                 </p>
@@ -166,9 +166,9 @@
 </code>
                 </pre>
                 <p>
-      Outputting a `Complex` instance, while illustrating some of the
-      capabilities of I/O streams: `setprecision` gives us a fixed
-      number of decimal places, while `showpos` turns on the plus
+      Outputting a <span class="code">Complex</span> instance, while illustrating some of the
+      capabilities of I/O streams: <span class="code">setprecision</span> gives us a fixed
+      number of decimal places, while <span class="code">showpos</span> turns on the plus
       sign for positive numbers.
 
                 </p>
@@ -184,7 +184,7 @@
 </code>
                 </pre>
                 <p>
-  Read a `Complex` number from an input stream.
+  Read a <span class="code">Complex</span> number from an input stream.
 
                 </p>
 
@@ -201,7 +201,7 @@
 </code>
                 </pre>
                 <p>
-  The code in main just exercizes the `Complex` class.
+  The code in main just exercizes the <span class="code">Complex</span> class.
 
                 </p>
 
@@ -238,9 +238,9 @@
 </code>
                 </pre>
                 <p>
-      Test equality operator. If we take the explicit off of
-      bool() in class definition, then this will fail as ambiguous:
-      the compiler won't know if we want bool or complex comparison.
+      Test equality operator. If we take the <span class="code">explicit</span> off of
+      <span class="code">bool()</span> in class definition, then this will fail as ambiguous:
+      the compiler won't know if we want a <span class="code">bool</span> or <span class="code">Complex</span> comparison.
 
                 </p>
 
@@ -255,7 +255,7 @@
                 </pre>
                 <p>
       The next line of code will implicitly
-      construct a Complex out of 14.2 using the default
+      construct a <span class="code">Complex</span> out of 14.2 using the default
       imaginary component of 0.0.
 
                 </p>
@@ -273,7 +273,7 @@
 </code>
                 </pre>
                 <p>
-  Print a vector of type Complex: templates haven't been taught yet!
+  Print a vector of type <span class="code">Complex</span>: templates haven't been taught yet!
 
                 </p>
 
@@ -281,7 +281,16 @@
                 <code>
 <span class="kt">void</span> <span class="n">printVector</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Complex</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="c1">// auto detects the type coming from the vector automatically:</span>
+
+</code>
+                </pre>
+                <p>
+      <span class="code">auto</span> detects the type coming out of the <span class="code">vector</span> automatically:
+
+                </p>
+
+                <pre>
+                <code>
     <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">;</span>
     <span class="p">}</span>

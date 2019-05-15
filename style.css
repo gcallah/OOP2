@@ -179,6 +179,7 @@ span.code {
     font-family: monospace;
     background: inherit;
     color: #958;
+    font-size: 1.2em;
 }
 
 span.cp {
