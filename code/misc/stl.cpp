@@ -91,7 +91,7 @@ int main() {
      * */
     reverse(clist.begin(), clist.end());
     /*
-     * We use print_list here just to make sure it works, but print()
+     * We use `print_list` here just to make sure it works, but `print()`
      * is preferred!
      * */
     print_list("clist reversed", clist);
