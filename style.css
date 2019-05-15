@@ -181,6 +181,46 @@ span.code {
     color: #958;
 }
 
+span.cp {
+    color: #859;
+}
+
+span.cpf {
+    color: #926;
+}
+
+span.k {
+    color: #396;
+}
+
+span.kt {
+    color: #074;
+}
+
+span.p {
+    color: #000;
+}
+
+span.n {
+    color: #258;
+}
+
+span.nl {
+    color: #147;
+}
+
+span.o {
+    color: #652;
+}
+
+span.s {
+    color: #69b;
+}
+
+span.se {
+    color: #58a;
+}
+
 .center-img {
     margin: .6em 0em 1.8em 0em;
     display: block;

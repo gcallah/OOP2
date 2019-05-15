@@ -7,12 +7,20 @@ CPP2HTML = python3 $(UTILS_DIR)/cpp2html.py
 CODE_DIR = code
 MISC_DIR = $(CODE_DIR)/misc
 WTHR_DIR = $(CODE_DIR)/weather
+LINK_DIR = $(CODE_DIR)/linked
+VECT_DIR = $(CODE_DIR)/vector
 
 INCS = $(TEMPLATE_DIR)/head.txt $(TEMPLATE_DIR)/logo.txt $(TEMPLATE_DIR)/menu.txt
 
 HTMLFILES = $(shell ls $(PTML_DIR)/*.ptml | sed -e 's/.ptml/.html/' | sed -e 's/html_src\///')
 
 FORCE:
+
+touch_cpp: FORCE
+	cd $(LINK_DIR); touch *.cpp
+	cd $(MISC_DIR); touch *.cpp
+	cd $(VECT_DIR); touch *.cpp
+	cd $(WTHR_DIR); touch *.cpp
 
 code_pages: base_conv complex image recursion stl
 
@@ -45,10 +53,10 @@ local: $(HTMLFILES) $(INCS)
 	git add $@
 
 tests: FORCE
-	cd code/misc; make tests
-	cd code/weather; make tests
-	cd code/vector; make tests
-	cd code/linked; make tests
+	cd $(LINK_DIR); make tests
+	cd $(MISC_DIR); make tests
+	cd $(VECT_DIR); make tests
+	cd $(WTHR_DIR); make tests
 
 prod: code_pages $(HTMLFILES) tests
 	-git commit -a 
