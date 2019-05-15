@@ -1,6 +1,6 @@
 
 /*
- * Let's work some recursion problems!
+ * Let's work some *recursion* problems!
  *
  * */
 #include <iostream>
@@ -12,25 +12,28 @@
 using namespace std;
 
 
-    /*
-     * Test max stack depth with infinite recursion.
-     * */
+/*
+ * Test max stack depth with infinite recursion.
+ * */
 int recurse(int n) {
     cout << "In call #: " << n << endl;
     return recurse(n + 1);
 }
 
 
-    /*
-     * The natural way to do factorials:
-     * */
+/*
+ * The natural way to do factorials:
+ * */
 int factorial(int n) {
     if (n == 0) return 1;
     return n * factorial(n - 1);
 }
 
+
 /*
- * We memo-ize a recursive fibonacci call.
+ * We *memo-ize* a recursive fibonacci call.
+ * Memo-ization means storing results rather than re-calculating
+ * them every time they are required.
  * */
 const int NOT_CALCULATED = -1;
 vector<int> fib_memos = vector<int>(100, NOT_CALCULATED);
@@ -48,7 +51,8 @@ int fib(int n) {
 
 
 /*
- * Towers of Hanoi, recursive style.
+ * *Towers of Hanoi*, recursive style.
+ * We both count moves and print to check our algorithm.
  * */
 void towers(int n, int& moves,
             int start=0, int target=1, int spare=2) {
@@ -59,6 +63,9 @@ void towers(int n, int& moves,
 }
 
 
+/*
+ * Our `main()` will exercise the above functions.
+ * */
 int main() {
     const int DISKS = 4;
     int moves = 0;
