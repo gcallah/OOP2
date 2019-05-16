@@ -22,6 +22,8 @@
 	&nbsp;|&nbsp;
 	<a href="resources.html">Resources</a>
 	&nbsp;|&nbsp;
+	<a href="glossary.html">Glossary</a>
+	&nbsp;|&nbsp;
 	<a href="about.html">About</a>
 </p>
         <h1>
@@ -83,9 +85,28 @@
 </code>
                 </pre>
                 <p>
-  We <i>memo-ize</i> a recursive fibonacci call.
+  Let's create a naive, recursive way to calculate the
+  Fibonacci numbers. This will be <i>very</i> slow as <span class="code">n</span> gets
+  up to 40 or 50! That is because this way of proceeding has
+  over-lapping subproblems.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">int</span> <span class="nf">naive_fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+</code>
+                </pre>
+                <p>
+  But we can <i>memo-ize</i> a recursive fibonacci call.
   Memo-ization means storing results rather than re-calculating
   them every time they are required.
+  This version will run <i>much</i> faster than the previous one.
 
                 </p>
 

@@ -1,0 +1,52 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Pointers in C++
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Pointers in C++
+        </h1>
+
+        <p>
+        Pointers (variables that contain a memory address)
+        are a topic you will never have dealt with in a course based
+        on a language like Python, thus they made be a hard concept to grasp.
+        Nevertheless, they are fundamental to computer programming: you just
+        never dealt with them in Python because Python hides their existence
+        from the Python programmer... not deceitfully, but because it easier to
+        program without having to think about memory addresses. But the people
+        who create the Python language have to deal with pointers all the time.
+        And you will never be a top-notch professional, even programming in a
+        language that hides its pointers from you, unless you understand their
+        use.
+        </p>
+
+        <p>
+        Here are the topics we will cover in this unit:
+        </p>
+
+        <ul>
+            <li>
+                Addresses
+            </li>
+
+            <li>
+                Pointer types
+            </li>
+
+            <li>
+                Pointers and const
+            </li>
+
+            <li>
+                Dynamic memory
+            </li>
+        </ul>
+    </body>
+</html>

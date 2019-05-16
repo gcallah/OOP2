@@ -31,9 +31,22 @@ int factorial(int n) {
 
 
 /*
- * We *memo-ize* a recursive fibonacci call.
+ * Let's create a naive, recursive way to calculate the
+ * Fibonacci numbers. This will be *very* slow as `n` gets
+ * up to 40 or 50! That is because this way of proceeding has
+ * over-lapping subproblems.
+ * */
+int naive_fib(n) {
+    if (n == 0 || n == 1) return 1;
+    else return fib(n - 1) + fib(n - 2);
+}
+
+
+/*
+ * But we can *memo-ize* a recursive fibonacci call.
  * Memo-ization means storing results rather than re-calculating
  * them every time they are required.
+ * This version will run *much* faster than the previous one.
  * */
 const int NOT_CALCULATED = -1;
 vector<int> fib_memos = vector<int>(100, NOT_CALCULATED);
