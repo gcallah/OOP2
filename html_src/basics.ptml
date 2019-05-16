@@ -1,0 +1,68 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            The Basics of C++
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            The Basics of C++
+        </h1>
+
+        <p>
+        In this unit we will discuss the most basic features of C++, those we
+        need to use to write any sort of interesting program.
+        </p>
+
+        <p>
+        But before we write <i>interesting</i> programs, we have to be able to
+        write, compile, and run <i>any program at all</i>.
+        (<i>Compiling</i> a program is turning human-readable source code into
+        runnable machine code. A language like Python does this when you run
+        the Python source code: it compiles and runs in one step, which is
+        characteristic of <i>interpreted languages</i>. C++ divides this into
+        two separate steps, which is more laborious, but which also makes the
+        resulting program run significantly faster.)
+        And that can involve
+        a fair bit of setup and installation work. So the very first thing you
+        should do, with whatever C++ development tool you use, is to try to
+        compile and run <a href="hello.html">Hello World!</a>, the standard
+        first program to try in any language.
+        </p>
+
+        <p>
+        Once you have gotten "Hello World!" to run, you next need to master
+        these C++ basics:
+        </p>
+
+        <ul>
+            <li>
+                Static typing
+            </li>
+
+            <li>
+                Conditions
+            </li>
+
+            <li>
+                Loops
+            </li>
+
+            <li>
+                Functions
+            </li>
+
+            <li>
+                Structs
+            </li>
+
+            <li>
+                Vectors
+            </li>
+        </ul>
+    </body>
+</html>
