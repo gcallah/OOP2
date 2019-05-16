@@ -1,7 +1,7 @@
 /*
- * FILE: complex.cpp
- * THEME: operator over-loading.
- * CLASSES: Complex
+ * This file implements part of a complex number class.
+ * Its chief educational purpose is to teach *operator overloading*.
+ * We overload `==`, `++` (twice), `bool`, and `+`.
  * */
 #include <iostream>
 #include <iomanip>

@@ -30,7 +30,7 @@
 
                 <pre>
                 <code>
-<span class="c1">// Copyright 2019 Gene Callahan</span>
+// Copyright 2019 Gene Callahan
 
 
 </code>
@@ -43,10 +43,10 @@
 
                 <pre>
                 <code>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="cp">#include</span> <span class="cpf">&quot;./image.h&quot;</span><span class="cp"></span>
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+using namespace std;
+#include "./image.h"
 
 
 </code>
@@ -58,63 +58,63 @@
 
                 <pre>
                 <code>
-<span class="n">Image</span><span class="o">::</span><span class="n">Image</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="n">string</span> <span class="n">flnm</span><span class="p">)</span>
-    <span class="o">:</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">image_buf</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">[</span><span class="n">image_sz</span><span class="p">()];</span>
-<span class="p">}</span>
+Image::Image(int width, int height, string flnm)
+    : width(width), height(height) {
+    image_buf = new unsigned char[image_sz()];
+}
 
 
 </code>
                 </pre>
                 <p>
-  This is the <span class="code">Image</span> <i>copy constructor</i>. We have to handle 
-  properly copying the <span class="code">image_buf</span> to the target object.
+  This is the `Image` copy constructor. We have to handle 
+  properly copying the `image_buf` to the target object.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">Image</span><span class="o">::</span><span class="n">Image</span><span class="p">(</span><span class="k">const</span> <span class="n">Image</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">copy_fields</span><span class="p">(</span><span class="n">img2</span><span class="p">);</span>
-<span class="p">}</span>
+Image::Image(const Image& img2) {
+    copy_fields(img2);
+}
 
 
 </code>
                 </pre>
                 <p>
-  <span class="code">Image</span> <i>destructor</i> must free the image buf.
+  `Image` destructor must free the image buf.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">Image</span><span class="o">::~</span><span class="n">Image</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">image_buf</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="k">delete</span> <span class="n">image_buf</span><span class="p">;</span>
-<span class="p">}</span>
+Image::~Image() {
+    if (image_buf != nullptr) delete image_buf;
+}
 
 
 </code>
                 </pre>
                 <p>
-  The <span class="code">Image</span> assignment operator has to delete the image buf is
-  not null, then do the copy like the <i>copy constructor</i>.
+  The `Image` assignment operator has to delete the image buf is
+  not null, then do the copy like the copy constructor.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">Image</span><span class="o">&amp;</span> <span class="n">Image</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Image</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">image_buf</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="k">delete</span> <span class="n">image_buf</span><span class="p">;</span>
-    <span class="n">copy_fields</span><span class="p">(</span><span class="n">img2</span><span class="p">);</span>
-    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-<span class="p">}</span>
+Image& Image::operator=(const Image& img2) {
+    if (image_buf != nullptr) delete image_buf;
+    copy_fields(img2);
+    return *this;
+}
 
-<span class="n">string</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">&quot;Base&quot;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
-<span class="p">}</span>
+string Image::display(string s="Base") {
+    cout &lt;&lt; s &lt;&lt; endl;
+    return s;
+}
 
-<span class="kt">int</span> <span class="n">Image</span><span class="o">::</span><span class="n">image_sz</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">;</span> <span class="p">}</span>
+int Image::image_sz() { return width * height; }
 
 
 </code>
@@ -127,13 +127,13 @@
 
                 <pre>
                 <code>
-<span class="kt">void</span> <span class="n">Image</span><span class="o">::</span><span class="n">copy_fields</span><span class="p">(</span><span class="k">const</span> <span class="n">Image</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">img2</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">img2</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
-    <span class="n">image_buf</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">[</span><span class="n">image_sz</span><span class="p">()];</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">image_sz</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">image_buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">img2</span><span class="p">.</span><span class="n">image_buf</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="p">}</span>
+void Image::copy_fields(const Image& img2) {
+    width = img2.width;
+    height = img2.height;
+    image_buf = new unsigned char[image_sz()];
+    for (int i = 0; i &lt; image_sz(); i++)
+        image_buf[i] = img2.image_buf[i];
+}
 
 
 </code>
@@ -145,8 +145,8 @@
 
                 <pre>
                 <code>
-<span class="n">Gif</span><span class="o">::</span><span class="n">Gif</span><span class="p">(</span><span class="k">const</span> <span class="n">Gif</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="o">:</span> <span class="n">Image</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">}</span>
+Gif::Gif(const Gif& img2) : Image(img2) {
+}
 
 
 </code>
@@ -168,31 +168,31 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for Gif.
   In it we call the parent display method with
-  <span class="code">Image::display()</span>.
+  `Image::display()`.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">Gif</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;Gif&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+string Gif::display(string s) { 
+    return Image::display("Gif");
+}
 
 
 </code>
                 </pre>
                 <p>
-  Gif has its own <span class="code">compress()</span> with an int parameter.
-  It will hide the base class <span class="code">compress()</span> unless we
+  Gif has its own `compress()` with an int parameter.
+  It will hide the base class `compress()` unless we
   explicitly prevent it from doing so.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="kt">void</span> <span class="n">Gif</span><span class="o">::</span><span class="n">compress</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;compressing at level: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
+void Gif::compress(int i) {
+    cout &lt;&lt; "compressing at level: " &lt;&lt; i &lt;&lt; endl;
+}
 
 
 </code>
@@ -200,15 +200,15 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for AnimGif.
   In it we call the parent display method with
-  <span class="code">Image::display()</span>.
+  `Image::display()`.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">AnimGif</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;AnimGif&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+string AnimGif::display(string s) { 
+    return Image::display("AnimGif");
+}
 
 
 </code>
@@ -216,15 +216,15 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for Jpeg.
   In it we call the parent display method with
-  <span class="code">Image::display()</span>.
+  `Image::display()`.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">Jpeg</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;Jpeg&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+string Jpeg::display(string s) { 
+    return Image::display("Jpeg");
+}
 
 
 </code>
@@ -232,15 +232,15 @@ Gif::Gif(const Gif& img2) {
                 <p>
   Specialized over-ridden display method for Png.
   In it we call the parent display method with
-  <span class="code">Image::display()</span>.
+  `Image::display()`.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">Png</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;Png&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+string Png::display(string s) { 
+    return Image::display("Png");
+}
 
 </code>
                 </pre>

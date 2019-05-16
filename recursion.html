@@ -35,19 +35,19 @@
 </code>
                 </pre>
                 <p>
-  Let's work some <i>recursion</i> problems!
+  Let's work some recursion problems!
  
 
                 </p>
 
                 <pre>
                 <code>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;climits&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;base_conv.h&quot;</span><span class="cp"></span>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;climits&gt;
+#include "base_conv.h"
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+using namespace std;
 
 
 </code>
@@ -59,10 +59,10 @@
 
                 <pre>
                 <code>
-<span class="kt">int</span> <span class="nf">recurse</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;In call #: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+int recurse(int n) {
+    cout &lt;&lt; "In call #: " &lt;&lt; n &lt;&lt; endl;
+    return recurse(n + 1);
+}
 
 
 </code>
@@ -74,16 +74,16 @@
 
                 <pre>
                 <code>
-<span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+int factorial(int n) {
+    if (n == 0) return 1;
+    return n * factorial(n - 1);
+}
 
 
 </code>
                 </pre>
                 <p>
-  We <i>memo-ize</i> a recursive fibonacci call.
+  We memo-ize a recursive fibonacci call.
   Memo-ization means storing results rather than re-calculating
   them every time they are required.
 
@@ -91,76 +91,76 @@
 
                 <pre>
                 <code>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">NOT_CALCULATED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">fib_memos</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">NOT_CALCULATED</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">fib_memos</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="n">NOT_CALCULATED</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">else</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
-        <span class="n">fib_memos</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">return</span> <span class="n">fib_memos</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
-<span class="p">}</span>
+const int NOT_CALCULATED = -1;
+vector&lt;int&gt; fib_memos = vector&lt;int&gt;(100, NOT_CALCULATED);
+int fib(int n) {
+    if (fib_memos[n] == NOT_CALCULATED) {
+        int ret = 0;
+        if (n == 0 || n == 1) ret = 1;
+        else ret = fib(n - 1) + fib(n - 2);
+        fib_memos[n] = ret;
+        return ret;
+    }
+    else return fib_memos[n];
+}
 
 
 </code>
                 </pre>
                 <p>
-  <i>Towers of Hanoi</i>, recursive style.
+  Towers of Hanoi, recursive style.
   We both count moves and print to check our algorithm.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="kt">void</span> <span class="n">towers</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">moves</span><span class="p">,</span>
-            <span class="kt">int</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">spare</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">towers</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">moves</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">spare</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
-    <span class="n">moves</span><span class="o">++</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Moving disk &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; to peg &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">target</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">towers</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">moves</span><span class="p">,</span> <span class="n">spare</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">start</span><span class="p">);</span>
-<span class="p">}</span>
+void towers(int n, int& moves,
+            int start=0, int target=1, int spare=2) {
+    if (n &gt; 1) towers(n - 1, moves, start, spare, target);
+    moves++;
+    cout &lt;&lt; "Moving disk " &lt;&lt; n &lt;&lt; " to peg " &lt;&lt; target &lt;&lt; endl;
+    if (n &gt; 1) towers(n - 1, moves, spare, target, start);
+}
 
 
 </code>
                 </pre>
                 <p>
-  Our <span class="code">main()</span> will exercise the above functions.
+  Our `main()` will exercise the above functions.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">DISKS</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">moves</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">towers</span><span class="p">(</span><span class="n">DISKS</span><span class="p">,</span> <span class="n">moves</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;For &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">DISKS</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; we made &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">moves</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; moves</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+int main() {
+    const int DISKS = 4;
+    int moves = 0;
+    towers(DISKS, moves);
+    cout &lt;&lt; "For " &lt;&lt; DISKS &lt;&lt; " we made " &lt;&lt; moves &lt;&lt; " moves\n\n";
 
-    <span class="c1">// This is an infinite recursion:</span>
-    <span class="c1">// recurse(INT_MAX);</span>
-    <span class="kt">int</span> <span class="n">big_num</span> <span class="o">=</span> <span class="n">INT_MAX</span> <span class="o">-</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;big_num = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">big_num</span><span class="o">++</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
+    // This is an infinite recursion:
+    // recurse(INT_MAX);
+    int big_num = INT_MAX - 4;
+    for(int i = 0; i &lt; 20; i++) {
+        cout &lt;&lt; "big_num = " &lt;&lt; big_num++ &lt;&lt; endl;
+    }
 
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; factorial = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; fibonacci = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    for (int i = 0; i &lt; 8; i++)
+        cout &lt;&lt; i &lt;&lt; " factorial = " &lt;&lt; factorial(i) &lt;&lt; endl;
+    for (int i = 0; i &lt; 5; i++)
+        cout &lt;&lt; i &lt;&lt; " fibonacci = " &lt;&lt; fib(i) &lt;&lt; endl;
 
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; in binary: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">base_conv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; in hex: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">base_conv</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in binary: " &lt;&lt; base_conv(i, 2) &lt;&lt; endl;
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in hex: " &lt;&lt; base_conv(i) &lt;&lt; endl;
 
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; in oct: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">base_conv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">OCT</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; in base-20: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">base_conv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in oct: " &lt;&lt; base_conv(i, OCT) &lt;&lt; endl;
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in base-20: " &lt;&lt; base_conv(i, 20) &lt;&lt; endl;
+}
 
 </code>
                 </pre>
