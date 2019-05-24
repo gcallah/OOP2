@@ -2,6 +2,7 @@
  * This file implements part of a complex number class.
  * Its chief educational purpose is to teach *operator overloading*.
  * We overload `==`, `++` (twice), `bool`, and `+`.
+ * Further overloads can be left for the student.
  * */
 #include <iostream>
 #include <iomanip>
@@ -11,10 +12,6 @@ using namespace std;
 const bool DEBUG = true;
 
 class Complex {
-    /*
-     * A partial implementation of a complex number class,
-     * designed to illustrate operator over-loading.
-     * */
     friend ostream& operator<< (ostream& os, const Complex& c);
     friend istream& operator>> (istream& is, Complex& c);
 
