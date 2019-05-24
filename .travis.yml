@@ -12,4 +12,4 @@ script:
     - make tests
 
 notifications:
-    slack: JpsBKLwNQH53vjVgTIVOeISW
+  slack: nyuoop:HRyJZCmrAPWu3TVkPj23UX4G
