@@ -31,9 +31,10 @@
         </h1>
 
                 <p>
-  FILE: complex.cpp
-  THEME: operator over-loading.
-  CLASSES: Complex
+  This file implements part of a complex number class.
+  Its chief educational purpose is to teach <i>operator overloading</i>.
+  We overload <span class="code">==</span>, <span class="code">++</span> (twice), <span class="code">bool</span>, and <span class="code">+</span>.
+  Further overloads can be left for the student.
 
                 </p>
 
@@ -46,15 +47,6 @@
 
 <span class="k">const</span> <span class="kt">bool</span> <span class="n">DEBUG</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 <span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
-</code>                </pre>
-                <p>
-      A partial implementation of a complex number class,
-      designed to illustrate operator over-loading.
-
-                </p>
-
-                <pre>
-                <code>
     <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
     <span class="k">friend</span> <span class="n">istream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
 

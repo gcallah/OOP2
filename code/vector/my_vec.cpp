@@ -188,7 +188,16 @@ int main() {
     // print_vec(v4);
     v2 = v2;
     print_vec(v2);
+    
+    /*
+     * The below code * will not* work, but students try it anyway:
+     * `begin()` and `end()` return iterators, not int*!
+     * for (int* p = v2.begin(); p != v2.end(); p++)
+     *   cout << *p << endl;
+     *
+     * */
 
     cout << "Done with test!\n";
-    return 0;
+    return
+        0;
 }
