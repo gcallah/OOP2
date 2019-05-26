@@ -46,9 +46,7 @@
 
 <span class="k">const</span> <span class="kt">bool</span> <span class="n">DEBUG</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 <span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       A partial implementation of a complex number class,
       designed to illustrate operator over-loading.
@@ -60,9 +58,7 @@
     <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
     <span class="k">friend</span> <span class="n">istream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       The equality operator is a friend since it is binary
       and symmetrical.
@@ -76,9 +72,7 @@
     <span class="p">}</span>
     <span class="k">public</span><span class="o">:</span>
     
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       Our sole constructor takes defaults of 0 for both <span class="code">real</span> and 
       <span class="code">imag</span>, so can be called with no arguments.
@@ -89,9 +83,7 @@
                 <code>
         <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">real</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imag</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
             <span class="o">:</span> <span class="n">real</span><span class="p">{</span><span class="n">real</span><span class="p">},</span> <span class="n">imag</span><span class="p">{</span><span class="n">imag</span><span class="p">}</span> <span class="p">{}</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
           The <span class="code">bool</span> operator tests to see if either
           data member is non-zero, and returns <span class="code">true</span>
@@ -105,9 +97,7 @@
             <span class="k">return</span> <span class="p">((</span><span class="n">real</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">imag</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">));</span>
         <span class="p">}</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
           This overload is pre-increment: pretty straightforward:
           bump up the <span class="code">real</span> member, and return myself.
@@ -123,9 +113,7 @@
             <span class="o">++</span><span class="n">real</span><span class="p">;</span>
             <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
         <span class="p">}</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
           Post-increment is more complicated than pre: first
           of all, it takes a dummy int parameter (unused)
@@ -143,9 +131,7 @@
             <span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
         <span class="p">}</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
           <span class="code">+</span> is very straightforward, and should be the first operator
           taught.
@@ -164,9 +150,7 @@
 <span class="p">};</span>
 
 <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       Outputting a <span class="code">Complex</span> instance, while illustrating some of the
       capabilities of I/O streams: <span class="code">setprecision</span> gives us a fixed
@@ -182,9 +166,7 @@
     <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
 <span class="p">}</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
   Read a <span class="code">Complex</span> number from an input stream.
 
@@ -199,9 +181,7 @@
 
 <span class="kt">void</span> <span class="nf">printVector</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Complex</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">);</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
   The code in main just exercizes the <span class="code">Complex</span> class.
 
@@ -236,9 +216,7 @@
     <span class="c1">// test post-increment:</span>
     <span class="n">c4</span><span class="o">++</span><span class="p">;</span>
     <span class="n">c4</span><span class="o">++</span><span class="p">;</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       Test equality operator. If we take the <span class="code">explicit</span> off of
       <span class="code">bool()</span> in class definition, then this will fail as ambiguous:
@@ -252,9 +230,7 @@
         <span class="o">:</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 == 1 is false</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="c1">// test bool() operator:</span>
     <span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">?</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 is true</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">:</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 is false</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       The next line of code will implicitly
       construct a <span class="code">Complex</span> out of 14.2 using the default
@@ -271,9 +247,7 @@
     <span class="n">printVector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
 <span class="p">}</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
   Print a vector of type <span class="code">Complex</span>: templates haven't been taught yet!
 
@@ -283,9 +257,7 @@
                 <code>
 <span class="kt">void</span> <span class="n">printVector</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Complex</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
       <span class="code">auto</span> detects the type coming out of the <span class="code">vector</span> automatically:
 
@@ -298,9 +270,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
 
     </body>
 </html>
