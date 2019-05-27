@@ -12,6 +12,9 @@
 using namespace std;
 
 
+/*
+ * An exception to throw when we get a number too big.
+ * */
 class NTooBig : public exception {
 public:
     NTooBig(int n, int line, string file) 
@@ -31,11 +34,17 @@ private:
 };
 
 
+/*
+ * Throw NTooBig when n > 200.
+ * */
 void f(int n) {
     if (n > 200) throw(NTooBig(n, 31, "exceptions.cpp"));
 }
 
 
+/*
+ * Call `f()`: just showing how exceptions rise up the stack.
+ * */
 void g(int n) {
     f(n);
 }
