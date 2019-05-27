@@ -49,7 +49,7 @@ $(PTML_DIR)/recursion.ptml: $(MISC_DIR)/recursion.cpp
 $(PTML_DIR)/stl.ptml: $(MISC_DIR)/stl.cpp
 	$(CPP2HTML) $< > $@
 
-local: $(HTMLFILES) $(INCS)
+local: code_pages $(HTMLFILES) $(INCS)
 
 %.html: $(PTML_DIR)/%.ptml $(INCS)
 	python3 $(UTILS_DIR)/html_checker.py $< 
