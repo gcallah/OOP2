@@ -41,7 +41,9 @@
 
         <ul>
             <li>
+                <a href="glossary.html#statictyping">
                 Static typing
+                </a>
             </li>
 
             <li>
@@ -57,11 +59,15 @@
             </li>
 
             <li>
+                <a href="glossary.html#struct">
                 Structs
+                </a>
             </li>
 
             <li>
+                <a href="glossary.html#vector">
                 Vectors
+                </a>
             </li>
         </ul>
     </body>

@@ -13,6 +13,7 @@ using namespace std;
 /*
  * Let's make a template for a `print_list` that can handle
  * lists of any type:
+ * Templates are the C++ feature that enable generic programming.
  * */
 template <typename T>
 void print_list(const string name, const list<T>& l) {
