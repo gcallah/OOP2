@@ -1,0 +1,99 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Course Info
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Course Info
+        </h1>
+
+        <p>
+            Information specific to CS-2124 at NYU, Spring, 2019.
+        </p>
+
+        <table>
+            <thead>
+                <th colspan="3">
+                    Student-TA Assignments
+                </th>
+            </thead>
+            <tbody>
+            <tr>
+                <th>
+                    Student
+                </th>
+
+                <th>
+                    TA
+                </th>
+
+                <th>
+                    TA Email
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    Zak Alex
+                </td>
+
+                <td>
+                    Gordon Lei
+                </td>
+
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Nassir Ali      
+                </td>
+
+                <td>
+                    Gordon Lei
+                </td>
+
+                <td>
+                    
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                  
+                </td>
+
+                <td>
+                   
+                </td>
+
+                <td>
+                    
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                  
+                </td>
+
+                <td>
+                   
+                </td>
+
+                <td>
+                    
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
