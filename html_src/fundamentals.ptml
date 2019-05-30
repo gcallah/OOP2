@@ -24,6 +24,9 @@
                 We can hide the particulars of the implementation of some type
                 behind the public interface to a class. In C++ we
                 can abstract even further using templates.
+                <br />
+                <a href="https://en.wikipedia.org/wiki/Abstraction_(computer_science)">
+                    More on abstraction</a>. 
             </li>
 
             <li>
@@ -32,6 +35,9 @@
                 We can create a hierarchy of classes, in which the methods of
                 an "ancestor" class are inherited by a "descendant" class,
                 unless they are over-ridden.
+                <br />
+                <a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)">
+                    More on inheritance</a>. 
             </li>
 
             <li>
@@ -39,6 +45,9 @@
                 <br />
                 The data and the code associated with some type are
                 packaged together (encapsulated), 
+                <br />
+                <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">
+                    More on encapsulation</a>. 
             </li>
 
             <li>
@@ -51,6 +60,9 @@
                 encapsulation. (We need encapsulation to achieve data hiding,
                 and it is partly through data hiding that we achieve
                 abstraction.)
+                <br />
+                <a href="https://en.wikipedia.org/wiki/Information_hiding">
+                    More on data hiding</a>. 
             </li>
 
             <li>
@@ -60,6 +72,9 @@
                 can also accept as an argument any instance of a class
                 descended from A. Furthermore, when it calls some method on A,
                 the appropriate method of the descendant class will be called.
+                <br />
+                <a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)">
+                    More on polymorphism</a>. 
             </li>
         </ol>
     </body>
