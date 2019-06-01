@@ -2,7 +2,8 @@
 
 /*
  * This is the implementation of our image class.
- * It is designed to teach class hierarchy.
+ * It is designed to teach class hierarchy and buffer
+ * allocation.
  * */
 #include <string>
 #include <iostream>
@@ -22,6 +23,8 @@ Image::Image(int width, int height, string flnm)
 /*
  * This is the `Image` *copy constructor*. We have to handle 
  * properly copying the `image_buf` to the target object.
+ * We use `copy_fields()` so we can share copy code with the
+ * assignment operator.
  * */
 Image::Image(const Image& img2) {
     copy_fields(img2);
@@ -29,7 +32,8 @@ Image::Image(const Image& img2) {
 
 
 /*
- * `Image` *destructor* must free the image buf.
+ * `Image` *destructor* must *free* the image buf so
+ * that the memory can be used for other purposes.
  * */
 Image::~Image() {
     if (image_buf != nullptr) delete image_buf;
@@ -47,6 +51,10 @@ Image& Image::operator=(const Image& img2) {
 }
 
 
+/*
+ * This is a dummy `display()` operator, to illustrate
+ * *polymorphism*.
+ * */
 string Image::display(string s="Base") {
     cout << s << endl;
     return s;

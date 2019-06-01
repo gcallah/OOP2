@@ -46,6 +46,7 @@
                 <span class="hilight">overriding</span>, the use of the
                 <span class="hilight">virtual</span> keyword,
                 and a <span class="hilight">pure virtual</span> class.
+                It also uses memory allocation and freeing.
             </li>
 
             <li>
