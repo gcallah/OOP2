@@ -49,5 +49,27 @@
                 Dynamic memory
             </li>
         </ul>
+
+        <hr>
+
+        <p>
+        Source code illustrating pointers and memory management:
+        </p>
+
+        <ul>
+            <li>
+                <a href="thing.html">
+                    Allocating a vector of pointers to things.
+                </a>
+            </li>
+
+            <li>
+                <a href="image.html">
+                    A class hierarchy of images
+                </a>
+            </li>
+
+        </ul>
+
     </body>
 </html>

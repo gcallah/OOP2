@@ -39,7 +39,8 @@
 </code>                </pre>
                 <p>
   This is the implementation of our image class.
-  It is designed to teach class hierarchy.
+  It is designed to teach class hierarchy and buffer
+  allocation.
 
                 </p>
 
@@ -67,6 +68,8 @@
                 <p>
   This is the <span class="code">Image</span> <i>copy constructor</i>. We have to handle 
   properly copying the <span class="code">image_buf</span> to the target object.
+  We use <span class="code">copy_fields()</span> so we can share copy code with the
+  assignment operator.
 
                 </p>
 
@@ -78,7 +81,8 @@
 
 </code>                </pre>
                 <p>
-  <span class="code">Image</span> <i>destructor</i> must free the image buf.
+  <span class="code">Image</span> <i>destructor</i> must <i>free</i> the image buf so
+  that the memory can be used for other purposes.
 
                 </p>
 
@@ -103,6 +107,15 @@
     <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
 <span class="p">}</span>
 
+</code>                </pre>
+                <p>
+  This is a dummy <span class="code">display()</span> operator, to illustrate
+  <i>polymorphism</i>.
+
+                </p>
+
+                <pre>
+                <code>
 <span class="n">string</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">&quot;Base&quot;</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
