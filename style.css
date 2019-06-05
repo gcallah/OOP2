@@ -46,6 +46,18 @@ td.key-col {
 }
 
 
+figure {
+    text-align: center;
+}
+
+figcaption {
+    color: #369;
+    font-style: italic;
+    text-align: center;
+    margin: .8em 1em .6em 1em;
+}
+
+
 p {
     margin: .6em 3em .6em 3em;
     font-size: 1.2em;
@@ -90,7 +102,7 @@ pre {
 }
 
 hr {
-    margin: 1em 4em 1em 4em;
+    margin: 2em 8em 1em 8em;
 }
 
 h1,h2,h3,h4,h5 {

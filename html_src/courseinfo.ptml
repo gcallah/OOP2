@@ -14,8 +14,29 @@
         </h1>
 
         <p>
-            Information specific to CS-2124 at NYU, Spring, 2019.
+            Information specific to CS-2124 at NYU, Summer, 2019.
         </p>
+
+        <p>
+        The GitHub repo where we will post your assignments is
+        <a href="https://github.com/gcallah/StudentOOP">here</a>. 
+        </p>
+
+        <p>
+        Professor Sterling's material for CS 2124 is
+        <a href="http://cis.poly.edu/jsterling/cs2124/">here</a>. 
+        </p>
+
+        <p>
+        <a href="cygwin.html">Here's</a> how to install Cygwin, a set of Linux
+        tools for Windows, and get your builds working in that environment.
+        </p>
+
+        <p>
+        <a href="github.html">Here's</a> some notes on using GitHub that your TA compiled.
+        </p>
+
+        <hr>
 
         <table>
             <thead>
@@ -62,35 +83,539 @@
                 </td>
 
                 <td>
-                    
+                    gl1776@nyu.edu
                 </td>
             </tr>
 
             <tr>
                 <td>
-                  
+                    Anna An
                 </td>
 
                 <td>
-                   
+                   Gordon Lei
                 </td>
 
                 <td>
-                    
+                    gl1776@nyu.edu
                 </td>
             </tr>
 
             <tr>
                 <td>
-                  
+                    Paolla Bruno Dutra
                 </td>
 
                 <td>
-                   
+                    Gordon Lei
                 </td>
 
                 <td>
-                    
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ping Chang
+                </td>
+                
+                <td>
+                    Gordon Lei
+                </td>
+                
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Daniel DiPietrantonio
+                </td>
+                
+                <td>
+                    Gordon Lei
+                </td>
+                
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Trang Duong
+                </td>
+                
+                <td>
+                    Gordon Lei
+                </td>
+                
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ashley Yailene Gonzabay
+                </td>
+                
+                <td>
+                    Gordon Lei
+                </td>
+                
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ellie Haber
+                </td>
+                
+                <td>
+                    Gordon Lei
+                </td>
+                
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Alex Him
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Brian Kang
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Raina Kim
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ryan Krumbholz
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ellen Li
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ben Liang
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Nan Lin
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Peter Liu
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Yian Lu
+                </td>
+                
+                <td>
+                    Maria Mancz
+                </td>
+                
+                <td>
+                    mm8348@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Calvin Luo
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Yanjun Meng
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Larry Morgan
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Jeffrey Na
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Yanjun Pan
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Raj Patel
+                </td>
+                
+                <td>
+                    Gordon Lei
+                </td>
+                
+                <td>
+                    gl1776@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Xinyu Qu
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Kareem Rasmy
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Gregory Savage
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Ariane Schoenwiesner
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Da Yeon Shin
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Kyle Smith
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Billy Sun
+                </td>
+                
+                <td>
+                    Mengyang Zhang
+                </td>
+                
+                <td>
+                    mz2325@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Weizhe Tang
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Thurman Truong
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Kori Selwyn Vernon
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Max Viduszynski
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Hanyi Wang
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Yiyuan Wang
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Bohan Wu
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Michael Zhao
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    James Zhou
+                </td>
+                
+                <td>
+                    Rihui Zheng
+                </td>
+                
+                <td>
+                    rz1276@nyu.edu
                 </td>
             </tr>
             </tbody>

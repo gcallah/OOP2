@@ -46,6 +46,7 @@
                 <span class="hilight">overriding</span>, the use of the
                 <span class="hilight">virtual</span> keyword,
                 and a <span class="hilight">pure virtual</span> class.
+                It also uses memory allocation and freeing.
             </li>
 
             <li>
@@ -174,8 +175,8 @@
             <li>
                 <a
                     href="https://github.com/gcallah/OOP2/blob/master/code/vector/templ_vec.cpp">
-                    Now let's make our own <span class="code">vector</span> a 
-                    generic machine for creating vectors.
+                    Now let's make turn own <span class="code">vector</span>
+                    into a generic machine for creating vectors.
                 </a>
                 <br />
             </li>
