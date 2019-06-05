@@ -2,7 +2,7 @@
     <head>
 <!--include head.txt -->
         <title>
-            Notes on GitHub
+            Notes on Git and GitHub
         </title>
     </head>
 
@@ -10,7 +10,7 @@
 <!--include logo.txt -->
 <!--include menu.txt -->
         <h1>
-            Notes on GitHub
+            Notes on Git and GitHub
         </h1>
 
         <h3>
@@ -18,6 +18,13 @@
         </h3>
 
         <ul>
+
+            <li>
+                The difference between <span class="code">git</span>
+                and GitHub: git is a source code control tool for 
+                managing repositories (repos) of source code.
+                GitHub is a place to share git repos.
+            </li>
 
             <li>
             <a href="github.html#TerminalCommands"> Using Terminal Commands </a>
