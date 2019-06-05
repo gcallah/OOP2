@@ -1,0 +1,126 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            C++ Resources
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            C++ Resources
+        </h1>
+
+        <p>
+            The following links are to C++ resources that students may
+            find valuable:
+        </p>
+
+        <ul>
+            <li>
+                <a href="http://www.cplusplus.com">
+                    CPlusPlus.com
+                </a>
+                <br />
+                A site devoted to the C++ language.
+            </li>
+
+            <li>
+                <a href="https://www.youtube.com/playlist?list=PLs3KjaCtOwSZ2tbuV1hx8Xz-rFZTan2J1">
+                    C++ Weekly YouTube channel
+                </a>
+            </li>
+
+            <li>
+                <a href="http://www.stroustrup.com/index.html">
+                    The homepage of Bjarne Stroustrup
+                </a> (creator of C++)
+            </li>
+
+            <li>
+                <a href="https://stackify.com/popular-programming-languages-2018/">
+                    A remarkable survey
+                </a>,
+                which declares <i>C</i> to be one of the two top
+                "up-and-coming" programming languages.
+            </li>
+
+            <li>
+                <a
+                    href="https://www.geeksforgeeks.org/this-pointer-in-c/"><span
+                    class="code">this</span> pointer in C++
+                </a>
+            </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/JBjjnqG0BP8" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                <br />
+                Bjarne Stroustrup on why he wrote C++.
+            </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/86xWVb4XIyE"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br />
+                A video by Bjarne Stroustrup on his vision for the
+                C++ language.
+            </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/ZDZHSGFMdw0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br />
+                A history of C++
+            </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/rX0ItVEVjHc"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br />
+                A discussion of C++ in the gaming world.
+            </li>
+
+            <li>
+                <br />
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/3SdSKZFoUa8"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <br />
+                C++ on Mars
+            </li>
+
+            <li>
+                <a href="https://www.geeksforgeeks.org/difference-between-const-int-const-int-const-and-int-const/">
+                    const int * versus int * const
+                </a>
+                <br />
+                A sticking point in the language for many.
+            </li>
+
+        </ul>
+
+    </body>
+</html>

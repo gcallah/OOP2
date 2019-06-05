@@ -1,0 +1,75 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Copy Control in C++
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Copy Control in C++
+        </h1>
+
+        <p>
+        Copy control is a very important concept in C++ because it 
+        involves the creation and deletion of objects (after 
+        all, this course is called Object Oriented Programming). 
+        You have dealt with constructors in Python but maybe it
+        was not explicitly stated; every time you make an __init__ method 
+        for your objects/class in Python, you have made
+        a constructor for the object/class. 
+        When you assign a class's name followed by parenthesis to a variable 
+        in Python (for example if you have a class called
+        <span class="code">BinarySearchTree</span> 
+        and you write <span class="code">myObject = BinarySearchTree()</span>)
+        you have called the class's constructor. 
+        </p>
+
+        <p>
+        However, in C++, we take the creation of objects one step further; 
+        we are now concerned about allocating and deallocating memory 
+        because we directly tell the compiler through our code when and 
+        how to allocate memory. 
+        We did not have to worry about the deallocation of memory in Python 
+        because Python automatically calls its 
+        garbage collector when needed. 
+        In C++ we often associate three language features
+        with copy control:
+        <a href="glossary.html#destructors">destructors</a>,
+        <a href="glossary.html#copyconstructor">copy constructors</a>,
+        and <a href="glossary.html#assignmentoperators">assignment
+            operators</a>.
+        We will call these the Big 3
+        because often times 
+        when you need to write any one of 
+        them, you most likely will need to write the other two.
+        </p>
+
+        <p>
+        Here are the topics we will cover in this unit:
+        </p>
+
+        <ul>
+            <li>
+                Destructors
+            </li>
+
+            <li>
+                Copy Constructor
+            </li>
+
+            <li>
+                Assignment Operator
+            </li>
+        </ul>
+
+        <p>
+        However, do note that we will have to take additional steps 
+        in regards to copy control with inheritance, 
+        which will be discussed when we reach the topic of inheritance.  
+        </p>
+    </body>
+</html>
