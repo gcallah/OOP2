@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+        code/misc/recursion.cpp
+        </title>
+    </head>
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+        code/misc/recursion.cpp
+        </h1>
+
+                <pre>
+                <code>
+
+
+</code>
+                </pre>
+                <p>
+  Let's work some recursion problems!
+ 
+
+                </p>
+
+                <pre>
+                <code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;climits&gt;
+#include "base_conv.h"
+
+using namespace std;
+
+
+</code>
+                </pre>
+                <p>
+  Test max stack depth with infinite recursion.
+
+                </p>
+
+                <pre>
+                <code>
+int recurse(int n) {
+    cout &lt;&lt; "In call #: " &lt;&lt; n &lt;&lt; endl;
+    return recurse(n + 1);
+}
+
+
+</code>
+                </pre>
+                <p>
+  The natural way to do factorials:
+
+                </p>
+
+                <pre>
+                <code>
+int factorial(int n) {
+    if (n == 0) return 1;
+    return n * factorial(n - 1);
+}
+
+
+</code>
+                </pre>
+                <p>
+  We memo-ize a recursive fibonacci call.
+  Memo-ization means storing results rather than re-calculating
+  them every time they are required.
+
+                </p>
+
+                <pre>
+                <code>
+const int NOT_CALCULATED = -1;
+vector&lt;int&gt; fib_memos = vector&lt;int&gt;(100, NOT_CALCULATED);
+int fib(int n) {
+    if (fib_memos[n] == NOT_CALCULATED) {
+        int ret = 0;
+        if (n == 0 || n == 1) ret = 1;
+        else ret = fib(n - 1) + fib(n - 2);
+        fib_memos[n] = ret;
+        return ret;
+    }
+    else return fib_memos[n];
+}
+
+
+</code>
+                </pre>
+                <p>
+  Towers of Hanoi, recursive style.
+  We both count moves and print to check our algorithm.
+
+                </p>
+
+                <pre>
+                <code>
+void towers(int n, int& moves,
+            int start=0, int target=1, int spare=2) {
+    if (n &gt; 1) towers(n - 1, moves, start, spare, target);
+    moves++;
+    cout &lt;&lt; "Moving disk " &lt;&lt; n &lt;&lt; " to peg " &lt;&lt; target &lt;&lt; endl;
+    if (n &gt; 1) towers(n - 1, moves, spare, target, start);
+}
+
+
+</code>
+                </pre>
+                <p>
+  Our `main()` will exercise the above functions.
+
+                </p>
+
+                <pre>
+                <code>
+int main() {
+    const int DISKS = 4;
+    int moves = 0;
+    towers(DISKS, moves);
+    cout &lt;&lt; "For " &lt;&lt; DISKS &lt;&lt; " we made " &lt;&lt; moves &lt;&lt; " moves\n\n";
+
+    // This is an infinite recursion:
+    // recurse(INT_MAX);
+    int big_num = INT_MAX - 4;
+    for(int i = 0; i &lt; 20; i++) {
+        cout &lt;&lt; "big_num = " &lt;&lt; big_num++ &lt;&lt; endl;
+    }
+
+    for (int i = 0; i &lt; 8; i++)
+        cout &lt;&lt; i &lt;&lt; " factorial = " &lt;&lt; factorial(i) &lt;&lt; endl;
+    for (int i = 0; i &lt; 5; i++)
+        cout &lt;&lt; i &lt;&lt; " fibonacci = " &lt;&lt; fib(i) &lt;&lt; endl;
+
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in binary: " &lt;&lt; base_conv(i, 2) &lt;&lt; endl;
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in hex: " &lt;&lt; base_conv(i) &lt;&lt; endl;
+
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in oct: " &lt;&lt; base_conv(i, OCT) &lt;&lt; endl;
+    for (int i = 0; i &lt; 40; i++)
+        cout &lt;&lt; i &lt;&lt; " in base-20: " &lt;&lt; base_conv(i, 20) &lt;&lt; endl;
+}
+
+</code>
+                </pre>
+
+    </body>
+</html>
+

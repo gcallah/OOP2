@@ -62,5 +62,49 @@
                 the appropriate method of the descendant class will be called.
             </li>
         </ol>
+
+        <p>
+        And here are some crucial OOP design principles:
+        </p>
+
+    
+        <ol>
+            <li>
+                <span class="hilight">
+                    SRP: The Single Responsibility Principle
+                </span>
+                <br />
+            </li>
+
+            <li>
+                <span class="hilight">
+                    OCP: The Open-Closed Principle    
+                </span>
+                <br />
+            </li>
+
+            <li>
+                <span class="hilight">
+                    LSP: The Liskov-Substitution Principle
+                </span>
+                <br />
+            </li>
+
+            <li>
+                <span class="hilight">
+                    DIP: The Dependency-Inversion Principle
+                </span>
+                <br />
+            </li>
+
+            <li>
+                <span class="hilight">
+                    ISP: The Interface-Segregation Principle
+                </span>
+                <br />
+            </li>
+
+        </ol>
+
     </body>
 </html>
