@@ -43,6 +43,10 @@
                  </li>
   
                  <li>
+                     Separate compilation
+                 </li>
+  
+                 <li>
                      <a href="pointers.html">
                      Pointers
                      </a> 
@@ -70,10 +74,6 @@
                     <a href="vector.html">
                      Implementing our own vector type
                     </a>
-                 </li>
-  
-                 <li>
-                     Separate compilation
                  </li>
   
                  <li>
