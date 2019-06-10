@@ -54,15 +54,56 @@
 
         <ul>
             <li>
-                Destructors
+                <a href="glossary.html#destructor">
+                    Destructors
+                </a>
+                <br />
+                    The purpose of the destructor is to destory items 
+                    that are allocated onto the heap. The syntax follows that 
+                    of the constructor except in the function 
+                    name it starts with a tilde
+                    followed by the class name.  
+                <br />
             </li>
 
             <li>
-                Copy Constructor
+                <a href="glossary.html#copyconstructor">
+                    Copy Constructor
+                </a>
+                <br />
+                    The purpose of the copy constructor does 
+                    what its name is; it 
+                    creates a new object based on an existing object. 
+                    The syntax for this
+                    is the syntax for the constructor except an 
+                    object of the same type
+                    is passed in usually by constant reference. 
+                    To "copy" the object,
+                    you first allocate memory for the data members. 
+                    Then you initialize 
+                    those data members to be the same as the 
+                    data members of the referenced 
+                    object. 
+                <br />
             </li>
 
             <li>
+                <a href="glossary.html#assignmentoperator">
                 Assignment Operator
+                </a>
+                <br />
+                    The purpose of the assignment operator is to 
+                    set an existing object to be the 
+                    same as another existing object of the same type. 
+                    It should first remove or delete the items
+                    stored in the object's data members, 
+                    allocate memory for the new 
+                    items, then copy the other object's data 
+                    members to the current object.
+                    You should also check for self-assignment 
+                    (assiging an object to itself) 
+                    and at the end of the function, return the object. 
+                <br />
             </li>
         </ul>
 
