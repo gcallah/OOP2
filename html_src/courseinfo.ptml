@@ -143,7 +143,7 @@
 
         <table>
             <thead>
-                <th colspan="3">
+                <th colspan="4">
                     Student-TA Assignments
                 </th>
             </thead>
@@ -160,6 +160,10 @@
                 <th>
                     TA Email
                 </th>
+
+                <th>
+                    Back-up TA (for Tuesdays and Fridays)
+                </th>
             </tr>
             
             <tr>
@@ -173,6 +177,10 @@
 
                 <td>
                     m8348@nyu.edu
+                </td>
+
+                <td>
+                    Gordon Lei
                 </td>
             </tr>
 
@@ -188,6 +196,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
 
             <tr>
@@ -202,6 +212,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
 
             <tr>
@@ -216,6 +228,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
 
             <tr>
@@ -230,6 +244,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -244,6 +260,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -258,6 +276,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -272,6 +292,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -286,6 +308,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -300,6 +324,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -313,6 +339,10 @@
                 
                 <td>
                     mm8348@nyu.edu
+                </td>
+
+                <td>
+                    Gordon Lei
                 </td>
             </tr>
             
@@ -328,6 +358,10 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    Gordon Lei
+                </td>
             </tr>
             
             <tr>
@@ -342,6 +376,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -356,6 +392,11 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    MengYang Zhang
+                </td>
+
             </tr>
             
             <tr>
@@ -369,6 +410,10 @@
                 
                 <td>
                     mm8348@nyu.edu
+                </td>
+
+                <td>
+                    MengYang Zhang
                 </td>
             </tr>
             
@@ -384,6 +429,10 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    MengYang Zhang
+                </td>
             </tr>
             
             <tr>
@@ -398,6 +447,11 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    Rihui Zheng
+                </td>
+
             </tr>
             
             <tr>
@@ -412,6 +466,11 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    Rihui Zheng
+                </td>
+
             </tr>
             
             <tr>
@@ -426,6 +485,11 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    Rihui Zheng
+                </td>
+
             </tr>
             
             <tr>
@@ -440,6 +504,11 @@
                 <td>
                     mm8348@nyu.edu
                 </td>
+
+                <td>
+                    Rihui Zheng
+                </td>
+
             </tr>
             
             <tr>
@@ -454,6 +523,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -468,6 +539,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -482,6 +555,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -496,6 +571,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -510,6 +587,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -524,6 +603,8 @@
                 <td>
                     gl1776@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -538,6 +619,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -552,6 +635,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -566,6 +651,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -580,6 +667,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -594,6 +683,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -608,6 +699,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -622,6 +715,8 @@
                 <td>
                     mz2325@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -636,6 +731,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -650,6 +747,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -664,6 +763,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -678,6 +779,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -692,6 +795,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -706,6 +811,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -720,6 +827,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -734,6 +843,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             
             <tr>
@@ -748,6 +859,8 @@
                 <td>
                     rz1276@nyu.edu
                 </td>
+
+                <td> </td>
             </tr>
             </tbody>
         </table>
