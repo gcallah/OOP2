@@ -63,6 +63,10 @@
                      The fundamentals of Object-Oriented Programming
                      </a>
                  </li>
+  
+                 <li>
+                     Operator overloading
+                 </li>
 
                  <li>
                     <a href="big3.html">
@@ -74,10 +78,6 @@
                     <a href="vector.html">
                      Implementing our own vector type
                     </a>
-                 </li>
-  
-                 <li>
-                     Operator overloading
                  </li>
   
                  <li>
