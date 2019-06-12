@@ -65,11 +65,13 @@
                  </li>
   
                  <li>
+                     <a href="overloading.html">
                      Operator overloading
+                     </a>
                  </li>
 
                  <li>
-                    <a href="big3.html">
+                     <a href="big3.html">
                      Copy control
                      </a>
                  </li>

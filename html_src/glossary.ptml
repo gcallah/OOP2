@@ -75,6 +75,16 @@
             </li>
 
             <li>
+                <a name="overloading">
+                <span class="hilight">overloading</span>:
+                </a>
+                to create more than one function or operator with
+                the same name, but a different type signature.
+                For instance, '+' can add two integers, but it can also 
+                add two doubles or two strings.
+            </li>
+
+            <li>
                 <a name="pointer">
                 <span class="hilight">pointer</span>:
                 </a>
