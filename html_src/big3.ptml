@@ -106,11 +106,13 @@
                 <br />
             </li>
         </ul>
-
+        <br />
         <p>
         However, do note that we will have to take additional steps 
         in regards to copy control with inheritance, 
         which will be discussed when we reach the topic of inheritance.  
         </p>
+
+        <br />
     </body>
 </html>
