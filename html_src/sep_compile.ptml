@@ -10,7 +10,7 @@
 <!--include logo.txt -->
 <!--include menu.txt -->
         <h1>
-            Copy Control in C++
+            Seperate Compilaiton
         </h1>
 
         <figure>
@@ -21,9 +21,9 @@
             </figcaption>
         </figure>
 
-        <h3> What is Seperate Compilation? </h3>
+        <h3> What is seperate compilation? </h3>
         <p>
-        Seperate Compilation is the process of compiling individual files that
+        Seperate compilation is the process of compiling individual files that
         come together to make up a bigger idea. 
         For example, if you want to simulate 
         a college course, you can create an indivudal
@@ -104,7 +104,7 @@
         the <span class = "code"> #endif </span> line.
         </p>
 
-        <h3> How do I do Seperate Compilation? </h3>
+        <h3> How do I do seperate compilation? </h3>
 
         <p>
             It is often recommended for beginners to put every class into 
