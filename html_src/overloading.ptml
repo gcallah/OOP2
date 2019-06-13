@@ -1,0 +1,66 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Operator Overloading
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Operator Overloading
+        </h1>
+
+        <p>
+        Operator
+        <a href="glossary.html#overloading">overloading</a>
+        creates multiple definitions for the same operator. So we can have
+        the '[]' operator do the equivalent of array indexing for a
+        <span class="code">vector</span>, while having it do a hash table
+        access for a <span class="code">map</span>.
+        Operator overloading takes place through the special syntax
+        <span class="code">operator@</span> (where @ represents the operator
+        being overloaded).
+        </p>
+
+        <p>
+        Most C++ operators can be overloaded. The exceptions are:
+        :: (scope resolution), . (member access), .* (member access through
+        pointer to member), and ?: (ternary conditional).
+        </p>
+
+        <p>
+        In addition, = (assignment), () (function call), [] (collection
+        access), and -&gt; (member access through pointer) <i>cannot be
+            non-member</i>.
+        </p>
+
+        <p>
+        Other than the operators which <i>must</i> be class members, when
+        should we make an operator a class member and when not?
+        The general rule of thumb is:
+        </p>
+
+        <ul>
+            <li>
+                <span class="hilight">Class member</span>:
+                unary operators and non-symmetrical binary operators.
+            </li>
+
+            <li>
+                <span class="hilight">Not class member</span>:
+                symmetrical binary operators.
+            </li>
+        </ul>
+
+        <hr>
+
+        <p>
+        Reference: <a href="https://en.cppreference.com/w/cpp/language/operators">
+        operator overloading</a>. 
+        </p>
+
+    </body>
+</html>
