@@ -179,7 +179,8 @@
                 </span>
                 <br />
                 Had we not made it return a type (or in other words 
-                made the return type void), the last line will not compile.   
+                we made the return type void), the last 
+                line will not compile.   
             </li>
         </ul>
         <br />
