@@ -13,6 +13,13 @@
             Copy Control in C++
         </h1>
 
+        <figure>
+            <img src="http://www.cplusplus.com/articles/yAqpX9L8/Comp-link.png"
+                width="20%">
+            <figcaption>
+                Separate compilation units creating one executable
+            </figcaption>
+        </figure>
 
         <h3> What is Seperate Compilation? </h3>
         <p>
