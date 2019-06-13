@@ -110,9 +110,8 @@
             It is often recommended for beginners to put every class into 
             one file then once everything works, 
             they should break up each class
-            into their own file. Once you get the hand of this, 
-            slowly transition
-            to immediately making each class their 
+            into its own file. Once you get the hang of this, 
+            slowly transition to immediately making each class their 
             own file for each assignment. 
         </p>
 
