@@ -43,7 +43,9 @@
                  </li>
   
                  <li>
+                     <a href="sep_compile.html"> 
                      Separate compilation
+                     </a>
                  </li>
   
                  <li>
@@ -111,6 +113,16 @@
                      Exceptions and assertions
                  </li>
              </ol>
+
+             <hr>
+
+             <p>
+             Much of the above material has been drawn from Professor 
+             John Sterling's
+             <a href="http://cis.poly.edu/jsterling/cs2124/Notes/Syllabus.html">
+             lecture notes</a>.
+             </p>
+
         </div>
     </body>
 </html>

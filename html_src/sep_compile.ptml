@@ -1,0 +1,143 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Seperate Compilaiton
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Copy Control in C++
+        </h1>
+
+
+        <h3> What is Seperate Compilation? </h3>
+        <p>
+        Seperate Compilation is the process of compiling individual files that
+        come together to make up a bigger idea. 
+        For example, if you want to simulate 
+        a college course, you can create an indivudal
+        <span class = "code">teacher.cpp</span>,
+        <span class = "code">student.cpp</span>, and an overall 
+        <span class = "code">course.cpp</span> and 
+        their corressponding header files 
+        (or .h files) that will make up the idea of a course. 
+        We seperate each class into
+        its own file for four main reasons: 
+        it removes clutter, the relationship
+        between classes is more easily seen,
+        we can divide up work among a team more easily,
+        and it can speed up building a program.
+        It removes clutter because every class is in 
+        their individual file so not everything is in one 
+        giant file. 
+        The relationship between classes
+        are more easily seen because you can delegate 
+        what type of relationship each class
+        has with each other by determing which header files 
+        are included in each .cpp file.
+        We can divide up work among a team more easily
+        because we can assign different team members different
+        files to work on.
+        And it speeds up building a program because build
+        managers like Make, Visual Studio, and XCode can
+        re-compile only the .cpp files that have changed since the last
+        compilation.
+        </p>
+
+        <p>
+        The header file will just contain the method declarations
+        for each class and each
+        method (generally) will not have a
+        body that shows what each method does.
+         (We call these
+        <a href="glossary.html#functionprototype">
+         function prototypes</a>.)
+         Then in the .cpp file we will give each method a body / definition 
+         (remember to use forward 
+        declaration to show which method of which class is being defined). 
+        Note that default values are written in only the header file and the 
+        initialization list for constructors are in the .cpp file. 
+        </p>
+
+
+        <h3> Include Guards</h3>
+
+        <p>
+        In your header files, make sure you are using include guards. 
+        They compose of 3 lines:
+        <br/>
+        <span class = "code"> #ifndef </span> ...
+        <br />
+        <span class = "code"> #define </span> ...
+        <br />
+        <span class = "code"> #endif </span>
+        <br />
+        where you replace the "..." with the name of the header file 
+        followed by an undercore then a h.
+        For example, if you have <span class = "code"> Class.h </span>, 
+        the corressponding include guards
+        would be: 
+        <br />
+        <span class = "code"> #ifndef Class_h</span> 
+        <br />
+        <span class = "code"> #define Class_h</span> ...
+        <br />
+        <span class = "code"> #endif </span>
+        <br />
+        The first line of code says that if <span class = "code"> Class_h </span> 
+        has not been defined,
+        define <span class = "code"> #ifndef Class_h</span> 
+        as the lines up to the 
+        <span class = "code"> #endif </span> line. Else if 
+        the file has already been defined, go straight to
+        the <span class = "code"> #endif </span> line.
+        </p>
+
+        <h3> How do I do Seperate Compilation? </h3>
+
+        <p>
+            It is often recommended for beginners to put every class into 
+            one file then once everything works, 
+            they should break up each class
+            into their own file. Once you get the hand of this, 
+            slowly transition
+            to immediately making each class their 
+            own file for each assignment. 
+        </p>
+
+        <ol>
+            <li>
+            First create a new .cpp file and a new .h file 
+            for each class. Remember 
+            to put the include guards in the header files. 
+            In your .cpp files, 
+            remember to include the .h file. 
+            </li>
+
+            <li>
+            Move the whole
+            class into the .h file. 
+            </li>
+
+            <li>
+            Copy the method signature / 
+            definition as well as the 
+            body to the .cpp file (remember to use forward declaration). 
+            </li>
+
+            <li>
+            Now in your .h 
+            file, remove the method bodies. 
+            Make sure to check for default values and initialization
+            lists in your .cpp and .h files and 
+            make sure they are in the appropriate 
+            places. In other words, make prototypes for the methods.
+            </li>
+        </ol>
+
+    </body>
+</html>

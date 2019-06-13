@@ -66,6 +66,16 @@
             </li>
 
             <li>
+                <a name="functionprototype">
+                <span class="hilight">function prototype</span>:
+                </a>
+                code that just shows the return type, parameter types,
+                and <span class="code">const</span> status of a function,
+                but does not include the body of the function (what it actually
+                does).
+            </li>
+
+            <li>
                 <a name="memo-ization">
                 <span class="hilight">memo-ization</span>:
                 </a>
