@@ -62,7 +62,10 @@
                     that are allocated onto the heap. The syntax follows that 
                     of the constructor except in the function 
                     name it starts with a tilde
-                    followed by the class name.  
+                    followed by the class name. You never call the destructors 
+                    yourself; instead the compiler calls it when the object is 
+                    not needed, when you go out of scope, or in other words,
+                    when everything in the callstack is done.   
                 <br />
             </li>
 
@@ -85,6 +88,49 @@
                     data members of the referenced 
                     object. 
                 <br />
+
+                <br />
+                Taken from 
+                <a href= "http://cis.poly.edu/jsterling/cs2124/LectureNotes/06.Big3.html">
+                Sterling's notes </a>
+                the Copy Constructor is called in 3 instances: 
+                <br />
+                1)
+                <br />
+                    <span class = "code"> SomeClass a; </span>
+                <br />
+                    <span class = "code"> SomeClass b(a); </span>
+                <br />
+                2)
+                <br />
+                    <span class = "code"> SomeClass a; </span>
+                <br />
+                    <span class = "code"> SomeClass b = a; </span>
+                <br />
+                3)
+                <br />
+                    <span class = "code"> void someFunc(SomeClass passedByValue) {}
+                    </span>
+                <br />
+                4)
+                <br />
+                    <span class = "code"> SomeClass anotherFunc () 
+                        { SomeClass returnedByValue; return returnedByValue; }
+                    </span>
+                <br />
+
+                In the first two lines, the copy constructor is called 
+                because you create a new object from an existing object with a 
+                matching type. 
+                <br />
+                In the third line, the copy constructor is called because 
+                you pass an object by value which creates a copy of that 
+                object. 
+                <br />
+                In the fourth line, the copy constructor 
+                is called because your return
+                by value (so you make a new object 
+                that is a copy of that specific value / object)
             </li>
 
             <li>
@@ -103,7 +149,37 @@
                     You should also check for self-assignment 
                     (assiging an object to itself) 
                     and at the end of the function, return the object. 
+                <br/>
+                    The assignment operator is called when you set 
+                    an existing object equal to an existing object of 
+                    the same type.
+                    <br />
+                    For example:
+                    <br />
+                    <span class = "code">
+                    SomeClass a;
+                    <br />
+                    SomeClass b;
+                    <br />
+                    a = b;
+                    </span>
+
                 <br />
+                You might be wondering, why should the assignment operator have
+                a return type? Well, it should have a return type because 
+                sometimes you want to chain assignment operators. For example: 
+                <br />
+                <span class = "code">
+                    SomeClass a;
+                    <br />
+                    SomeClass b;
+                    <br />
+                    SomeClass c;
+                    a = b = c;
+                </span>
+                <br />
+                Had we not made it return a type (or in other words 
+                made the return type void), the last line will not compile.   
             </li>
         </ul>
         <br />
