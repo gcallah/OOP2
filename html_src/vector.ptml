@@ -27,15 +27,15 @@
         a collection of data. We also know that
          we used various methods (such as 
         <span class = "code">push_back, pop_back, etc.... 
-        </span> 
-        ). Sterling says in his notes that a vector is 
+        </span>).
+        A vector is 
         composed of 3 main parts: 
         a data pointer pointing to an array, 
         something to keep track of the size, and 
         something to keep track of the capacity 
         (note that size and capacity are 
-        not the same; the capacity is how much max amount 
-        of data, the collection can hold. the size
+        not the same; the capacity is how much 
+        data the collection can hold at present, the size
         is how much data the collection currently holds). 
         In order to create our vector, we will then
         need to have these 3 items in our constructor. 
