@@ -38,32 +38,43 @@
         Seperate Compilation is the process of compiling individual files that
         come together to make up a bigger idea. 
         For example, if you want to simulate 
-        a class, you can create an indivudal <span class = "code"> teacher.cpp </span>,
-        <span class = "code"> student.cpp </span>, and an overall 
-        <span class = "code"> class.cpp </span> and 
+        a college course, you can create an indivudal
+        <span class = "code">teacher.cpp</span>,
+        <span class = "code">student.cpp</span>, and an overall 
+        <span class = "code">course.cpp</span> and 
         their corressponding header files 
-        (or .h files) that will make up the idea of a class. 
+        (or .h files) that will make up the idea of a course. 
         We seperate each class into
-        their own file for two main reasons: 
-        it removes clutter and the relationship
-        between classes are more easily seen. 
+        its own file for four main reasons: 
+        it removes clutter, the relationship
+        between classes is more easily seen,
+        we can divide up work among a team more easily,
+        and it can speed up building a program.
         It removes clutter because every class is in 
-        their individual file so not everything is in one file. 
-        The relatinship between classes
+        their individual file so not everything is in one 
+        giant file. 
+        The relationship between classes
         are more easily seen because you can delegate 
         what type of relationship each class
         has with each other by determing which header files 
         are included in each .cpp file.
+        We can divide up work among a team more easily
+        because we can assign different team members different
+        files to work on.
+        And it speeds up building a program because build
+        managers like Make, Visual Studio, and XCode can
+        re-compile only the .cpp files that have changed since the last
+        compilation.
         </p>
 
-        <br />
-
         <p>
-        The header file will just contain the method definitions 
+        The header file will just contain the method declarations
         for each class and each
-        method will not have a body that shows what each method does.
-         We call these a line
-        that only shows their method definitions and variable list a prototype.
+        method (generally) will not have a
+        body that shows what each method does.
+         (We call these
+        <a href="glossary.html#functionprototype">
+         function prototypes</a>.)
          Then in the .cpp file we will give each method a body / definition 
          (remember to use forward 
         declaration to show which method of which class is being defined). 
@@ -71,7 +82,6 @@
         initialization list for constructors are in the .cpp file. 
         </p>
 
-        <br />
 
         <h3> Include Guards</h3>
 
@@ -105,8 +115,6 @@
         the file has already been defined, go straight to
         the <span class = "code"> #endif </span> line.
         </p>
-
-        <br />
 
         <h3> How do I do Seperate Compilation? </h3>
 
@@ -150,7 +158,5 @@
             </li>
         </ol>
 
-        <br />
-        
     </body>
 </html>
