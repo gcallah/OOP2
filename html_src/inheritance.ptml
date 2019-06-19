@@ -1,0 +1,22 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Inheritance
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Inheritance
+        </h1>
+
+        <p>
+            The ability of one class to inherit from another is a key
+            advantage of object-oriented programing.
+        </p>
+
+    </body>
+</html>
