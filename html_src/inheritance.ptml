@@ -76,32 +76,32 @@
         point.
         </p>
 
-		<p>
-			<b>A few more notes...</b> 
-		</p>
+	<p>
+		<b>A few more notes...</b> 
+	</p>
 
-		<p>
-		When creating a derived class, you need to specify
-		<i>public</i> inheritance, as classes are private by default. No, you will
-		never use private inheritance. Everything that is public in the base class
-		becomes private in the derived.
-		</p>
+	<p>
+	When creating a derived class, you need to specify
+	<i>public</i> inheritance, as classes are private by default. No, you will
+	never use private inheritance. Everything that is public in the base class
+	becomes private in the derived.
+	</p>
 
-		<p>
-		All methods and fields from the base class are inherited by the derived.
-		However, all fields private in the base can only be accessed by the base's
-		methods. When initializing an instance of the derived class, such fields
-		<i>must</i> be initialized by the base constructor and cannot be initialized
-		without it. Lucky for us, the derived class constructors will always call
-		a base constructor, even if you do not specify a specific one. When 
-		constructing a derived instance, the base portion will get constructed first,
-		at the start of the	initialization list, before any unique derived fields are
-		initialized.
-		</p>
+	<p>
+	All methods and fields from the base class are inherited by the derived.
+	However, all fields private in the base can only be accessed by the base's
+	methods. When initializing an instance of the derived class, such fields
+	<i>must</i> be initialized by the base constructor and cannot be initialized
+	without it. Lucky for us, the derived class constructors will always call
+	a base constructor, even if you do not specify a specific one. When 
+	constructing a derived instance, the base portion will get constructed first,
+	at the start of the initialization list, before any unique derived fields are
+	initialized.
+	</p>
 
-		<p>
-		<b>The Slicing "Problem"</b> You <i>can</i> assign a derived object to a base
-		object. However, any methods and fields unique to the derived will be lost.
-		</p>
+	<p>
+	<b>The Slicing "Problem"</b> You <i>can</i> assign a derived object to a base
+	object. However, any methods and fields unique to the derived will be lost.
+	</p>
     </body>
 </html>
