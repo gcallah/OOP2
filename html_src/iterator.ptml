@@ -1,0 +1,49 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Iterators
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Iterators
+        </h1>
+
+        <p>
+            Iterators are objects similar to pointers in the 
+            way that they point to other objects; however the
+            main difference between iterators and pointers is 
+            that iterators is its own class and can be bi-directional 
+            if you implement your iterator class to do so. 
+
+        </p>
+        <br />
+
+        <p>
+            In our course, we will mainly use iterators to allow
+            the implementation of ranged-for loops for our classes. 
+            For this, our iterator class should include 3 parts:
+            an equality operator, dereference operator, and the ++
+            operator. The iterator should also store a data pointer 
+            to the current object.
+        </p>
+
+        <br />
+
+         <p>
+            stuff about methods of iterators
+        </p>
+        <p>
+            stuff about iterator methdos in class 
+        </p>
+
+        <p>
+            Calling STL iterators
+        </p>
+
+    </body>
+</html>
