@@ -32,6 +32,14 @@
             Inheritance
         </h1>
 
+        <figure>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Method_overriding_in_subclass.svg/440px-Method_overriding_in_subclass.svg.png"
+            width="17%">
+            <figcaption>
+                A dog IS-AN animal.
+            </figcaption>
+        </figure>
+
         <p>
             The ability of one class to inherit from another is a key
             advantage of object-oriented programing.
@@ -63,10 +71,11 @@
 
         <p>
         When we discuss inheritance, we say that the class that contains all
-        the common information is the base or parent class.  The classes that
-        inherit from the base (or parent class) are called derived or child
-        classes. An inheritance hierachy can be multiple levels. If it is, we
-        might also refer to an ancestor class or a descendant class.
+        the common information is the <b>base</b> or <b>parent</b> class.  The
+        classes that inherit from the base (or parent class) are called
+        <b>derived</b> or <b>child</b> classes. An inheritance hierachy can be
+        multiple levels. If it is, we might also refer to an ancestor class or
+        a descendant class.
         </p>
 
         <p>
@@ -74,7 +83,7 @@
         effectively any derived object is a base object, in the sense that
         anywhere you could use a base object, you should also be able to use
         any of the derived objects. (This is also known as Liskov's
-        Substitutability Principle.) Sometimes people refer to IS-A as a test.
+        <b>Substitutability Principle</b>.) Sometimes people refer to IS-A as a test.
         If you cannot comfortably say: "My derived class <i>is a</i> base
         class", then something maybe wrong in your design. Using our example
         above of animals, we can say "a cat is a(n) animal," which helps verify
@@ -95,5 +104,32 @@
         point.
         </p>
 
+    <p>
+        <b>A few more notes...</b> 
+    </p>
+
+    <p>
+    When creating a derived class, you need to specify
+    <i>public</i> inheritance, as classes are private by default. No, you will
+    never use private inheritance. Everything that is public in the base class
+    becomes private in the derived.
+    </p>
+
+    <p>
+    All methods and fields from the base class are inherited by the derived.
+    However, all fields private in the base can only be accessed by the base's
+    methods. When initializing an instance of the derived class, such fields
+    <i>must</i> be initialized by the base constructor and cannot be initialized
+    without it. Lucky for us, the derived class constructors will always call a
+    base constructor, even if you do not specify a specific one. When
+    constructing a derived instance, the base portion will get constructed
+    first, at the start of the initialization list, before any unique derived
+    fields are initialized.
+    </p>
+
+    <p>
+    <b>The Slicing "Problem"</b>: You <i>can</i> assign a derived object to a base
+    object. However, any methods and fields unique to the derived will be lost.
+    </p>
     </body>
 </html>
