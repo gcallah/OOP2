@@ -1,0 +1,97 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Pointers and References in C++
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Pointers and References in C++
+        </h1>
+
+        <figure>
+            <img src="https://i.stack.imgur.com/HOY4C.png" width="40%">
+            <figcaption>
+                A typical way to lay out program memory.
+            </figcaption>
+        </figure>
+
+        <p>
+        <a href="glossary.html#pointer">Pointers</a>
+        (variables that contain a memory address)
+        are a topic you will never have dealt with in a course based
+        on a language like Python, thus they may be a hard concept to grasp.
+        Nevertheless, they are fundamental to computer programming: you just
+        never dealt with them in Python because Python hides their existence
+        from the Python programmer... not deceitfully, but because it easier to
+        program without having to think about memory addresses. But the people
+        who create the Python language have to deal with pointers all the time.
+        And you will never be a top-notch professional, even programming in a
+        language that hides its pointers from you, unless you understand their
+        use.
+        </p>
+
+        <p>
+        Here are the topics we will cover in this unit:
+        </p>
+
+        <ul>
+            <li>
+                Addresses
+            </li>
+
+            <li>
+                Pointer types
+            </li>
+
+            <li>
+                Pointers and const
+            </li>
+
+            <li>
+                Dynamic memory
+                <br />
+                Here we must start to deal with the difference between stack
+                and heap memory.
+            </li>
+
+            <li>
+                <a href="glossary.html#reference">References</a>
+                <br />
+            </li>
+
+            <li>
+                Pass by value
+                versus
+                pass by reference
+            </li>
+
+        </ul>
+
+        <hr>
+
+        <p>
+        Source code illustrating pointers and memory management:
+        </p>
+
+        <ul>
+            <li>
+                <a href="thing.html">
+                    Allocating a vector of pointers to things.
+                </a>
+            </li>
+
+            <li>
+                <a href="image.html">
+                    A class hierarchy of images
+                </a>
+            </li>
+
+        </ul>
+
+    </body>
+</html>

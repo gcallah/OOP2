@@ -1,0 +1,86 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Running our code from Cygwin
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Running our code from Cygwin
+        </h1>
+
+        <p>
+        For Windows users, an easy way to get our homework build pipeline
+        working is to install Cygwin, and then use the make commands we provide
+        to build and push your programs. So let's look at how you can do this!
+        </p>
+
+        <p>
+        The Cygwin install page
+        <a href="https://cygwin.com/install.html">is here</a> .
+        When you do the install, you should choose to install the following
+        packages:
+        </p>
+
+        <ul>
+            <li>
+                gcc-g++
+            </li>
+
+            <li>
+                git
+            </li>
+
+            <li>
+                make
+            </li>
+        </ul>
+
+        <p>
+        (You may install as many additional packages as you want, but those are
+        sufficient.)
+        </p>
+
+        <p>
+        You will then find a directory names something like 
+        <span class="code">cygwin64</span> on your C: drive. You can then open
+        that, and find a
+        <span class="code">home</span>
+        directory, and in that, a directory with
+        your user name. You should <span class="code">cd</span> into that
+        directory. Once there, you should clone you StudentOOP repo... run:
+        </p>
+
+        <p>
+        <code>
+            <pre>
+            git clone your_repoURL.git
+            </pre>
+        </code>
+        </p>
+
+        <p>
+        "your_repoURL.git" is not what you literally type in! We mean put in
+        the URL of your StudentOOP repo! You can copy that from GitHub using
+        the green "Clone or download" button.
+        </p>
+
+        <p>
+        That should create a new directory (folder) called StudentOOP. You can
+        the <span class="code">cd</span> into that, and then run:
+        </p>
+
+        <p>
+        <code>
+            <pre>
+            make prod
+            </pre>
+        </code>
+        </p>
+
+    </body>
+</html>
