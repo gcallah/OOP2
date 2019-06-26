@@ -1,0 +1,40 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Linked Lits
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Array vs Linked List
+        </h1>
+
+        <ul>
+            <li>Access an item: In an array, you can access an element with the index. If you want to access the third element you have to write the variable number with its index in the square bracket. Lists, on the other hand, do not support random access. To access the third item you have to start from the head and walk your way through until you reach the third element.</li>
+            <li>Insertion: Inserting an element into the array is slow. If you want to insert an item in the fourth position, you have to move all items after the third position to the right by one position to leave space for the new inserted item. This takes linear time. Whereas, in a linked list, you could insert an item in constant time if you are given a pointer that points to the previous value before the position you want to insert the element. You just change its next pointer to point to the new element and set the new item's next pointer to point to the rest of the list.</li>
+            <li>Deletion: similar to insertion, the linked list deletes an item much faster than the array. You just set the next pointer of the previous node to point to the rest of list after the deleted node.</li>
+        </ul>
+
+        <h1>Toolkit</h1>
+        <p>The following is some useful member functions of linked lists that you could implement when you build your own linked list class.</p>
+
+        <ul>
+            <li>Length</li>
+            <li>Find an element at a particular position</li>
+            <li>Insert a value at the beginning or end</li>
+            <li>Insert somewhere other than the beginnig or end</li>
+            <li>Remove head or tail</li>
+            <li>Remove other than head or tail</li>
+            <li>Remove the first element in the list that has a paticular value</li>
+            <li>Remove all elements with a particular value</li>
+            <li>Remove all elements from a list</li>
+            <li>Create a copy of list</li>
+            <li>Append one list onto another(non-destructive)</li>
+        </ul>
+
+    </body>
+</html>

@@ -85,21 +85,25 @@
                  </li>
   
                  <li>
-                    <a href="vector.html">
+                    <a href="inheritance.html">
                      Inheritance
                     </a>
                  </li>
   
                  <li>
+                    <a href="linkedlist.html">
                      Implementing our own linked list
-                 </li>
-  
-                 <li>
-                     Iterators
+                    </a>
                  </li>
   
                  <li>
                      Recursion (including recursion)
+                 </li>
+  
+                 <li>
+                    <a href="iterator.html">
+                     Iterators
+                    </a>
                  </li>
   
                  <li>
