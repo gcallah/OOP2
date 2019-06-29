@@ -15,27 +15,11 @@ using namespace std;
  * lists of any type:
  * Templates are the C++ feature that enable generic programming.
  * */
-template <typename T>
-void print_list(const string name, const list<T>& l) {
-    cout << "\n_______" << endl;
-
-    cout << name << ":\n";
-    for (T item : l) cout << item << " ";
-
-    cout << "\n_______" << endl;
-}
 
 /*
  * But, we can go even more generic, and make a `print` that can print
  * *containers* of any sequential type:
  * */
-template <typename SequenceContainer>
-void print(const string name, const SequenceContainer& seq) {
-    cout << "\n_______" << endl;
-    cout << name << ":\n";
-    for(auto& item : seq) cout << item << " ";
-    cout << "\n_______" << endl;
-}
 
 class Cat {
     friend ostream& operator<<(ostream& os, const Cat& cat) {
@@ -53,10 +37,6 @@ bool is_odd(int n) { return (n % 2) != 0; }
 /*
  * Or, we could have a *functor*!
  * */
-class IsOdd {
-    public:
-        bool operator()(int n) { return (n % 2) != 0; }
-};
 
 /*
  * Our main will exercise some STL capabilities.
@@ -76,9 +56,9 @@ int main() {
      * We will create it with a half-open range, and then sort it.
      * */
     vector<char> cvec(s2, s2 + dennislen);
-    print("cvec", cvec);
+//    print("cvec", cvec);
     sort(cvec.begin(), cvec.end());
-    print("sorted cvec", cvec);
+//    print("sorted cvec", cvec);
 
     /*
      * Create a `char` list:
@@ -95,7 +75,7 @@ int main() {
      * We use `print_list` here just to make sure it works, but `print()`
      * is preferred!
      * */
-    print_list("clist reversed", clist);
+//    print_list("clist reversed", clist);
     /*
      * But even after `clist` is reversed, `clist` and
      * `clist2` are still permutations of each other:
@@ -112,7 +92,7 @@ int main() {
      * */
     Cat catptr[] = { Cat(), Cat(), Cat() };
     list<Cat> catlist(catptr, catptr + 3);
-    print_list("Cat list", catlist);
+//    print_list("Cat list", catlist);
 
     /*
      * Testing an int list:
@@ -123,45 +103,31 @@ int main() {
     /*
      * Our print can work for lists as well as vectors:
      * */
-    print("ilist", ilist);
+//    print("ilist", ilist);
     /*
      * `sort()` does not work for lists, since they aren't random access.
      * Thus lists have their own `sort()` method, called below:
      * This *won't* work: `sort(ilist.begin(), ilist.end());`
      * */
     ilist.sort();
-    print("ilist sorted", ilist);
+//    print("ilist sorted", ilist);
 
     /*
      * Let's experiment with *iterators* a bit!
      * */
-    list<int>::iterator iiter = find(ilist.begin(), ilist.end(), 8);
-    cout << "After find(), iter is at: " << *iiter << endl;
-    ++iiter;
-    if (iiter != ilist.end()) {
-        cout << "After increment, iter is at: " << *(iiter) << endl;
-    }
 
     /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
-    list<int>::iterator if_iter1 = find_if(ilist.begin(), ilist.end(),
-            is_odd);
-    cout << "First is_odd() number in list is: " << *if_iter1 << endl;
 
     /*
      * Here we are going to pass functor `IsOdd` to `find_if()`.
      * */
-    list<int>::iterator if_iter2 = find_if(ilist.begin(), ilist.end(),
-            IsOdd());
-    cout << "First IsOdd number in list is: " << *if_iter2 << endl;
 
     /*
      * Here we are going to pass a *lambda* to `find_if()`.
      * The lambda starts with `[]`. The point here is to show
      * that this form and the one above are identical in effect.
      * */
-    list<int>::iterator if_iter3 = find_if(ilist.begin(),
-            ilist.end(), [] (int n) { return (n % 2) != 0; });
-    cout << "First lambda odd number in list is: " << *if_iter3 << endl;
+    // cout << "First lambda odd number in list is: " << *if_iter3 << endl;
 }
