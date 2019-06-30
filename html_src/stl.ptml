@@ -38,14 +38,6 @@
 
                 <pre>
                 <code>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="nf">print_list</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">list</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">_______&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">T</span> <span class="nl">item</span> <span class="p">:</span> <span class="n">l</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">_______&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
 
 </code>                </pre>
                 <p>
@@ -56,13 +48,6 @@
 
                 <pre>
                 <code>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">SequenceContainer</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">SequenceContainer</span><span class="o">&amp;</span> <span class="n">seq</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">_______&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">item</span> <span class="p">:</span> <span class="n">seq</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">_______&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
 <span class="k">class</span> <span class="nc">Cat</span> <span class="p">{</span>
     <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cat</span><span class="o">&amp;</span> <span class="n">cat</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;meow &quot;</span><span class="p">;</span>
@@ -88,10 +73,6 @@
 
                 <pre>
                 <code>
-<span class="k">class</span> <span class="nc">IsOdd</span> <span class="p">{</span>
-    <span class="k">public</span><span class="o">:</span>
-        <span class="kt">bool</span> <span class="nf">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">};</span>
 
 </code>                </pre>
                 <p>
@@ -119,9 +100,9 @@
                 <pre>
                 <code>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">cvec</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">dennislen</span><span class="p">);</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;cvec&quot;</span><span class="p">,</span> <span class="n">cvec</span><span class="p">);</span>
+<span class="c1">//    print(&quot;cvec&quot;, cvec);</span>
     <span class="n">sort</span><span class="p">(</span><span class="n">cvec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">cvec</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;sorted cvec&quot;</span><span class="p">,</span> <span class="n">cvec</span><span class="p">);</span>
+<span class="c1">//    print(&quot;sorted cvec&quot;, cvec);</span>
 
 </code>                </pre>
                 <p>
@@ -153,7 +134,7 @@
 
                 <pre>
                 <code>
-    <span class="n">print_list</span><span class="p">(</span><span class="s">&quot;clist reversed&quot;</span><span class="p">,</span> <span class="n">clist</span><span class="p">);</span>
+<span class="c1">//    print_list(&quot;clist reversed&quot;, clist);</span>
 </code>                </pre>
                 <p>
       But even after <span class="code">clist</span> is reversed, <span class="code">clist</span> and
@@ -179,7 +160,7 @@
                 <code>
     <span class="n">Cat</span> <span class="n">catptr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">Cat</span><span class="p">(),</span> <span class="n">Cat</span><span class="p">(),</span> <span class="n">Cat</span><span class="p">()</span> <span class="p">};</span>
     <span class="n">list</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span> <span class="n">catlist</span><span class="p">(</span><span class="n">catptr</span><span class="p">,</span> <span class="n">catptr</span> <span class="o">+</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="n">print_list</span><span class="p">(</span><span class="s">&quot;Cat list&quot;</span><span class="p">,</span> <span class="n">catlist</span><span class="p">);</span>
+<span class="c1">//    print_list(&quot;Cat list&quot;, catlist);</span>
 
 </code>                </pre>
                 <p>
@@ -200,7 +181,7 @@
 
                 <pre>
                 <code>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;ilist&quot;</span><span class="p">,</span> <span class="n">ilist</span><span class="p">);</span>
+<span class="c1">//    print(&quot;ilist&quot;, ilist);</span>
 </code>                </pre>
                 <p>
       <span class="code">sort()</span> does not work for lists, since they aren't random access.
@@ -212,7 +193,7 @@
                 <pre>
                 <code>
     <span class="n">ilist</span><span class="p">.</span><span class="n">sort</span><span class="p">();</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;ilist sorted&quot;</span><span class="p">,</span> <span class="n">ilist</span><span class="p">);</span>
+<span class="c1">//    print(&quot;ilist sorted&quot;, ilist);</span>
 </code>                </pre>
                 <p>
       Let's experiment with <i>iterators</i> a bit!
@@ -221,12 +202,6 @@
 
                 <pre>
                 <code>
-    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">iiter</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">ilist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ilist</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">8</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;After find(), iter is at: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iiter</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="o">++</span><span class="n">iiter</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">iiter</span> <span class="o">!=</span> <span class="n">ilist</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;After increment, iter is at: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="p">(</span><span class="n">iiter</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
 
 </code>                </pre>
                 <p>
@@ -234,12 +209,6 @@
 
                 </p>
 
-                <pre>
-                <code>
-    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">if_iter1</span> <span class="o">=</span> <span class="n">find_if</span><span class="p">(</span><span class="n">ilist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ilist</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-            <span class="n">is_odd</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;First is_odd() number in list is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">if_iter1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</code>                </pre>
                 <p>
       Here we are going to pass functor <span class="code">IsOdd</span> to <span class="code">find_if()</span>.
 
@@ -247,9 +216,6 @@
 
                 <pre>
                 <code>
-    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">if_iter2</span> <span class="o">=</span> <span class="n">find_if</span><span class="p">(</span><span class="n">ilist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ilist</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-            <span class="n">IsOdd</span><span class="p">());</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;First IsOdd number in list is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">if_iter2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 
 </code>                </pre>
                 <p>
@@ -261,9 +227,7 @@
 
                 <pre>
                 <code>
-    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">if_iter3</span> <span class="o">=</span> <span class="n">find_if</span><span class="p">(</span><span class="n">ilist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
-            <span class="n">ilist</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[]</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">});</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;First lambda odd number in list is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">if_iter3</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// cout &lt;&lt; &quot;First lambda odd number in list is: &quot; &lt;&lt; *if_iter3 &lt;&lt; endl;</span>
 <span class="p">}</span>
 </code>                </pre>
 
