@@ -48,7 +48,7 @@
                 <a name="class">
                 <span class="hilight">class</span>:
                 </a>
-                A C++ construct that can hold both data values and
+                a C++ construct that can hold both data values and
                 functions (called <i>methods</i>). It differs from a
                 <i>struct</i> in that the members of a struct are public by
                 default, while members of a class are private by default.
@@ -130,6 +130,30 @@
             </li>
 
             <li>
+                <a name="genericprogramming">
+                <span class="hilight">generic programming</span>:
+                </a>
+                focuses on the creation of data structures and algorithms that
+                can work with many different types. In C++, generic programming
+                is supported by <a href="#template">templates</a>.
+            </li>
+
+            <li>
+                <a name="keyword">
+                <span class="hilight">keyword</span>:
+                </a>
+                one of a number of reserved strings in a language, that can't
+                be used to name functions or variables. In C++, keywords
+                include things like
+                <span class="code">if</span>, 
+                <span class="code">while</span>, 
+                <span class="code">for</span>, 
+                <span class="code">const</span>, 
+                <span class="code">virtual</span>,
+                and many more.
+            </li>
+
+            <li>
                 <a name="lambda">
                 <span class="hilight">lambda</span>:
                 </a>
@@ -173,6 +197,15 @@
             </li>
 
             <li>
+                <a name="overriding">
+                <span class="hilight">overriding</span>:
+                </a>
+                is to create a method in a derived class that replaces the
+                behavior of a method with the same name and arguments
+                in its parent class.
+            </li>
+
+            <li>
                 <a name="pointer">
                 <span class="hilight">pointer</span>:
                 </a>
@@ -182,14 +215,22 @@
 
             <li>
                 <a name="polymorphism">
-                <span class="hilight">polymorphism</span>:
-                </a>
+                <span class="hilight">polymorphism</span>: </a>
                 also called "dynamic binding." Polymorphism describes the
                 ability, present in some languages, to accept a pointer or
                 reference to a base-type object, and yet successfully invoke
                 the proper method in a derived-class object being referenced.
                 In C++, polymorphism can be turned on by using the reserved
                 word <span class="code">virtual</span> on a method in a class.
+            </li>
+
+            <li>
+                <a name="preprocessor">
+                <span class="hilight">preprocessor</span>:
+                </a>
+                the program that runs before the compiler and handles
+                <span class="code">#include</span> and
+                <span class="code">#define</span> directives.
             </li>
 
             <li>
@@ -242,10 +283,19 @@
             </li>
 
             <li>
+                <a name="template">
+                <span class="hilight">template</span>:
+                </a>
+                a machine that produces classes or functions
+                when passed a concrete type. It enables C++ support
+                for <a href="#genericprogramming">generic programming</a>. 
+            </li>
+
+            <li>
                 <a name="vector">
                 <span class="hilight">vector</span>:
                 </a>
-                In C++, a class in the <i>Standard Template Library</i>
+                in C++, a class in the <i>Standard Template Library</i>
                 that allows random, constant-time access to a collection of
                 items of some specific type, and holds those items in a
                 determinate order.
@@ -255,7 +305,7 @@
                 <a name="virtual">
                 <span class="hilight">virtual</span>:
                 </a>
-                In C++, this keyword turns on
+                in C++, this keyword turns on
                 <a href="#polymorphism">
                     polymorphism
                 </a>.
