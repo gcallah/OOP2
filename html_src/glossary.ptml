@@ -19,6 +19,15 @@
 
         <ul>
             <li>
+                <a name="abstractclass">
+                <span class="hilight">abstract class</span>:
+                </a>
+                a class with at least one 
+                <a href="#purevirtual">pure virtual method</a>
+                is called abstract, meaning it cannot be instantiated.
+            </li>
+
+            <li>
                 <a name="assignmentoperator">
                 <span class="hilight">assignment operator</span>:
                 </a>
@@ -33,6 +42,19 @@
                 </a>
                 the main three elements of copy control: the assignment
                 operator, the copy constructor, and the destructor.
+            </li>
+
+            <li>
+                <a name="class">
+                <span class="hilight">class</span>:
+                </a>
+                A C++ construct that can hold both data values and
+                functions (called <i>methods</i>). It differs from a
+                <i>struct</i> in that the members of a struct are public by
+                default, while members of a class are private by default.
+                In practice, coders most often use
+                <span class="code">struct</span>
+                when they don't intend to write any methods.
             </li>
 
             <li>
@@ -59,10 +81,33 @@
             </li>
 
             <li>
+                <a name="delegation">
+                <span class="hilight">delegation</span>:
+                </a>
+                giving programming tasks to the lowest-level object that can
+                handle them. For example, if your <span
+                    class="code">Department</span> class needs to print <span
+                    class="code">Employee</span> objects, it delegates the task
+                to the <span class="code">Employee</span> class, rather than
+                containing code to print them itself.
+            </li>
+
+            <li>
                 <a name="destructor">
                 <span class="hilight">destructor</span>:
                 </a>
-                the class method that cleans up an object of that class.
+                the class method that cleans up all dynamically allocated
+                resources for an object of that class.
+            </li>
+
+            <li>
+                <a name="dynamicbinding">
+                <span class="hilight">dynamic binding</span>:
+                </a>
+                means that the language being used
+                decides what method should be called in a particular case at
+                runtime, rather than at compile time.
+                (See <a href="#polymorphism">polymorphism</a>.)
             </li>
 
             <li>
@@ -73,6 +118,38 @@
                 and <span class="code">const</span> status of a function,
                 but does not include the body of the function (what it actually
                 does).
+            </li>
+
+            <li>
+                <a name="functor">
+                <span class="hilight">functor</span>:
+                </a>
+                an object designed to work like a function. In C++, this
+                is achieved by overloading the <span class="code">()</span>
+                operator.
+            </li>
+
+            <li>
+                <a name="lambda">
+                <span class="hilight">lambda</span>:
+                </a>
+                an anonymous function, also called a lexical closure.
+            </li>
+
+            <li>
+                <a name="linker">
+                <span class="hilight">linker</span>:
+                </a>
+                The program that pulls together several compiled files into a
+                single, executable file.
+            </li>
+
+            <li>
+                <a name="LSP">
+                <span class="hilight">LSP (Liskov Substitution Principle)</span>:
+                </a>
+                One should be able to substitute an instance of a derived 
+                class wherever an instance of a base class is called for.
             </li>
 
             <li>
@@ -90,7 +167,8 @@
                 </a>
                 to create more than one function or operator with
                 the same name, but a different type signature.
-                For instance, '+' can add two integers, but it can also 
+                For instance, <span class="code">+</span>
+                can add two integers, but it can also 
                 add two doubles or two strings.
             </li>
 
@@ -111,18 +189,36 @@
                 reference to a base-type object, and yet successfully invoke
                 the proper method in a derived-class object being referenced.
                 In C++, polymorphism can be turned on by using the reserved
-                word `virtual` on a method in a class.
+                word <span class="code">virtual</span> on a method in a class.
+            </li>
+
+            <li>
+                <a name="purevirtual">
+                <span class="hilight">pure virtual method</span>:
+                </a>
+                a method with the "body" <span class="code">= 0</span>,
+                used to indicate that only descendants that supply that
+                method can actually be created.
             </li>
 
             <li>
                 <a name="reference">
                 <span class="hilight">reference</span>:
                 </a>
-                a "smarter" pointer that is de-referenced each time it is used.
+                a "smarter" pointer-like object that is de-referenced each time
+                it is used.
                 <br />
                 <a
                     href="https://en.wikipedia.org/wiki/Reference_(C%2B%2B)">More
                 on C++ references</a>. 
+            </li>
+
+            <li>
+                <a name="staticbinding">
+                <span class="hilight">static binding</span>:
+                </a>
+                decides what method should be called in a particular case when
+                compiling, rather than at runtime.
             </li>
 
             <li>
@@ -153,6 +249,16 @@
                 that allows random, constant-time access to a collection of
                 items of some specific type, and holds those items in a
                 determinate order.
+            </li>
+
+            <li>
+                <a name="virtual">
+                <span class="hilight">virtual</span>:
+                </a>
+                In C++, this keyword turns on
+                <a href="#polymorphism">
+                    polymorphism
+                </a>.
             </li>
         </ul>
     </body>
