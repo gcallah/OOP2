@@ -1,0 +1,36 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Recursion
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Recursion
+        </h1>
+
+        <p>
+Recursion happens when a function calls itself. The function is called a recursive function. Recursive functions does a small part of the task in each recursive call, similar to a loop. Note: recursion and loops are NOT the same. Most of the time, recursion can simplify your code and make algorithms easier to understand. However, there are also some cases where using recursion makes your program confusing and inefficient.
+        </p>
+
+        <p>
+        When writing a recursive function, there should always be at least one base case. This is necessary to tell the function when to stop the recursion and what to do at the end of the recursive calls. For basic recursive functions, this is usually done with an if statement checking to see if one of the parameters reaches a certain value.
+        </p>
+
+        <p>
+        Each recursive step should do a small portion of the overall task. This is similar to the body of a loop. The small portion of the task could be done before you call the function again, or during.
+        </p>
+        <p>
+        A recursive function would, of course, have at least one recursive call. The recursive call would call the function again, but with updated parameters. This can be done before the recursive call, or just change the parameters directly in the recursive call. In simple recursive functions, the parameters should get closer to the base case with each recursive call so that it will eventually reach the base case. If there is a return type for the function, you have to make sure you return the recursive call.
+        </p>
+        <p>
+        One way of understanding to write recursive functions is to use the function on a smaller scale of the problem. After writing the base case, you can assume that the function does what it's supposed to on the next recursive call. If the function works for the next recursive step, what do you need to add in the current recursive step for it to complete the task?
+        </p>
+
+
+    </body>
+</html>
