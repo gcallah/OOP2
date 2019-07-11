@@ -1,13 +1,20 @@
-<p class="menu">
+<ul class="menu">
+	<li>
 	<a href="index.html">Home</a>
-	&nbsp;|&nbsp;
+	</li>
+	<li>
 	<a href="courseinfo.html">Course Info</a>
-	&nbsp;|&nbsp;
+	</li>
+	<li>
 	<a href="code.html">Code</a>
-	&nbsp;|&nbsp;
+	</li>
+	<li>
 	<a href="resources.html">Resources</a>
-	&nbsp;|&nbsp;
+	</li>
+	<li>
 	<a href="glossary.html">Glossary</a>
-	&nbsp;|&nbsp;
+	</li>
+	<li>
 	<a href="about.html">About</a>
-</p>
+	</li>
+</ul>
