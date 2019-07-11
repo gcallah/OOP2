@@ -4,6 +4,8 @@ body {
     font-size: 100%;
     color: #333;
     background: #ddd;
+    line-height: 2.0;
+    font-family: Verdana, Geneva, sans-serif
 }
 
 a:link {
@@ -59,7 +61,7 @@ figcaption {
 
 
 p {
-    margin: .6em 3em .6em 3em;
+    margin: .6em 4em .6em 5em;
     font-size: 1.2em;
 }
 
@@ -70,7 +72,7 @@ p.menu {
 }
 
 ol, ul, dl, li {
-    margin: 1.6em 1em .6em 1em;
+    margin: 1.6em 2em .6em 2em;
     font-size: 1.1em;
 }
 
@@ -111,7 +113,7 @@ h1,h2,h3,h4,h5 {
 
 h1 {
     padding: .4em;
-    margin: 1.4em .6em 1.4em .6em;
+    margin: 1.4em 8em 1.4em 8em;
     text-align: center;
     font-weight: 300;
     font-size: 2em;
