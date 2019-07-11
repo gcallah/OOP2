@@ -68,6 +68,9 @@ td.key-col {
 figure {
     text-align: center;
 }
+figure.logo {
+    margin: 0em 0em .6em 0em;
+}
 
 figcaption {
     color: #369;
