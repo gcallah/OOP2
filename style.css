@@ -19,7 +19,8 @@ ul.centered {
     margin: 0;
     display: flex;
     justify-content: space-between;
-    background-color: #fde;
+/*    background-color: #fde; */
+    background-color: #bfc;
 }
 
 a {
@@ -70,6 +71,7 @@ figure {
 }
 figure.logo {
     margin: 0em 0em 0em 0em;
+    background-color: #bfc;
 }
 
 figcaption {
@@ -137,7 +139,7 @@ h1 {
     text-align: center;
     font-weight: 300;
     font-size: 2em;
-    color: #cfc;
+    color: #bfc;
     background-color: #339;
 }
 

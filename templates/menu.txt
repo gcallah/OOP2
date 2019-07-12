@@ -3,9 +3,6 @@
 	<a href="index.html">HOME</a>
 	</li>
 	<li>
-	<a href="courseinfo.html">COURSE INFO</a>
-	</li>
-	<li>
 	<a href="code.html">CODE</a>
 	</li>
 	<li>
