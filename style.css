@@ -1,3 +1,7 @@
+:root {
+  --light-bg-color: #cfd;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -19,8 +23,7 @@ ul.centered {
     margin: 0;
     display: flex;
     justify-content: space-between;
-/*    background-color: #fde; */
-    background-color: #bfc;
+    background-color: var(--light-bg-color);
 }
 
 a {
@@ -71,7 +74,7 @@ figure {
 }
 figure.logo {
     margin: 0em 0em 0em 0em;
-    background-color: #bfc;
+    background-color: var(--light-bg-color);
 }
 
 figcaption {
