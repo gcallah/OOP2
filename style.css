@@ -17,9 +17,9 @@ ul.centered {
     list-style-position: inside;
 }
 .menu {
-    margin: 1.6em 12em .6em 12em;
+    margin: 1.6em 12em .6em 0em;
     list-style: none;
-    padding: 0;
+    padding: .8em;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -138,7 +138,7 @@ h1,h2,h3,h4,h5 {
 
 h1 {
     padding: .4em;
-    margin: 1.4em 10em 1.4em 10em;
+    margin: 0em 10em 1.4em 10em;
     text-align: center;
     font-weight: 300;
     font-size: 2em;
