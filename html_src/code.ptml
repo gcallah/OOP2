@@ -86,6 +86,13 @@
                 to strip off digits one-by-one.
                 It is called in the recursion examples code above.
             </li>
+
+            <li>
+                <a href="functors.html">Functors</a>
+                <br />
+                Shows a trivial and a more advanced use of a functor.
+            </li>
+
         </ul>
 
         <hr>

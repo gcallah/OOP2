@@ -22,10 +22,11 @@ touch_cpp: FORCE
 	cd $(VECT_DIR); touch *.cpp
 	cd $(WTHR_DIR); touch *.cpp
 
-code_pages: base_conv complex hello image recursion stl thing
+code_pages: base_conv complex functors hello image recursion stl thing
 
 base_conv: $(PTML_DIR)/base_conv.ptml
 complex: $(PTML_DIR)/complex.ptml
+functors: $(PTML_DIR)/functors.ptml
 hello: $(PTML_DIR)/hello.ptml
 image: $(PTML_DIR)/image.ptml
 recursion: $(PTML_DIR)/recursion.ptml
@@ -36,6 +37,9 @@ $(PTML_DIR)/base_conv.ptml: $(MISC_DIR)/base_conv.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/complex.ptml: $(MISC_DIR)/complex.cpp
+	$(CPP2HTML) $< > $@
+
+$(PTML_DIR)/functors.ptml: $(MISC_DIR)/functors.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/hello.ptml: $(MISC_DIR)/hello.cpp

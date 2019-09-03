@@ -1,6 +1,6 @@
 
 /*
- * thing.cpp is designed to illustrate basic memory management.
+ * `thing.cpp` is designed to illustrate basic memory management.
  * */
 #include <iostream>
 using namespace std;
