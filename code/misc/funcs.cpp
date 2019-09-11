@@ -6,14 +6,19 @@
  * It also illustrates the use of a return value from a function.
  * */
 #include <iostream>
+#include <vector>
 using namespace std;
 
 const bool DEBUG = false;
 
+
+/*
+ * Function prototypes just state the return value type,
+ * the function name, and the parameter types.
+ * */
 void pass_by_value(int n);
-void pass_by_ref(int &n);
+void pass_by_ref(int& n);
 int call_with_ret(int n);
-void pass_by_constref(const int& n);
 
 
 int main() {
@@ -62,4 +67,5 @@ int call_with_ret(int n) {
 // {
 //    n++;
 // }
+
 

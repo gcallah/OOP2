@@ -13,6 +13,7 @@ int squarish(int n);
 
 
 int main() {
+    srand(time(0));
     for (int i = 0; i < 10; i++) {
         cout << "squarish of " << i << " = " << squarish(i) << endl;
     }
