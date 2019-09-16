@@ -64,7 +64,7 @@ void printComplex(const Complex& c)
 
 void printVector(const vector<Complex>& v)
 {
-    for(const Complex& c : v)
+    for(auto c : v)
     {
         printComplex(c);
     }
