@@ -10,14 +10,26 @@ const bool DEBUG = true;
 
 class Reading
 {
+ public:
     Reading() {}
 
     ostream& operator<<(ostream& os)
     {
-        os << "Weather reading";
+        os << "Weather reading; temp: " << temp;
         return os;
     }
+
+ private:
+    double temp;
 };
+
+
+void collect_readings(istream& is, Vector<Reading>& rvec) {
+}
+
+
+void print_readings(ostream& os, Vector<Reading>& rvec) {
+}
 
 
 int main()
@@ -38,5 +50,9 @@ int main()
         exit(1);
     }
 
+    vector<Reading> rvec;
+    collect_readings(readings, rvec);
     readings.close();
+
+    print_readings(cout, rvec);
 }
