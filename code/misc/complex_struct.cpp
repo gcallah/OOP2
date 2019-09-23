@@ -3,6 +3,7 @@
  *  for an inclass demo.
  * */
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <vector>
 using namespace std;
@@ -11,8 +12,12 @@ const bool DEBUG = true;
 
 class Complex
 {
+    friend ostream& operator<<(ostream& os, const Complex& c);
+
  public:
-    Complex(double r=0.0, double im=0.0) : real(r), imaginary(im) { }
+    Complex() : real(0.0), imaginary(0.0) { }
+    Complex(double r, double im) : real(r), imaginary(im) { }
+    // Complex(double r=0.0, double im=0.0) : real(r), imaginary(im) { }
 
     Complex add(const Complex& other)
     {
@@ -33,8 +38,16 @@ class Complex
 };
 
 
-void printVector(const vector<Complex>& v);
-void printComplex(const Complex& c);
+ostream& operator<<(ostream& os, const Complex& c) {
+    os << setprecision(10) << "R: " << c.real << " I: " 
+         << c.imaginary;
+    return os;
+}
+
+
+void readVector(istream& is, vector<Complex>&);
+
+void printVector(ostream& os, const vector<Complex>& v);
 
 
 int main()
@@ -42,7 +55,7 @@ int main()
     // A program to introduce `struct`.
     // We will work with complex numbers.
     Complex c1;
-    printComplex(c1);
+    cout << c1 << endl;
     cout << "\nInput a complex number:\n";
     double r, i;
     cin >> r >> i;
@@ -54,40 +67,38 @@ int main()
     c1.set_real(r); c1.set_imaginary(i);
     if(DEBUG)
     {
-        cout << "c1 = ";
-        printComplex(c1);
+        cout << "c1 = " << c1 << endl;
     }
 
-    /*
     Complex c2{43.2, 58.9};
-    if(DEBUG) 
-    {
-        cout << "c2 = ";
-        printComplex(c2);
-    }
 
     Complex c3 = c1.add(c2);
-    printComplex(c3);
+    cout << c3 << endl;
 
-    vector<Complex> v{c1, c2, c3};
+    vector<Complex> v;
+    ifstream ifs("complex.txt");
+    readVector(ifs, v);
+
     cout << "Printing vector\n";
-    printVector(v);
-    */
+    printVector(cout, v);
 }
 
 
-void printComplex(const Complex& c)
+void printVector(ostream& os, const vector<Complex>& v)
 {
-    cout << setprecision(10) << "R: " << c.get_real() << " I: " 
-         << c.get_imaginary() << endl;
-}
-
-
-void printVector(const vector<Complex>& v)
-{
-    for(auto c : v)
+    for(const Complex& c : v)
     {
-        printComplex(c);
+        os << c << "; " << endl;
+    }
+    os << endl;
+}
+
+
+void readVector(istream& is, vector<Complex>& v) {
+    double r, im;
+    while (is >> r >> im) {
+        Complex c(r, im);
+        v.push_back(c);
     }
 }
 
