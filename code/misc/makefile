@@ -32,6 +32,7 @@ tests:
 
 prod:
 	-git commit -a 
+	git pull origin master
 	git push origin master
 
 nocrud:
