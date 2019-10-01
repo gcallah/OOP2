@@ -34,7 +34,10 @@ class ATestType {
     /*
      * Destructor: deletes the storage pointed to by `iptr`.
      * */
-    ~ATestType() { delete iptr; }
+    ~ATestType() {
+        cout << "In ATestType destructor for " << id << endl;
+        delete iptr;
+    }
 
     int get_val()  { return *iptr; }
     void set_val(int n)  { *iptr = n; }
@@ -46,7 +49,7 @@ class ATestType {
 
 
 ostream& operator<<(ostream& os, const ATestType& t) {
-    os << "ATestType " << t.id << " has val " << *(t.iptr) << endl;
+    os << "|ATestType " << t.id << " has val " << *(t.iptr) << "|";
     return os;
 }
 
@@ -55,12 +58,18 @@ ostream& operator<<(ostream& os, const ATestType& t) {
  * Print a vector of T, where T must be a type that
  * implements `operator<<()`.
  * */
-template <typename T>
-void print_vector(ostream& os, vector<T> vec) {
-    for (auto mbr : vec) {
+template <typename Streamable>
+void print_vector(ostream& os, vector<Streamable> vec) {
+    for (auto& mbr : vec) {
         os << mbr << ' ';
     }
     os << endl;
+}
+
+
+void section_head(const string& s) {
+    cout << "\n***********************\n";
+    cout << s << endl;
 }
 
 
@@ -76,9 +85,16 @@ int main() {
     ATestType att2{'2', 32};
 
     vector<ATestType> att_vec;
-    cout << "Pushing back att1\n";
+    section_head("Pushing back att1");
     att_vec.push_back(att1);
-    cout << "Emplacing back att2\n";
+    section_head("Emplacing back att2");
     att_vec.emplace_back(att2);
+
+    section_head("Printing att vec");
     print_vector(cout, att_vec);
+
+    section_head("Clearing the att vector");
+    att_vec.clear();
+
+    section_head("Exiting program");
 }
