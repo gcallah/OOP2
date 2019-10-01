@@ -11,9 +11,9 @@ using namespace std;
 
 
 /*
- * This will be a type with copy control that also
+ * `ATestType` is a type with copy control that also
  * prints when its copy control members are called
- * so when can track their usage.
+ * so we can track their usage.
  * */
 class ATestType {
     friend ostream& operator<<(ostream& os, const ATestType& t);
