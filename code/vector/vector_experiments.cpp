@@ -56,7 +56,7 @@ ostream& operator<<(ostream& os, const ATestType& t) {
 
 /*
  * Print a vector of T, where T must be a type that
- * implements `operator<<()`.
+ * implements the stream output operator.
  * */
 template <typename Streamable>
 void print_vector(ostream& os, vector<Streamable> vec) {
