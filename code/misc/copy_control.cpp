@@ -18,18 +18,32 @@ class Thing {
     friend ostream& operator<<(ostream& os, const Thing& t);
 
  public:
-    Thing(int i) : val(new int(i)) {}
+    Thing(int i) : iptr(new int(i)) {}
 
-    int get_val()  { return *val; }
-    void set_val(int n)  { *val = n; }
+    Thing(const Thing& source) {
+        iptr = new int(*source.iptr);
+    }
+
+    ~Thing() { delete iptr; }
+
+    Thing& operator=(const Thing& source) {
+        if (this != &source) {
+            delete iptr;
+            iptr = new int(*source.iptr);
+        }
+        return *this;
+    }
+
+    int get_val()  { return *iptr; }
+    void set_val(int n)  { *iptr = n; }
 
  private:
-    int* val;
+    int* iptr;
 };
 
 
 ostream& operator<<(ostream& os, const Thing& t) {
-    os << *(t.val);
+    os << *(t.iptr);
     return os;
 }
 

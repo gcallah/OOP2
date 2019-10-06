@@ -34,7 +34,7 @@ class Reading
 };
 
 
-void collect_readings(istream& is, vector<Reading>& rvec) {
+void collect_readings(istream& is, vector<Reading*>& rvec) {
     // we have some fields we ain't using yet, so:
     int ign1, ign2, ign3;
     double ign4, ign5;
@@ -43,17 +43,26 @@ void collect_readings(istream& is, vector<Reading>& rvec) {
     Reading* prev = nullptr;
     rvec.reserve(100);
     while (is >> ign1 >> ign2 >> ign3 >> temp >> ign4 >> ign5) {
-        Reading rd(temp, prev);
+        Reading* rd = new Reading(temp, prev);
         rvec.push_back(rd);
-        prev = &(rvec.back());;
+        prev = rd;
     }
 }
 
 
-void print_readings(ostream& os, const vector<Reading>& rvec) {
-    for (const Reading& reading : rvec) {
-        os << reading << endl;
+void print_readings(ostream& os, const vector<Reading*>& rvec) {
+    for (const Reading* reading : rvec) {
+        os << "Address of reading is: " << reading << endl;
+        os << *reading << endl;
     }
+}
+
+
+void cleanup(vector<Reading*>& rvec) {
+    for (Reading* reading : rvec) {
+        // delete reading;
+    }
+    rvec.clear();
 }
 
 
@@ -74,9 +83,13 @@ int main()
         exit(1);
     }
 
-    vector<Reading> rvec;
+    vector<Reading*> rvec;
     collect_readings(rfile, rvec);
     rfile.close();
 
     print_readings(cout, rvec);
+
+    cleanup(rvec);
+
+    cout << "After cleanup rvec[0] = " << *(rvec[0]) << endl;
 }
