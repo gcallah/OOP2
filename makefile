@@ -1,5 +1,4 @@
-# A template makefile that works for static websites.
-# Need to export as ENV var
+# Top level makefile for OOP course.
 export TEMPLATE_DIR = templates
 PTML_DIR = html_src
 UTILS_DIR = utils
