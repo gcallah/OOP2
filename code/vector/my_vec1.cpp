@@ -14,7 +14,7 @@ class MyVec {
         data = new int[DEF_VCAPACITY];
     }
 
-    MyVec(size_t items, int init_val=0) {
+    explicit MyVec(size_t items, int init_val=0) {
         sz = items;
         capac = items * EXTRA_CAPACITY;
         data = new int[capac];
@@ -50,7 +50,6 @@ class MyVec {
         return data[i];
     }
 
-    /*
     const int* begin() const {
         return data;
     }
@@ -58,7 +57,6 @@ class MyVec {
     const int* end() const {
         return data + sz;
     }
-    */
 
     int* begin() { return data; }
 
@@ -67,6 +65,9 @@ class MyVec {
     void clear() {
         sz = 0;
     }
+
+    int back() const { return data[sz - 1]; }
+    int& back() { return data[sz - 1]; }
 
     void pop_back() {
         if (sz > 0) sz--;
@@ -105,6 +106,11 @@ class MyVec {
 };
 
 
+double deref(double* dptr) {
+    return *dptr;
+}
+
+
 void print_vec(const MyVec& ivec, const string& msg) {
     cout << "\n**************\n" << msg << endl;
     for (int item : ivec) {
@@ -116,6 +122,7 @@ void print_vec(const MyVec& ivec, const string& msg) {
 
 int main()
 {
+    /*
     cout << "sizeof size_t = " << sizeof(size_t) << endl;
     cout << "sizeof long = " << sizeof(long) << endl;
     cout << "sizeof int = " << sizeof(int) << endl;
@@ -152,11 +159,18 @@ int main()
     v3.clear();
     print_vec(v2, "v2 contains:");
     print_vec(v3, "v3 contains:");
-    /*
     */
 
-    MyVec v4(10);
-    print_vec(v4, "v4 contains:");
+    // int not_dbl = 7;
+    double dbl = 7.0;
+
+    cout << "deref = " << deref(&dbl) << endl;
+
+    MyVec v4(10, 7);
+    print_vec(v4, "before v4 contains:");
+    v4 = MyVec(9);
+    cout << "v4 last elem = " << v4.back() << endl;
+    print_vec(v4, "after v4 contains:");
 
     cout << "Done with test!\n";
     return 0;

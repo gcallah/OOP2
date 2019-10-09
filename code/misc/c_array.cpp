@@ -3,7 +3,7 @@
 
 using namespace std;
 
-const int ARR_SIZE = 10;
+const int ARR_SIZE = 12;
 
 
 void header(string msg) {
@@ -14,6 +14,9 @@ void header(string msg) {
 int main() {
     header("Let's examine an int array:");
     int int_array[ARR_SIZE];
+    int j = 0;
+    int k = 0;
+    int int_array2[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     cout << "int_array = " << int_array << endl;
 
@@ -22,6 +25,7 @@ int main() {
     }
     cout << endl;
 
+    /*
     for (size_t i = 0; i < ARR_SIZE; i++) {
         cout << "Where is item " << i << "? (take address): "
             << &(int_array[i]) << endl;
@@ -45,12 +49,21 @@ int main() {
         cout << "Where is item " << i << "? (use pointer): "
             << double_array + i << endl;
     }
+    */
 
     header("Now let's try to cause some trouble:");
-    for (size_t i = 0; i < ARR_SIZE * 10; i++) {
+    for (size_t i = 0; i < ARR_SIZE + 8; i++) {
         int_array[i] = i;
     }
-    cout << "At index 50 we find " << int_array[50] << endl;
+    cout << "At index 12 we find " << int_array[12] << endl;
+    cout << "At j we find " << j << endl;
+    cout << "At k we find " << k << endl;
+
+    for (size_t i = 0; i < ARR_SIZE; i++) {
+        cout << "int_array2[" << i << "] = " << int_array2[i] << endl;
+    }
+    /*
+    */
 }
 
 
