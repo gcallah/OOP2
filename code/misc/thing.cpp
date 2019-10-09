@@ -3,6 +3,7 @@
  * `thing.cpp` is designed to illustrate basic memory management.
  * */
 #include <iostream>
+#include <vector>
 using namespace std;
 
 /*
@@ -21,25 +22,27 @@ struct Thing {
  * */
 int main() {
     // allocate array:
-    Thing** datap = new Thing*[100];
+    const Thing zero = Thing(0);
+    vector<Thing*> things;
 
     // Fill array with Things:
-    for (int i = 0; i < 100; i++)
-        datap[i] = new Thing(i);
+    for (int i = 0; i < 100; i++) {
+        things.push_back(new Thing(zero));
+        cout << "things " << i << " = " << things[i]->val << " ";
+        if ((i % 5) == 4) cout << endl;
+    }
 
     // Change their values:
     for (int i = 0; i < 100; i++) {
-        datap[i]->val += i;
-        cout << "datap " << i << " = " << datap[i]->val << " ";
+        things[i]->val += i;
+        cout << "things " << i << " = " << things[i]->val << " ";
         if ((i % 5) == 4) cout << endl;
     }
     cout << endl;
 
     // delete them:
     for (int i = 0; i < 100; i++) {
-        delete datap[i];
+        delete things[i];
     }
 
-    // and delete the array itself:
-    delete[] datap;
 }

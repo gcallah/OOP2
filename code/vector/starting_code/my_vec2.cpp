@@ -50,7 +50,6 @@ class MyVec {
         return data[i];
     }
 
-    /*
     const int* begin() const {
         return data;
     }
@@ -58,7 +57,6 @@ class MyVec {
     const int* end() const {
         return data + sz;
     }
-    */
 
     int* begin() { return data; }
 
