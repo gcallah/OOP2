@@ -14,8 +14,6 @@ void header(string msg) {
 int main() {
     header("Let's examine an int array:");
     int int_array[ARR_SIZE];
-    int j = 0;
-    int k = 0;
     int int_array2[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     cout << "int_array = " << int_array << endl;
@@ -55,9 +53,6 @@ int main() {
     for (size_t i = 0; i < ARR_SIZE + 8; i++) {
         int_array[i] = i;
     }
-    cout << "At index 12 we find " << int_array[12] << endl;
-    cout << "At j we find " << j << endl;
-    cout << "At k we find " << k << endl;
 
     for (size_t i = 0; i < ARR_SIZE; i++) {
         cout << "int_array2[" << i << "] = " << int_array2[i] << endl;
