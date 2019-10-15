@@ -1,129 +1,88 @@
-/*
- * This file illustrates how we might implement our own 
- * version of std::vector.
- * */
 #include <iostream>
+#include <string>
 using namespace std;
 
-const size_t DEF_VCAPACITY = 2;
-const int CAPACITY_MULT = 2;
+const int DEF_VCAPACITY = 2;
+const int EXTRA_CAPACITY = 2;
 
 
 class MyVec {
-    /*
-     * The MyVec class that is a partial version of std::vector.
-     * */
  public:
-    class Iterator {
-        /*
-         * This class supports ranged for loops.
-         * It includes:
-         * Iterator(int*)
-         * operator++
-         * operator*
-         * operator!=
-         * */
-            friend bool operator!=(const Iterator& rhs, const Iterator& lhs) {
-                return rhs.iptr != lhs.iptr;
-            }
-
-        public:
-            Iterator(int* ip) : iptr(ip) {}
-
-            Iterator operator++() {
-                ++iptr;
-                return *this;
-            }
-
-            int operator*() { return *iptr; }
-
-        private:
-            int* iptr;
-    };
-
-
     MyVec() {
-        /*
-         * This if the default constructor for the class.
-         * */
         sz = 0;
         capac = DEF_VCAPACITY;
         data = new int[DEF_VCAPACITY];
     }
 
-    explicit MyVec(size_t sz, int val=0) : sz{sz} {
-        /*
-         * Another constructor: note the use of `explicit`:
-         * it means we can't accidentally get a "weird"
-         * interpretation of some code as implicitly calling
-         * this constructor.
-         * */
-        capac = max(DEF_VCAPACITY, sz * CAPACITY_MULT);
+    explicit MyVec(size_t items, int init_val=0) {
+        sz = items;
+        capac = items * EXTRA_CAPACITY;
         data = new int[capac];
-        for (size_t i = 0; i < sz; i++) data[i] = val;
+        for (size_t i = 0; i < sz; i++) {
+            data[i] = init_val;
+        }
     }
 
-    MyVec(const MyVec& v2) {
-        /*
-         * This is the copy constructor for our class.
-         * It calls a method called `copy` so that we can share
-         * that code with assignment.
-         * */
-        copy(v2);
+    MyVec(const MyVec& source) {
+        cout << "Calling copy constructor\n";
+        copy(source);
     }
 
-    MyVec& operator=(const MyVec& v2) {
-        /*
-         * The assignment operator essentially combines the
-         * destructor and the copy constructor.
-         * */
-        if (this != &v2) {
+    ~MyVec() {
+        cout << "Calling destructor\n";
+        delete [] data;
+    }
+
+    MyVec& operator=(const MyVec& source) {
+        cout << "Calling assignment operator\n";
+        if (this != &source) {
             delete [] data;
-            copy(v2);
+            copy(source);
         }
         return *this;
     }
 
-    ~MyVec() {
-        /*
-         * The destructor for this class.
-         * */
-        delete [] data;
+    int& operator[](int i) {
+        return data[i];
     }
 
     int operator[](int i) const {
-        /*
-         * This version of the [] operator is const, so it
-         * is used when we are just getting the value of
-         * a vector element.
-         * */
         return data[i];
     }
 
-    int& operator[](int i) {
-        /*
-         * This version of the [] operator is not const,
-         * so it is used when we are setting the value of
-         * a vector element.
-         * */
-        return data[i];
+    const int* begin() const {
+        return data;
+    }
+
+    const int* end() const {
+        return data + sz;
+    }
+
+    int* begin() { return data; }
+
+    int* end() { return data + sz; }
+
+    void clear() {
+        sz = 0;
+    }
+
+    int back() const { return data[sz - 1]; }
+    int& back() { return data[sz - 1]; }
+
+    void pop_back() {
+        if (sz > 0) sz--;
     }
 
     void push_back(int val) {
-        /*
-         * This method puts a val on the end of our vector:
-         * it may need to increase the vector's capacity
-         * in order to do this.
-         * */
         sz++;
-        if (sz > capac) {
+        if (sz == capac) {  // we're about to up it!
             cout << "Increasing capacity\n";
             int* old_data = data;
-            data = new int[capac * CAPACITY_MULT];
-            for (int i = 0; i < sz; i++) {
+            data = new int[capac * EXTRA_CAPACITY];
+            for (size_t i = 0; i < sz; i++) {
                 data[i] = old_data[i];
             }
-            capac *= CAPACITY_MULT;
+            capac *= EXTRA_CAPACITY;
             delete [] old_data;
         }
         data[sz - 1] = val;
@@ -131,56 +90,87 @@ class MyVec {
 
     size_t size() const { return sz; }
 
-    Iterator begin() const {
-        return Iterator(data);
-    }
-
-    Iterator end() const {
-        return Iterator(data + size());
-    }
-
  private:
     size_t sz;
     size_t capac;
     int* data;
-    void copy(const MyVec& v2) {
-        sz = v2.sz;
-        capac = v2.capac;
+
+    void copy(const MyVec& source) {
+        sz = source.sz;
+        capac = source.capac;
         data = new int[capac];
-        for (int i = 0; i < sz; i++) {
-            data[i] = v2.data[i];
+        for (size_t i = 0; i < sz; i++) {
+            data[i] = source.data[i];
         }
     }
 };
 
 
-void print_vec(const MyVec& v) {
-    for(int val : v) cout << val << endl;
+double deref(double* dptr) {
+    return *dptr;
 }
 
 
-int main() {
+void print_vec(const MyVec& ivec, const string& msg) {
+    cout << "\n**************\n" << msg << endl;
+    for (int item : ivec) {
+        cout << item << ' ';
+    }
+    cout << "\n**************\n";
+}
+
+
+int main()
+{
+    /*
+    cout << "sizeof size_t = " << sizeof(size_t) << endl;
+    cout << "sizeof long = " << sizeof(long) << endl;
+    cout << "sizeof int = " << sizeof(int) << endl;
     cout << "Testing my_vec:\n";
 
     MyVec v1 = MyVec();
-    for(int i = 0; i < 16; i++) {
-        v1.push_back(i * 2);
-    }
+    cout << "Vector size = " << sizeof(v1) << endl;
+    v1.push_back(4);
+    v1.push_back(8);
+    v1.push_back(16);
+    v1.push_back(32);
+    v1.push_back(64);
+    cout << "Vector size = " << sizeof(v1) << endl;
+    print_vec(v1, "v1 contains:");
 
-    MyVec v2 = MyVec(v1);
+    cout << "Constructing v2\n";
+    MyVec v2 = v1;
+    v2[0] = 7;
+
+    cout << "Constructing v3\n";
     MyVec v3 = MyVec();
     v3 = v1;
-    v2 = v2;
-    // MyVec v4 = 12;
-    MyVec v4 = MyVec(12);
     
     cout << "Size of v3 is: " << v3.size() << endl;
-    cout << "v2 = \n";
-    v2[0] = 999;
-    print_vec(v2);
-    v2 = v2;
 
-    for (int i : v2) cout << "i = " << i << endl;
+    print_vec(v2, "v2 contains:");
+    print_vec(v3, "v3 contains:");
+
+    v2.pop_back();
+    for (int& item : v2) {
+        item *= 2;
+    }
+
+    v3.clear();
+    print_vec(v2, "v2 contains:");
+    print_vec(v3, "v3 contains:");
+    */
+
+    // int not_dbl = 7;
+    double dbl = 7.0;
+
+    cout << "deref = " << deref(&dbl) << endl;
+
+    MyVec v4(10, 7);
+    print_vec(v4, "before v4 contains:");
+    v4 = MyVec(9);
+    cout << "v4 last elem = " << v4.back() << endl;
+    print_vec(v4, "after v4 contains:");
 
     cout << "Done with test!\n";
     return 0;
