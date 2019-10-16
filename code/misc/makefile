@@ -28,7 +28,10 @@ recursion: recursion.cpp base_conv.cpp
 
 stl: stl.cpp
 
+test_princess: test_princess.cpp princess.cpp frog.cpp
+
 tests:
+	test_princess
 
 prod:
 	-git commit -a 
