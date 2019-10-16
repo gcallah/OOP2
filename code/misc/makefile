@@ -31,7 +31,7 @@ stl: stl.cpp
 
 test_princess: test_princess.cpp princess.cpp frog_prince.cpp
 
-tests:
+tests: test_princess
 	./test_princess
 
 prod:
