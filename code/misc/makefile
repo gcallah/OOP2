@@ -1,6 +1,7 @@
 
 CXXFLAGS=-g -std=c++17 -Wall -pedantic 
-# CXXFLAGS=-g -std=c++14 -DNDEBUG
+# just run pre-processor:
+# CXXFLAGS=-E -g -std=c++17 -Wall -pedantic 
 CC=$(CXX)
 INCS=$(shell ls *.h)
 
@@ -28,7 +29,7 @@ recursion: recursion.cpp base_conv.cpp
 
 stl: stl.cpp
 
-test_princess: test_princess.cpp # princess.cpp frog.cpp
+test_princess: test_princess.cpp princess.cpp frog_prince.cpp
 
 tests: test_princess complex
 	./test_princess

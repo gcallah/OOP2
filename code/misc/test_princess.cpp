@@ -2,77 +2,15 @@
     testPrincess.cpp
     Cyclic Association
     Sec Base
+    Tests the princess and frog_prince classes.
 */
 
 #include <iostream>
 #include <string>
 using namespace std;
 
-class FrogPrince;
-
-
-class Princess {
-    friend class FrogPrince;
-
-    friend ostream& operator<<(ostream& os, const Princess& princess);
-
-public:
-    Princess(const string& name) : name(name), spouse(nullptr) {}
-
-    const string& get_name() const { return name; }
-
-    void marries(FrogPrince* fp);
-
-private:
-    string name;
-    FrogPrince* spouse;
-};
-
-class FrogPrince {
-    friend class Princess;
-
-    friend ostream& operator<<(ostream& os, const FrogPrince& frog);
-
-public:
-    FrogPrince(const string& name) : name(name), spouse(nullptr) {}
-
-    const string& get_name() const { return name; }
-
-    void marries(Princess* fp);
-
-private:
-    string name;
-    Princess* spouse;
-};
-
-
-void Princess::marries(FrogPrince* fp) { 
-    spouse = fp;
-    fp->spouse = this;
-}
-
-
-void FrogPrince::marries(Princess* pp) { 
-    spouse = pp;
-    pp->spouse = this;
-}
-
-
-ostream& operator<<(ostream& os, const Princess& princess) {
-    string marital_status = (princess.spouse ?
-            "married to " + princess.spouse->get_name()
-            : "unmarried");
-    os << "Princess: " << princess.name << " is " << marital_status << endl;
-    return os;
-}
-
-ostream& operator<<(ostream& os, const FrogPrince& frog) {
-    string marital_status = (frog.spouse ?
-            "married to " + frog.spouse->get_name()
-            : "unmarried");
-    os << "Frog Prince: " << frog.name << " is " << marital_status << endl;
-    return os;
-}
+#include "princess.h"
+#include "frog_prince.h"
 
 
 int main() {
@@ -88,7 +26,7 @@ int main() {
     bullfrog.marries(&sleeping);
     cout << sleeping << endl;
     cout << bullfrog << endl;
-    //      << froggy << endl;
+    exit(0);
 }
 
 
