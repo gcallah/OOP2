@@ -1,14 +1,7 @@
 /*
  * This file implements part of a complex number class.
  * Its chief educational purpose is to teach *operator overloading*.
- * We want to implement:
- * pre-increment
- * post-increment
- * bool
- * +
- * +=
- * ==
- * !=
+ * We overload `==`, `++` (twice), `bool`, and `+`.
  * Further overloads can be left for the student.
  * */
 #include <iostream>
@@ -22,6 +15,14 @@ class Complex {
     friend ostream& operator<< (ostream& os, const Complex& c);
     friend istream& operator>> (istream& is, Complex& c);
 
+    /*
+     * The equality operator is a friend since it is binary
+     * and symmetrical.
+     * */
+    friend bool operator== (const Complex& c1, const Complex& c2) {
+        return ((c1.real == c2.real) && (c1.imag == c2.imag));
+    }
+
     public:
     
     /*
@@ -31,16 +32,48 @@ class Complex {
         Complex(double real=0.0, double imag=0.0)
             : real{real}, imag{imag} {}
 
-    /*
-     * We want to implement:
-     * pre-increment
-     * post-increment
-     * bool
-     * +
-     * +=
-     * ==
-     * !=
-     * */
+        /*
+         * The `bool` operator tests to see if either
+         * data member is non-zero, and returns `true`
+         * if so.
+         * */
+        explicit operator bool() const {
+            return ((real != 0) || (imag != 0));
+        }
+
+        /*
+         * This overload is pre-increment: pretty straightforward:
+         * bump up the `real` member, and return myself.
+         * Of course, it's not obvious that this is what incrementing
+         * a complex number *should* do: but we are teaching here,
+         * not writing a production Complex class.
+         * */
+        Complex& operator++() {
+            ++real;
+            return (*this);
+        }
+
+        /*
+         * Post-increment is more complicated than pre: first
+         * of all, it takes a dummy int parameter (unused)
+         * just so the compiler can tell which inc operator is which.
+         * Secondly, since it returns the value from *before*
+         * the increment, we must store that in a temp var.
+         * */
+        Complex operator++(int dummy) {
+            Complex temp(*this);
+            real++;
+            return temp;
+        }
+
+        /*
+         * `+` is very straightforward, and should be the first operator
+         * taught.
+         * */
+        Complex operator+(const Complex& c) {
+            Complex sum{real + c.real, imag + c.imag};
+            return sum;
+        }
 
     private:
         double real;
@@ -77,11 +110,10 @@ void printVector(const vector<Complex>& v);
  * The code in main just exercizes the `Complex` class.
  * */
 int main() {
-    cout << "Enter a complex number:\n";
+    cout << "Input a complex number:\n";
     Complex c1;
     // get a complex from stdin:
-    // but not when testing!
-    // cin >> c1;
+    cin >> c1;
     if(!cin)
     {
         cerr << "Bad input format\n";
@@ -99,23 +131,23 @@ int main() {
     }
 
     // see if `Complex` addition works:
-    // Complex c3 = c1 + c2;
-    Complex c3;
+    Complex c3 = c1 + c2;
 
     Complex c4 = Complex();
     // test post-increment:
-    // c4++;
-    // c4++;
-//     * Test equality operator. If we take the `explicit` off of
-//     * `bool()` in class definition, then this will fail as ambiguous:
-//     * the compiler won't know if we want a `bool` or `Complex` comparison.
-//    (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
-//        : cout << "c4 == 1 is false\n";
-//    // test bool() operator:
-//    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
+    c4++;
+    c4++;
+    /*
+     * Test equality operator. If we take the `explicit` off of
+     * `bool()` in class definition, then this will fail as ambiguous:
+     * the compiler won't know if we want a `bool` or `Complex` comparison.
+     * */
+    (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
+        : cout << "c4 == 1 is false\n";
+    // test bool() operator:
+    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
 
     /*
-    *
      * The next line of code will implicitly
      * construct a `Complex` out of 14.2 using the default
      * imaginary component of 0.0.

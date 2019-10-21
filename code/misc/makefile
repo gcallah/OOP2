@@ -30,8 +30,9 @@ stl: stl.cpp
 
 test_princess: test_princess.cpp # princess.cpp frog.cpp
 
-tests:
-	test_princess
+tests: test_princess complex
+	./test_princess
+	./complex
 
 prod:
 	-git commit -a 

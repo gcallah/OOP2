@@ -1,14 +1,7 @@
 /*
  * This file implements part of a complex number class.
  * Its chief educational purpose is to teach *operator overloading*.
- * We want to implement:
- * pre-increment
- * post-increment
- * bool
- * +
- * +=
- * ==
- * !=
+ * We overload `==`, `++` (twice), `bool`, and `+`.
  * Further overloads can be left for the student.
  * */
 #include <iostream>
@@ -77,11 +70,10 @@ void printVector(const vector<Complex>& v);
  * The code in main just exercizes the `Complex` class.
  * */
 int main() {
-    cout << "Enter a complex number:\n";
+    cout << "Input a complex number:\n";
     Complex c1;
     // get a complex from stdin:
-    // but not when testing!
-    // cin >> c1;
+    cin >> c1;
     if(!cin)
     {
         cerr << "Bad input format\n";
@@ -106,15 +98,15 @@ int main() {
     // test post-increment:
     // c4++;
     // c4++;
-//     * Test equality operator. If we take the `explicit` off of
-//     * `bool()` in class definition, then this will fail as ambiguous:
-//     * the compiler won't know if we want a `bool` or `Complex` comparison.
-//    (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
-//        : cout << "c4 == 1 is false\n";
-//    // test bool() operator:
-//    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
-
     /*
+     * Test equality operator. If we take the `explicit` off of
+     * `bool()` in class definition, then this will fail as ambiguous:
+     * the compiler won't know if we want a `bool` or `Complex` comparison.
+    (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
+        : cout << "c4 == 1 is false\n";
+    // test bool() operator:
+    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
+
     *
      * The next line of code will implicitly
      * construct a `Complex` out of 14.2 using the default
