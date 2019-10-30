@@ -20,9 +20,11 @@ test_rawdata: rawdata.cpp test_rawdata.cpp
 
 weather: $(CPP_FILES)
 
+weather_inher: weather_inher.cpp
+
 weather_leaks: weather_leaks.cpp
 
-tests: test_date test_image test_rawdata
+tests: test_date test_image test_rawdata weather_inher
 	./test_date
 	./test_image
 	./test_rawdata
