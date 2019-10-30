@@ -36,7 +36,7 @@ class AustralianReading : public Reading {
     AustralianReading() : kangaroos(0) {}
 
     void verify() {
-        cout << "South American reading verified";
+        cout << "South American reading verified\n";
     }
 
  private:
