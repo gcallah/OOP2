@@ -28,6 +28,7 @@ tests: test_date test_image test_rawdata weather_inher
 	./test_date
 	./test_image
 	./test_rawdata
+	./weather_inher
 
 lint:
 	cpplint $(LINTFLAGS) $(CPP_FILES)
