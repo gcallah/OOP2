@@ -12,7 +12,7 @@ const int NO_VAL = -100000;
 class Reading
 {
  public:
- //   Reading()  {}
+    Reading()  {}
 
     Reading(double tmp) : temp(tmp), humidity(.50) {}
 
@@ -31,15 +31,17 @@ class Reading
 };
 
 
-/*
 class AustralianReading : public Reading {
  public:
     AustralianReading() : kangaroos(0) {}
 
+    void verify() {
+        cout << "South American reading verified";
+    }
+
  private:
     int kangaroos;
 };
-*/
 
 
 class AsianReading : public Reading {
@@ -139,7 +141,7 @@ int main()
     reading_vec.push_back(&basic_read);
     */
 //    AustralianReading austr(45.6);
-//    AustralianReading austr();
+    AustralianReading austr();
 //    austr.set_temp(45.6);
 //    reading_vec.push_back(&austr);
 
