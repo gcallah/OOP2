@@ -38,7 +38,7 @@ tests: test_princess complex mean funcs base_der
 	./funcs
 	./base_der
 
-prod:
+prod: tests
 	-git commit -a 
 	git pull origin master
 	git push origin master
