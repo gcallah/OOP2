@@ -1,6 +1,9 @@
+#include <cassert>
 #include <iostream>
 #include <vector>
+
 using namespace std;
+
 
 int main() {
     /*
@@ -9,14 +12,20 @@ int main() {
     cout << "Enter recent temperatures and we will calulate their average:\n";
     
     vector<double> temps;
+    /*
+     * can't run the following on Travis:
     for(double temp; cin >> temp; )
         temps.push_back(temp);
+    * so instead:
+    */
+    temps.push_back(50);
+    temps.push_back(100);
     double total = 0.0;
     for(double temp : temps)
         total += temp;
     double mean = total / temps.size();
     cout << "Your mean temperature for the last " << temps.size()
          << " days was " << mean << '\n';
-    cout << temps[10000];
+    assert(mean == 75);
     return 0;
 }
