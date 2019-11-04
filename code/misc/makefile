@@ -31,9 +31,12 @@ stl: stl.cpp
 
 test_princess: test_princess.cpp princess.cpp frog_prince.cpp
 
-tests: test_princess complex
+tests: test_princess complex mean funcs base_der
 	./test_princess
 	./complex
+	./mean
+	./funcs
+	./base_der
 
 prod:
 	-git commit -a 
