@@ -24,6 +24,23 @@ public:
     }
 };
 
+// class Member {
+// public:
+//     Member() {
+//         cerr << "Member()\n";
+//     }
+//     Member(const Member& rhs) {
+//         cerr << "Member(const Member&)\n";
+//     }
+//     Member& operator=(const Member& rhs) {
+//         cerr << "Member::operator=(const Member&)\n";
+//         return *this;
+//     }
+//     ~Member() {
+//         cerr << "~Member()\n";
+//     }
+// };
+
 
 class Derived : public Base {
 public:
@@ -50,6 +67,9 @@ public:
     ~Derived() {
         cerr << "~Derived()\n";
     }
+
+private:
+    // Member member;
 };
 
 int main() {

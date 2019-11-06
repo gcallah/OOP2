@@ -1,6 +1,4 @@
 /*
- * Code from John Sterling.
-  6.hidingA.cpp
   der.foo(17) calls Base::foo(int) through code reuse, i.e. method inheritance
   Inclass C
  */
@@ -8,22 +6,20 @@
 #include <iostream>
 using namespace std;
 
-class Base {
+class A
+{
 public:
-    void foo(int n) const { cout << "Base::foo(n)\n"; }
+  void a() {}
 };
 
-class Derived : public Base { 
+class B : public A
+{
 public:
-    void foo() const { cout << "Foo::foo()\n"; }
-    //    void foo(int n) const { cout << "Base::foo(n)\n"; }
-    //    void foo(int n) const { Base::foo(n); }
-    using Base::foo;
+  void a(int) {}
 };
 
-int main() {
-    Derived der;
-    der.foo(17);
-    //der.Base::foo(17);
+int main()
+{
+  B b;
+  b.a();
 }
-
