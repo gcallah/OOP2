@@ -24,22 +24,22 @@ public:
     }
 };
 
-// class Member {
-// public:
-//     Member() {
-//         cerr << "Member()\n";
-//     }
-//     Member(const Member& rhs) {
-//         cerr << "Member(const Member&)\n";
-//     }
-//     Member& operator=(const Member& rhs) {
-//         cerr << "Member::operator=(const Member&)\n";
-//         return *this;
-//     }
-//     ~Member() {
-//         cerr << "~Member()\n";
-//     }
-// };
+class Member {
+public:
+    Member() {
+        cerr << "Member()\n";
+    }
+    Member(const Member& rhs) {
+        cerr << "Member(const Member&)\n";
+    }
+    Member& operator=(const Member& rhs) {
+        cerr << "Member::operator=(const Member&)\n";
+        return *this;
+    }
+    ~Member() {
+        cerr << "~Member()\n";
+    }
+};
 
 
 class Derived : public Base {
@@ -48,7 +48,7 @@ public:
         cerr << "Derived()\n";
     }
 
-    Derived(const Derived& rhs) : Base(rhs) {
+    Derived(const Derived& rhs) : Base(rhs), member(rhs.member) {
         cerr << "Derived(const Derived&)\n";
     }
 
@@ -59,6 +59,7 @@ public:
         //(*this).Base::operator=(rhs);
         //this->Base::operator=(rhs);
         Base::operator=(rhs);
+        member = rhs.member;
 
         cerr << "Derived::operator=(const Derived&)\n";
         return *this;
@@ -69,8 +70,14 @@ public:
     }
 
 private:
-    // Member member;
+    Member member;
 };
+
+void f(Base* bptr) {
+    cout << "In f()\n";
+    delete bptr;
+}
+
 
 int main() {
     cerr << "Derived der;\n"
@@ -98,8 +105,10 @@ int main() {
     cerr << "Base* bp = new Derived();\n"
          << "delete bp;\n"
          << "---------------------------\n";
+    /*
+         */
     Base* bp = new Derived();
-    delete bp;
+    f(bp);
     cout << "===\n";
 }
 
