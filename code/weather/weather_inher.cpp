@@ -9,12 +9,24 @@ using namespace std;
 const bool DEBUG = true;
 const int NO_VAL = -100000;
 
+class Refundable
+{
+ public:
+    void calc_refund()  { cout << "Calculating refund\n"; }
+    virtual string str() const { return "refund amount"; }
+};
+
+
 class Reading
 {
  public:
     Reading()  {}
 
-    Reading(double tmp) : temp(tmp), humidity(.50) {}
+    Reading(double tmp) : temp(tmp), humidity(.50)
+    {
+        cout << "In base reading constructor\n";
+        cout << str() << endl;
+    }
 
     virtual void verify() = 0;
     
@@ -36,7 +48,7 @@ class AustralianReading : public Reading {
     AustralianReading() : kangaroos(0) {}
 
     void verify() {
-        cout << "South American reading verified\n";
+        cout << "Australian reading verified\n";
     }
 
  private:
@@ -44,19 +56,22 @@ class AustralianReading : public Reading {
 };
 
 
-class AsianReading : public Reading {
+class AsianReading : public Reading, public Refundable {
  public:
     AsianReading(double temp, double ws) : Reading(temp),
         windspeed(ws)  {}
 
     void verify() {
-        cout << "Asian reading verified";
+        cout << "Asian reading verified\n";
+        calc_refund();
     }
 
+    /*
     string str() const {
         return "Asian " + Reading::str() + " wind: "
             + to_string(windspeed);
     }
+    */
  private:
     double windspeed;
 };
@@ -67,7 +82,7 @@ class NorthAmericanReading : public Reading {
     NorthAmericanReading(double temp) : Reading(temp) {}
 
     void verify() {
-        cout << "North American reading verified";
+        cout << "North American reading verified\n";
     }
 
     string str() const override {
@@ -97,9 +112,8 @@ class SouthAmericanReading : public Reading {
 
 //    SouthAmericanReading(double temp) : Reading(temp) {}
     void verify() {
-        cout << "South American reading verified";
+        cout << "South American reading verified\n";
     }
-
 
  private:
     double humid;
@@ -142,14 +156,15 @@ int main()
     */
 //    AustralianReading austr(45.6);
     AustralianReading austr();
-//    austr.set_temp(45.6);
-//    reading_vec.push_back(&austr);
+    // austr.verify();
+    // reading_vec.push_back(&austr);
 
     AsianReading asia(5.9, 18.7);
-    cout << "size of asia == " << sizeof(asia) << endl;
     check_reading(asia);
+    cout << asia.Reading::str() << "\n";
     reading_vec.push_back(&asia);
 
+    /*
     NorthAmericanReading na(25.8);
     cout << "size of na == " << sizeof(na) << endl;
     check_reading(na);
@@ -162,6 +177,8 @@ int main()
     cout << "size of sa == " << sizeof(sa) << endl;
     check_reading(sa);
     reading_vec.push_back(&sa);
+    */
+
     print_vector(reading_vec);
 
 //    na = basic_read;
