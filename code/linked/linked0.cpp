@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-const bool DEBUG = true;
+// const bool DEBUG = true;
 
 
 struct Node {
@@ -24,6 +24,11 @@ ostream& operator<<(ostream& os, Node* nd) {
 }
 
 
+void add_at_front(Node*& head, int data) {
+    head = new Node(data, head);
+}
+
+
 void print_list(ostream& os, Node* head) {
     /*
      * Given the head of a list, print the whole thing.
@@ -39,5 +44,7 @@ void print_list(ostream& os, Node* head) {
 
 int main() {
     Node* new_list = nullptr;
+    add_at_front(new_list, 2);
+    add_at_front(new_list, 4);
     print_list(cout, new_list);
 }
