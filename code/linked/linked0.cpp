@@ -23,6 +23,14 @@ ostream& operator<<(ostream& os, Node* nd) {
     return os;
 }
 
+void add(Node*& head, int data) {
+    Node* np = head;
+    while (np->next) {
+        np = np->next;
+    }
+    np = new Node(data);
+}
+
 
 void print_list(ostream& os, Node* head) {
     /*
@@ -39,5 +47,6 @@ void print_list(ostream& os, Node* head) {
 
 int main() {
     Node* new_list = nullptr;
+    add(new_list, 1);
     print_list(cout, new_list);
 }
