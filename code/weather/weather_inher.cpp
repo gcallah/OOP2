@@ -161,7 +161,7 @@ int main()
 
     AsianReading asia(5.9, 18.7);
     check_reading(asia);
-    cout << asia.Reading::str() << "\n";
+//    cout << asia.Reading::str() << "\n";
     reading_vec.push_back(&asia);
 
     /*
