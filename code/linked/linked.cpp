@@ -102,17 +102,21 @@ bool del_tail(Node** prev_next) {
 }
 
 
-Node* duplicate1(Node* head) {
-    Node* new_head = nullptr;
-    Node* curr = head;
-    while(curr) {
-        add_at_end(new_head, curr->data);
-        curr = curr->next;
+Node* duplicate(Node* head) {
+    if (!head) return nullptr;
+
+    Node* new_head = new Node(head->data);
+    Node* curr_orig = head->next;
+    Node* last_copied = new_head;
+    while(curr_orig) {
+        last_copied->next = new Node(curr_orig->data);
+        curr_orig = curr_orig->next;
+        last_copied = last_copied->next;
     }
     return new_head;
 }
 
-Node* duplicate(Node* head) {
+Node* rduplicate(Node* head) {
     if (!head) return nullptr;
-    else return new Node(head->data, duplicate(head->next));
+    else return new Node(head->data, rduplicate(head->next));
 }

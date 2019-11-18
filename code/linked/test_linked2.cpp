@@ -20,8 +20,6 @@ int main() {
     Node* lempty = nullptr;
     cout << "Last lempty: " << last(lempty) << endl;
     del_head(lempty);
-    del_tail(head);
-    del_tail(head);
     cout << "List: \n";
     print_list(cout, head);
     cout << "List 2: \n";
