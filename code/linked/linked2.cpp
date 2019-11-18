@@ -49,12 +49,21 @@ void print_list(ostream& os, Node* head) {
 }
 
 
+Node* clone(Node* head) {
+    if (!head) return nullptr;
+    else {
+        return new Node(head->data, clone(head->next));
+    }
+}
+
+
 Node* duplicate(Node* head) {
     if (!head) return nullptr;
 
     Node* new_head = nullptr;
     Node* curr = head;
     while (curr) {
+        // using add_at_end() makes this expensive!
         add_at_end(new_head, curr->data);
         curr = curr->next;
     }
@@ -62,9 +71,9 @@ Node* duplicate(Node* head) {
 }
 
 
-void del_node(Node** prev_next) {
-    if ((*prev_next) != nullptr) {
-        Node* temp = (*prev_next)->next;
+void del_node(Node*& prev_next) {
+    if (prev_next != nullptr) {
+        Node* temp = prev_next->next;
         delete (*prev_next);
         *prev_next = temp;
     }
@@ -79,16 +88,3 @@ bool del_head(Node*& head) {
     return true;
 }
 
-
-bool del_tail(Node*& head) {
-    if (head == nullptr) return false;
-    Node** prev_next = &head;
-    Node* curr = head;
-    while (curr->next) {
-        prev_next = &(*prev_next)->next;
-        curr = curr->next;
-    }
-    delete curr;
-    *(prev_next) = nullptr;
-    return true;
-}
