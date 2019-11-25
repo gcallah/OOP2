@@ -11,10 +11,18 @@
 using namespace std;
 
 /*
- * Let's make a template for a `print_list` that can handle
- * lists of any type:
+ * Let's make a template for a `print_vec` that can handle
+ * vectors of any type:
  * Templates are the C++ feature that enable generic programming.
  * */
+template <typename Printable>
+void print_vec(string hdr, vector<Printable> vp) {
+    cout << hdr << endl;
+    for (Printable p : vp) {
+        cout << p << " ";
+    }
+    cout << endl;
+}
 
 /*
  * But, we can go even more generic, and make a `print` that can print
@@ -58,19 +66,19 @@ int main() {
     vector<char> cvec(s2, s2 + dennislen);
 //    print("cvec", cvec);
     sort(cvec.begin(), cvec.end());
-//    print("sorted cvec", cvec);
+    print("sorted cvec", cvec);
 
     /*
      * Create a `char` list:
-     * */
     list<char> clist(s, s + bjarnelen);
     list<char> clist2 = clist;
     list<char> clist3(s2, s2 + dennislen);
+     * */
     /*
      * The STL provides us with a `reverse()` functions that
      * reverses an iterable structure:
-     * */
     reverse(clist.begin(), clist.end());
+     * */
     /*
      * We use `print_list` here just to make sure it works, but `print()`
      * is preferred!
@@ -79,27 +87,27 @@ int main() {
     /*
      * But even after `clist` is reversed, `clist` and
      * `clist2` are still permutations of each other:
-     * */
     cout << "Is clist a permutation of clist2? "
         << is_permutation(clist.begin(), clist.end(), clist2.begin())
         << endl; ;
     cout << "Is clist a permutation of clist3? "
         << is_permutation(clist.begin(), clist.end(), clist3.begin())
         << endl; ;
+     * */
 
     /*
      * Testing a list of Cats:
-     * */
     Cat catptr[] = { Cat(), Cat(), Cat() };
     list<Cat> catlist(catptr, catptr + 3);
+     * */
 //    print_list("Cat list", catlist);
 
     /*
      * Testing an int list:
-     * */
     int ilen = 8;
     int iptr[] = { 16, 32, 64, 128, 2, 4, 8, 17 };
     list<int> ilist(iptr, iptr + ilen);
+     * */
     /*
      * Our print can work for lists as well as vectors:
      * */
@@ -108,8 +116,8 @@ int main() {
      * `sort()` does not work for lists, since they aren't random access.
      * Thus lists have their own `sort()` method, called below:
      * This *won't* work: `sort(ilist.begin(), ilist.end());`
-     * */
     ilist.sort();
+     * */
 //    print("ilist sorted", ilist);
 
     /*
