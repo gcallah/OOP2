@@ -24,6 +24,15 @@ void print_vec(string hdr, vector<Printable> vp) {
     cout << endl;
 }
 
+template <typename Printable>
+void print_list(string hdr, list<Printable> vp) {
+    cout << hdr << endl;
+    for (Printable p : vp) {
+        cout << p << " ";
+    }
+    cout << endl;
+}
+
 /*
  * But, we can go even more generic, and make a `print` that can print
  * *containers* of any sequential type:
@@ -64,36 +73,36 @@ int main() {
      * We will create it with a half-open range, and then sort it.
      * */
     vector<char> cvec(s2, s2 + dennislen);
-//    print("cvec", cvec);
+    print_vec("cvec", cvec);
     sort(cvec.begin(), cvec.end());
-    print("sorted cvec", cvec);
+    print_vec("sorted cvec", cvec);
 
     /*
      * Create a `char` list:
+     * */
     list<char> clist(s, s + bjarnelen);
     list<char> clist2 = clist;
     list<char> clist3(s2, s2 + dennislen);
-     * */
     /*
      * The STL provides us with a `reverse()` functions that
      * reverses an iterable structure:
-    reverse(clist.begin(), clist.end());
      * */
+    reverse(clist.begin(), clist.end());
     /*
      * We use `print_list` here just to make sure it works, but `print()`
      * is preferred!
      * */
-//    print_list("clist reversed", clist);
+    print_list("clist reversed", clist);
     /*
      * But even after `clist` is reversed, `clist` and
      * `clist2` are still permutations of each other:
+     * */
     cout << "Is clist a permutation of clist2? "
         << is_permutation(clist.begin(), clist.end(), clist2.begin())
         << endl; ;
     cout << "Is clist a permutation of clist3? "
         << is_permutation(clist.begin(), clist.end(), clist3.begin())
         << endl; ;
-     * */
 
     /*
      * Testing a list of Cats:

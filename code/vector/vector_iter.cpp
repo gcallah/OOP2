@@ -25,6 +25,10 @@ public:
             return *valPtr;
         }
 
+        int operator*() const {
+            return *valPtr;
+        }
+
     private:
         int* valPtr;
     };
