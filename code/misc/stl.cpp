@@ -24,19 +24,20 @@ void print_vec(string hdr, vector<Printable> vp) {
     cout << endl;
 }
 
-template <typename Printable>
-void print_list(string hdr, list<Printable> vp) {
-    cout << hdr << endl;
-    for (Printable p : vp) {
-        cout << p << " ";
-    }
-    cout << endl;
-}
 
 /*
  * But, we can go even more generic, and make a `print` that can print
  * *containers* of any sequential type:
  * */
+template <typename Collection>
+void print(string hdr, Collection c) {
+    cout << hdr << endl;
+    for (auto item : c) {
+        cout << item << ' ';
+    }
+    cout << endl;
+}
+
 
 class Cat {
     friend ostream& operator<<(ostream& os, const Cat& cat) {
@@ -88,11 +89,7 @@ int main() {
      * reverses an iterable structure:
      * */
     reverse(clist.begin(), clist.end());
-    /*
-     * We use `print_list` here just to make sure it works, but `print()`
-     * is preferred!
-     * */
-    print_list("clist reversed", clist);
+    print("clist reversed", clist);
     /*
      * But even after `clist` is reversed, `clist` and
      * `clist2` are still permutations of each other:

@@ -47,14 +47,6 @@
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Printable</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="nf">print_list</span><span class="p">(</span><span class="n">string</span> <span class="n">hdr</span><span class="p">,</span> <span class="n">list</span><span class="o">&lt;</span><span class="n">Printable</span><span class="o">&gt;</span> <span class="n">vp</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hdr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">Printable</span> <span class="nl">p</span> <span class="p">:</span> <span class="n">vp</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
 </code>                </pre>
                 <p>
   But, we can go even more generic, and make a <span class="code">print</span> that can print
@@ -64,6 +56,14 @@
 
                 <pre>
                 <code>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Collection</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="n">string</span> <span class="n">hdr</span><span class="p">,</span> <span class="n">Collection</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hdr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">item</span> <span class="p">:</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">Cat</span> <span class="p">{</span>
     <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cat</span><span class="o">&amp;</span> <span class="n">cat</span><span class="p">)</span> <span class="p">{</span>
@@ -71,6 +71,7 @@
         <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
+
 </code>                </pre>
                 <p>
   We could pass this <span class="code">is_odd()</span> function in to a <span class="code">find_if()</span>,
@@ -81,13 +82,16 @@
                 <pre>
                 <code>
 <span class="kt">bool</span> <span class="nf">is_odd</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-
 </code>                </pre>
                 <p>
   Or, we could have a <i>functor</i>!
 
                 </p>
 
+                <pre>
+                <code>
+
+</code>                </pre>
                 <p>
   Our main will exercise some STL capabilities.
 
@@ -98,12 +102,11 @@
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">bjarnelen</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">dennislen</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
-
     <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span>  <span class="o">=</span> <span class="s">&quot;Bjarne Stroustrup&quot;</span><span class="p">;</span>
     <span class="kt">char</span> <span class="n">s2</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;Dennis Ritchie&quot;</span><span class="p">;</span>
+
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;C++ creator: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;C creator, 4th letter: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-
 </code>                </pre>
                 <p>
       Let's do some things with a <span class="code">vector</span>.
@@ -117,6 +120,7 @@
     <span class="n">print_vec</span><span class="p">(</span><span class="s">&quot;cvec&quot;</span><span class="p">,</span> <span class="n">cvec</span><span class="p">);</span>
     <span class="n">sort</span><span class="p">(</span><span class="n">cvec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">cvec</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
     <span class="n">print_vec</span><span class="p">(</span><span class="s">&quot;sorted cvec&quot;</span><span class="p">,</span> <span class="n">cvec</span><span class="p">);</span>
+
 </code>                </pre>
                 <p>
       Create a <span class="code">char</span> list:
@@ -138,16 +142,7 @@
                 <pre>
                 <code>
     <span class="n">reverse</span><span class="p">(</span><span class="n">clist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">clist</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-</code>                </pre>
-                <p>
-      We use <span class="code">print_list</span> here just to make sure it works, but <span class="code">print()</span>
-      is preferred!
-
-                </p>
-
-                <pre>
-                <code>
-    <span class="n">print_list</span><span class="p">(</span><span class="s">&quot;clist reversed&quot;</span><span class="p">,</span> <span class="n">clist</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;clist reversed&quot;</span><span class="p">,</span> <span class="n">clist</span><span class="p">);</span>
 </code>                </pre>
                 <p>
       But even after <span class="code">clist</span> is reversed, <span class="code">clist</span> and
@@ -163,24 +158,24 @@
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Is clist a permutation of clist3? &quot;</span>
         <span class="o">&lt;&lt;</span> <span class="n">is_permutation</span><span class="p">(</span><span class="n">clist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">clist</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">clist3</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span>
         <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="p">;</span>
-
 </code>                </pre>
                 <p>
       Testing a list of Cats:
     Cat catptr[] = { Cat(), Cat(), Cat() };
-    list&lt;Cat&gt; catlist(catptr, catptr + 3);
+    list &lt;Cat&gt; catlist(catptr, catptr + 3);
 
                 </p>
 
                 <pre>
                 <code>
 <span class="c1">//    print_list(&quot;Cat list&quot;, catlist);</span>
+
 </code>                </pre>
                 <p>
       Testing an int list:
     int ilen = 8;
     int iptr[] = { 16, 32, 64, 128, 2, 4, 8, 17 };
-    list&lt;int&gt; ilist(iptr, iptr + ilen);
+    list &lt;int&gt; ilist(iptr, iptr + ilen);
 
                 </p>
 
@@ -204,15 +199,9 @@
                 <pre>
                 <code>
 <span class="c1">//    print(&quot;ilist sorted&quot;, ilist);</span>
-
 </code>                </pre>
                 <p>
       Let's experiment with <i>iterators</i> a bit!
-
-                </p>
-
-                <p>
-      Here we are going to pass <span class="code">is_odd()</span> to <span class="code">find_if()</span>.
 
                 </p>
 
@@ -221,10 +210,19 @@
 
 </code>                </pre>
                 <p>
+      Here we are going to pass <span class="code">is_odd()</span> to <span class="code">find_if()</span>.
+
+                </p>
+
+                <p>
       Here we are going to pass functor <span class="code">IsOdd</span> to <span class="code">find_if()</span>.
 
                 </p>
 
+                <pre>
+                <code>
+
+</code>                </pre>
                 <p>
       Here we are going to pass a <i>lambda</i> to <span class="code">find_if()</span>.
       The lambda starts with <span class="code">[]</span>. The point here is to show
