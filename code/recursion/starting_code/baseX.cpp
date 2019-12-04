@@ -5,7 +5,6 @@
 #include <iostream>
 using namespace std;
 
-char digits[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int main() {
     int num, base;
