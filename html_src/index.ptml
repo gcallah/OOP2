@@ -120,7 +120,10 @@
                  </li>
   
                  <li>
-                     Exceptions and assertions
+                     <a href="errors.html">
+                         Handling Errors:
+                         exceptions and assertions
+                     </a>
                  </li>
              </ol>
 
