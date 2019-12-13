@@ -11,7 +11,7 @@ using namespace std;
  * */
 struct Thing {
     int val;
-    Thing(int i) : val(i) {}
+//    Thing(int i) : val(i) {}
 };
 
 /*
@@ -22,27 +22,19 @@ struct Thing {
  * */
 int main() {
     // allocate array:
-    const Thing zero = Thing(0);
-    vector<Thing*> things;
+    Thing** data = new Thing*[100];
+    const int x = 7;
+    int* iptr = &x;
+    x = 17;
 
     // Fill array with Things:
     for (int i = 0; i < 100; i++) {
-        things.push_back(new Thing(zero));
-        cout << "things " << i << " = " << things[i]->val << " ";
-        if ((i % 5) == 4) cout << endl;
+        data[i] = new Thing{i + 1};
     }
 
     // Change their values:
     for (int i = 0; i < 100; i++) {
-        things[i]->val += i;
-        cout << "things " << i << " = " << things[i]->val << " ";
-        if ((i % 5) == 4) cout << endl;
+        data[i]->val += i;
+        cout << "data[" << i << "] == " << data[i]->val << endl;
     }
-    cout << endl;
-
-    // delete them:
-    for (int i = 0; i < 100; i++) {
-        delete things[i];
-    }
-
 }

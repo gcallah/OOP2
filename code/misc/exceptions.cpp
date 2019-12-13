@@ -23,9 +23,12 @@ public:
     }
 
     const char* what() const throw() {
-        char tb[12] = itoa(too_big, tb);
-        return "N is too big: ";
+        return " is too big";
     }
+
+    int bad_number() const { return too_big; }
+    int which_line() const { return line_num; }
+    string which_file() const { return file_name; }
 
 private:
     int too_big;
@@ -38,7 +41,7 @@ private:
  * Throw NTooBig when n > 200.
  * */
 void f(int n) {
-    if (n > 200) throw(NTooBig(n, 31, "exceptions.cpp"));
+    if (n > 200) throw(NTooBig(n, 42, "exceptions.cpp"));
 }
 
 
@@ -62,19 +65,21 @@ int main() {
 
     int n = 201;
 
-    assert(n <= 200);
-
     try {
         // h(16);
         g(n);
     }
     catch (NTooBig& e) {
         cerr << "Got a number too big for f(): "
-            << e.what() << endl;
+            << e.bad_number() << e.what()
+            << " at line " << e.which_line()
+            << " in file " << e.which_file() << endl;
     }
     catch (exception& e) {
         cerr << "Caught exception: " << e.what() << endl;
     }
 
     cout << "Still in main()!\n";
+
+    assert(n <= 1000);
 }
