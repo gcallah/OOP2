@@ -103,30 +103,32 @@ int main() {
 
     /*
      * Testing a list of Cats:
+     * */
     Cat catptr[] = { Cat(), Cat(), Cat() };
     list<Cat> catlist(catptr, catptr + 3);
-     * */
-//    print_list("Cat list", catlist);
+    print("Cat list", catlist);
 
     /*
      * Testing an int list:
+     * */
     int ilen = 8;
     int iptr[] = { 16, 32, 64, 128, 2, 4, 8, 17 };
     list<int> ilist(iptr, iptr + ilen);
-     * */
     /*
      * Our print can work for lists as well as vectors:
      * */
-//    print("ilist", ilist);
+    print("ilist", ilist);
     /*
      * `sort()` does not work for lists, since they aren't random access.
      * Thus lists have their own `sort()` method, called below:
      * This *won't* work: `sort(ilist.begin(), ilist.end());`
-    ilist.sort();
      * */
-//    print("ilist sorted", ilist);
+    ilist.sort();
+    print("ilist sorted", ilist);
 
     /*
+     * THE CODE FROM HERE DOWN WAS DELETED FOR A CLASS AND
+     * MUST BE RE-WRITTEN.
      * Let's experiment with *iterators* a bit!
      * */
 

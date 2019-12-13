@@ -16,9 +16,7 @@
                 <pre>
                 <code>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
   This code will convert integers into any base from 2 to MAX_BASE.
 
@@ -26,17 +24,15 @@
 
                 <pre>
                 <code>
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include "base_conv.h"
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;base_conv.h&quot;</span><span class="cp"></span>
 
-using namespace std;
-const int MIN_BASE = 2;
-const int MAX_BASE = 62;
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MIN_BASE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_BASE</span> <span class="o">=</span> <span class="mi">62</span><span class="p">;</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
   A table in which we can look up the digits for our base-N
   number:
@@ -45,18 +41,16 @@ const int MAX_BASE = 62;
 
                 <pre>
                 <code>
-char digits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-                 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-                 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
-                 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-                 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-                 'Y', 'Z'
-};
+<span class="kt">char</span> <span class="n">digits</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="sc">&#39;1&#39;</span><span class="p">,</span> <span class="sc">&#39;2&#39;</span><span class="p">,</span> <span class="sc">&#39;3&#39;</span><span class="p">,</span> <span class="sc">&#39;4&#39;</span><span class="p">,</span> <span class="sc">&#39;5&#39;</span><span class="p">,</span> <span class="sc">&#39;6&#39;</span><span class="p">,</span> <span class="sc">&#39;7&#39;</span><span class="p">,</span> <span class="sc">&#39;8&#39;</span><span class="p">,</span> <span class="sc">&#39;9&#39;</span><span class="p">,</span>
+                 <span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;f&#39;</span><span class="p">,</span> <span class="sc">&#39;g&#39;</span><span class="p">,</span> <span class="sc">&#39;h&#39;</span><span class="p">,</span> <span class="sc">&#39;i&#39;</span><span class="p">,</span> <span class="sc">&#39;j&#39;</span><span class="p">,</span>
+                 <span class="sc">&#39;k&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;m&#39;</span><span class="p">,</span> <span class="sc">&#39;n&#39;</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">,</span> <span class="sc">&#39;p&#39;</span><span class="p">,</span> <span class="sc">&#39;q&#39;</span><span class="p">,</span> <span class="sc">&#39;r&#39;</span><span class="p">,</span> <span class="sc">&#39;s&#39;</span><span class="p">,</span> <span class="sc">&#39;t&#39;</span><span class="p">,</span>
+                 <span class="sc">&#39;u&#39;</span><span class="p">,</span> <span class="sc">&#39;v&#39;</span><span class="p">,</span> <span class="sc">&#39;w&#39;</span><span class="p">,</span> <span class="sc">&#39;x&#39;</span><span class="p">,</span> <span class="sc">&#39;y&#39;</span><span class="p">,</span> <span class="sc">&#39;z&#39;</span><span class="p">,</span> <span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">,</span>
+                 <span class="sc">&#39;E&#39;</span><span class="p">,</span> <span class="sc">&#39;F&#39;</span><span class="p">,</span> <span class="sc">&#39;G&#39;</span><span class="p">,</span> <span class="sc">&#39;H&#39;</span><span class="p">,</span> <span class="sc">&#39;I&#39;</span><span class="p">,</span> <span class="sc">&#39;J&#39;</span><span class="p">,</span> <span class="sc">&#39;K&#39;</span><span class="p">,</span> <span class="sc">&#39;L&#39;</span><span class="p">,</span> <span class="sc">&#39;M&#39;</span><span class="p">,</span> <span class="sc">&#39;N&#39;</span><span class="p">,</span>
+                 <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="sc">&#39;P&#39;</span><span class="p">,</span> <span class="sc">&#39;Q&#39;</span><span class="p">,</span> <span class="sc">&#39;R&#39;</span><span class="p">,</span> <span class="sc">&#39;S&#39;</span><span class="p">,</span> <span class="sc">&#39;T&#39;</span><span class="p">,</span> <span class="sc">&#39;U&#39;</span><span class="p">,</span> <span class="sc">&#39;V&#39;</span><span class="p">,</span> <span class="sc">&#39;W&#39;</span><span class="p">,</span> <span class="sc">&#39;X&#39;</span><span class="p">,</span>
+                 <span class="sc">&#39;Y&#39;</span><span class="p">,</span> <span class="sc">&#39;Z&#39;</span>
+<span class="p">};</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
                 <p>
   The recursive code which strips off the digits from back-to-front
   using modulus and integer division:
@@ -65,20 +59,18 @@ char digits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 
                 <pre>
                 <code>
-string base_conv(int n, int to_base) {
-    if (to_base &lt; MIN_BASE || to_base &gt; MAX_BASE) return "";
+<span class="n">string</span> <span class="nf">base_conv</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to_base</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">to_base</span> <span class="o">&lt;</span> <span class="n">MIN_BASE</span> <span class="o">||</span> <span class="n">to_base</span> <span class="o">&gt;</span> <span class="n">MAX_BASE</span><span class="p">)</span> <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
 
-    if (n &lt; to_base) return string(1, digits[n]);
-    else {
-        int digit = n % to_base;
-        return base_conv(n / to_base, to_base)
-            + string(1, digits[digit]);
-    }
-}
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">to_base</span><span class="p">)</span> <span class="k">return</span> <span class="n">string</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">digits</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">digit</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="n">to_base</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">base_conv</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">to_base</span><span class="p">,</span> <span class="n">to_base</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">digits</span><span class="p">[</span><span class="n">digit</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-
-</code>
-                </pre>
+</code>                </pre>
 
     </body>
 </html>
