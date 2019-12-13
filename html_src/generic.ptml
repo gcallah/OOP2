@@ -2,7 +2,7 @@
     <head>
 <!--include head.txt -->
         <title>
-            The Standard Template Library
+            Generic Programming
         </title>
     </head>
 
@@ -10,31 +10,31 @@
 <!--include logo.txt -->
 <!--include menu.txt -->
         <h1>
-            The Standard Template Library
+            Generic Programming
         </h1>
 
         <p>
         </p>
 
-        <h3>
-            Containers
-        </h3>
-
-        <h3>
-            Algorithms
-        </h3>
-
         <figure>
             <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/h4Jl1fk3MkQ"
+                src="https://www.youtube.com/embed/LMP_sxOaz6g"
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
             <figcaption>
-                How to use STL algorithms
+                Back to basics: function and class templates
             </figcaption>
         </figure>
+
+        <h3>
+            Class Templates
+        </h3>
+
+        <h3>
+            Function Templates
+        </h3>
 
         <p>
         </p>

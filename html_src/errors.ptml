@@ -1,0 +1,77 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Handling Errors
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Handling Errors
+        </h1>
+
+        <p>
+            While a program is running, bad things may happen. A file may not
+            be in the expected place. A database server may be inaccessible.
+            The Internet connection might go down. A math function may
+            contain a bug, and return an invalid number.
+        </p>
+
+        <p>
+            In this section, we will discuss a number of different error
+            handling strategies, and how they can be implemented in 
+            C++. The first way to deal with an error is the easiest, and is
+            sometimes even acceptable:
+        </p>
+
+        <h3>
+            Ignore the Error
+        </h3>
+
+        <h3>
+            Error Return Codes
+        </h3>
+
+        <h3>
+            Exceptions
+        </h3>
+
+        <figure>
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/kO0KVB-XIeE"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            <figcaption>
+                Exceptions demystified
+            </figcaption>
+        </figure>
+
+        <p>
+        </p>
+        
+        <h3>
+            Assertions
+        </h3>
+
+        <figure>
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/1Jh9BUxIw0U"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            <figcaption>
+                Assertions to help debugging
+            </figcaption>
+        </figure>
+
+        <p>
+        </p>
+
+    </body>
+</html>
