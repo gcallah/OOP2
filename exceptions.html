@@ -54,6 +54,7 @@
 <span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 </code>                </pre>
@@ -141,6 +142,27 @@
 
 </code>                </pre>
                 <p>
+  The get_records() call returns error codes, for comparison.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">int</span> <span class="nf">get_records</span><span class="p">()</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+      We imagine here we make some database access,
+      that returns a number of records, or an error code.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="k">return</span> <span class="nf">rand</span><span class="p">();</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
   <span class="code">main()</span> will call some functions that throw exceptions,
   and use an assertion.
 
@@ -150,6 +172,22 @@
                 <code>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">MAX_TEMP</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      The following is the sort of code that we get when we have
+      error code returns.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="kt">int</span> <span class="n">ret_code</span> <span class="o">=</span> <span class="n">get_records</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret_code</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;database not available</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret_code</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;No records present</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Proceeding to process records</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 
     <span class="k">try</span> <span class="p">{</span>
         <span class="n">set_temp</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>

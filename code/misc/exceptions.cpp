@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <cassert>
+#include <cstdlib>
 using namespace std;
 
 
@@ -76,13 +77,36 @@ void h(int n) {
     cout << v.at(n) << endl;
 }
 
+
+/*
+ * The get_records() call returns error codes, for comparison.
+ * */
+int get_records() {
+    /*
+     * We imagine here we make some database access,
+     * that returns a number of records, or an error code.
+     * */
+    return rand();
+}
+
 /*
  * `main()` will call some functions that throw exceptions,
  * and use an assertion.
  * */
 int main() {
-
     int n = MAX_TEMP + 1;
+
+    /*
+     * The following is the sort of code that we get when we have
+     * error code returns.
+     * */
+    int ret_code = get_records();
+    if (ret_code == -1)
+        cout << "database not available\n";
+    else if (ret_code == -2)
+        cout << "No records present\n";
+    else
+        cout << "Proceeding to process records\n";
 
     try {
         set_temp(n);
