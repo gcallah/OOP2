@@ -1,6 +1,7 @@
 /*
  * This file illustrates how we might implement our own 
  * version of std::vector.
+ * It includes *copy control* and an *iterator*.
  * */
 #include <iostream>
 using namespace std;
@@ -67,20 +68,20 @@ class MyVec {
         for (size_t i = 0; i < sz; i++) data[i] = val;
     }
 
+    /*
+     * This is the copy constructor for our class.
+     * It calls a method called `copy` so that we can share
+     * that code with assignment.
+     * */
     MyVec(const MyVec& v2) {
-        /*
-         * This is the copy constructor for our class.
-         * It calls a method called `copy` so that we can share
-         * that code with assignment.
-         * */
         copy(v2);
     }
 
+    /*
+     * The assignment operator essentially combines the
+     * destructor and the copy constructor.
+     * */
     MyVec& operator=(const MyVec& v2) {
-        /*
-         * The assignment operator essentially combines the
-         * destructor and the copy constructor.
-         * */
         if (this != &v2) {
             delete [] data;
             copy(v2);
@@ -88,10 +89,10 @@ class MyVec {
         return *this;
     }
 
+    /*
+     * The destructor for this class.
+     * */
     ~MyVec() {
-        /*
-         * The destructor for this class.
-         * */
         delete [] data;
     }
 
