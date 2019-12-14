@@ -69,7 +69,9 @@
 
 </code>                </pre>
                 <p>
-  An exception to throw when we get a number too big.
+  <span class="code">TempTooHigh</span>:
+  an exception to throw when we get a temperature 
+  out of any reasonable range.
   Its constructor collects some relevant information
   about the problem that occurred that can be shared
   with the user.
@@ -99,7 +101,7 @@
 
 </code>                </pre>
                 <p>
-  Throw TempTooHigh when n &gt; MAX_TEMP.
+  <span class="code">set_thermostat()</span> throws TempTooHigh when n &gt; MAX_TEMP.
 
                 </p>
 
@@ -111,7 +113,9 @@
 
 </code>                </pre>
                 <p>
-  Calls <span class="code">set_thermostat()</span>: just showing how exceptions rise up the stack.
+  <span class="code">set_temp()</span> calls <span class="code">set_thermostat()</span>.
+  The only purpose of this intermediate call is
+  to show how exceptions rise up the stack.
 
                 </p>
 

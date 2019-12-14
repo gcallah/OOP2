@@ -20,7 +20,9 @@ using namespace std;
 const int MAX_TEMP = 90;  // can't set thermostat higher
 
 /*
- * An exception to throw when we get a number too big.
+ * `TempTooHigh`:
+ * an exception to throw when we get a temperature 
+ * out of any reasonable range.
  * Its constructor collects some relevant information
  * about the problem that occurred that can be shared
  * with the user.
@@ -48,7 +50,7 @@ private:
 
 
 /*
- * Throw TempTooHigh when n &gt; MAX_TEMP.
+ * `set_thermostat()` throws TempTooHigh when n &gt; MAX_TEMP.
  * */
 void set_thermostat(int n) {
     if (n > MAX_TEMP) throw(TempTooHigh(n, 51, "exceptions.cpp"));
@@ -56,7 +58,9 @@ void set_thermostat(int n) {
 
 
 /*
- * Calls `set_thermostat()`: just showing how exceptions rise up the stack.
+ * `set_temp()` calls `set_thermostat()`.
+ * The only purpose of this intermediate call is
+ * to show how exceptions rise up the stack.
  * */
 void set_temp(int n) {
     set_thermostat(n);
