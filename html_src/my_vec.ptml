@@ -41,12 +41,11 @@
     <span class="k">class</span> <span class="nc">Iterator</span> <span class="p">{</span>
 </code>                </pre>
                 <p>
-          This class supports ranged for loops.
-          It includes:
-          Iterator(int<i>)
-          operator++
-          operator</i>
-          operator!=
+          This class supports ranged for loops,
+          as well as algorithms like the STL ones
+          that expect iterators as arguments.
+          It includes the operators necessary
+          to support iteration.
 
                 </p>
 

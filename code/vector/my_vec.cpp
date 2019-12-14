@@ -17,12 +17,11 @@ class MyVec {
  public:
     class Iterator {
         /*
-         * This class supports ranged for loops.
-         * It includes:
-         * Iterator(int*)
-         * operator++
-         * operator*
-         * operator!=
+         * This class supports ranged for loops,
+         * as well as algorithms like the STL ones
+         * that expect iterators as arguments.
+         * It includes the operators necessary
+         * to support iteration.
          * */
             friend bool operator!=(Iterator& rhs, Iterator& lhs) {
                 return rhs.iptr != lhs.iptr;
