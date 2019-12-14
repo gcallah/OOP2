@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+        code/vector/my_vec.cpp
+        </title>
+    </head>
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+        code/vector/my_vec.cpp
+        </h1>
+
+                <p>
+  This file illustrates how we might implement our own 
+  version of std::vector.
+  It includes <i>copy control</i> and an <i>iterator</i>.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">size_t</span> <span class="n">DEF_VCAPACITY</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">CAPACITY_MULT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyVec</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+      The MyVec class that is a partial version of std::vector.
+
+                </p>
+
+                <pre>
+                <code>
+ <span class="k">public</span><span class="o">:</span>
+    <span class="k">class</span> <span class="nc">Iterator</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+          This class supports ranged for loops.
+          It includes:
+          Iterator(int<i>)
+          operator++
+          operator</i>
+          operator!=
+
+                </p>
+
+                <pre>
+                <code>
+            <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="n">Iterator</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">Iterator</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">rhs</span><span class="p">.</span><span class="n">iptr</span> <span class="o">!=</span> <span class="n">lhs</span><span class="p">.</span><span class="n">iptr</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">Iterator</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">Iterator</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">rhs</span><span class="p">.</span><span class="n">iptr</span> <span class="o">==</span> <span class="n">lhs</span><span class="p">.</span><span class="n">iptr</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="k">public</span><span class="o">:</span>
+            <span class="n">Iterator</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">ip</span><span class="p">)</span> <span class="o">:</span> <span class="n">iptr</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span> <span class="p">{}</span>
+            <span class="n">Iterator</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">++</span><span class="p">()</span> <span class="p">{</span>
+                <span class="o">++</span><span class="n">iptr</span><span class="p">;</span>
+                <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="kt">int</span> <span class="k">operator</span><span class="o">*</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">iptr</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">private</span><span class="o">:</span>
+            <span class="kt">int</span><span class="o">*</span> <span class="n">iptr</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="n">MyVec</span><span class="p">()</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+          This if the default constructor for the class.
+
+                </p>
+
+                <pre>
+                <code>
+        <span class="n">sz</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">capac</span> <span class="o">=</span> <span class="n">DEF_VCAPACITY</span><span class="p">;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">DEF_VCAPACITY</span><span class="p">];</span>
+    <span class="p">}</span>
+
+</code>                </pre>
+                <p>
+      Another constructor: note the use of <span class="code">explicit</span>:
+      it means we can't accidentally get a "weird"
+      interpretation of some code as implicitly calling
+      this constructor.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="k">explicit</span> <span class="nf">MyVec</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">sz</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">sz</span><span class="p">{</span><span class="n">sz</span><span class="p">}</span> <span class="p">{</span>
+        <span class="n">capac</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">DEF_VCAPACITY</span><span class="p">,</span> <span class="n">sz</span> <span class="o">*</span> <span class="n">CAPACITY_MULT</span><span class="p">);</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">capac</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+</code>                </pre>
+                <p>
+      This is the copy constructor for our class.
+      It calls a method called <span class="code">copy</span> so that we can share
+      that code with assignment.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">MyVec</span><span class="p">(</span><span class="k">const</span> <span class="n">MyVec</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">copy</span><span class="p">(</span><span class="n">v2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+</code>                </pre>
+                <p>
+      The assignment operator essentially combines the
+      destructor and the copy constructor.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">MyVec</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MyVec</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">v2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">delete</span> <span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+            <span class="n">copy</span><span class="p">(</span><span class="n">v2</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+</code>                </pre>
+                <p>
+      The destructor for this class.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="o">~</span><span class="n">MyVec</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">delete</span> <span class="p">[]</span> <span class="n">data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">size_t</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+          This version of the [] operator is const, so it
+          is used when we are just getting the value of
+          a vector element.
+
+                </p>
+
+                <pre>
+                <code>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="kt">int</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+          This version of the [] operator is not const,
+          so it is used when we are setting the value of
+          a vector element.
+
+                </p>
+
+                <pre>
+                <code>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">push_back</span><span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+          This method puts a val on the end of our vector:
+          it may need to increase the vector's capacity
+          in order to do this.
+
+                </p>
+
+                <pre>
+                <code>
+        <span class="n">sz</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sz</span> <span class="o">&gt;</span> <span class="n">capac</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Increasing capacity</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+            <span class="kt">int</span><span class="o">*</span> <span class="n">old_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">capac</span> <span class="o">*</span> <span class="n">CAPACITY_MULT</span><span class="p">];</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="n">capac</span> <span class="o">*=</span> <span class="n">CAPACITY_MULT</span><span class="p">;</span>
+            <span class="k">delete</span> <span class="p">[]</span> <span class="n">old_data</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">sz</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">size_t</span> <span class="nf">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">sz</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">Iterator</span> <span class="nf">begin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">Iterator</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Iterator</span> <span class="nf">end</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">Iterator</span><span class="p">(</span><span class="n">data</span> <span class="o">+</span> <span class="n">size</span><span class="p">());</span>
+    <span class="p">}</span>
+
+ <span class="k">private</span><span class="o">:</span>
+    <span class="kt">size_t</span> <span class="n">sz</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">capac</span><span class="p">;</span>
+    <span class="kt">int</span><span class="o">*</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">copy</span><span class="p">(</span><span class="k">const</span> <span class="n">MyVec</span><span class="o">&amp;</span> <span class="n">v2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sz</span> <span class="o">=</span> <span class="n">v2</span><span class="p">.</span><span class="n">sz</span><span class="p">;</span>
+        <span class="n">capac</span> <span class="o">=</span> <span class="n">v2</span><span class="p">.</span><span class="n">capac</span><span class="p">;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">capac</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">v2</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">print_vec</span><span class="p">(</span><span class="k">const</span> <span class="n">MyVec</span><span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">v</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Testing my_vec:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">MyVec</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">MyVec</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">v1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">MyVec</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">MyVec</span><span class="p">(</span><span class="n">v1</span><span class="p">);</span>
+    <span class="n">MyVec</span> <span class="n">v3</span> <span class="o">=</span> <span class="n">MyVec</span><span class="p">();</span>
+    <span class="n">v3</span> <span class="o">=</span> <span class="n">v1</span><span class="p">;</span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">v2</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      This line won't work if we have <span class="code">explicit</span> on the
+      constructor for MyVec(int, int):
+      MyVec v4 = 12;
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">MyVec</span> <span class="n">v4</span> <span class="o">=</span> <span class="n">MyVec</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of v3 is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v3</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">999</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v4 = </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="c1">// print_vec(v4);</span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">v2</span><span class="p">;</span>
+    <span class="n">print_vec</span><span class="p">(</span><span class="n">v2</span><span class="p">);</span>
+    
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Done with test!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code>                </pre>
+
+    </body>
+</html>
+

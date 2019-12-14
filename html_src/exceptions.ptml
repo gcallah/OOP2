@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+        code/misc/exceptions.cpp
+        </title>
+    </head>
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+        code/misc/exceptions.cpp
+        </h1>
+
+                <pre>
+                <code>
+
+</code>                </pre>
+                <p>
+  A study of some aspects of C++ error handling, 
+  focused on exceptions with a sprinkling of assertions
+  and error code returns.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="cp">#include</span> <span class="cpf">&lt;exception&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+</code>                </pre>
+                <p>
+  We should always give our constants symbolic names,
+  so we can change them in one place: don't repeat yourself!
+
+                </p>
+
+                <pre>
+                <code>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_TEMP</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>  <span class="c1">// can&#39;t set thermostat higher</span>
+
+</code>                </pre>
+                <p>
+  <span class="code">TempTooHigh</span>:
+  an exception to throw when we get a temperature 
+  out of any reasonable range.
+  Its constructor collects some relevant information
+  about the problem that occurred that can be shared
+  with the user.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="k">class</span> <span class="nc">TempTooHigh</span> <span class="o">:</span> <span class="k">public</span> <span class="n">exception</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">TempTooHigh</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">line</span><span class="p">,</span> <span class="n">string</span> <span class="n">file</span><span class="p">)</span> 
+        <span class="o">:</span> <span class="n">too_high</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">line_num</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="n">file_name</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">what</span><span class="p">()</span> <span class="k">const</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot; is too high a temperature&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nf">high_temp</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">too_high</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="nf">which_line</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">line_num</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">string</span> <span class="nf">which_file</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">file_name</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">too_high</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">line_num</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">file_name</span><span class="p">;</span>
+<span class="p">};</span>
+
+</code>                </pre>
+                <p>
+  <span class="code">set_thermostat()</span> throws TempTooHigh when n &gt; MAX_TEMP.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">void</span> <span class="nf">set_thermostat</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">MAX_TEMP</span><span class="p">)</span> <span class="k">throw</span><span class="p">(</span><span class="n">TempTooHigh</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="s">&quot;exceptions.cpp&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
+  <span class="code">set_temp()</span> calls <span class="code">set_thermostat()</span>.
+  The only purpose of this intermediate call is
+  to show how exceptions rise up the stack.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">void</span> <span class="nf">set_temp</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">set_thermostat</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
+  This function will throw an exception because <span class="code">vector.at()</span>
+  does range checking.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">void</span> <span class="nf">h</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
+  The get_records() call returns error codes, for comparison.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">int</span> <span class="nf">get_records</span><span class="p">()</span> <span class="p">{</span>
+</code>                </pre>
+                <p>
+      We imagine here we make some database access,
+      that returns a number of records, or an error code.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="k">return</span> <span class="nf">rand</span><span class="p">();</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
+  <span class="code">main()</span> will call some functions that throw exceptions,
+  and use an assertion.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">MAX_TEMP</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      The following is the sort of code that we get when we have
+      error code returns.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="kt">int</span> <span class="n">ret_code</span> <span class="o">=</span> <span class="n">get_records</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret_code</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;database not available</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret_code</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;No records present</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Proceeding to process records</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">set_temp</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">TempTooHigh</span><span class="o">&amp;</span> <span class="n">too_high</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Temperature error: &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">too_high</span><span class="p">.</span><span class="n">high_temp</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">too_high</span><span class="p">.</span><span class="n">what</span><span class="p">()</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot; at line &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">too_high</span><span class="p">.</span><span class="n">which_line</span><span class="p">()</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot; in file &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">too_high</span><span class="p">.</span><span class="n">which_file</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+</code>                </pre>
+                <p>
+      Next we will illustrate catching <i>any</i> exception
+      that inherits from <span class="code">std::exception</span>.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">h</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Caught exception: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+</code>                </pre>
+                <p>
+      The point of the output that follows is to demonstrate
+      that our exceptions, <i>when caught</i>, do <i>not</i> terminate
+      the program.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Still in main()!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      Finally, we just illustrate how <span class="code">assert(cond)</span>
+      is used.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code>                </pre>
+
+    </body>
+</html>
+

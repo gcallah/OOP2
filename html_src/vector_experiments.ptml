@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+        code/vector/vector_experiments.cpp
+        </title>
+    </head>
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+        code/vector/vector_experiments.cpp
+        </h1>
+
+                <pre>
+                <code>
+
+</code>                </pre>
+                <p>
+  A place to experiment with vectors and see what various
+  operations do.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+</code>                </pre>
+                <p>
+  <span class="code">ATestType</span> is a type with copy control that also
+  prints when its copy control members are called
+  so we can track their usage.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="k">class</span> <span class="nc">ATestType</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">ATestType</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">);</span>
+ <span class="k">public</span><span class="o">:</span>
+    <span class="n">ATestType</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="o">:</span> <span class="n">id</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">iptr</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{}</span>
+
+</code>                </pre>
+                <p>
+      Copy constructor: copies the storage pointed to
+      by <span class="code">iptr</span> for the new object.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">ATestType</span><span class="p">(</span><span class="k">const</span> <span class="n">ATestType</span><span class="o">&amp;</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;In ATestType copy constructor for &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">iptr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">iptr</span><span class="p">));</span>
+    <span class="p">}</span>
+</code>                </pre>
+                <p>
+      Destructor: deletes the storage pointed to by <span class="code">iptr</span>.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="o">~</span><span class="n">ATestType</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;In ATestType destructor for &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">delete</span> <span class="n">iptr</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nf">get_val</span><span class="p">()</span>  <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">iptr</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">set_val</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>  <span class="p">{</span> <span class="o">*</span><span class="n">iptr</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="p">}</span>
+ <span class="k">private</span><span class="o">:</span>
+    <span class="kt">char</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kt">int</span><span class="o">*</span> <span class="n">iptr</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">ATestType</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|ATestType &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; has val &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">iptr</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;|&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
+  Print a vector of Streamable, where Streamable must be a type that
+  implements the stream output operator.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Streamable</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="nf">print_vector</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Streamable</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">mbr</span> <span class="p">:</span> <span class="n">vec</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">mbr</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">section_head</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">***********************</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code>                </pre>
+                <p>
+  We can see that by using emplace_back() for att2,
+  we save one call to the copy constructor.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ivec</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">};</span>
+    <span class="n">print_vector</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="n">ivec</span><span class="p">);</span>
+
+    <span class="n">ATestType</span> <span class="n">att1</span><span class="p">{</span><span class="sc">&#39;1&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">};</span>
+    <span class="n">ATestType</span> <span class="n">att2</span><span class="p">{</span><span class="sc">&#39;2&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">ATestType</span><span class="o">&gt;</span> <span class="n">att_vec</span><span class="p">;</span>
+    <span class="n">section_head</span><span class="p">(</span><span class="s">&quot;Pushing back att1&quot;</span><span class="p">);</span>
+    <span class="n">att_vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">att1</span><span class="p">);</span>
+    <span class="n">section_head</span><span class="p">(</span><span class="s">&quot;Emplacing back att2&quot;</span><span class="p">);</span>
+    <span class="n">att_vec</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">att2</span><span class="p">);</span>
+
+    <span class="n">section_head</span><span class="p">(</span><span class="s">&quot;Printing att vec&quot;</span><span class="p">);</span>
+    <span class="n">print_vector</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="n">att_vec</span><span class="p">);</span>
+    <span class="n">section_head</span><span class="p">(</span><span class="s">&quot;Clearing the att vector&quot;</span><span class="p">);</span>
+    <span class="n">att_vec</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+
+    <span class="n">section_head</span><span class="p">(</span><span class="s">&quot;Exiting program&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code>                </pre>
+
+    </body>
+</html>
+

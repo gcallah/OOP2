@@ -96,7 +96,7 @@ class MyVec {
         delete [] data;
     }
 
-    int operator[](int i) const {
+    int operator[](size_t i) const {
         /*
          * This version of the [] operator is const, so it
          * is used when we are just getting the value of
@@ -125,7 +125,7 @@ class MyVec {
             cout << "Increasing capacity\n";
             int* old_data = data;
             data = new int[capac * CAPACITY_MULT];
-            for (int i = 0; i < sz; i++) {
+            for (size_t i = 0; i < sz; i++) {
                 data[i] = old_data[i];
             }
             capac *= CAPACITY_MULT;
@@ -152,7 +152,7 @@ class MyVec {
         sz = v2.sz;
         capac = v2.capac;
         data = new int[capac];
-        for (int i = 0; i < sz; i++) {
+        for (size_t i = 0; i < sz; i++) {
             data[i] = v2.data[i];
         }
     }
@@ -190,15 +190,6 @@ int main() {
     v2 = v2;
     print_vec(v2);
     
-    /*
-     * The below code * will not* work, but students try it anyway:
-     * `begin()` and `end()` return iterators, not int*!
-     * for (int* p = v2.begin(); p != v2.end(); p++)
-     *   cout << *p << endl;
-     *
-     * */
-
     cout << "Done with test!\n";
-    return
-        0;
+    return 0;
 }
