@@ -1,6 +1,8 @@
 
 /*
- * A study of some aspects of C++ exception handling.
+ * A study of some aspects of C++ error handling, 
+ * focused on exceptions with a sprinkling of assertions
+ * and error code returns.
  * */
 
 #include <exception>
@@ -8,78 +10,107 @@
 #include <vector>
 #include <string>
 #include <cassert>
-#include <stdlib.h>
 using namespace std;
 
 
 /*
- * An exception to throw when we get a number too big.
+ * We should always give our constants symbolic names,
+ * so we can change them in one place: don't repeat yourself!
  * */
-class NTooBig : public exception {
+const int MAX_TEMP = 90;  // can't set thermostat higher
+
+/*
+ * An exception to throw when we get a number too big.
+ * Its constructor collects some relevant information
+ * about the problem that occurred that can be shared
+ * with the user.
+ * */
+class TempTooHigh : public exception {
 public:
-    NTooBig(int n, int line, string file) 
-        : too_big(n), line_num(line), file_name(file)
+    TempTooHigh(int n, int line, string file) 
+        : too_high(n), line_num(line), file_name(file)
     {
     }
 
     const char* what() const throw() {
-        return " is too big";
+        return " is too high a temperature";
     }
 
-    int bad_number() const { return too_big; }
+    int high_temp() const { return too_high; }
     int which_line() const { return line_num; }
     string which_file() const { return file_name; }
 
 private:
-    int too_big;
+    int too_high;
     int line_num;
     string file_name;
 };
 
 
 /*
- * Throw NTooBig when n > 200.
+ * Throw TempTooHigh when n &gt; MAX_TEMP.
  * */
-void f(int n) {
-    if (n > 200) throw(NTooBig(n, 42, "exceptions.cpp"));
+void set_thermostat(int n) {
+    if (n > MAX_TEMP) throw(TempTooHigh(n, 51, "exceptions.cpp"));
 }
 
 
 /*
- * Call `f()`: just showing how exceptions rise up the stack.
+ * Calls `set_thermostat()`: just showing how exceptions rise up the stack.
  * */
-void g(int n) {
-    f(n);
+void set_temp(int n) {
+    set_thermostat(n);
 }
 
 
+/*
+ * This function will throw an exception because `vector.at()`
+ * does range checking.
+ * */
 void h(int n) {
     vector<int> v = vector<int>(n, -1);
     cout << v.at(n) << endl;
 }
 
 /*
- * `main()` will call some functions that throw exceptions.
+ * `main()` will call some functions that throw exceptions,
+ * and use an assertion.
  * */
 int main() {
 
-    int n = 201;
+    int n = MAX_TEMP + 1;
 
     try {
-        // h(16);
-        g(n);
+        set_temp(n);
     }
-    catch (NTooBig& e) {
-        cerr << "Got a number too big for f(): "
-            << e.bad_number() << e.what()
-            << " at line " << e.which_line()
-            << " in file " << e.which_file() << endl;
+    catch (TempTooHigh& too_high) {
+        cerr << "Temperature error: "
+            << too_high.high_temp() << too_high.what()
+            << " at line " << too_high.which_line()
+            << " in file " << too_high.which_file() << endl;
+    }
+
+    /*
+     * Next we will illustrate catching *any* exception
+     * that inherits from `std::exception`.
+     * */
+    try {
+        h(100);
     }
     catch (exception& e) {
         cerr << "Caught exception: " << e.what() << endl;
     }
 
+    /*
+     * The point of the output that follows is to demonstrate
+     * that our exceptions, *when caught*, do *not* terminate
+     * the program.
+     * */
     cout << "Still in main()!\n";
 
+    /*
+     * Finally, we just illustrate how `assert(cond)`
+     * is used.
+     * */
     assert(n <= 1000);
 }
