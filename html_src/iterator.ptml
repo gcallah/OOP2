@@ -17,9 +17,28 @@
         </h3>
 
         <p>
-            Iterators are objects that allow sequential access to the data
-            structure with which they are associated.
+            Iterators are objects that allow access to the data
+            structure with which they are associated, in a standard
+            way. Typically, that access is sequential, although
+            <span class="code">RandomAccessIterator</span> also
+            is available.
         </p>
+
+        <p>
+            Here is a video discussing the general idea of iterators:
+        </p>
+
+        <figure>
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/VKIzUuMdmag"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            <figcaption>
+                The iterator design pattern
+            </figcaption>
+        </figure>
 
         <h3>
             Ranged for loops with iterators
@@ -60,11 +79,11 @@
         </h3>
         <p>
             If you import an STL container (for example in the line "
-            <span class = "code">#include &ltvector&rt </span>"),
+            <span class = "code">#include &ltvector&gt</span>"),
             you can call its 
             iterator by writing <span class = "code">"::iterator"</span>
             after the STL object. 
-            For example, <span class = "code">"vector&lt char &gt :: iterator"
+            For example, <span class = "code">"vector&lt char &gt::iterator"
             </span>.
 
             <br />
