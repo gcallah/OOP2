@@ -25,7 +25,10 @@
         </p>
 
         <p>
-            Here is a video discussing the general idea of iterators:
+            Here is a video discussing the general idea of iterators...
+            the code is in Java, but it is a good explanation of what
+            iterators are <i>for</i>, whatever language we are
+            using them in:
         </p>
 
         <figure>
