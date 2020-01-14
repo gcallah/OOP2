@@ -39,11 +39,14 @@
         <p>
         Recursion happens when a function calls itself. The function is called
         a recursive function. Recursive functions do a small part of the task
-        in each recursive call, similar to a loop. Note: recursion and looping
-        are <b>not</b> the same. Most of the time, recursion can simplify your
+        in each recursive call, similar to a loop. In fact, looping and 
+        recursion are typically alternate ways to do the same thing. Typically,
+        an algorithm written recursively can be re-written using a loop.
+        In many cases, recursion can simplify your
         code and make algorithms easier to understand. However, there are also
         some cases where using recursion makes your program confusing and
-        inefficient.
+        inefficient. It takes experience and judgment to make the best choice
+        between recursion and looping in particular cases.
         </p>
 
         <h3>
@@ -64,15 +67,26 @@
             </li>
         </ol>
 
+        <h3>
+            Considerations When Writing a Recursive Function
+        </h3>
+
         <p>
         When writing a recursive function, there should always be at least one
-        base case. This is necessary to tell the function when to stop the
-        recursion and what to do at the end of the recursive calls. For most
+        base case. It is needed because otherwise, the series of recursive
+        calls have no stopping point: they will halt only when they "blow the
+        <a href="glossary.html#stack">stack</a>" and your program crashes.
+        For most
         recursive functions, this is usually done with an if statement checking
         to see if one of the parameters reaches a certain value. For instance,
         if we are recursively calculating the factorial function, we check
         to see if our argument is 1, in which case we just return 1, rather
-        than making a recursive call.
+        than making a recursive call. We need multiple base cases when a
+        recursive call makes more than one recursive call: for instance, for
+        instance, recursively calculating the <i>n</i><sup>th</sup> Fibonacci
+        number involves calculating the <i>n</i><sup>th</sup> - 1 Fibonacci
+        number <i>and</i> the <i>n</i><sup>th</sup> - 2 Fibonacci number.
+        Therefore, that recursive code needs <i>two</i> base cases.
         </p>
 
         <p>
@@ -83,16 +97,20 @@
 
         <p>
         A recursive function would, of course, have at least one recursive
-        call. The function calls itself, but with
-        new parameters. In general, a parameter should get closer to the base
-        case with each recursive call so that it will eventually reach the base
-        case. If there is a non-void return type for the function, you have to
-        make sure you return the recursive call.
+        call, or it's not a recursive function!
+        The function calls itself, but with new parameters. In general,
+        the parameter that is tested in the base case test should get closer to
+        the base case with each recursive call so that the sequence of
+        recursive calls will eventually end.
+        Note: if there is a non-void return type for the function, you have
+        to make sure that you return a result from each call: students
+        sometimes get the recursive calls correct but fail to correctly return
+        a value from those calls.
         </p>
 
         <p>
         One way of writing recursive functions is to assume the function works
-        on a smaller scale of the problem. Assuming
+        on a subset of the problem. Assuming
         the function does what it's supposed to on
         the next recursive call, what do we need to add to make it complete?
         For example, if we are recursively summing a data structure, and
@@ -106,8 +124,13 @@
         </h3>
 
         <p>
-            <a href="recursion.html">recursion.cpp</a> illustrates the above
-            points. 
+            <a href="recursion.html">recursion.cpp</a> contains code
+            that illustrates some of the above points. 
+        </p>
+
+        <p>
+            <a href="towers.html">The Towers of Hanoi</a>, a great
+            demonstration of the power of recursion.
         </p>
 
     </body>

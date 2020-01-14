@@ -8,6 +8,7 @@ MISC_DIR = $(CODE_DIR)/misc
 WTHR_DIR = $(CODE_DIR)/weather
 LINK_DIR = $(CODE_DIR)/linked
 VECT_DIR = $(CODE_DIR)/vector
+RECURS_DIR = $(CODE_DIR)/recursion/finished_code
 
 INCS = $(TEMPLATE_DIR)/head.txt $(TEMPLATE_DIR)/logo.txt $(TEMPLATE_DIR)/menu.txt
 
@@ -20,8 +21,9 @@ touch_cpp: FORCE
 	cd $(MISC_DIR); touch *.cpp
 	cd $(VECT_DIR); touch *.cpp
 	cd $(WTHR_DIR); touch *.cpp
+	cd $(RECURS_DIR); touch *.cpp
 
-code_pages: base_conv complex exceptions functors hello image my_vec recursion stl thing vector_experiments
+code_pages: base_conv complex exceptions functors hello image my_vec recursion stl thing vector_experiments towers
 
 base_conv: $(PTML_DIR)/base_conv.ptml
 complex: $(PTML_DIR)/complex.ptml
@@ -33,6 +35,7 @@ my_vec: $(PTML_DIR)/my_vec.ptml
 recursion: $(PTML_DIR)/recursion.ptml
 stl: $(PTML_DIR)/stl.ptml
 thing: $(PTML_DIR)/thing.ptml
+towers: $(PTML_DIR)/towers.ptml
 vector_experiments: $(PTML_DIR)/vector_experiments.ptml
 
 $(PTML_DIR)/base_conv.ptml: $(MISC_DIR)/base_conv.cpp
@@ -63,6 +66,9 @@ $(PTML_DIR)/stl.ptml: $(MISC_DIR)/stl.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/thing.ptml: $(MISC_DIR)/thing.cpp
+	$(CPP2HTML) $< > $@
+
+$(PTML_DIR)/towers.ptml: $(RECURS_DIR)/towers.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/vector_experiments.ptml: $(VECT_DIR)/vector_experiments.cpp
