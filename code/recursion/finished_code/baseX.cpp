@@ -1,6 +1,6 @@
 /*
  * This program determines the representation of an integer in any base
- * between 2 and 26. It could easily be extended to include higher bases,
+ * between 2 and 36. It could easily be extended to include higher bases,
  * by adding to the string `digits`.
  * */
 #include <iostream>
@@ -9,7 +9,7 @@
 using namespace std;
 
 /*
- * The following string gives us up to 26 digits: just add more
+ * The following string gives us up to 36 digits: just add more
  * characters and you can handle larger bases. An obvious first move
  * would be to add lower case letters. One could then continue with punctuation
  * marks.
