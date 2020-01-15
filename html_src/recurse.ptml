@@ -13,9 +13,19 @@
             Recursion
         </h1>
 
+        <figure>
+            <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sierpinski_triangle.svg/500px-Sierpinski_triangle.svg.png"
+            width="16%">
+            <figcaption>
+                The <a href="https://en.wikipedia.org/wiki/Sierpiński_triangle">Sierpinski triangle</a>,
+                a recursively constructed figure.
+            </figcaption>
+        </figure>
+
         <p>
-        Recursion happens when a function calls itself. The function is called
-        a recursive function. Recursive functions do a small part of the task
+        Recursion means that a function calls itself. 
+        Recursive functions do a small part of an entire task
         in each recursive call, similar to a loop. In fact, looping and 
         recursion are typically alternate ways to do the same thing. Typically,
         an algorithm written recursively can be re-written using a loop.
@@ -100,15 +110,26 @@
             Code
         </h3>
 
-        <p>
-            <a href="recursion.html">recursion.cpp</a> contains code
-            that illustrates some of the above points. 
-        </p>
+        <ul>
+            <li>
+                <a href="recursion.html">recursion.cpp</a> contains code
+                that illustrates some of the above points. 
+            </li>
+    
+            <li>
+                <a href="towers.html">The Towers of Hanoi</a>, a great
+                demonstration of the power of recursion. And
+                <a
+                    href="https://www.khanacademy.org/computing/computer-science/algorithms/towers-of-hanoi/a/towers-of-hanoi">here</a>
+                is the Khan Academy tutorial on the Towers.
+            </li>
 
-        <p>
-            <a href="towers.html">The Towers of Hanoi</a>, a great
-            demonstration of the power of recursion.
-        </p>
+            <li>
+                <a href="baseX.html">baseX.cpp</a>: how to convert numbers into
+                any base you want, using recursion.
+            </li>
+
+        </ul>
 
     </body>
 </html>
