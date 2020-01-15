@@ -45,8 +45,8 @@
                  </li>
   
                  <li>
-                     <a href="sep_compile.html"> 
-                     Separate compilation
+                     <a href="fundamentals.html">
+                     The fundamentals of Object-Oriented Programming
                      </a>
                  </li>
   
@@ -63,12 +63,6 @@
                  </li>
   
                  <li>
-                     <a href="fundamentals.html">
-                     The fundamentals of Object-Oriented Programming
-                     </a>
-                 </li>
-  
-                 <li>
                      <a href="overloading.html">
                      Operator overloading
                      </a>
@@ -77,6 +71,12 @@
                  <li>
                      <a href="big3.html">
                      Copy control
+                     </a>
+                 </li>
+  
+                 <li>
+                     <a href="sep_compile.html"> 
+                     Separate compilation
                      </a>
                  </li>
   
@@ -100,7 +100,7 @@
   
                  <li>
                     <a href="recurse.html">
-                     Recursion (including recursion)
+                     Recursion
                     </a>
                  </li>
   

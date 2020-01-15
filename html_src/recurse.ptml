@@ -106,6 +106,10 @@
         So we would write: <span class="code">return n + sum(n - 1)</span>
         </p>
 
+        <p>
+            You can find more on recursion <a href="recurse.html">here</a>.
+        </p>
+
         <h3>
             Code
         </h3>
