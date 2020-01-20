@@ -363,6 +363,14 @@
             </li>
 
             <li>
+                <a name="stl">
+                <span class="hilight">Standard Template Library (STL)</span>:
+                </a>
+                A collection of templatized collections and algorithms
+                that come with every C++ implementation.
+            </li>
+
+            <li>
                 <a name="struct">
                 <span class="hilight">struct</span>:
                 </a>
