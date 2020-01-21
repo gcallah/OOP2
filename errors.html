@@ -54,13 +54,180 @@
             Ignore the Error
         </h3>
 
+        <p>
+            On occasion, an error can simply be ignored. Let's say we are
+            programming the Mars Rover. The vehicle is paused, waiting for a
+            calculation to finish that will determine the next move it should
+            make. If that calculation returns a nonsense value, perhaps the
+            best thing to do is to continue to sit there, waiting for another
+            caclulation to finish.
+        </p>
+
+        <p>
+            If ignoring the error is not a good idea, one may also:
+        </p>
+
         <h3>
-            Error Return Codes
+            Return an Error Code
         </h3>
+
+        <p>
+            Here, the idea is to return a value from a function that cannot
+            possibly be correct, for instance, <span
+                class="code">nullptr</span> from a system call to allocate
+            memory. The caller can then check for that error value.
+            In C, this was the main error handling strategy. A lot of C code
+            would look like this:
+        </p>
+
+        <p>
+        <code>
+            <pre>
+            while ( (pFreeBlock == pLastBlock) &amp;&amp; (ErrNo == FB_NO_ERROR) )
+            {...
+                do
+                {...
+                    if ( pFreeBlock != NULL )
+                       ErrNo = FB_LOST_BLOCK;
+                    else
+                    {...
+                        if ( pNextBlock == NULL )
+                           ErrNo = FB_BROKEN_CHAIN;
+                        else
+                        {...
+                        }
+                    }
+                } while ( pFreeBlock-&gt;IsInUse &amp;&amp; (ErrNo == FB_NO_ERROR) )
+            }
+        
+            (Code from http://syque.com/cstyle/ch10.4.htm)
+            </pre>
+        </code>
+        </p>
+
+        <p>
+            This works, but a problem with this method is that, quite often,
+            the lines of code devoted to checking for and handling errors
+            become more numerous than those devoted to the task the program was
+            created to accomplish. (No one creates a program just to handle its
+            own errors!) This makes it hard for a reader to see what the
+            program is "really" up to.
+        </p>
+
+        <p>
+            A second problem is what to do when the error code is recognized.
+            It might seem obvious: "Tell the user something went wrong!" Well,
+            that is fine for interactive terminal or GUI programs. But the vast
+            majority of programs written every day do not have a "user" to whom
+            they can easily output messages: instead, they are running inside a
+            car engine, or a microwave oven, or a drone; or are serving web
+            pages; or are doing batch processing. The best way to note an error
+            in these cases might be to write to a
+            <a href="glossary.html#log_file">log file</a>, or to send a message
+            to the manufacturer, or making a warning light on a dashboard go
+            on, or... who knows what else? So let's say you are writing a math
+            library and a call to <span class="code">log</span> produces
+            <a href="glossary.html#nan">NaN</a> as a result, perhaps because it
+            was passed a negative number. What should your library code do? In
+            general, if this is a general-purpose library, you have no way of
+            knowing if there is a user present to whom you can present an error
+            message, if a log file exists, or if perhaps the program should be
+            terminated.
+        </p>
+
+        <p>
+            A third problem with returning error codes is... the programmer
+            calling the function returning such a code might simply fail to
+            check for the error return. For instance, the call to open a file
+            for writing may fail, because the program does not have permission
+            to write to that file. But the programmer could fail to check for
+            the code signalling the open failed, and continue to try writing to
+            the file (perhaps ignoring the errors produced by those write
+            attempts as well), resulting in a program that fails to record
+            important results.
+        </p>
 
         <h3>
             Exceptions
         </h3>
+
+        <p>
+            In order to solve the problems involved in returning error codes, 
+            <i>exceptions</i> were developed. Exceptions:
+        </p>
+
+        <ul>
+            <li>
+                Cannot be ignored
+            </li>
+
+            <li>
+                Do not require constant checking of return values; and
+            </li>
+
+            <li>
+                Can be handled at whatever level in a program the programmer
+                deems appropriate.
+            </li>
+
+        </ul>
+
+        <p>
+            These properties are achieved by having the code detecting an error
+            <i>raise</i> or <i>throw</i> an <i>exception</i>. This halts
+            execution of the currently executing function, and begins a search
+            up the <a href="glossary.html#stack">call stack</a> to find a
+            suitable <i>handler</i> for the exception. If
+            <span class="code">main()</span> is reached without finding such a
+            handler, then the program is terminated, generally with a message
+            indicating what exception caused the program to stop. That
+            procedure means that <i>exceptions cannot be ignored</i>, since, in
+            the worst case, if they are not handled elsewhere,
+            they will halt the program in which they occur.
+        </p>
+
+        <p>
+            Furthermore, because they bubble up the call stack, they can be
+            <i>handled at whatever level</i> is deemed appropriate, and there
+            is no need to check for error return codes all over one's program.
+            What's more, this means the response to an error can be decided at
+            the most appropriate level of the code. An exception thrown from a
+            low-level math function can produce an error dialog box in a
+            program that "knows" it is running in a GUI, or a log message in a
+            web server, or a dashboard warning light going on in a program
+            running in a car engine.
+        </p>
+
+        <p>
+            This all sounds great! So is there any downside to using
+            exceptions? Yes! They:
+        </p>
+
+        <ul>
+            <li>
+                Can't be ignored; and
+            </li>
+
+            <li>
+                Can be handled at (return control to) any level deemed
+                appropriate
+            </li>
+        </ul>
+
+        <p>
+            But wait! That sounds just like the strengths of exceptions! And
+            that's the point: sometimes we might like to ignore errors, and
+            ensuring that control does not leap between levels of a program was
+            the whole point of
+            <a href="glossary.html#structured_programming">structured programming</a>. 
+            An instance of the first point is offered by the C++ code used in
+            the Mars Rover software: NASA forbid the use of exceptions, since
+            an unhandled exception simply stopping the operation of the rover
+            was a worst-case scenario: the rover sitting unresponsive on Mars
+            was not a good thing!
+        </p>
+
+        <hr>
 
         <figure>
             <iframe width="560" height="315"
