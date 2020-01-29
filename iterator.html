@@ -71,12 +71,13 @@
         </h3>
 
         <p>
-            In our course, we will mainly use iterators to allow
+            In our course, we will first use iterators to allow
             the implementation of ranged-for loops for collections. 
-            For this, our iterator class should include 3 parts:
-            an equality operator, dereference operator, and the ++
-            operator. The iterator should also store a data pointer 
-            to the current object and have a constructor.
+            For this, our iterator class should implement 3 methods:
+            an equality operator, a dereference operator, and an
+            increment operator. The iterator should also store a way to
+            access the current value in the collection,
+            and have a constructor.
         </p>
 
         <h3>
@@ -87,36 +88,44 @@
             methods: <span class="code">begin()</span> and <span
                 class="code">end()</span>.
             <span class="code">begin()</span> should return an iterator
-            that points to the memory address of the first element 
-            of the collection and <span class="code">end()</span>
-            should return the memory address after 
-            the memory address of the last element of the address. 
+            that, when de-referenced, yields the first element 
+            of the collection, and <span class="code">end()</span>
+            should return an iterator that signals that the end
+            of the collection has been reached.
             <span class="code">begin()</span>
             and <span class="code">end()</span> define a 
             half-open range which is 
             inclusive on the side of <span class="code">begin()</span>
             and exclusive on <span class="code">end()</span>. 
             Once you reach the <span class="code">end()</span>, 
-            you know that you are out of bounds and should stop. 
+            you know that you are out of bounds and should stop iterating.
         </p>
 
         <h3>
             Declaring STL iterators
         </h3>
         <p>
-            If you import an STL container (for example in the line "
-            <span class = "code">#include &ltvector&gt</span>"),
-            you can call its 
+            Many of the
+            <a href="glossary.html#stl">Standard Template Library</a>
+            algorithms take iterators as arguments to indicate
+            where an algorithm should begin and end its work.
+            For instance, <span class = "code">find</span>
+            will look for an item within the range given by 
+            the begin and end arguments. This means one can 
+            search the entire collection for the value sought, 
+            or any contiguous subset of the collection.
+            If you import an STL container 
+            you can specify its 
             iterator by writing <span class = "code">"::iterator"</span>
-            after the STL object. 
-            For example, <span class = "code">"vector&lt char &gt::iterator"
+            after the STL class name. 
+            For example, to specify the iterator for a vector of characters,
+            you would write: <span class = "code">"vector&lt;char&gt;::iterator"
             </span>.
+        </p>
 
-            <br />
-            <br />
-
-            If you need a const iterator (so that you can treat 
-            the item the iterator points at as const), 
+        <p>
+            If you want to treat the item an iterator returns
+            when de-referenced as constant, you can instead use:
             <span class = "code">"::const_iterator"</span>
         </p>
 
