@@ -30,26 +30,26 @@ int main() {
     cout << "The square of " << n << " is " << n2 << endl;
 }
 
+/*
+ * Demonstrate passing by value.
+ * */
 void pass_by_value(int n) {
-    /*
-     * Demonstrate passing by value.
-     * */
     n++;
 }
 
 
+/*
+ * Demonstrate passing by reference.
+ * */
 void pass_by_ref(int& n) {
-    /*
-     * Demonstrate passing by reference.
-     * */
     n++;
 }
 
 
+/*
+* Using a function's return value.
+* */
 int call_with_ret(int n) {
-    /*
-     * Using a function's return value.
-     * */
     return(n * n);
 }
 
