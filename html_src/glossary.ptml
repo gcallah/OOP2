@@ -141,6 +141,14 @@
             </li>
 
             <li>
+                <a name="function">
+                <span class="hilight">function</span>:
+                </a>
+                A "chunk" of executable code that is (typically) given a name
+                and can be invoked (<i>called</i>) from many places.
+            </li>
+
+            <li>
                 <a name="functionprototype">
                 <span class="hilight">function prototype</span>:
                 </a>
@@ -385,6 +393,13 @@
                 </a>
                 A collection of templatized collections and algorithms
                 that come with every C++ implementation.
+            </li>
+
+            <li>
+                <a name="string">
+                <span class="hilight">string</span>:
+                </a>
+                The C++ type that holds text.
             </li>
 
             <li>

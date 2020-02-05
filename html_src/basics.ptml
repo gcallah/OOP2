@@ -55,7 +55,9 @@
             </li>
 
             <li>
+                <a href="glossary.html#function">
                 Functions
+                </a>
             </li>
 
             <li>
@@ -65,7 +67,9 @@
             </li>
             
             <li>
+                <a href="glossary.html#string">
                 Strings
+                </a>
             </li>
 
             <li>
@@ -76,10 +80,10 @@
 
             <li>
                 Logical operators:
-                <span class="code">&and;&and;</span>,
-                <span class="code">||</span>,
+                <span class="code">&amp;&amp;</span> (and),
+                <span class="code">||</span> (or),
                 and
-                <span class="code">!</span>.
+                <span class="code">!</span> (not).
             </li>
 
         </ul>
@@ -90,14 +94,20 @@
 
         <ul>
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/funcs.cpp">
+                <a href="funcs.html">
                 Calling functions in C++</a>. 
             </li>
 
             <li>
-                <a href="https://github.com/gcallah/OOP2/blob/master/code/misc/mean.cpp">
+                <a href="mean.html">
                 Some vector basics</a>. 
             </li>
+
+            <li>
+                <a href="point.html">
+                A simple structure and its use</a> 
+            </li>
+
         </ul>
 
     </body>

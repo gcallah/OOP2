@@ -5,6 +5,7 @@ UTILS_DIR = utils
 CPP2HTML = python3 $(UTILS_DIR)/cpp2html.py
 CODE_DIR = code
 MISC_DIR = $(CODE_DIR)/misc
+FMISC_DIR = $(CODE_DIR)/misc/finished_code
 WTHR_DIR = $(CODE_DIR)/weather
 LINK_DIR = $(CODE_DIR)/linked
 VECT_DIR = $(CODE_DIR)/vector
@@ -23,16 +24,19 @@ touch_cpp: FORCE
 	cd $(WTHR_DIR); touch *.cpp
 	cd $(RECURS_DIR); touch *.cpp
 
-code_pages: baseX base_conv complex exceptions functors hello image my_vec recursion stl thing vector_experiments towers
+code_pages: baseX base_conv complex exceptions funcs functors hello image mean my_vec point recursion stl thing vector_experiments towers
 
 baseX: $(PTML_DIR)/baseX.ptml
 base_conv: $(PTML_DIR)/base_conv.ptml
 complex: $(PTML_DIR)/complex.ptml
 exceptions: $(PTML_DIR)/exceptions.ptml
+funcs: $(PTML_DIR)/funcs.ptml
 functors: $(PTML_DIR)/functors.ptml
 hello: $(PTML_DIR)/hello.ptml
 image: $(PTML_DIR)/image.ptml
+mean: $(PTML_DIR)/mean.ptml
 my_vec: $(PTML_DIR)/my_vec.ptml
+point: $(PTML_DIR)/point.ptml
 recursion: $(PTML_DIR)/recursion.ptml
 stl: $(PTML_DIR)/stl.ptml
 thing: $(PTML_DIR)/thing.ptml
@@ -51,6 +55,9 @@ $(PTML_DIR)/complex.ptml: $(MISC_DIR)/complex.cpp
 $(PTML_DIR)/exceptions.ptml: $(MISC_DIR)/exceptions.cpp
 	$(CPP2HTML) $< > $@
 
+$(PTML_DIR)/funcs.ptml: $(MISC_DIR)/funcs.cpp
+	$(CPP2HTML) $< > $@
+
 $(PTML_DIR)/functors.ptml: $(MISC_DIR)/functors.cpp
 	$(CPP2HTML) $< > $@
 
@@ -60,7 +67,13 @@ $(PTML_DIR)/hello.ptml: $(MISC_DIR)/hello.cpp
 $(PTML_DIR)/image.ptml: $(WTHR_DIR)/image.cpp
 	$(CPP2HTML) $< > $@
 
+$(PTML_DIR)/mean.ptml: $(FMISC_DIR)/mean.cpp
+	$(CPP2HTML) $< > $@
+
 $(PTML_DIR)/my_vec.ptml: $(VECT_DIR)/my_vec.cpp
+	$(CPP2HTML) $< > $@
+
+$(PTML_DIR)/point.ptml: $(FMISC_DIR)/point.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/recursion.ptml: $(MISC_DIR)/recursion.cpp

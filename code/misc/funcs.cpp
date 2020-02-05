@@ -1,8 +1,8 @@
 /*
  * This file explores different ways to pass an arg to a function in C++:
- * * pass by value
- * * pass by reference
- * * pass by constant reference
+ * *pass by value*
+ * *pass by reference*
+ * *pass by constant reference*
  * It also illustrates the use of a return value from a function.
  * */
 #include <iostream>
@@ -60,6 +60,7 @@ int call_with_ret(int n) {
 
 /*
  * Uncomment the following function, and you will find it will
+ *
  * not compile: if `n` is const, we can't modify it!
  * */
 // void pass_by_constref(const int& n)
