@@ -16,14 +16,16 @@ const int SCALAR = 4;
  * We will change this struct to a class.
  * It's going to capture the mathematical notion of a vector.
  * */
-struct Point {
+class Point {
     // make this public and add dims as param:
+public:
     Point() : coords(NUM_DIMS, 0) {}
-    // add get_coord()
-    // add set_coord()
-    // add dim()
+    int get_coord(int i) { return coords[i]; }
+    void set_coord(int i, int val) { coords[i] = val; }
+    size_t dim() { return coords.size(); }
     // add magnitude()
     // make this private:
+private:
     vector<int> coords;
 };
 
@@ -34,7 +36,14 @@ int main() {
     vector<Point> points;
 
     ifstream pfile("points5.txt");
+
+    for (int i = 0; i < NUM_DIMS; i++) {
+        p.set_coord(i, i * SCALAR);
+    }
+    points.push_back(p);
+
     // let's see how NOT to hard code this:
+    /*
     while (pfile >> p.coords[0] >> p.coords[1] >> p.coords[2]
             >> p.coords[3] >> p.coords[4]) {
         points.push_back(p);
@@ -45,11 +54,12 @@ int main() {
             coord *= SCALAR;
         }
     }
+    */
 
     // re-write these loops:
     for (size_t i = 0; i < points.size(); i++) {
-        for (size_t j = 0; j < points[i].coords.size(); j++) {
-            cout << points[i].coords[j] << " ";
+        for (size_t j = 0; j < points[i].dim(); j++) {
+            cout << points[i].get_coord(j) << " ";
         }
         cout << endl;
     }
