@@ -19,19 +19,25 @@ const int SCALAR = 4;
 class Point {
     // make this public and add dims as param:
 public:
+    // pass num_dims as param:
     Point() : coords(NUM_DIMS, 0) {}
-    int get_coord(int i) { return coords[i]; }
-    void set_coord(int i, int val) { coords[i] = val; }
+    // these next 2 methods don't change any member variables:
     size_t dim() { return coords.size(); }
+    int get_coord(int i) { return coords[i]; }
     // add magnitude()
-    // make this private:
+
+    void set_coord(int i, int val) { coords[i] = val; }
+    void scale(int scalar)  {}
 private:
     vector<int> coords;
 };
 
+/*
+ * If we have time, we build a VectorSpace class.
+ * We can build a scale method.
+ * */
 
 int main() {
-    // discuss why the following line now fails:
     Point p;
     vector<Point> points;
 
