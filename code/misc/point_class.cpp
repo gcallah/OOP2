@@ -17,26 +17,49 @@ const int SCALAR = 4;
  * It's going to capture the mathematical notion of a vector.
  * */
 class Point {
-    // make this public and add dims as param:
+    // overload output operator
+    friend ostream& operator<<(ostream& os, const Point& p) {
+        for (size_t j = 0; j < p.dim(); j++) {
+            os << p.coords[j] << " ";
+        }
+        return os;
+    }
+
 public:
     // pass num_dims as param:
     Point() : coords(NUM_DIMS, 0) {}
-    // these next 2 methods don't change any member variables:
-    size_t dim() { return coords.size(); }
-    int get_coord(int i) { return coords[i]; }
+
+    int get_coord(int i) const { return coords[i]; }
+    size_t dim() const { 
+        return coords.size();
+    }
+    
     // add magnitude()
+    double magnitude() {
+    }
 
     void set_coord(int i, int val) { coords[i] = val; }
-    void scale(int scalar)  {}
+
+    void scale(int scalar) {
+        for(int& i : coords) {
+            i *= scalar;
+        }
+    }
+
 private:
     vector<int> coords;
 };
+
+
+void examine_point(const Point& p) {
+    p.dim();
+}
+
 
 /*
  * If we have time, we build a VectorSpace class.
  * We can build a scale method.
  * */
-
 int main() {
     Point p;
     vector<Point> points;
@@ -44,8 +67,9 @@ int main() {
     ifstream pfile("points5.txt");
 
     for (int i = 0; i < NUM_DIMS; i++) {
-        p.set_coord(i, i * SCALAR);
+        p.set_coord(i, i);
     }
+    p.scale(4);
     points.push_back(p);
 
     // let's see how NOT to hard code this:
@@ -64,9 +88,6 @@ int main() {
 
     // re-write these loops:
     for (size_t i = 0; i < points.size(); i++) {
-        for (size_t j = 0; j < points[i].dim(); j++) {
-            cout << points[i].get_coord(j) << " ";
-        }
-        cout << endl;
+        cout << points[i] << endl;
     }
 }
