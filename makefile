@@ -24,7 +24,7 @@ touch_cpp: FORCE
 	cd $(WTHR_DIR); touch *.cpp
 	cd $(RECURS_DIR); touch *.cpp
 
-code_pages: baseX base_conv complex exceptions funcs functors hello image mean my_vec point recursion stl thing vector_experiments towers
+code_pages: baseX base_conv complex exceptions funcs functors hello image mean my_vec point point_class recursion stl thing vector_experiments towers
 
 baseX: $(PTML_DIR)/baseX.ptml
 base_conv: $(PTML_DIR)/base_conv.ptml
@@ -37,6 +37,7 @@ image: $(PTML_DIR)/image.ptml
 mean: $(PTML_DIR)/mean.ptml
 my_vec: $(PTML_DIR)/my_vec.ptml
 point: $(PTML_DIR)/point.ptml
+point_class: $(PTML_DIR)/point_class.ptml
 recursion: $(PTML_DIR)/recursion.ptml
 stl: $(PTML_DIR)/stl.ptml
 thing: $(PTML_DIR)/thing.ptml
@@ -74,6 +75,9 @@ $(PTML_DIR)/my_vec.ptml: $(VECT_DIR)/my_vec.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/point.ptml: $(FMISC_DIR)/point.cpp
+	$(CPP2HTML) $< > $@
+
+$(PTML_DIR)/point_class.ptml: $(FMISC_DIR)/point_class.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/recursion.ptml: $(MISC_DIR)/recursion.cpp

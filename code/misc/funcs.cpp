@@ -1,8 +1,8 @@
 /*
  * This file explores different ways to pass an arg to a function in C++:
- * *pass by value*
- * *pass by reference*
- * *pass by constant reference*
+ * pass by value;
+ * pass by reference; and
+ * pass by constant reference.
  * It also illustrates the use of a return value from a function.
  * */
 #include <iostream>
