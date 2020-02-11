@@ -73,18 +73,16 @@ int main() {
     points.push_back(p);
 
     // let's see how NOT to hard code this:
-    /*
-    while (pfile >> p.coords[0] >> p.coords[1] >> p.coords[2]
-            >> p.coords[3] >> p.coords[4]) {
-        points.push_back(p);
-    }
+    // while (pfile >> p.coords[0] >> p.coords[1] >> p.coords[2]
+    //         >> p.coords[3] >> p.coords[4]) {
+    //     points.push_back(p);
+    // }
 
-    for (Point& this_pt : points) {
-        for (int& coord : this_pt.coords) {
-            coord *= SCALAR;
-        }
-    }
-    */
+    // for (Point& this_pt : points) {
+    //     for (int& coord : this_pt.coords) {
+    //         coord *= SCALAR;
+    //     }
+    // }
 
     // re-write these loops:
     for (size_t i = 0; i < points.size(); i++) {
