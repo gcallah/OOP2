@@ -3,13 +3,13 @@
  * program, and introduce class features like public/private
  * distinction, member functions, and constant member functions.
  * */
+#include <cmath>
 #include <iostream>
 #include <vector>
+#include <string>
 #include <fstream>
 using namespace std;
 
-// let's eliminate NUM_DIMS:
-const int NUM_DIMS = 5;
 const int SCALAR = 4;
 
 /*
@@ -28,7 +28,7 @@ class Point {
 public:
     // show how to move method defs outside of class declaration!
     // pass num_dims as param:
-    Point() : coords(NUM_DIMS, 0) {}
+    Point(size_t num_dims) : coords(num_dims, 0) {}
 
     int get_coord(int i) const { return coords[i]; }
     size_t dim() const { 
@@ -37,21 +37,38 @@ public:
     
     // add magnitude()
     // demo how to use class to save time
-    double magnitude() {
+    double magnitude();
+
+    void set_coord(int i, int val) {
+        coords[i] = val;
+        changed = true;
     }
 
-    void set_coord(int i, int val) { coords[i] = val; }
-
-    void scale(int scalar) {
-        for(int& i : coords) {
-            i *= scalar;
-        }
-    }
+    void scale(int scalar);
 
 private:
+    double last_magnitude = 0.0;
+    bool changed = true;
     vector<int> coords;
 };
 
+
+double Point::magnitude() {
+    if (!changed) return last_magnitude;
+
+    int sq_sum = 0;
+    for (int coord : coords) sq_sum += pow(coord, 2);
+    last_magnitude = sqrt(sq_sum);
+    changed = false;
+    return (last_magnitude);
+}
+
+
+void Point::scale(int scalar) {
+    for(int& i : coords) {
+        i *= scalar;
+    }
+}
 
 void examine_point(const Point& p) {
     p.dim();
@@ -63,31 +80,41 @@ void examine_point(const Point& p) {
  * We can build a scale method.
  * */
 int main() {
-    Point p;
+    int dim;
+    string filenm;
+    cout << "Enter a dimension and file name: ";
+    cin >> dim >> filenm;
+
+    Point p(dim);
     vector<Point> points;
 
-    ifstream pfile("points5.txt");
+    ifstream pfile(filenm);
 
-    for (int i = 0; i < NUM_DIMS; i++) {
+    for (size_t i = 0; i < p.dim(); i++) {
         p.set_coord(i, i);
     }
     p.scale(4);
     points.push_back(p);
 
-    // let's see how NOT to hard code this:
     // while (pfile >> p.coords[0] >> p.coords[1] >> p.coords[2]
     //         >> p.coords[3] >> p.coords[4]) {
     //     points.push_back(p);
     // }
-
-    // for (Point& this_pt : points) {
-    //     for (int& coord : this_pt.coords) {
-    //         coord *= SCALAR;
-    //     }
-    // }
+    // let's see how NOT to hard code the above:
+    while (pfile) {
+        for (size_t i = 0; i < p.dim(); i++) {
+            int coord;
+            pfile >> coord;
+            if (pfile) p.set_coord(i, coord);
+            else break;
+        }
+        if (pfile) points.push_back(p);
+    }
 
     // re-write these loops:
     for (size_t i = 0; i < points.size(); i++) {
         cout << points[i] << endl;
+        cout << "Magnitude of point is: "
+            << points[i].magnitude() << endl;
     }
 }
