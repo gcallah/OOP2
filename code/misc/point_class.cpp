@@ -13,7 +13,7 @@ const int NUM_DIMS = 5;
 const int SCALAR = 4;
 
 /*
- * We will change this struct to a class.
+ * We changed our Point struct to a class.
  * It's going to capture the mathematical notion of a vector.
  * */
 class Point {
@@ -26,6 +26,7 @@ class Point {
     }
 
 public:
+    // show how to move method defs outside of class declaration!
     // pass num_dims as param:
     Point() : coords(NUM_DIMS, 0) {}
 
@@ -35,6 +36,7 @@ public:
     }
     
     // add magnitude()
+    // demo how to use class to save time
     double magnitude() {
     }
 
