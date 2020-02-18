@@ -54,12 +54,12 @@ private:
  * magnitude. If not, re-calculate.
  * */
 double Point::magnitude() {
-    if (!changed) return last_magnitude;
-
-    int sq_sum = 0;
-    for (int coord : coords) sq_sum += pow(coord, 2);
-    last_magnitude = sqrt(sq_sum);
-    changed = false;
+    if (changed) {
+        int sq_sum = 0;
+        for (int coord : coords) sq_sum += pow(coord, 2);
+        last_magnitude = sqrt(sq_sum);
+        changed = false;
+    }
     return (last_magnitude);
 }
 
