@@ -45,18 +45,17 @@
 
                 <pre>
                 <code>
+<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span class="c1">// let&#39;s eliminate NUM_DIMS:</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">NUM_DIMS</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">SCALAR</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 </code>                </pre>
                 <p>
-  We will change this struct to a class.
-  It's going to capture the mathematical notion of a vector.
+  We changed our Point struct to a class.
+  It captures the mathematical notion of a vector.
 
                 </p>
 
@@ -72,27 +71,59 @@
     <span class="p">}</span>
 
 <span class="k">public</span><span class="o">:</span>
-    <span class="c1">// pass num_dims as param:</span>
-    <span class="n">Point</span><span class="p">()</span> <span class="o">:</span> <span class="n">coords</span><span class="p">(</span><span class="n">NUM_DIMS</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">Point</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">num_dims</span><span class="p">)</span> <span class="o">:</span> <span class="n">coords</span><span class="p">(</span><span class="n">num_dims</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
     <span class="kt">int</span> <span class="nf">get_coord</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
     <span class="kt">size_t</span> <span class="nf">dim</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> 
         <span class="k">return</span> <span class="n">coords</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="p">}</span>
     
-    <span class="c1">// add magnitude()</span>
-    <span class="kt">double</span> <span class="nf">magnitude</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="nf">magnitude</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="nf">set_coord</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+        <span class="n">changed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kt">void</span> <span class="nf">set_coord</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span> <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="nf">scale</span><span class="p">(</span><span class="kt">int</span> <span class="n">scalar</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">coords</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">i</span> <span class="o">*=</span> <span class="n">scalar</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">scale</span><span class="p">(</span><span class="kt">int</span> <span class="n">scalar</span><span class="p">);</span>
 <span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">last_magnitude</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">changed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">coords</span><span class="p">;</span>
 <span class="p">};</span>
 
+</code>                </pre>
+                <p>
+  We can use the fact we have a class to save previous results:
+  if the <span class="code">Point</span> has not changed, then re-use previously calculated
+  magnitude. If not, re-calculate.
+
+                </p>
+
+                <pre>
+                <code>
+<span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">magnitude</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">changed</span><span class="p">)</span> <span class="k">return</span> <span class="n">last_magnitude</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">sq_sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">coord</span> <span class="p">:</span> <span class="n">coords</span><span class="p">)</span> <span class="n">sq_sum</span> <span class="o">+=</span> <span class="n">pow</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">last_magnitude</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sq_sum</span><span class="p">);</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">last_magnitude</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Point</span><span class="o">::</span><span class="n">scale</span><span class="p">(</span><span class="kt">int</span> <span class="n">scalar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">coords</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">i</span> <span class="o">*=</span> <span class="n">scalar</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code>                </pre>
+                <p>
+  The following is just showing why we need to declare <span class="code">dim()</span> to be 
+  <span class="code">const</span>.
+
+                </p>
+
+                <pre>
+                <code>
 <span class="kt">void</span> <span class="nf">examine_point</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">p</span><span class="p">.</span><span class="n">dim</span><span class="p">();</span>
 <span class="p">}</span>
@@ -100,37 +131,41 @@
 </code>                </pre>
                 <p>
   If we have time, we build a VectorSpace class.
-  We can build a scale method.
+  We can build a scale method that changes the whole vector space.
 
                 </p>
 
                 <pre>
                 <code>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">points</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">dim</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">filenm</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Enter a dimension and file name: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">dim</span> <span class="o">&gt;&gt;</span> <span class="n">filenm</span><span class="p">;</span>
 
-    <span class="n">ifstream</span> <span class="nf">pfile</span><span class="p">(</span><span class="s">&quot;points5.txt&quot;</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_DIMS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Point</span> <span class="nf">p</span><span class="p">(</span><span class="n">dim</span><span class="p">);</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">points</span><span class="p">;</span>
+    <span class="n">ifstream</span> <span class="nf">pfile</span><span class="p">(</span><span class="n">filenm</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">dim</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">p</span><span class="p">.</span><span class="n">set_coord</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="n">p</span><span class="p">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
     <span class="n">points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">pfile</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">dim</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">coord</span><span class="p">;</span>
+            <span class="n">pfile</span> <span class="o">&gt;&gt;</span> <span class="n">coord</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pfile</span><span class="p">)</span> <span class="n">p</span><span class="p">.</span><span class="n">set_coord</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">coord</span><span class="p">);</span>
+            <span class="k">else</span> <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pfile</span><span class="p">)</span> <span class="n">points</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    <span class="c1">// let&#39;s see how NOT to hard code this:</span>
-    <span class="c1">// while (pfile &gt;&gt; p.coords[0] &gt;&gt; p.coords[1] &gt;&gt; p.coords[2]</span>
-    <span class="c1">//         &gt;&gt; p.coords[3] &gt;&gt; p.coords[4]) {</span>
-    <span class="c1">//     points.push_back(p);</span>
-    <span class="c1">// }</span>
-    <span class="c1">// for (Point&amp; this_pt : points) {</span>
-    <span class="c1">//     for (int&amp; coord : this_pt.coords) {</span>
-    <span class="c1">//         coord *= SCALAR;</span>
-    <span class="c1">//     }</span>
-    <span class="c1">// }</span>
-
-    <span class="c1">// re-write these loops:</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Magnitude of point is: &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code>                </pre>
