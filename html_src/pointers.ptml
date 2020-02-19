@@ -87,6 +87,12 @@
             </li>
 
             <li>
+                <a href="memleak.html">
+                    A program that leaks lots of memory.
+                </a>
+            </li>
+
+            <li>
                 <a href="thing.html">
                     Allocating a vector of pointers to things.
                 </a>
