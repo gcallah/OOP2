@@ -100,6 +100,13 @@
             </li>
 
             <li>
+                <a name="dereference">
+                <span class="hilight">dereference</span>:
+                </a>
+                to use a pointer to get at the value of what it points to.
+            </li>
+
+            <li>
                 <a name="derivedclass">
                 <span class="hilight">derived class</span>:
                 </a>
