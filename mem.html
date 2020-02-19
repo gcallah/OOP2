@@ -53,16 +53,30 @@
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// let&#39;s look at the size of some data types:</span>
+</code>                </pre>
+                <p>
+      Let's look at the size of some data types:
+
+                </p>
+
+                <pre>
+                <code>
     <span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of a bool = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of a char = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an integer = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">2.71828</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of a double = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="c1">// now let&#39;s deal with addresses and pointers:</span>
+</code>                </pre>
+                <p>
+      Now let's deal with addresses and pointers:
+
+                </p>
+
+                <pre>
+                <code>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Address of b = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="kt">bool</span><span class="o">*</span> <span class="n">bptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value of bptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">bptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -79,8 +93,43 @@
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Address of d= &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="kt">double</span><span class="o">*</span> <span class="n">dptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value of dptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">dptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
 
+</code>                </pre>
+                <p>
+      Hmm, what is the size of a pointer?
+      Is it different for different pointers?
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of a bool ptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">bptr</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an integer ptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">iptr</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of a double ptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">dptr</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      Seems like all pointers are the same size! Since C++
+      references are "really" a sort of pointer, this explains
+      why, for large objects, it is much more efficient, for 
+      objects we don't want changed in a function,
+      (if we want to change the object in a function 
+      it's clear we <i>can't</i> pass a copy!) to pass a
+      constant reference than to pass a copy: the reference
+      will be essentially an 8-byte address, while the copy 
+      might be a multi-gigabyte video segment.
+     
+      So, if we have pointer to some value, how do we get
+      the value? We <i>dereference</i> the pointer.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by bptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">bptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by iptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by dptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">dptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+<span class="p">}</span>
 </code>                </pre>
 
     </body>
