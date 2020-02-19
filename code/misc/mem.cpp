@@ -68,5 +68,38 @@ int main() {
     cout << "Value pointed to by iptr = " << *iptr << endl;
     cout << "Value pointed to by dptr = " << *dptr << endl;
 
+    /*
+     * All of what we have done so far has happened on
+     * the *stack*: all the memory allocation has happened automatically
+     * for us, performed by the compiler and C++ run-time system.
+     * But C++ allows as to also allocate memory ourselves, 
+     * on the *heap*.
+     * */
+    int* iptr2 = new int(7);
+    cout << "Value pointed to by iptr2 = " << *iptr2 << endl;
+    /*
+     * But note the address of this value, compared to the
+     * pointers set above:
+     * */
+    cout << "The memory location held by iptr2 = " << iptr2 << endl;
+    /*
+     * This is because `new` allocates memory on the *heap*, not
+     * on the stack. Stack memory is automatically allocated by the
+     * run-time system, but with heap memory, *you*, the programmer,
+     * are in charge. For instance, with heap memory, you can control
+     * when it is freed, by calling `delete`:
+     * */
+    delete iptr2;
+    /*
+     * You can (because the C++ approach is "if the programmer wants to try
+     * this, let them") de-reference that memory, but the result is
+     * undefined.
+     * */
+    cout << "After delete, the value pointed to by iptr2 = "
+        << *iptr2 << endl;
+    int* iptr3 = new int(14);
+    cout << "After new alloc, the value pointed to by iptr2 = "
+        << *iptr2 << endl;
+    cout << "Value pointed to by iptr3 = " << *iptr3 << endl;
 }
 

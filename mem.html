@@ -129,6 +129,59 @@
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by iptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by dptr = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">dptr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 
+</code>                </pre>
+                <p>
+      All of what we have done so far has happened on
+      the <i>stack</i>: all the memory allocation has happened automatically
+      for us, performed by the compiler and C++ run-time system.
+      But C++ allows as to also allocate memory ourselves, 
+      on the <i>heap</i>.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="kt">int</span><span class="o">*</span> <span class="n">iptr2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by iptr2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iptr2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      But note the address of this value, compared to the
+      pointers set above:
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The memory location held by iptr2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">iptr2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      This is because <span class="code">new</span> allocates memory on the <i>heap</i>, not
+      on the stack. Stack memory is automatically allocated by the
+      run-time system, but with heap memory, <i>you</i>, the programmer,
+      are in charge. For instance, with heap memory, you can control
+      when it is freed, by calling <span class="code">delete</span>:
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="k">delete</span> <span class="n">iptr2</span><span class="p">;</span>
+</code>                </pre>
+                <p>
+      You can (because the C++ approach is "if the programmer wants to try
+      this, let them") de-reference that memory, but the result is
+      undefined.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;After delete, the value pointed to by iptr2 = &quot;</span>
+        <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iptr2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="kt">int</span><span class="o">*</span> <span class="n">iptr3</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;After new alloc, the value pointed to by iptr2 = &quot;</span>
+        <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iptr2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Value pointed to by iptr3 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">iptr3</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code>                </pre>
 
