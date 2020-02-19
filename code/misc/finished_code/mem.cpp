@@ -101,5 +101,10 @@ int main() {
     cout << "After new alloc, the value pointed to by iptr2 = "
         << *iptr2 << endl;
     cout << "Value pointed to by iptr3 = " << *iptr3 << endl;
+    /*
+     * Finally, there is a special pointer value: nullptr.
+     * */
+    int* iptr4 = nullptr;
+    if (!iptr4) cout << "iptr4 is null\n";
 }
 
