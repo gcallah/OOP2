@@ -17,9 +17,9 @@ int main() {
     cout << "Size of a bool = " << sizeof(b) << endl;
     char c = 'a';
     cout << "Size of a char = " << sizeof(c) << endl;
-    int i = 0;
+    int i = 28;
     cout << "Size of an integer = " << sizeof(i) << endl;
-    double d = 0.0;
+    double d = 2.71828;
     cout << "Size of a double = " << sizeof(d) << endl;
 
     /*
@@ -60,7 +60,13 @@ int main() {
      * constant reference than to pass a copy: the reference
      * will be essentially an 8-byte address, while the copy 
      * might be a multi-gigabyte video segment.
+     *
+     * So, if we have pointer to some value, how do we get
+     * the value? We *dereference* the pointer.
      * */
+    cout << "Value pointed to by bptr = " << *bptr << endl;
+    cout << "Value pointed to by iptr = " << *iptr << endl;
+    cout << "Value pointed to by dptr = " << *dptr << endl;
 
 }
 

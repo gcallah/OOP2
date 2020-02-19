@@ -53,11 +53,11 @@
             </li>
 
             <li>
-
-            </li>
                 <a href="glossary.html#dereference">Dereferencing Pointers</a>
                 <br />
                 How do we get at the value a pointer points to?
+            </li>
+
             <li>
                 <a href="glossary.html#dynamicmemory">Dynamic Memory</a>
                 <br />
