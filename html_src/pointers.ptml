@@ -53,7 +53,7 @@
             </li>
 
             <li>
-                Dynamic memory
+                <a href="glossary.html#dynamicmemory">Dynamic Memory</a>
                 <br />
                 Here we must start to deal with the difference between stack
                 and heap memory.

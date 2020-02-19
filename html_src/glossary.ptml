@@ -125,6 +125,16 @@
             </li>
 
             <li>
+                <a name="dynamicmemory">
+                <span class="hilight">dynamic memory</span>:
+                </a>
+                means that the language being used
+                decides what method should be called in a particular case at
+                runtime, rather than at compile time.
+                (See <a href="#polymorphism">polymorphism</a>.)
+            </li>
+
+            <li>
                 <a name="exception">
                 <span class="hilight">exception</span>:
                 </a>

@@ -1,6 +1,7 @@
 
 /*
- * Experiments with memory.
+ * Experiments with memory, illustrating the use of
+ * memory operators and `sizeof()`.
  * */
 
 #include <iostream>
