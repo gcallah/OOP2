@@ -5,8 +5,28 @@
  * */
 
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
+
+/*
+ * f() exists to help us further explore the stack!
+ * */
+int f(int n, byte* end) {
+    int j = n;
+    int k = n % 23;
+    cout << "Address of j = " << &j << endl;
+    cout << "Address of k = " << &k << endl;
+    int i = 0;
+    for (byte* bptr = (byte *) &j;
+         bptr < end;
+         bptr++, i++) {
+        cout << hex << setfill('0') << setw(2)
+            << (int)*bptr << " ";
+        if (i % 8 == 7) cout << endl;
+    }
+    return j - k * 7;
+}
 
 
 int main() {
@@ -106,5 +126,6 @@ int main() {
      * */
     int* iptr4 = nullptr;
     if (!iptr4) cout << "iptr4 is null\n";
+    f(7, (byte *)&iptr4);
 }
 
