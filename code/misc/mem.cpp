@@ -4,6 +4,7 @@
  * memory operators and `sizeof()`.
  * */
 
+#include <cstddef>
 #include <iostream>
 #include <iomanip>
 
@@ -17,6 +18,7 @@ int f(int n, byte* end) {
     int k = n % 23;
     cout << "Address of j = " << &j << endl;
     cout << "Address of k = " << &k << endl;
+    // do a hex dump of the stack between f() and main()
     int i = 0;
     for (byte* bptr = (byte *) &j;
          bptr < end;
@@ -126,6 +128,6 @@ int main() {
      * */
     int* iptr4 = nullptr;
     if (!iptr4) cout << "iptr4 is null\n";
-    f(7, (byte *)&iptr4);
+    f(7, (byte *) &iptr4);
 }
 
