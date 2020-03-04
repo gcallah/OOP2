@@ -16,11 +16,10 @@ class MyVec {
         cout << "Calling copy constructor\n";
         sz = rhs.sz;
         capac = rhs.capac;
-        data = rhs.data;
-//        data = new int[capac];
-//        for (size_t i = 0; i < sz; i++) {
-//            data[i] = rhs.data[i];
-//        }
+        data = new int[capac];
+        for (size_t i = 0; i < sz; i++) {
+            data[i] = rhs.data[i];
+        }
     }
 
     ~MyVec() {
@@ -28,8 +27,17 @@ class MyVec {
         delete [] data;
     }
 
-    MyVec& operator=(const MyVec& source) {
+    MyVec& operator=(const MyVec& rhs) {
         cout << "Calling assignment operator\n";
+        if (&rhs != this) {  // check for self-assign!
+            delete [] data;
+            sz = rhs.sz;
+            capac = rhs.capac;
+            data = new int[capac];
+            for (size_t i = 0; i < sz; i++) {
+                data[i] = rhs.data[i];
+            }
+        }
         return *this;
     }
 
@@ -54,6 +62,9 @@ class MyVec {
 
     size_t size() const { return sz; }
 
+    const int* begin() const { return data; }
+    const int* end()   const { return data + sz; }
+
  private:
     size_t sz;
     size_t capac;
@@ -65,9 +76,12 @@ class MyVec {
 
 
 void print_vec(const MyVec& ivec) {
-    for (size_t i = 0; i < ivec.size(); i++) {
-        cout << ivec[i] << ' ';
+    for (int item : ivec) {
+        cout << item << ' ';
     }
+//    for (size_t i = 0; i < ivec.size(); i++) {
+//        cout << ivec[i] << ' ';
+//    }
     cout << endl;
 }
 
@@ -81,6 +95,12 @@ int main()
     cout << "Vector number elements = " << v1.size() << endl;
     v1.push_back(4);
     v1.push_back(8);
+    if (true) {
+        MyVec v2 = v1;
+        print_vec(v2);
+    }
+    cout << "v2 out of scope.\n";
+//    print_vec(v2);
     v1.push_back(16);
     v1.push_back(32);
     v1.push_back(64);
@@ -93,19 +113,14 @@ int main()
     print_vec(v1);
 //
 
-    MyVec v2 = v1;
-    print_vec(v2);
-//
-//    cout << "Constructing v3\n";
-//    MyVec v3 = MyVec();
-//    v3 = v1;
-//    
-//    cout << "Size of v3 is: " << v3.size() << endl;
-//
-//    print_vec(v3);
-//
-//    /*
-//    */
+
+    v1 = v1;
+    cout << "Constructing v3\n";
+    MyVec v3 = MyVec();
+    v3 = v1;
+    print_vec(v3);
+    print_vec(v1);
+
 //
 //    cout << "Done with test!\n";
     return 0;
