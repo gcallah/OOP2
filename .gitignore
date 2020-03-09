@@ -13,3 +13,4 @@ code/.ropeproject/
 code/weather/test_date
 code/weather/test_image
 code/weather/weather
+.vs/*
