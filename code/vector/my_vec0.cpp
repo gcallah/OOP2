@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 const int DEF_VCAPACITY = 2;
@@ -6,20 +7,21 @@ const int DEF_VCAPACITY = 2;
 
 class MyVec {
  public:
-    MyVec() {
-        sz = 0;
-        capac = DEF_VCAPACITY;
+    MyVec(string nm) : sz(0), capac(DEF_VCAPACITY), name(nm) {
         data = new int[DEF_VCAPACITY];
+    }
+
+    explicit MyVec(size_t s, int val=0) : sz(s), capac(s * 2),
+                    name("built with constructor2") {
+        data = new int[capac];
+        for (size_t i = 0; i < size(); i++) {
+            data[i] = val;
+        }
     }
 
     MyVec(const MyVec& rhs) {
         cout << "Calling copy constructor\n";
-        sz = rhs.sz;
-        capac = rhs.capac;
-        data = new int[capac];
-        for (size_t i = 0; i < sz; i++) {
-            data[i] = rhs.data[i];
-        }
+        copy(rhs);
     }
 
     ~MyVec() {
@@ -31,17 +33,16 @@ class MyVec {
         cout << "Calling assignment operator\n";
         if (&rhs != this) {  // check for self-assign!
             delete [] data;
-            sz = rhs.sz;
-            capac = rhs.capac;
-            data = new int[capac];
-            for (size_t i = 0; i < sz; i++) {
-                data[i] = rhs.data[i];
-            }
+            copy(rhs);
         }
         return *this;
     }
 
     int operator[](int i) const {
+        return data[i];
+    }
+
+    int& operator[](int i) {
         return data[i];
     }
 
@@ -65,24 +66,42 @@ class MyVec {
     const int* begin() const { return data; }
     const int* end()   const { return data + sz; }
 
+    int* begin() { return data; }
+    int* end()   { return data + sz; }
+
+    string get_name() const { return name; }
+
  private:
     size_t sz;
     size_t capac;
+    string name;
     int* data;
 
-    void copy(const MyVec& source) {
+    void copy(const MyVec& rhs) {
+        sz = rhs.sz;
+        capac = rhs.capac;
+        name = rhs.name;
+        data = new int[capac];
+        for (size_t i = 0; i < sz; i++) {
+            data[i] = rhs.data[i];
+        }
     }
 };
 
 
 void print_vec(const MyVec& ivec) {
+    cout << ivec.get_name() << ' ';
     for (int item : ivec) {
         cout << item << ' ';
     }
-//    for (size_t i = 0; i < ivec.size(); i++) {
-//        cout << ivec[i] << ' ';
-//    }
     cout << endl;
+}
+
+
+void scale(MyVec& ivec, int scalar) {
+    for (int& item : ivec) {
+        item *= scalar;
+    }
 }
 
 
@@ -90,13 +109,15 @@ int main()
 {
     cout << "Testing my_vec:\n";
 
-    MyVec v1 = MyVec();
+    MyVec v1 = MyVec("v1");
     cout << "Vector memory = " << sizeof(v1) << endl;
     cout << "Vector number elements = " << v1.size() << endl;
     v1.push_back(4);
     v1.push_back(8);
+    v1[1] = 6;
+    scale(v1, 3);
     if (true) {
-        MyVec v2 = v1;
+        MyVec v2(10, 42);
         print_vec(v2);
     }
     cout << "v2 out of scope.\n";
@@ -108,6 +129,7 @@ int main()
     v1.push_back(256);
     v1.push_back(512);
     v1.push_back(1024);
+    v1 = MyVec(4);
 //    cout << "Vector size = " << sizeof(v1) << endl;
     cout << "Vector number elements = " << v1.size() << endl;
     print_vec(v1);
@@ -116,7 +138,7 @@ int main()
 
     v1 = v1;
     cout << "Constructing v3\n";
-    MyVec v3 = MyVec();
+    MyVec v3 = MyVec("v3");
     v3 = v1;
     print_vec(v3);
     print_vec(v1);

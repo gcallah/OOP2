@@ -1,0 +1,40 @@
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            C++ Lectures
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            C++ Lectures
+        </h1>
+
+        <p>
+            Below are some of Prof. Callahan's recorded lectures on C++.
+        </p>
+
+        <ul>
+
+            <li>
+				<figure>
+				<iframe width="560" height="315"
+					src="https://www.youtube.com/embed/xFcCQAxspFg"
+					frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen>
+				</iframe>
+				<br />
+				Lecture on <span class="code">explicit</span>
+				and when you might need both <span class="code">const</span>
+				and not <span class="code">const</span> class methods.
+				</figure>
+            </li>
+
+        </ul>
+
+    </body>
+</html>
