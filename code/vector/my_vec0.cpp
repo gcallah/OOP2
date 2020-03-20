@@ -3,10 +3,13 @@ using namespace std;
 
 const int DEF_VCAPACITY = 2;
 
+int missing_function(int n);
+
 
 class MyVec {
  public:
     MyVec() {
+        cout << "Longs are " << sizeof(j) << " bytes" << endl;
         sz = 0;
         capac = DEF_VCAPACITY;
         data = new int[DEF_VCAPACITY];
@@ -62,6 +65,7 @@ class MyVec {
 
     size_t size() const { return sz; }
 
+    long j;
     const int* begin() const { return data; }
     const int* end()   const { return data + sz; }
 
@@ -88,6 +92,7 @@ void print_vec(const MyVec& ivec) {
 
 int main()
 {
+    missing_function(7);
     cout << "Testing my_vec:\n";
 
     MyVec v1 = MyVec();
