@@ -1,8 +1,6 @@
 /*
-    testPrincess.cpp
+    cyclical.cpp
     Cyclic Association
-    Sec Base
-    Tests the princess and frog_prince classes.
 */
 
 #include <iostream>
