@@ -27,7 +27,7 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    string display(string s);
+    virtual string display(string s) = 0;
 
     void compress() { cout << "Compressing!\n"; }
     int get_height() { return height; }
@@ -48,7 +48,8 @@ class Gif : public Image {
      * We don't need copy control here because our parent has it.
      * */
  public:
-    Gif(int width, int height, string flnm) : Image(width, height, flnm) {}
+    Gif(int width, int height, string flnm) : Image(width, height, flnm) {
+    }
     // copy constructor:
     Gif(const Gif& img2);
     /*
@@ -56,7 +57,7 @@ class Gif : public Image {
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    string display(string s);
+    // string display(string s);
 
     /*
      * The following line of code *hides* `compress()` from
@@ -78,7 +79,8 @@ class AnimGif : public Gif {
      * This will be a "grandchild" class.
      * */
  public:
-    AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {}
+    AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {
+    }
     string display(string s); // override;
 };
 
@@ -89,7 +91,8 @@ class Jpeg : public Image {
      * clearer.
      * */
  public:
-    Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {}
+    Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {
+    }
     string display(string s); // override;
 };
 
@@ -100,7 +103,8 @@ class Png : public Image {
      * clearer.
      * */
  public:
-    Png(int width, int height, string flnm) : Image(width, height, flnm) {}
+    Png(int width, int height, string flnm) : Image(width, height, flnm) {
+    }
     string display(string s); // override;
 };
 

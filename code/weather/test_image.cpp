@@ -24,7 +24,7 @@ int main() {
     /*
      * Run some tests on our Image class.
      * Because Image is abstract, we can't construct an Image:
-     * Image img(2000, 2000, "base class");
+     * Image image(1000, 800, "Base class");
      * The above line won't compile.
      * */
     AnimGif gif(2000, 2000, "derived class");
@@ -49,6 +49,7 @@ int main() {
     cout << "\n_______________\n\nVector:\n";
 
     vector<Image*> images;
+//    images.push_back(&image);
     images.push_back(&gif);
     images.push_back(&jpeg);
     images.push_back(&png);

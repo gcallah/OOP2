@@ -85,7 +85,7 @@ Gif::Gif(const Gif& img2) : Image(img2) {
 
 
 /*
- * Incorrect wat to call it:
+ * Incorrect way to call it:
 Gif::Gif(const Gif& img2) {
     Image(img2);
 }
@@ -97,9 +97,9 @@ Gif::Gif(const Gif& img2) {
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string Gif::display(string s) { 
-    return Image::display("Gif");
-}
+//string Gif::display(string s) { 
+//    return Image::display("Gif");
+//}
 
 
 /*
