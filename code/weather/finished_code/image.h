@@ -27,9 +27,14 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    string display(string s);
+    virtual string display(string s) = 0;
+    /*
+     * If we don't want virtual method lookup, we
+     * could just declare:
+     * void display();
+     * */
 
-    void compress() { cout << "Compressing!\n"; }
+    virtual void compress() { cout << "Compressing!\n"; }
     int get_height() { return height; }
     int get_width() { return width; }
 
@@ -52,11 +57,11 @@ class Gif : public Image {
     // copy constructor:
     Gif(const Gif& img2);
     /*
-     * display() will override the parent class display().
+     * display() overrides the parent class display().
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    string display(string s);
+    string display(string s) override;
 
     /*
      * The following line of code *hides* `compress()` from
@@ -66,10 +71,10 @@ class Gif : public Image {
 
     /*
      * The line below makes `compress()` available in Gif.
-        using Image::compress;
      * We could also have written:
      * void compress() override { Image::compress(); }
      * */
+    using Image::compress;
 };
 
 
@@ -79,7 +84,7 @@ class AnimGif : public Gif {
      * */
  public:
     AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {}
-    string display(string s); // override;
+    string display(string s) override;
 };
 
 
@@ -90,7 +95,7 @@ class Jpeg : public Image {
      * */
  public:
     Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {}
-    string display(string s); // override;
+    string display(string s) override;
 };
 
 
@@ -101,7 +106,7 @@ class Png : public Image {
      * */
  public:
     Png(int width, int height, string flnm) : Image(width, height, flnm) {}
-    string display(string s); // override;
+    string display(string s) override;
 };
 
 

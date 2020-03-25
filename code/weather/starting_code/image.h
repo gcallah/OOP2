@@ -79,7 +79,7 @@ class AnimGif : public Gif {
      * */
  public:
     AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {}
-    string display(string s); // override;
+    string display(string s) override;
 };
 
 
@@ -90,7 +90,7 @@ class Jpeg : public Image {
      * */
  public:
     Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {}
-    string display(string s); // override;
+    string display(string s) override;
 };
 
 
@@ -101,7 +101,7 @@ class Png : public Image {
      * */
  public:
     Png(int width, int height, string flnm) : Image(width, height, flnm) {}
-    string display(string s); // override;
+    string display(string s) override;
 };
 
 

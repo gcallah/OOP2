@@ -36,15 +36,14 @@ int main() {
     // this illustrates the interaction of overloading
     // and class heirarachies:
     string ret;
+    ret = show(gif);
+    assert(ret == "AnimGif");
+    ret = show(jpeg);
+    assert(ret == "Jpeg");
+    ret = show(*img);
+    assert(ret == "AnimGif");
 
-//    ret = show(gif);
-//    assert(ret == "AnimGif");
-//    ret = show(jpeg);
-//    assert(ret == "Jpeg");
-//    ret = show(*img);
-//    assert(ret == "AnimGif");
-
-    // gif.compress();
+    gif.compress();
 
     cout << "\n_______________\n\nVector:\n";
 
@@ -62,5 +61,5 @@ int main() {
     for(Image* img : images) {
         ret += img->display("");
     }
-//    assert(ret == "AnimGifJpegPng");
+    assert(ret == "AnimGifJpegPng");
 }

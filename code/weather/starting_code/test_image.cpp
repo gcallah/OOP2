@@ -44,7 +44,7 @@ int main() {
 //    ret = show(*img);
 //    assert(ret == "AnimGif");
 
-    // gif.compress();
+    gif.compress();
 
     cout << "\n_______________\n\nVector:\n";
 
