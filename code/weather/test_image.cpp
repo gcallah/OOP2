@@ -61,7 +61,7 @@ int main() {
      * */
     ret = "";
     for(Image* img : images) {
-        ret += img->display("");
+        ret += img->display();
     }
 //    assert(ret == "AnimGifJpegPng");
 }

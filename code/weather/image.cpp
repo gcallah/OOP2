@@ -14,7 +14,7 @@ using namespace std;
 /*
  * "Ordinary" constructor initializing each field:
  * */
-Image::Image(int width, int height, string flnm)
+Image::Image(int width, int height, const string& flnm)
     : width(width), height(height) {
     image_buf = new unsigned char[image_sz()];
 }
@@ -52,10 +52,10 @@ Image& Image::operator=(const Image& img2) {
 
 
 /*
- * This is a dummy `display()` operator, to illustrate
+ * This is the base class `display()` operator, to illustrate
  * *polymorphism*.
  * */
-string Image::display(string s="Base") {
+const string& Image::display(const string& s) const {
     cout << s << endl;
     return s;
 }
@@ -93,7 +93,7 @@ Gif::Gif(const Gif& img2) {
 
 
 /*
- * Specialized over-ridden display method for Gif.
+ * Specialized over-riding display method for Gif.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
@@ -113,30 +113,30 @@ void Gif::compress(int i) {
 
 
 /*
- * Specialized over-ridden display method for AnimGif.
+ * Specialized over-riding display method for AnimGif.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string AnimGif::display(string s) { 
+const string& AnimGif::display(const string& s) const {
     return Image::display("AnimGif");
 }
 
 
 /*
- * Specialized over-ridden display method for Jpeg.
+ * Specialized over-riding display method for Jpeg.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string Jpeg::display(string s) { 
+const string& Jpeg::display(const string& s) const {
     return Image::display("Jpeg");
 }
 
 
 /*
- * Specialized over-ridden display method for Png.
+ * Specialized over-riding display method for Png.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string Png::display(string s) { 
+const string& Png::display(const string& s) const {
     return Image::display("Png");
 }

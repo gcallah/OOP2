@@ -4,7 +4,6 @@
 #define WEATHER_IMAGE 1
 
 #include <string>
-using namespace std;
 
 const int DEF_HEIGHT = 1600;
 const int DEF_WIDTH = 2400;
@@ -16,7 +15,7 @@ const int DEF_WIDTH = 2400;
  * */
 class Image {
  public:
-    Image(int width, int height, string flnm);
+    Image(int width, int height, const std::string& flnm);
     // copy constructor:
     Image(const Image& img2);
     ~Image();
@@ -27,11 +26,12 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    virtual string display(string s) = 0;
+    // virtual std::string display(string s) = 0;
+    const std::string& display(const std::string& s="Base") const;
 
-    void compress() { cout << "Compressing!\n"; }
-    int get_height() { return height; }
-    int get_width() { return width; }
+    void compress() { std::cout << "Compressing!\n"; }
+    int get_height() const { return height; }
+    int get_width() const { return width; }
 
  private:
     int width;
@@ -48,7 +48,8 @@ class Gif : public Image {
      * We don't need copy control here because our parent has it.
      * */
  public:
-    Gif(int width, int height, string flnm) : Image(width, height, flnm) {
+    Gif(int width, int height, const std::string& flnm)
+        : Image(width, height, flnm) {
     }
     // copy constructor:
     Gif(const Gif& img2);
@@ -57,7 +58,7 @@ class Gif : public Image {
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    // string display(string s);
+    // const std::string& display(const std::string& s);
 
     /*
      * The following line of code *hides* `compress()` from
@@ -79,9 +80,10 @@ class AnimGif : public Gif {
      * This will be a "grandchild" class.
      * */
  public:
-    AnimGif(int width, int height, string flnm) : Gif(width, height, flnm) {
+    AnimGif(int width, int height, const std::string& flnm)
+        : Gif(width, height, flnm) {
     }
-    string display(string s); // override;
+    const std::string& display(const std::string&) const;
 };
 
 
@@ -91,9 +93,10 @@ class Jpeg : public Image {
      * clearer.
      * */
  public:
-    Jpeg(int width, int height, string flnm) : Image(width, height, flnm) {
+    Jpeg(int width, int height, const std::string& flnm)
+        : Image(width, height, flnm) {
     }
-    string display(string s); // override;
+    const std::string& display(const std::string&) const;
 };
 
 
@@ -103,9 +106,9 @@ class Png : public Image {
      * clearer.
      * */
  public:
-    Png(int width, int height, string flnm) : Image(width, height, flnm) {
+    Png(int width, int height, std::string flnm) : Image(width, height, flnm) {
     }
-    string display(string s); // override;
+    const std::string& display(const std::string&) const;
 };
 
 
@@ -119,7 +122,7 @@ void f(Gif& img);
 /*
  * Below doesn't work: can't overload on const vs. non-const
  * param.
-void f(const Gif& img) { cout << "Const gif f()\n"; }
+void f(const Gif& img) { std::cout << "Const gif f()\n"; }
  * */
 
 

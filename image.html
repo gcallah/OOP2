@@ -66,7 +66,7 @@
 
                 <pre>
                 <code>
-<span class="n">Image</span><span class="o">::</span><span class="n">Image</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="n">string</span> <span class="n">flnm</span><span class="p">)</span>
+<span class="n">Image</span><span class="o">::</span><span class="n">Image</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">flnm</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">width</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">image_buf</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">[</span><span class="n">image_sz</span><span class="p">()];</span>
 <span class="p">}</span>
@@ -116,14 +116,14 @@
 
 </code>                </pre>
                 <p>
-  This is a dummy <span class="code">display()</span> operator, to illustrate
+  This is the base class <span class="code">display()</span> operator, to illustrate
   <i>polymorphism</i>.
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">&quot;Base&quot;</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
 <span class="p">}</span>
@@ -172,7 +172,7 @@ Gif::Gif(const Gif& img2) {
 
 </code>                </pre>
                 <p>
-  Specialized over-ridden display method for Gif.
+  Specialized over-riding display method for Gif.
   In it we call the parent display method with
   <span class="code">Image::display()</span>.
 
@@ -200,7 +200,7 @@ Gif::Gif(const Gif& img2) {
 
 </code>                </pre>
                 <p>
-  Specialized over-ridden display method for AnimGif.
+  Specialized over-riding display method for AnimGif.
   In it we call the parent display method with
   <span class="code">Image::display()</span>.
 
@@ -208,13 +208,13 @@ Gif::Gif(const Gif& img2) {
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">AnimGif</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
+<span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">AnimGif</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;AnimGif&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 </code>                </pre>
                 <p>
-  Specialized over-ridden display method for Jpeg.
+  Specialized over-riding display method for Jpeg.
   In it we call the parent display method with
   <span class="code">Image::display()</span>.
 
@@ -222,13 +222,13 @@ Gif::Gif(const Gif& img2) {
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">Jpeg</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
+<span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">Jpeg</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;Jpeg&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 </code>                </pre>
                 <p>
-  Specialized over-ridden display method for Png.
+  Specialized over-riding display method for Png.
   In it we call the parent display method with
   <span class="code">Image::display()</span>.
 
@@ -236,7 +236,7 @@ Gif::Gif(const Gif& img2) {
 
                 <pre>
                 <code>
-<span class="n">string</span> <span class="n">Png</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> 
+<span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">Png</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;Png&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code>                </pre>
