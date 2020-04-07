@@ -117,9 +117,34 @@ void Gif::compress(int i) {
  * In it we call the parent display method with
  * `Image::display()`.
  * */
+
+AnimGif::AnimGif(int width, int height, const string& flnm)
+    : Gif(width, height, flnm) {
+    image_buf2 = new unsigned char[image_sz()];
+}
+
+AnimGif::AnimGif(const AnimGif& img2) : Gif(img2) {
+    image_buf2 = new unsigned char[image_sz()];
+    for (int i = 0; i < image_sz(); i++)
+        image_buf2[i] = img2.image_buf2[i];
+}
+
+AnimGif& AnimGif::operator=(const AnimGif& img2) {
+    Gif::operator=(img2);
+    if (image_buf2 != nullptr) delete image_buf2;
+    for (int i = 0; i < image_sz(); i++)
+        image_buf2[i] = img2.image_buf2[i];
+    return *this;
+}
+
+AnimGif::~AnimGif() {
+    if (image_buf2 != nullptr) delete image_buf2;
+}
+
 const string& AnimGif::display(const string& s) const {
     return Image::display("AnimGif");
 }
+
 
 
 /*

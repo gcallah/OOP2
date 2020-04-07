@@ -65,6 +65,14 @@
 <span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
     <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
     <span class="k">friend</span> <span class="n">istream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">istream</span><span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="n">Complex</span> <span class="k">operator</span><span class="o">+</span> <span class="p">(</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c1</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Complex</span> <span class="nf">sum</span><span class="p">(</span><span class="n">c1</span><span class="p">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="n">c1</span><span class="p">.</span><span class="n">imag</span> <span class="o">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">rhs</span><span class="p">.</span><span class="n">real</span> <span class="o">==</span> <span class="n">lhs</span><span class="p">.</span><span class="n">real</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">imag</span> <span class="o">==</span> <span class="n">lhs</span><span class="p">.</span><span class="n">imag</span><span class="p">));</span>
+    <span class="p">}</span>
 
     <span class="k">public</span><span class="o">:</span>
 </code>                </pre>
@@ -81,23 +89,42 @@
 
 </code>                </pre>
                 <p>
-      We want to implement:
-      pre-increment
-      post-increment
-      bool
-      +
-      +=
-      ==
-      !=
+          pre-increment:
 
                 </p>
 
                 <pre>
                 <code>
+        <span class="n">Complex</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">++</span><span class="p">()</span> <span class="p">{</span>
+            <span class="o">++</span><span class="n">real</span><span class="p">;</span>
+            <span class="c1">// return ourselves to allow `x = ++y;`</span>
+            <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+        <span class="p">}</span>
+</code>                </pre>
+                <p>
+          post-increment:
+
+                </p>
+
+                <pre>
+                <code>
+        <span class="n">Complex</span> <span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span> <span class="n">dummy</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Complex</span> <span class="nf">temp</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+            <span class="n">real</span><span class="o">++</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">explicit</span> <span class="k">operator</span> <span class="nf">bool</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">((</span><span class="n">real</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">imag</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">));</span>
+        <span class="p">}</span>
     <span class="k">private</span><span class="o">:</span>
         <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
         <span class="kt">double</span> <span class="n">imag</span><span class="p">;</span>
 <span class="p">};</span>
+
+<span class="kt">bool</span> <span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!</span> <span class="p">(</span><span class="n">rhs</span> <span class="o">==</span> <span class="n">lhs</span><span class="p">);</span>
+<span class="p">}</span>
 
 <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Complex</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
 </code>                </pre>
@@ -112,7 +139,7 @@
                 <pre>
                 <code>
     <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="n">showpos</span> 
-         <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;i&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">noshowpos</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+         <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;i&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">noshowpos</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">os</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -141,7 +168,7 @@
                 <code>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Enter a complex number:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-    <span class="n">Complex</span> <span class="n">c1</span><span class="p">;</span>
+    <span class="n">Complex</span> <span class="n">c1</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
     <span class="c1">// get a complex from stdin:</span>
     <span class="c1">// but not when testing!</span>
     <span class="c1">// cin &gt;&gt; c1;</span>
@@ -161,17 +188,26 @@
         <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c2 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="c1">// see if `Complex` addition works:</span>
-    <span class="c1">// Complex c3 = c1 + c2;</span>
-    <span class="n">Complex</span> <span class="n">c3</span><span class="p">;</span>
+    <span class="n">Complex</span> <span class="n">c3</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c3 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c3</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// Complex c3;</span>
 
     <span class="n">Complex</span> <span class="n">c4</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c4</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">c4</span><span class="p">)</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 is false</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="p">}</span>
     <span class="c1">// test post-increment:</span>
-    <span class="c1">// c4++;</span>
+    <span class="n">c4</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c4</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 is true</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 == c3 ? &quot;</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c4</span> <span class="o">==</span> <span class="n">c3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 == c4 ? &quot;</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c4</span> <span class="o">==</span> <span class="n">c4</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 != c3 ? &quot;</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c4</span> <span class="o">!=</span> <span class="n">c3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
     <span class="c1">// c4++;</span>
 <span class="c1">//     * Test equality operator. If we take the `explicit` off of</span>
 <span class="c1">//     * `bool()` in class definition, then this will fail as ambiguous:</span>
 <span class="c1">//     * the compiler won&#39;t know if we want a `bool` or `Complex` comparison.</span>
-<span class="c1">//    (1 == bool(c4)) ? cout &lt;&lt; &quot;c4 == 1 is true\n&quot; </span>
+    <span class="k">if</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">c4</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;c4 == 1 is true</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="c1">//        : cout &lt;&lt; &quot;c4 == 1 is false\n&quot;;</span>
 <span class="c1">//    // test bool() operator:</span>
 <span class="c1">//    (c4) ? cout &lt;&lt; &quot;c4 is true\n&quot; : cout &lt;&lt; &quot;c4 is false\n&quot;;</span>
@@ -189,8 +225,8 @@
     <span class="n">Complex</span> <span class="n">c5</span> <span class="o">=</span> <span class="mf">14.2</span><span class="p">;</span>
 
     <span class="n">vector</span><span class="o">&lt;</span><span class="n">Complex</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">,</span> <span class="n">c5</span><span class="p">};</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Printing vector</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-    <span class="n">printVector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    <span class="c1">// cout &lt;&lt; &quot;Printing vector\n&quot;;</span>
+    <span class="c1">// printVector(v);</span>
 <span class="p">}</span>
 
 </code>                </pre>

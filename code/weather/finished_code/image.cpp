@@ -14,7 +14,7 @@ using namespace std;
 /*
  * "Ordinary" constructor initializing each field:
  * */
-Image::Image(int width, int height, string flnm)
+Image::Image(int width, int height, const string& flnm)
     : width(width), height(height) {
     image_buf = new unsigned char[image_sz()];
 }
@@ -52,10 +52,10 @@ Image& Image::operator=(const Image& img2) {
 
 
 /*
- * This is a dummy `display()` operator, to illustrate
+ * This is the base class `display()` operator, to illustrate
  * *polymorphism*.
  * */
-string Image::display(string s="Base") {
+const string& Image::display(const string& s) const {
     cout << s << endl;
     return s;
 }
@@ -85,7 +85,7 @@ Gif::Gif(const Gif& img2) : Image(img2) {
 
 
 /*
- * Incorrect wat to call it:
+ * Incorrect way to call it:
 Gif::Gif(const Gif& img2) {
     Image(img2);
 }
@@ -93,13 +93,13 @@ Gif::Gif(const Gif& img2) {
 
 
 /*
- * Specialized over-ridden display method for Gif.
+ * Specialized over-riding display method for Gif.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string Gif::display(string s) { 
-    return Image::display("Gif");
-}
+//string Gif::display(string s) { 
+//    return Image::display("Gif");
+//}
 
 
 /*
@@ -113,30 +113,55 @@ void Gif::compress(int i) {
 
 
 /*
- * Specialized over-ridden display method for AnimGif.
+ * Specialized over-riding display method for AnimGif.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string AnimGif::display(string s) { 
+
+AnimGif::AnimGif(int width, int height, const string& flnm)
+    : Gif(width, height, flnm) {
+    image_buf2 = new unsigned char[image_sz()];
+}
+
+AnimGif::AnimGif(const AnimGif& img2) : Gif(img2) {
+    image_buf2 = new unsigned char[image_sz()];
+    for (int i = 0; i < image_sz(); i++)
+        image_buf2[i] = img2.image_buf2[i];
+}
+
+AnimGif& AnimGif::operator=(const AnimGif& img2) {
+    Gif::operator=(img2);
+    if (image_buf2 != nullptr) delete image_buf2;
+    for (int i = 0; i < image_sz(); i++)
+        image_buf2[i] = img2.image_buf2[i];
+    return *this;
+}
+
+AnimGif::~AnimGif() {
+    if (image_buf2 != nullptr) delete image_buf2;
+}
+
+const string& AnimGif::display(const string& s) const {
     return Image::display("AnimGif");
 }
 
 
+
 /*
- * Specialized over-ridden display method for Jpeg.
+ * Specialized over-riding display method for Jpeg.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string Jpeg::display(string s) { 
+const string& Jpeg::display(const string& s) const {
     return Image::display("Jpeg");
 }
 
 
 /*
- * Specialized over-ridden display method for Png.
+ * Specialized over-riding display method for Png.
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-string Png::display(string s) { 
+const string& Png::display(const string& s) const {
     return Image::display("Png");
 }

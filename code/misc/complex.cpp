@@ -21,6 +21,14 @@ const bool DEBUG = true;
 class Complex {
     friend ostream& operator<< (ostream& os, const Complex& c);
     friend istream& operator>> (istream& is, Complex& c);
+    friend Complex operator+ (const Complex& c1,
+            const Complex& c2) {
+        Complex sum(c1.real + c2.real, c1.imag + c2.imag);
+        return sum;
+    }
+    friend bool operator==(const Complex& rhs, const Complex& lhs) {
+        return ((rhs.real == lhs.real) && (rhs.imag == lhs.imag));
+    }
 
     public:
     
@@ -31,21 +39,37 @@ class Complex {
         Complex(double real=0.0, double imag=0.0)
             : real{real}, imag{imag} {}
 
-    /*
-     * We want to implement:
-     * pre-increment
-     * post-increment
-     * bool
-     * +
-     * +=
-     * ==
-     * !=
-     * */
+        /*
+         * pre-increment:
+         * */
+        Complex& operator++() {
+            ++real;
+            // return ourselves to allow `x = ++y;`
+            return (*this);
+        }
+
+        /*
+         * post-increment:
+         * */
+        Complex operator++(int dummy) {
+            Complex temp(*this);
+            real++;
+            return temp;
+        }
+
+        explicit operator bool() const {
+            return ((real != 0) || (imag != 0));
+        }
 
     private:
         double real;
         double imag;
 };
+
+
+bool operator!=(const Complex& rhs, const Complex& lhs) {
+    return ! (rhs == lhs);
+}
 
 
 ostream& operator<< (ostream& os, const Complex& c) {
@@ -56,7 +80,7 @@ ostream& operator<< (ostream& os, const Complex& c) {
      * sign for positive numbers.
      * */
     os << setprecision(10) << c.real << showpos 
-         << c.imag << "i" << noshowpos << endl;
+         << c.imag << "i" << noshowpos;
     return os;
 }
 
@@ -78,7 +102,7 @@ void printVector(const vector<Complex>& v);
  * */
 int main() {
     cout << "Enter a complex number:\n";
-    Complex c1;
+    Complex c1{10, 10};
     // get a complex from stdin:
     // but not when testing!
     // cin >> c1;
@@ -99,17 +123,27 @@ int main() {
     }
 
     // see if `Complex` addition works:
-    // Complex c3 = c1 + c2;
-    Complex c3;
+    Complex c3 = c1 + c2;
+    cout << "c3 = " << c3 << endl;
+    // Complex c3;
 
     Complex c4 = Complex();
+    cout << "c4 = " << c4 << endl;
+    if (!c4) { cout << "c4 is false\n"; }
+
     // test post-increment:
-    // c4++;
+    c4++;
+    cout << "c4 = " << c4 << endl;
+    if (c4) { cout << "c4 is true\n"; }
+    cout << "c4 == c3 ? " << (c4 == c3) << endl;
+    cout << "c4 == c4 ? " << (c4 == c4) << endl;
+    cout << "c4 != c3 ? " << (c4 != c3) << endl;
+
     // c4++;
 //     * Test equality operator. If we take the `explicit` off of
 //     * `bool()` in class definition, then this will fail as ambiguous:
 //     * the compiler won't know if we want a `bool` or `Complex` comparison.
-//    (1 == bool(c4)) ? cout << "c4 == 1 is true\n" 
+    if(1 == c4) cout << "c4 == 1 is true\n";
 //        : cout << "c4 == 1 is false\n";
 //    // test bool() operator:
 //    (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
@@ -123,8 +157,8 @@ int main() {
     Complex c5 = 14.2;
 
     vector<Complex> v{c1, c2, c3, c4, c5};
-    cout << "Printing vector\n";
-    printVector(v);
+    // cout << "Printing vector\n";
+    // printVector(v);
 }
 
 

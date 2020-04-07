@@ -27,7 +27,7 @@ class Image {
      * class that can't be implemented.
      * */
     // virtual std::string display(string s) = 0;
-    const std::string& display(const std::string& s="Base") const;
+    virtual const std::string& display(const std::string& s="Base") const;
 
     void compress() { std::cout << "Compressing!\n"; }
     int get_height() const { return height; }
@@ -80,10 +80,15 @@ class AnimGif : public Gif {
      * This will be a "grandchild" class.
      * */
  public:
-    AnimGif(int width, int height, const std::string& flnm)
-        : Gif(width, height, flnm) {
-    }
+    AnimGif(int width, int height, const std::string& flnm);
+    // copy constructor:
+    AnimGif(const AnimGif& img2);
+    AnimGif& operator=(const AnimGif& img2);
     const std::string& display(const std::string&) const;
+    ~AnimGif();
+
+ private:
+    unsigned char* image_buf2;
 };
 
 
