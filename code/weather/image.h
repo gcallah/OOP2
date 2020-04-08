@@ -10,6 +10,17 @@ const int DEF_WIDTH = 2400;
 
 
 /*
+ * A trivial class just to demonstrate multiple inheritance.
+ * */
+class Movie {
+ public:
+     void play() const { std::cout << "Playing a movie\n"; }
+     void display(const std::string& s) const
+        { std::cout << "Displaying a movie\n"; }
+};
+
+
+/*
  * This will be the base class for all types of images.
  * It is an abstract class, due to the `display()` method.
  * */
@@ -26,8 +37,8 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    const std::string& display(const std::string& s="Base") const;
-    // virtual const std::string& display(const std::string& s="Base") const;
+    // const std::string& display(const std::string& s="Base") const;
+    virtual const std::string& display(const std::string& s="Base") const;
 
     void compress() { std::cout << "Compressing!\n"; }
     int get_height() const { return height; }
@@ -59,7 +70,7 @@ class Gif : public Image {
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    // const std::string& display(const std::string& s) override;
+    const std::string& display(const std::string& s="") const;  // override;
 
     /*
      * The following line of code *hides* `compress()` from
@@ -76,7 +87,7 @@ class Gif : public Image {
 };
 
 
-class AnimGif : public Gif {
+class AnimGif : public Movie, public Gif {
     /*
      * This will be a "grandchild" class.
      * */
@@ -85,7 +96,7 @@ class AnimGif : public Gif {
     // copy constructor:
     AnimGif(const AnimGif& img2);
     AnimGif& operator=(const AnimGif& img2);
-    const std::string& display(const std::string&) const;
+    // const std::string& display(const std::string&) const;
     ~AnimGif();
 
  private:

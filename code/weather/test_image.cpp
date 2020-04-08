@@ -10,13 +10,12 @@ using namespace std;
 
 string show(Image& img) {
     cout << "In show(Image&)\n";
-    return img.display("");
+    return img.display();
 }
-
 
 string show(Gif& img) {
     cout << "In show(Gif&)\n";
-    return img.display("");
+    return img.display();
 }
 
 
@@ -27,21 +26,22 @@ int main() {
      * Image image(1000, 800, "Base class");
      * The above line won't compile.
      * */
-    AnimGif gif(2000, 2000, "derived class");
+    AnimGif anim_gif(2000, 2000, "derived class");
+    anim_gif.play();
     Jpeg jpeg(2000, 2000, "Jpeg class");
     Png png(2000, 2000, "png class");
 
-    cout << "Going to copy construct a animgif\n";
-    AnimGif agif2 = gif;
-    cout << "Going to copy construct a png\n";
-    Png png2 = png;
-    Image* img = &gif;
+//    cout << "Going to copy construct a animgif\n";
+//    AnimGif agif2 = gif;
+//    cout << "Going to copy construct a png\n";
+//    Png png2 = png;
+    Image* img = &anim_gif;
 
     // this illustrates the interaction of overloading
     // and class heirarachies:
     string ret;
 
-    cout << "show(gif) = " << show(gif) << endl;
+    cout << "show(anim_gif) = " << show(anim_gif) << endl;
     ret = show(jpeg);
     // assert(ret == "Jpeg");
     cout << "show(img) = " << show(*img) << endl;
@@ -52,7 +52,7 @@ int main() {
 
     vector<Image*> images;
 //    images.push_back(&image);
-    images.push_back(&gif);
+    images.push_back(&anim_gif);
     images.push_back(&jpeg);
     images.push_back(&png);
     /*
@@ -63,7 +63,7 @@ int main() {
      * */
     ret = "";
     for(Image* img : images) {
-        ret += img->display();
+        ret += img->display("");
     }
 //    assert(ret == "AnimGifJpegPng");
 }

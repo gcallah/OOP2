@@ -98,9 +98,9 @@ Gif::Gif(const Gif& img2) {
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-//string Gif::display(string s) { 
-//    return Image::display("Gif");
-//}
+const string& Gif::display(const string& s) const { 
+    return Image::display("Gif");
+}
 
 
 /*
@@ -142,10 +142,10 @@ AnimGif::~AnimGif() {
  * Specialized over-riding display method for AnimGif.
  * In it we call the parent display method with
  * `Image::display()`.
- * */
 const string& AnimGif::display(const string& s) const {
     return Image::display("AnimGif");
 }
+ * */
 
 
 
