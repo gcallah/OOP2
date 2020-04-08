@@ -83,6 +83,7 @@
                 <pre>
                 <code>
 <span class="n">Image</span><span class="o">::</span><span class="n">Image</span><span class="p">(</span><span class="k">const</span> <span class="n">Image</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;In image copy constructor</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="n">copy_fields</span><span class="p">(</span><span class="n">img2</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -150,13 +151,13 @@
 </code>                </pre>
                 <p>
   Correct way to call base class copy constructor:
+Gif::Gif(const Gif& img2) : Image(img2) {
+}
 
                 </p>
 
                 <pre>
                 <code>
-<span class="n">Gif</span><span class="o">::</span><span class="n">Gif</span><span class="p">(</span><span class="k">const</span> <span class="n">Gif</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="o">:</span> <span class="n">Image</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">}</span>
 
 </code>                </pre>
                 <p>
@@ -198,22 +199,13 @@ Gif::Gif(const Gif& img2) {
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;compressing at level: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 
-</code>                </pre>
-                <p>
-  Specialized over-riding display method for AnimGif.
-  In it we call the parent display method with
-  <span class="code">Image::display()</span>.
-
-                </p>
-
-                <pre>
-                <code>
 <span class="n">AnimGif</span><span class="o">::</span><span class="n">AnimGif</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">flnm</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">Gif</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">flnm</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">image_buf2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">[</span><span class="n">image_sz</span><span class="p">()];</span>
 <span class="p">}</span>
 
 <span class="n">AnimGif</span><span class="o">::</span><span class="n">AnimGif</span><span class="p">(</span><span class="k">const</span> <span class="n">AnimGif</span><span class="o">&amp;</span> <span class="n">img2</span><span class="p">)</span> <span class="o">:</span> <span class="n">Gif</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;In AnimGif copy constructor</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
     <span class="n">image_buf2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">unsigned</span> <span class="kt">char</span><span class="p">[</span><span class="n">image_sz</span><span class="p">()];</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">image_sz</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
         <span class="n">image_buf2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">img2</span><span class="p">.</span><span class="n">image_buf2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -229,6 +221,16 @@ Gif::Gif(const Gif& img2) {
 <span class="n">AnimGif</span><span class="o">::~</span><span class="n">AnimGif</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">image_buf2</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="k">delete</span> <span class="n">image_buf2</span><span class="p">;</span>
 <span class="p">}</span>
+</code>                </pre>
+                <p>
+  Specialized over-riding display method for AnimGif.
+  In it we call the parent display method with
+  <span class="code">Image::display()</span>.
+
+                </p>
+
+                <pre>
+                <code>
 <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">AnimGif</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">Image</span><span class="o">::</span><span class="n">display</span><span class="p">(</span><span class="s">&quot;AnimGif&quot;</span><span class="p">);</span>
 <span class="p">}</span>

@@ -27,6 +27,7 @@ Image::Image(int width, int height, const string& flnm)
  * assignment operator.
  * */
 Image::Image(const Image& img2) {
+    cout << "In image copy constructor\n";
     copy_fields(img2);
 }
 
@@ -79,9 +80,9 @@ void Image::copy_fields(const Image& img2) {
 
 /*
  * Correct way to call base class copy constructor:
- * */
 Gif::Gif(const Gif& img2) : Image(img2) {
 }
+ * */
 
 
 /*
@@ -112,11 +113,6 @@ void Gif::compress(int i) {
 }
 
 
-/*
- * Specialized over-riding display method for AnimGif.
- * In it we call the parent display method with
- * `Image::display()`.
- * */
 
 AnimGif::AnimGif(int width, int height, const string& flnm)
     : Gif(width, height, flnm) {
@@ -124,6 +120,7 @@ AnimGif::AnimGif(int width, int height, const string& flnm)
 }
 
 AnimGif::AnimGif(const AnimGif& img2) : Gif(img2) {
+    cout << "In AnimGif copy constructor\n";
     image_buf2 = new unsigned char[image_sz()];
     for (int i = 0; i < image_sz(); i++)
         image_buf2[i] = img2.image_buf2[i];
@@ -141,6 +138,11 @@ AnimGif::~AnimGif() {
     if (image_buf2 != nullptr) delete image_buf2;
 }
 
+/*
+ * Specialized over-riding display method for AnimGif.
+ * In it we call the parent display method with
+ * `Image::display()`.
+ * */
 const string& AnimGif::display(const string& s) const {
     return Image::display("AnimGif");
 }

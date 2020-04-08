@@ -31,18 +31,20 @@ int main() {
     Jpeg jpeg(2000, 2000, "Jpeg class");
     Png png(2000, 2000, "png class");
 
+    cout << "Going to copy construct a animgif\n";
+    AnimGif agif2 = gif;
+    cout << "Going to copy construct a png\n";
+    Png png2 = png;
     Image* img = &gif;
 
     // this illustrates the interaction of overloading
     // and class heirarachies:
     string ret;
 
-//    ret = show(gif);
-//    assert(ret == "AnimGif");
-//    ret = show(jpeg);
-//    assert(ret == "Jpeg");
-//    ret = show(*img);
-//    assert(ret == "AnimGif");
+    cout << "show(gif) = " << show(gif) << endl;
+    ret = show(jpeg);
+    // assert(ret == "Jpeg");
+    cout << "show(img) = " << show(*img) << endl;
 
     // gif.compress();
 

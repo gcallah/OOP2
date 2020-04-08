@@ -26,8 +26,8 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    // virtual std::string display(string s) = 0;
-    virtual const std::string& display(const std::string& s="Base") const;
+    const std::string& display(const std::string& s="Base") const;
+    // virtual const std::string& display(const std::string& s="Base") const;
 
     void compress() { std::cout << "Compressing!\n"; }
     int get_height() const { return height; }
@@ -48,17 +48,18 @@ class Gif : public Image {
      * We don't need copy control here because our parent has it.
      * */
  public:
-    Gif(int width, int height, const std::string& flnm)
-        : Image(width, height, flnm) {
-    }
-    // copy constructor:
-    Gif(const Gif& img2);
+     using Image::Image;
+//    Gif(int width, int height, const std::string& flnm)
+//        : Image(width, height, flnm) {
+//    }
+//    // copy constructor:
+//    Gif(const Gif& img2);
     /*
      * display() will override the parent class display().
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    // const std::string& display(const std::string& s);
+    // const std::string& display(const std::string& s) override;
 
     /*
      * The following line of code *hides* `compress()` from
