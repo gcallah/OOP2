@@ -7,7 +7,7 @@ CODE_DIR = code
 MISC_DIR = $(CODE_DIR)/misc
 FMISC_DIR = $(CODE_DIR)/misc/finished_code
 WTHR_DIR = $(CODE_DIR)/weather
-LINK_DIR = $(CODE_DIR)/linked
+LINK_DIR = $(CODE_DIR)/linked/finished_code
 VECT_DIR = $(CODE_DIR)/vector
 RECURS_DIR = $(CODE_DIR)/recursion/finished_code
 

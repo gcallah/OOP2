@@ -6,11 +6,8 @@ FORCE:
 
 test_linked: test_linked.cpp linked.cpp 
 
-linked0: linked0.cpp
-
-tests: test_linked linked0
+tests: test_linked
 	./test_linked
-	./linked0
 
 prod: tests
 	-git commit -a 
