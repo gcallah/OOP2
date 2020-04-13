@@ -64,7 +64,8 @@
         effectively any derived object is a base object, in the sense that
         anywhere you could use a base object, you should also be able to use
         any of the derived objects. (This is also known as Liskov's
-        <b>Substitutability Principle</b>.) Sometimes people refer to IS-A as a test.
+        <b>Substitutability Principle</b>.)
+        Sometimes people refer to IS-A as a test.
         If you cannot comfortably say: "My derived class <i>is a</i> base
         class", then something maybe wrong in your design. Using our example
         above of animals, we can say "a cat is a(n) animal," which helps verify
@@ -112,5 +113,13 @@
     <b>The Slicing "Problem"</b>: You <i>can</i> assign a derived object to a base
     object. However, any methods and fields unique to the derived will be lost.
     </p>
+
+    <p>
+    <b>Multiple Inheritance</b>:
+    <a href="https://isocpp.org/wiki/faq/multiple-inheritance">Here</a> is a
+    good discussion. 
+    </p>
+
+
     </body>
 </html>
