@@ -15,7 +15,7 @@ const int DEF_WIDTH = 2400;
 class Movie {
  public:
      void play() const { std::cout << "Playing a movie\n"; }
-     void display(const std::string& s) const
+     virtual void display(const std::string& s) const
         { std::cout << "Displaying a movie\n"; }
 };
 
