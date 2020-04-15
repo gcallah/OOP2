@@ -56,9 +56,8 @@ Image& Image::operator=(const Image& img2) {
  * This is the base class `display()` operator, to illustrate
  * *polymorphism*.
  * */
-const string& Image::display(const string& s) const {
+void Image::display(const string& s) const {
     cout << s << endl;
-    return s;
 }
 
 
@@ -98,8 +97,8 @@ Gif::Gif(const Gif& img2) {
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-const string& Gif::display(const string& s) const { 
-    return Image::display("Gif");
+void Gif::display(const string& s) const { 
+    Image::display("Gif");
 }
 
 
@@ -142,8 +141,8 @@ AnimGif::~AnimGif() {
  * Specialized over-riding display method for AnimGif.
  * In it we call the parent display method with
  * `Image::display()`.
-const string& AnimGif::display(const string& s) const {
-    return Image::display("AnimGif");
+void AnimGif::display(const string& s) const {
+    Image::display("AnimGif");
 }
  * */
 
@@ -154,8 +153,8 @@ const string& AnimGif::display(const string& s) const {
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-const string& Jpeg::display(const string& s) const {
-    return Image::display("Jpeg");
+void Jpeg::display(const string& s) const {
+    Image::display("Jpeg");
 }
 
 
@@ -164,6 +163,6 @@ const string& Jpeg::display(const string& s) const {
  * In it we call the parent display method with
  * `Image::display()`.
  * */
-const string& Png::display(const string& s) const {
-    return Image::display("Png");
+void Png::display(const string& s) const {
+    Image::display("Png");
 }

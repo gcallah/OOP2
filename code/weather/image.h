@@ -15,8 +15,10 @@ const int DEF_WIDTH = 2400;
 class Movie {
  public:
      void play() const { std::cout << "Playing a movie\n"; }
-     virtual void display(const std::string& s) const
-        { std::cout << "Displaying a movie\n"; }
+     virtual void display(const std::string& s="") const
+        { 
+            std::cout << "Displaying a movie\n";
+        }
 };
 
 
@@ -37,8 +39,8 @@ class Image {
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    // const std::string& display(const std::string& s="Base") const;
-    virtual const std::string& display(const std::string& s="Base") const;
+    // const void display(const std::string& s="Base") const;
+    virtual void display(const std::string& s="Base") const;
 
     void compress() { std::cout << "Compressing!\n"; }
     int get_height() const { return height; }
@@ -70,7 +72,7 @@ class Gif : public Image {
      * Notice the key word `override`: it is a safety mechanism to catch 
      * typos!
      * */
-    const std::string& display(const std::string& s="") const;  // override;
+    void display(const std::string& s="") const;  // override;
 
     /*
      * The following line of code *hides* `compress()` from
@@ -96,7 +98,7 @@ class AnimGif : public Movie, public Gif {
     // copy constructor:
     AnimGif(const AnimGif& img2);
     AnimGif& operator=(const AnimGif& img2);
-    // const std::string& display(const std::string&) const;
+    // void display(const std::string&) const;
     ~AnimGif();
 
  private:
@@ -113,7 +115,7 @@ class Jpeg : public Image {
     Jpeg(int width, int height, const std::string& flnm)
         : Image(width, height, flnm) {
     }
-    const std::string& display(const std::string&) const;
+    void display(const std::string&) const;
 };
 
 
@@ -123,9 +125,10 @@ class Png : public Image {
      * clearer.
      * */
  public:
-    Png(int width, int height, std::string flnm) : Image(width, height, flnm) {
+    Png(int width, int height, std::string flnm)
+        : Image(width, height, flnm) {
     }
-    const std::string& display(const std::string&) const;
+    void display(const std::string&) const;
 };
 
 
