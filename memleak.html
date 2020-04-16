@@ -54,6 +54,9 @@
     <span class="n">Thing</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">iarr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
     <span class="p">}</span>
+    <span class="o">~</span><span class="n">Thing</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">delete</span> <span class="p">[]</span> <span class="n">iarr</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">};</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">OUTER</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">INNER</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
@@ -73,6 +76,10 @@
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">INNER</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">things</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thing</span><span class="p">(</span><span class="n">INNER</span><span class="p">);</span>
         <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">INNER</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">delete</span> <span class="n">things</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">delete</span> <span class="p">[]</span> <span class="n">things</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 

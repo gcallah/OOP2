@@ -36,9 +36,9 @@ int main() {
 //    cout << "Going to copy construct a png\n";
 //    Png png2 = png;
     Image* img = &anim_gif;
-    cout << "img display() = ";
-    img->display("Which?");
-    cout << "\n";
+    // cout << "img display() = ";
+    // img->display("Which?");
+    // cout << "\n";
 
     // this illustrates the interaction of overloading
     // and class heirarachies:
@@ -46,7 +46,8 @@ int main() {
 //    show(jpeg);
 //    cout << "show(img) = " << show(*img) << endl;
 
-    // gif.compress();
+    anim_gif.compress();
+    anim_gif.compress(3);
 
     cout << "\n_______________\n\nVector:\n";
 

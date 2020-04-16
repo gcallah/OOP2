@@ -9,6 +9,9 @@ struct Thing {
     Thing(int n) {
         iarr = new int[n];
     }
+    ~Thing() {
+        delete [] iarr;
+    }
 };
 
 const int OUTER = 1000000;
@@ -24,6 +27,10 @@ int main() {
         for (int j = 0; j < INNER; j++) {
             things[j] = new Thing(INNER);
         }
+        for (int j = 0; j < INNER; j++) {
+            delete things[j];
+        }
+        delete [] things;
     }
 }
 

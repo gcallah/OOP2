@@ -79,10 +79,10 @@ class Gif : public Image {
      * our base class:
      * */
     void compress(int level);
+    using Image::compress;
 
     /*
      * The line below makes `compress()` available in Gif.
-        using Image::compress;
      * We could also have written:
      * void compress() override { Image::compress(); }
      * */

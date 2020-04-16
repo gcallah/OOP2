@@ -41,7 +41,16 @@ Node* rclone(Node* orig_head) {
 
 
 Node* clone(Node* orig_head) {
-    return orig_head;
+    if (!orig_head) return nullptr;
+    Node* new_head = new Node(orig_head->data);
+    Node* curr_orig = orig_head->next;
+    Node* last_copied = new_head;
+    while(curr_orig) {
+        last_copied->next = new Node(curr_orig->data);
+        curr_orig = curr_orig->next;
+        last_copied = last_copied->next;
+    }
+    return new_head;
 }
 
 
@@ -93,7 +102,8 @@ int main() {
     add_at_end(list1, 1);
     last_node = last(list1);
     cout << "last node of list1 = " << last_node << endl;
-//    Node* new_list = rclone(list1);
+    Node* new_list = clone(list1);
+    print_list(cout, list1, "List 1");
 //    Node* four = rfind(list1, 4);
 //    insert(four, 5);
 //    cout << "Found 4? " << four << endl;
