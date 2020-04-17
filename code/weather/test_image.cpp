@@ -38,6 +38,7 @@ int main() {
     Image* img = &anim_gif;
     // cout << "img display() = ";
     // img->display("Which?");
+    // anim_gif.display("Which?");
     // cout << "\n";
 
     // this illustrates the interaction of overloading
