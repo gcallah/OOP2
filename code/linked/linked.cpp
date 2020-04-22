@@ -25,8 +25,18 @@ ostream& operator<<(ostream& os, Node* nd) {
 }
 
 
+int rsum(Node* head) {
+    if (!head) return 0;
+    else return head->data + rsum(head->next);
+}
+
+
 Node* rfind(Node* head, int item) {
-    return head;
+    if (!head) return nullptr;
+    else if(head->data == item)
+        return head;
+    else
+        return rfind(head->next, item);
 }
 
 
@@ -104,11 +114,13 @@ int main() {
     cout << "last node of list1 = " << last_node << endl;
     Node* new_list = clone(list1);
     print_list(cout, list1, "List 1");
-//    Node* four = rfind(list1, 4);
+    Node* four = rfind(list1, 2);
+    cout << "Found 4? " << four << endl;
+    int sum = rsum(list1);
+    cout << "Sum = " << sum << endl;
 //    insert(four, 5);
-//    cout << "Found 4? " << four << endl;
 //    add_at_front(list1, 32);
 //    add_at_front(new_list, 64);
-    print_list(cout, list1, "List 1");
+//    print_list(cout, list1, "List 1");
 //    print_list(cout, new_list, "New list");
 }
