@@ -1,5 +1,4 @@
 /*
- * **Generic programming**
  * This file illustrates how we might implement our own 
  * version of std::vector.
  * In particular, this version makes it a template.
@@ -125,21 +124,14 @@ class MyVec {
     }
 };
 
-
 struct Cat {
-    Cat() : whiskers(137.2) {}
-
-    Cat(double whiskers) : whiskers(whiskers) {}
-
     friend ostream& operator<<(ostream& os, const Cat& cat) {
         return os << "meow ";
     }
-    double whiskers;
 };
 
-
-template <typename Printable>
-void print_vec(const MyVec<Printable>& v) {
+template <typename T>
+void print_vec(const MyVec<T>& v) {
     for(int i = 0; i < v.size(); i++)
         cout << v[i] << endl;
 }
@@ -152,33 +144,26 @@ int main() {
     for(int i = 0; i < 16; i++) {
         v1.push_back(i * 2);
     }
-    print_vec(v1);
-//
-//    MyVec<int> v2 = MyVec<int>(v1);
+
+    MyVec<int> v2 = MyVec<int>(v1);
     MyVec<Cat> v_cat = MyVec<Cat>(5);
+    v2 = v2;
+    // MyVec<int> v4 = 12;
+    MyVec<int> v4 = MyVec<int>(12);
+    
     cout << "Size of v_cat is: " << v_cat.size() << endl;
+    cout << "v2 = \n";
+    v2[0] = 999;
+    print_vec(v2);
+    cout << "v_cat = \n";
+    print_vec(v_cat);
+    cout << "v4 = \n";
+    print_vec(v4);
+    v2 = v2;
+    sort(v2.begin(), v2.end());
+    print_vec(v2);
     print_vec(v_cat);
 
-    MyVec<bool> v_bool = MyVec<bool>(5);
-    cout << "Size of v_bool is: " << v_bool.size() << endl;
-    print_vec(v_bool);
-
-//    v2 = v2;
-//    // MyVec<int> v4 = 12;
-//    MyVec<int> v4 = MyVec<int>(12);
-//    
-//    cout << "v2 = \n";
-//    v2[0] = 999;
-//    print_vec(v2);
-//    cout << "v_cat = \n";
-//    print_vec(v_cat);
-//    cout << "v4 = \n";
-//    print_vec(v4);
-//    v2 = v2;
-//    sort(v2.begin(), v2.end());
-//    print_vec(v2);
-//    print_vec(v_cat);
-//
-//    cout << "Done with test!\n";
+    cout << "Done with test!\n";
     return 0;
 }

@@ -11,9 +11,9 @@ class Vector {
 public:
     class Iterator {
         friend bool operator!=(Iterator lhs, Iterator rhs) {
-            lhs.valPtr != rhs.valPtr;
+            return lhs.valPtr != rhs.valPtr;
         }
- public:
+    public:
         Iterator(int* ptr) : valPtr(ptr) {}
 
         Iterator& operator++() {
@@ -25,10 +25,34 @@ public:
             return *valPtr;
         }
 
- private:
+        int operator*() const {
+            return *valPtr;
+        }
+
+    private:
         int* valPtr;
     };
 
+    class Const_Iterator {
+        friend bool operator!=(Const_Iterator lhs, Const_Iterator rhs) {
+            return lhs.valPtr != rhs.valPtr;
+        }
+    public:
+        Const_Iterator(int* ptr) : valPtr(ptr) {}
+
+        Const_Iterator& operator++() {
+            ++valPtr;
+            return *this;
+        }
+
+        int operator*() {
+            return *valPtr;
+        }
+
+    private:
+        int* valPtr;
+    };
+    
     explicit Vector(size_t howMany = 0, int val=0) {
         theSize = howMany;
         theCapacity = howMany;
@@ -116,16 +140,15 @@ public:
         // Iterator result(data);
         // return result;
     }
-//
-//    Const_Iterator begin() const { 
-//        return Const_Iterator(data); 
-//        // Iterator result(data);
-//        // return result;
-//    }
+
+    Const_Iterator begin() const { 
+        return Const_Iterator(data); 
+        // Iterator result(data);
+        // return result;
+    }
 
     Iterator end() { return Iterator(data + theSize); }
-
-   // Const_Iterator end() const { return Const_Iterator(data + theSize); }
+    Const_Iterator end() const { return Const_Iterator(data + theSize); }
 
     // The following two lines would allow modifying a const vector!!!
     //    const int* begin() const { return data; }
@@ -139,14 +162,14 @@ private:
 
 
 void printVector(const Vector& vec) {
-    for (Vector::Iterator iter = vec.begin(); iter != vec.end(); ++iter) {
-         cout << *iter << ' ';
-    }
+    // for (int* iter = vec.begin(); iter != vec.end(); ++iter) {
+    //     cout << *iter << ' ';
+    // }
     // cout << endl;
 
-//    for (int val : vec) {
-//        cout << val << ' ';  // begin / end must be const
-//    }
+    for (int val : vec) {
+        cout << val << ' ';  // begin / end must be const
+    }
 
     // for (int& val : vec) {
     //     val = 17;
@@ -167,7 +190,6 @@ int main() {
     v.push_back(6);
     v.push_back(28);
     printVector(v);
-    /*
     printVector(v);
 
     v[0] = 100;
@@ -184,28 +206,27 @@ int main() {
 
     cout << endl;
 
-//    for (int val : v2) {
-//        cout << val << ' ';
-//    }
+    for (int val : v2) {
+        cout << val << ' ';
+    }
     cout << endl;
 
-//    for (Vector::Iterator iter = v2.begin(); iter != v2.end(); ++iter) {
-//        int val = *iter;
-//        //cout << *iter << ' ';
-//        cout << val << ' ';
-//    }
+    for (Vector::Iterator iter = v2.begin(); iter != v2.end(); ++iter) {
+        int val = *iter;
+        //cout << *iter << ' ';
+        cout << val << ' ';
+    }
     cout << endl;
 
-//    for (int& val : v2) {
-//        val += 1;
-//    }
-//    
-//    for (int val : v2) {
-//        cout << val << ' ';
-//    }
+    for (int& val : v2) {
+        val += 1;
+    }
+    
+    for (int val : v2) {
+        cout << val << ' ';
+    }
     cout << endl;
 
-    */
 }
 
 
