@@ -127,23 +127,25 @@ int main() {
     print("ilist sorted", ilist);
 
     /*
-     * THE CODE FROM HERE DOWN WAS DELETED FOR A CLASS AND
-     * MUST BE RE-WRITTEN.
-     * Let's experiment with *iterators* a bit!
-     * */
-
-    /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
-
-    /*
-     * Here we are going to pass functor `IsOdd` to `find_if()`.
-     * */
+    list<int>::iterator odd_loc = find_if(ilist.begin(), ilist.end(), is_odd);
+    cout << "First odd number in ilist is " << *odd_loc << endl;
+    cout << "Rest of list:\n";
+    for(list<int>::iterator iter = odd_loc; iter != ilist.end(); ++iter) {
+        cout << *iter << " ";
+    }
+    cout << endl;
 
     /*
      * Here we are going to pass a *lambda* to `find_if()`.
      * The lambda starts with `[]`. The point here is to show
      * that this form and the one above are identical in effect.
      * */
-    // cout << "First lambda odd number in list is: " << *if_iter3 << endl;
+    list<int>::iterator if_iter3 = find_if(ilist.begin(), ilist.end(), [](auto num) { return num % 2; });
+    cout << "First lambda odd number in list is: " << *if_iter3 << endl;
+
+    /*
+     * Here we are going to pass functor `IsOdd` to `find_if()`.
+     * */
 }

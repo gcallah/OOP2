@@ -82,14 +82,6 @@
 
                 <pre>
                 <code>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Collection</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="n">string</span> <span class="n">hdr</span><span class="p">,</span> <span class="n">Collection</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hdr</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">item</span> <span class="p">:</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">Cat</span> <span class="p">{</span>
     <span class="k">friend</span> <span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">Cat</span><span class="o">&amp;</span> <span class="n">cat</span><span class="p">)</span> <span class="p">{</span>
@@ -100,7 +92,7 @@
 
 </code>                </pre>
                 <p>
-  We could pass this <span class="code">is_odd()</span> function in to a <span class="code">find_if()</span>,
+  We could pass this <span class="code">is_odd()</span> function in to <span class="code">find_if()</span>,
   or pass a <i>lambda</i> instead.
 
                 </p>
@@ -215,7 +207,7 @@
 
                 <pre>
                 <code>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;ilist&quot;</span><span class="p">,</span> <span class="n">ilist</span><span class="p">);</span>
+<span class="c1">//    print(&quot;ilist&quot;, ilist);</span>
 </code>                </pre>
                 <p>
       <span class="code">sort()</span> does not work for lists, since they aren't random access.

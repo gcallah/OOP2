@@ -29,14 +29,6 @@ void print_vec(string hdr, vector<Printable> vp) {
  * But, we can go even more generic, and make a `print` that can print
  * *containers* of any sequential type:
  * */
-template <typename Collection>
-void print(string hdr, Collection c) {
-    cout << hdr << endl;
-    for (auto item : c) {
-        cout << item << ' ';
-    }
-    cout << endl;
-}
 
 
 class Cat {
@@ -47,7 +39,7 @@ class Cat {
 };
 
 /*
- * We could pass this `is_odd()` function in to a `find_if()`,
+ * We could pass this `is_odd()` function in to `find_if()`,
  * or pass a *lambda* instead.
  * */
 bool is_odd(int n) { return (n % 2) != 0; }
@@ -117,7 +109,7 @@ int main() {
     /*
      * Our print can work for lists as well as vectors:
      * */
-    print("ilist", ilist);
+//    print("ilist", ilist);
     /*
      * `sort()` does not work for lists, since they aren't random access.
      * Thus lists have their own `sort()` method, called below:
