@@ -1,8 +1,25 @@
 /*
   Vector_iter
-  Demonstrates:
-    begin / end with int*
-    also: int* begin() const
+ * An `iterator` captures the general notion of traversing a data structure.
+ * 
+ * If a class provides an `iterator` you don't need to know its internals
+ * to access all of its members!
+ * 
+ * What operations do we need in order to do this?
+ *
+ * - Where should we begin?
+ * - Where should we stop?
+ * - How do we know we're at the stopping point?
+ * - How can we move forward?
+ * - How can we get at the item we are currently on?
+ *
+ *   The answers are:
+ *
+ * - `begin()`
+ * - `end()`
+ * - `operator!=()`
+ * - `operator++()`
+ * - `operator*()`
  */
 #include <iostream>
 using namespace std;
