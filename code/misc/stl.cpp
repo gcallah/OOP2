@@ -29,6 +29,14 @@ void print_vec(string hdr, vector<Printable> vp) {
  * But, we can go even more generic, and make a `print` that can print
  * *containers* of any sequential type:
  * */
+template <typename IterableOfPrintables>
+void print(string hdr, IterableOfPrintables c) {
+    cout << hdr << endl;
+    for (auto item : c) {
+        cout << item << ' ';
+    }
+    cout << endl;
+}
 
 
 class Cat {
@@ -48,6 +56,13 @@ bool is_odd(int n) { return (n % 2) != 0; }
  * Or, we could have a *functor*!
  * */
 
+vector<char>::iterator our_find(vector<char>::iterator start, vector<char>::iterator finish, char sought) {
+    for (vector<char>::iterator iter = start; iter != finish; iter++) {
+        if (sought == *iter) return iter;
+    }
+    return finish;
+}
+
 /*
  * Our main will exercise some STL capabilities.
  * */
@@ -55,8 +70,10 @@ int main() {
     int bjarnelen = 17;
     int dennislen = 14;
 
-    char s[]  = "Bjarne Stroustrup";
-    char s2[] = "Dennis Ritchie";
+    string bjarne("Bjarne");
+    cout << bjarne.length() << endl;
+    char s[]  = "bjarne stroustrup";
+    char s2[] = "dennis ritchie";
 
     cout << "C++ creator: " << s << "\n";
     cout << "C creator, 4th letter: " << s2[3] << "\n";
@@ -66,9 +83,16 @@ int main() {
      * We will create it with a half-open range, and then sort it.
      * */
     vector<char> cvec(s2, s2 + dennislen);
+    vector<char>::iterator our_attempt = our_find(cvec.begin(), cvec.end(), 'i');
+    cout << *our_attempt << endl;
+
     print_vec("cvec", cvec);
-    sort(cvec.begin(), cvec.end());
-    print_vec("sorted cvec", cvec);
+    vector<char>::iterator start_at_R = find(cvec.begin(), cvec.end(), 'r');
+    vector<char>::iterator end_at_h = find(cvec.begin(), cvec.end(), 'h');
+//    sort(cvec.begin(), cvec.end());
+//    print_vec("sorted cvec", cvec);
+    sort(start_at_R, end_at_h);
+    print_vec("sorted Ritchie", cvec);
 
     /*
      * Create a `char` list:
@@ -85,7 +109,6 @@ int main() {
     /*
      * But even after `clist` is reversed, `clist` and
      * `clist2` are still permutations of each other:
-     * */
     cout << "Is clist a permutation of clist2? "
         << is_permutation(clist.begin(), clist.end(), clist2.begin())
         << endl; ;
@@ -93,12 +116,13 @@ int main() {
         << is_permutation(clist.begin(), clist.end(), clist3.begin())
         << endl; ;
 
+     * */
     /*
      * Testing a list of Cats:
-     * */
     Cat catptr[] = { Cat(), Cat(), Cat() };
     list<Cat> catlist(catptr, catptr + 3);
     print("Cat list", catlist);
+     * */
 
     /*
      * Testing an int list:
@@ -109,24 +133,21 @@ int main() {
     /*
      * Our print can work for lists as well as vectors:
      * */
-//    print("ilist", ilist);
+    print("ilist", ilist);
     /*
      * `sort()` does not work for lists, since they aren't random access.
      * Thus lists have their own `sort()` method, called below:
-     * This *won't* work: `sort(ilist.begin(), ilist.end());`
+     * This *won't* work:
+     * `sort(ilist.begin(), ilist.end());`
      * */
     ilist.sort();
     print("ilist sorted", ilist);
 
     /*
-     * THE CODE FROM HERE DOWN WAS DELETED FOR A CLASS AND
-     * MUST BE RE-WRITTEN.
-     * Let's experiment with *iterators* a bit!
-     * */
-
-    /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
+    list<int>::iterator odd_loc = find_if(ilist.begin(), ilist.end(), is_odd);
+    cout << "First odd number in list is: " << *odd_loc << endl;
 
     /*
      * Here we are going to pass functor `IsOdd` to `find_if()`.

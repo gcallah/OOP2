@@ -61,7 +61,7 @@ $(PTML_DIR)/exceptions.ptml: $(MISC_DIR)/exceptions.cpp
 $(PTML_DIR)/funcs.ptml: $(MISC_DIR)/funcs.cpp
 	$(CPP2HTML) $< > $@
 
-$(PTML_DIR)/functors.ptml: $(MISC_DIR)/functors.cpp
+$(PTML_DIR)/functors.ptml: $(FMISC_DIR)/functors.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/hello.ptml: $(MISC_DIR)/hello.cpp
@@ -91,7 +91,7 @@ $(PTML_DIR)/point_class.ptml: $(FMISC_DIR)/point_class.cpp
 $(PTML_DIR)/recursion.ptml: $(MISC_DIR)/recursion.cpp
 	$(CPP2HTML) $< > $@
 
-$(PTML_DIR)/stl.ptml: $(MISC_DIR)/stl.cpp
+$(PTML_DIR)/stl.ptml: $(FMISC_DIR)/stl.cpp
 	$(CPP2HTML) $< > $@
 
 $(PTML_DIR)/thing.ptml: $(MISC_DIR)/thing.cpp

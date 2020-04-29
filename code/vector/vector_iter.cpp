@@ -1,8 +1,25 @@
 /*
   Vector_iter
-  Demonstrates:
-    begin / end with int*
-    also: int* begin() const
+ * An `iterator` captures the general notion of traversing a data structure.
+ * 
+ * If a class provides an `iterator` you don't need to know its internals
+ * to access all of its members!
+ * 
+ * What operations do we need in order to do this?
+ *
+ * - Where should we begin?
+ * - Where should we stop?
+ * - How do we know we're at the stopping point?
+ * - How can we move forward?
+ * - How can we get at the item we are currently on?
+ *
+ *   The answers are:
+ *
+ * - `begin()`
+ * - `end()`
+ * - `operator!=()`
+ * - `operator++()`
+ * - `operator*()`
  */
 #include <iostream>
 using namespace std;
@@ -11,12 +28,14 @@ class Vector {
 public:
     class Iterator {
         friend bool operator!=(Iterator lhs, Iterator rhs) {
-            lhs.valPtr != rhs.valPtr;
+            return lhs.valPtr != rhs.valPtr;
         }
  public:
         Iterator(int* ptr) : valPtr(ptr) {}
 
         Iterator& operator++() {
+            // if this were a linked list, we would have:
+            // valPtr = val_ptr->next;
             ++valPtr;
             return *this;
         }
@@ -25,6 +44,16 @@ public:
             return *valPtr;
         }
 
+ private:
+        int* valPtr;
+    };
+
+    class ConstIterator {
+
+ public:
+        int operator*() {
+            return *valPtr;
+        }
  private:
         int* valPtr;
     };
@@ -116,16 +145,16 @@ public:
         // Iterator result(data);
         // return result;
     }
-//
-//    Const_Iterator begin() const { 
-//        return Const_Iterator(data); 
-//        // Iterator result(data);
-//        // return result;
-//    }
+
+    Const_Iterator begin() const { 
+        return Const_Iterator(data); 
+        // Iterator result(data);
+        // return result;
+    }
 
     Iterator end() { return Iterator(data + theSize); }
 
-   // Const_Iterator end() const { return Const_Iterator(data + theSize); }
+    Const_Iterator end() const { return Const_Iterator(data + theSize); }
 
     // The following two lines would allow modifying a const vector!!!
     //    const int* begin() const { return data; }
@@ -138,19 +167,15 @@ private:
 };
 
 
+// void printVector(const Vector& vec) {
+//
+//
+//
+//
 void printVector(const Vector& vec) {
     for (Vector::Iterator iter = vec.begin(); iter != vec.end(); ++iter) {
          cout << *iter << ' ';
     }
-    // cout << endl;
-
-//    for (int val : vec) {
-//        cout << val << ' ';  // begin / end must be const
-//    }
-
-    // for (int& val : vec) {
-    //     val = 17;
-    // }
 
     // need return to be const int* to block
     // for (int& val : vec) cout << val << ' ';
