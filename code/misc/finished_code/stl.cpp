@@ -57,6 +57,18 @@ bool is_odd(int n) { return (n % 2) != 0; }
  * */
 
 /*
+ * Let's see how find() could be written:
+ * */
+template <typename T, typename U>
+T our_find(T start, T finish, U sought) {
+    for (T iter = start; iter != finish; iter++) {
+        if (sought == *iter) return iter;
+    }
+    return finish;
+}
+
+
+/*
  * Our main will exercise some STL capabilities.
  * */
 int main() {
@@ -75,8 +87,18 @@ int main() {
      * */
     vector<char> cvec(s2, s2 + dennislen);
     print_vec("cvec", cvec);
-    sort(cvec.begin(), cvec.end());
+    /*
+     * Illustrate how iterators can select slices:
+     * */
+    vector<char>::iterator start_at_R = find(cvec.begin(), cvec.end(), 'R');
+    vector<char>::iterator end_at_h = find(cvec.begin(), cvec.end(), 'h');
+    sort(start_at_R, end_at_h);
     print_vec("sorted cvec", cvec);
+    /*
+     * Test out our own find function:
+     * */
+    vector<char>::iterator our_attempt = our_find(cvec.begin(), cvec.end(), 'i');
+    cout << "Does our own find work? " << *our_attempt << endl;
 
     /*
      * Create a `char` list:
