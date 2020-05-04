@@ -52,13 +52,31 @@ class Cat {
  * */
 bool is_odd(int n) { return (n % 2) != 0; }
 
+bool is_greater_than_20(int n) { return n > 20; }
+bool is_div_by_128(int n) { return n % 128 == 0; }
+
 /*
  * Or, we could have a *functor*!
  * */
 
-vector<char>::iterator our_find(vector<char>::iterator start, vector<char>::iterator finish, char sought) {
-    for (vector<char>::iterator iter = start; iter != finish; iter++) {
-        if (sought == *iter) return iter;
+/*
+ * Our own find():
+ * */
+template <typename T, typename U>
+T our_find(T start, T finish, U sought) {
+    for (; start != finish; start++) {
+        if (sought == *start) return start;
+    }
+    return finish;
+}
+
+/*
+ * Our own find_if():
+ * */
+template <typename T>
+T our_find_if(T start, T finish, std::function<bool(int)> pred) {
+    for (; start != finish; start++) {
+        if (pred(*start)) return start;
     }
     return finish;
 }
@@ -84,7 +102,7 @@ int main() {
      * */
     vector<char> cvec(s2, s2 + dennislen);
     vector<char>::iterator our_attempt = our_find(cvec.begin(), cvec.end(), 'i');
-    cout << *our_attempt << endl;
+    cout << "Did our own find() work? " << *our_attempt << endl;
 
     print_vec("cvec", cvec);
     vector<char>::iterator start_at_R = find(cvec.begin(), cvec.end(), 'r');
@@ -146,8 +164,12 @@ int main() {
     /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
-    list<int>::iterator odd_loc = find_if(ilist.begin(), ilist.end(), is_odd);
+    list<int>::iterator odd_loc = our_find_if(ilist.begin(), ilist.end(), is_odd);
     cout << "First odd number in list is: " << *odd_loc << endl;
+    list<int>::iterator gt = our_find_if(ilist.begin(), ilist.end(), is_greater_than_20);
+    cout << "First number > 20 in list is: " << *gt << endl;
+    list<int>::iterator div_by_128 = our_find_if(ilist.begin(), ilist.end(), is_div_by_128);
+    cout << "First number divisible by 128 in list is: " << *div_by_128 << endl;
 
     /*
      * Here we are going to pass functor `IsOdd` to `find_if()`.
@@ -158,5 +180,6 @@ int main() {
      * The lambda starts with `[]`. The point here is to show
      * that this form and the one above are identical in effect.
      * */
-    // cout << "First lambda odd number in list is: " << *if_iter3 << endl;
+    list<int>::iterator lambda_iter = find_if(ilist.begin(), ilist.end(), [](auto n) { return n > 31; });
+    cout << "First (lambda) number in list is: " << *lambda_iter << endl;
 }
