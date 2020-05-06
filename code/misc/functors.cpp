@@ -32,6 +32,8 @@ class Fib {
          * values to `NOT_CALCED`.
          * */
         Fib() {
+            for (int i = 0; i < MAX_FIB; i++)
+                memo[i] = NOT_CALCED;
         }
 
         /*
@@ -40,15 +42,22 @@ class Fib {
          * for the i<sup>th</sup> integer is `NOT_CALCED`.
          * */
         double operator()(int n) {
+            // if we calced it before, return that number:
+            if (memo[n] != NOT_CALCED) return memo[n];
+
             long result = 0;
             if (n <= 1) result = 1;
             else result = (operator()(n - 1) + operator()(n - 2));
+
+            memo[n] = result;operator()(
             return result;
         }
 
         const int MAX_FIB = 100;
         const int NOT_CALCED = -1;
+
     private:
+        int* memo = new int[MAX_FIB];
 };
 
 
@@ -57,16 +66,20 @@ class Fib {
  * */
 int main() {
     // sine:
-    Sin sine = Sin();
-    double d = sine(1);
-    cout << "sin(1) == " << d << endl;
+//    Sin sine = Sin();
+//    double d = sine(1);
+//    cout << "sin(1) == " << d << endl;
 
     // fibonacci number:
     int fib_num = 10;   // some default or other!
-    cout << "Enter fib number: ";
-    cin >> fib_num;
-    cout << "\nThanks!\n";
-    Fib fib = Fib();
-    long f = fib(fib_num);
-    cout << "fib(" << fib_num << ") == " << f << endl;
+    while (fib_num >= 0) {
+        cout << "Enter fib number: ";
+        cin >> fib_num;
+        cout << "\nThanks!\n";
+        if (fib_num >= 0) {
+            Fib fib = Fib();
+            long f = fib(fib_num);
+            cout << "fib(" << fib_num << ") == " << f << endl;
+        }
+    }
 }

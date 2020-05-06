@@ -73,8 +73,8 @@ T our_find(T start, T finish, U sought) {
 /*
  * Our own find_if():
  * */
-template <typename T>
-T our_find_if(T start, T finish, std::function<bool(int)> pred) {
+template <typename Iterable, typename Predicate>
+Iterable our_find_if(Iterable start, Iterable finish, Predicate pred) {
     for (; start != finish; start++) {
         if (pred(*start)) return start;
     }
@@ -164,12 +164,12 @@ int main() {
     /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
-    list<int>::iterator odd_loc = our_find_if(ilist.begin(), ilist.end(), is_odd);
-    cout << "First odd number in list is: " << *odd_loc << endl;
-    list<int>::iterator gt = our_find_if(ilist.begin(), ilist.end(), is_greater_than_20);
-    cout << "First number > 20 in list is: " << *gt << endl;
-    list<int>::iterator div_by_128 = our_find_if(ilist.begin(), ilist.end(), is_div_by_128);
-    cout << "First number divisible by 128 in list is: " << *div_by_128 << endl;
+//    list<int>::iterator odd_loc = our_find_if(ilist.begin(), ilist.end(), is_odd);
+//    cout << "First odd number in list is: " << *odd_loc << endl;
+//    list<int>::iterator gt = our_find_if(ilist.begin(), ilist.end(), is_greater_than_20);
+//    cout << "First number > 20 in list is: " << *gt << endl;
+//    list<int>::iterator div_by_128 = our_find_if(ilist.begin(), ilist.end(), is_div_by_128);
+//    cout << "First number divisible by 128 in list is: " << *div_by_128 << endl;
 
     /*
      * Here we are going to pass functor `IsOdd` to `find_if()`.
@@ -180,6 +180,9 @@ int main() {
      * The lambda starts with `[]`. The point here is to show
      * that this form and the one above are identical in effect.
      * */
-    list<int>::iterator lambda_iter = find_if(ilist.begin(), ilist.end(), [](auto n) { return n > 31; });
+    list<int>::iterator lambda_iter = find_if(
+            ilist.begin(),
+            ilist.end(),
+            [](auto n) { return n - 24 == 8; });
     cout << "First (lambda) number in list is: " << *lambda_iter << endl;
 }

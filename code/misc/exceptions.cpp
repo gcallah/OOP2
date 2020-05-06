@@ -54,7 +54,7 @@ private:
  * `set_thermostat()` throws TempTooHigh when n &gt; MAX_TEMP.
  * */
 void set_thermostat(int n) {
-    if (n > MAX_TEMP) throw(TempTooHigh(n, 51, "exceptions.cpp"));
+    if (n > MAX_TEMP) throw(TempTooHigh(n, 57, "exceptions.cpp"));
 }
 
 
