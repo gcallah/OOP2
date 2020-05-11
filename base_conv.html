@@ -86,7 +86,7 @@
                 <pre>
                 <code>
 <span class="n">string</span> <span class="nf">base_conv</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to_base</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">to_base</span> <span class="o">&lt;</span> <span class="n">MIN_BASE</span> <span class="o">||</span> <span class="n">to_base</span> <span class="o">&gt;</span> <span class="n">MAX_BASE</span><span class="p">)</span> <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">to_base</span> <span class="o">&lt;</span> <span class="n">MIN_BASE</span> <span class="o">||</span> <span class="n">to_base</span> <span class="o">&gt;</span> <span class="n">MAX_BASE</span><span class="p">)</span> <span class="k">return</span> <span class="s">&quot;BAD BASE; 2 &lt;= base &lt;= 62&quot;</span><span class="p">;</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">to_base</span><span class="p">)</span> <span class="k">return</span> <span class="n">string</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">digits</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
     <span class="k">else</span> <span class="p">{</span>
@@ -96,6 +96,15 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">,</span> <span class="n">base</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Enter a number: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Enter a base: &quot;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">base</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">base_conv</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">base</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; in base &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">base</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">answer</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 </code>                </pre>
 
     </body>

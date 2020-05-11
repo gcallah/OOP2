@@ -10,6 +10,21 @@
 
 using namespace std;
 
+
+void print_cvec(string hdr, vector<char> cv) {
+    cout << hdr << endl;
+    for (char c : cv) {
+        cout << c << " ";
+    }
+}
+
+void print_ivec(string hdr, vector<int> iv) {
+    cout << hdr << endl;
+    for (int n : iv) {
+        cout << n << " ";
+    }
+}
+
 /*
  * Let's make a template for a `print_vec` that can handle
  * vectors of any type:
@@ -110,7 +125,7 @@ int main() {
 //    sort(cvec.begin(), cvec.end());
 //    print_vec("sorted cvec", cvec);
     sort(start_at_R, end_at_h);
-    print_vec("sorted Ritchie", cvec);
+    print_cvec("sorted Ritchie", cvec);
 
     /*
      * Create a `char` list:

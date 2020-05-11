@@ -26,6 +26,8 @@
 
                 <pre>
                 <code>
+<span class="cp">#define NDEBUG 1</span>
+
 <span class="cp">#include</span> <span class="cpf">&lt;exception&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
@@ -44,7 +46,6 @@
                 <pre>
                 <code>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_TEMP</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>  <span class="c1">// can&#39;t set thermostat higher</span>
-
 </code>                </pre>
                 <p>
   <span class="code">TempTooHigh</span>:
@@ -64,13 +65,14 @@
         <span class="o">:</span> <span class="n">too_high</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">line_num</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="n">file_name</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
     <span class="p">{</span>
     <span class="p">}</span>
+
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">what</span><span class="p">()</span> <span class="k">const</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot; is too high a temperature&quot;</span><span class="p">;</span>
     <span class="p">}</span>
-
     <span class="kt">int</span> <span class="nf">high_temp</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">too_high</span><span class="p">;</span> <span class="p">}</span>
     <span class="kt">int</span> <span class="nf">which_line</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">line_num</span><span class="p">;</span> <span class="p">}</span>
     <span class="n">string</span> <span class="nf">which_file</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">file_name</span><span class="p">;</span> <span class="p">}</span>
+
 <span class="k">private</span><span class="o">:</span>
     <span class="kt">int</span> <span class="n">too_high</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">line_num</span><span class="p">;</span>
@@ -87,6 +89,7 @@
                 <code>
 <span class="kt">void</span> <span class="nf">set_thermostat</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">MAX_TEMP</span><span class="p">)</span> <span class="k">throw</span><span class="p">(</span><span class="n">TempTooHigh</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="s">&quot;exceptions.cpp&quot;</span><span class="p">));</span>
+    <span class="k">throw</span><span class="p">(</span><span class="n">exception</span><span class="p">());</span>
 <span class="p">}</span>
 
 </code>                </pre>
@@ -114,6 +117,7 @@
                 <code>
 <span class="kt">void</span> <span class="nf">h</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">//    cout &lt;&lt; v[n] &lt;&lt; endl;</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -151,6 +155,15 @@
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">MAX_TEMP</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </code>                </pre>
                 <p>
+      We illustrate how <span class="code">assert(cond)</span> is used.
+
+                </p>
+
+                <pre>
+                <code>
+    <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">MAX_TEMP</span><span class="p">);</span>
+</code>                </pre>
+                <p>
       The following is the sort of code that we get when we have
       error code returns.
 
@@ -175,6 +188,9 @@
             <span class="o">&lt;&lt;</span> <span class="s">&quot; at line &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">too_high</span><span class="p">.</span><span class="n">which_line</span><span class="p">()</span>
             <span class="o">&lt;&lt;</span> <span class="s">&quot; in file &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">too_high</span><span class="p">.</span><span class="n">which_file</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Caught exception: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
 </code>                </pre>
                 <p>
       Next we will illustrate catching <i>any</i> exception
@@ -185,7 +201,10 @@
                 <pre>
                 <code>
     <span class="k">try</span> <span class="p">{</span>
-        <span class="n">h</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+        <span class="n">h</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">out_of_range</span><span class="o">&amp;</span> <span class="n">oor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Caught out of range: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">oor</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">catch</span> <span class="p">(</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Caught exception: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -202,16 +221,6 @@
                 <pre>
                 <code>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Still in main()!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-</code>                </pre>
-                <p>
-      Finally, we just illustrate how <span class="code">assert(cond)</span>
-      is used.
-
-                </p>
-
-                <pre>
-                <code>
-    <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">);</span>
 <span class="p">}</span>
 </code>                </pre>
 

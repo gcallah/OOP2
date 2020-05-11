@@ -5,6 +5,8 @@
  * and error code returns.
  * */
 
+#define NDEBUG 1
+
 #include <exception>
 #include <iostream>
 #include <vector>
@@ -55,6 +57,8 @@ private:
  * */
 void set_thermostat(int n) {
     if (n > MAX_TEMP) throw(TempTooHigh(n, 57, "exceptions.cpp"));
+
+    throw(exception());
 }
 
 
@@ -74,6 +78,7 @@ void set_temp(int n) {
  * */
 void h(int n) {
     vector<int> v = vector<int>(n, -1);
+//    cout << v[n] << endl;
     cout << v.at(n) << endl;
 }
 
@@ -95,6 +100,10 @@ int get_records() {
  * */
 int main() {
     int n = MAX_TEMP + 1;
+    /*
+     * We illustrate how `assert(cond)` is used.
+     * */
+    assert(n <= MAX_TEMP);
 
     /*
      * The following is the sort of code that we get when we have
@@ -117,13 +126,19 @@ int main() {
             << " at line " << too_high.which_line()
             << " in file " << too_high.which_file() << endl;
     }
+    catch (exception& e) {
+        cerr << "Caught exception: " << e.what() << endl;
+    }
 
     /*
      * Next we will illustrate catching *any* exception
      * that inherits from `std::exception`.
      * */
     try {
-        h(100);
+        h(80);
+    }
+    catch (out_of_range& oor) {
+        cerr << "Caught out of range: " << oor.what() << endl;
     }
     catch (exception& e) {
         cerr << "Caught exception: " << e.what() << endl;
@@ -136,9 +151,4 @@ int main() {
      * */
     cout << "Still in main()!\n";
 
-    /*
-     * Finally, we just illustrate how `assert(cond)`
-     * is used.
-     * */
-    assert(n <= 1000);
 }

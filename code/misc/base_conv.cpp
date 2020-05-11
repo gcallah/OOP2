@@ -32,7 +32,7 @@ char digits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
  * using modulus and integer division:
  * */
 string base_conv(int n, int to_base) {
-    if (to_base < MIN_BASE || to_base > MAX_BASE) return "";
+    if (to_base < MIN_BASE || to_base > MAX_BASE) return "BAD BASE; 2 <= base <= 62";
 
     if (n < to_base) return string(1, digits[n]);
     else {
@@ -43,3 +43,12 @@ string base_conv(int n, int to_base) {
 }
 
 
+int main() {
+    int num, base;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << "\nEnter a base: ";
+    cin >> base;
+    string answer = base_conv(num, base);
+    cout << "\n" << num << " in base " << base << " = " << answer << endl;
+}
