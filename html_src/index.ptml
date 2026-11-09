@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -9,29 +10,51 @@
     <body>
 <!--include logo.txt -->
 <!--include menu.txt -->
-        <h1>
-            Object-Oriented
-            <br>
-            Programming in C++
-        </h1>
+        <div class="hero">
+            <img src="images/wiki/cpp-logo.svg" alt="C++ logo">
+            <div>
+                <h1>
+                    Object-Oriented
+                    <br>
+                    Programming in C++
+                </h1>
+                <p>
+                    A collection of aids to teaching object-oriented
+                    programming in the C++ programming language.
+                </p>
+            </div>
+        </div>
 
-        <p class="leadquote">
-            "Programming is understanding." -- Kristen Nygaard
-        </p>
+        <div class="quote-card">
+            <img src="images/wiki/nygaard.jpg"
+                alt="Photograph of Kristen Nygaard">
+            <div>
+                <p class="quote">
+                    "Programming is understanding."
+                </p>
+                <p class="who">
+                    Kristen Nygaard, co-creator of Simula, the first
+                    object-oriented language
+                    (photo: Jorge Stolfi, public domain)
+                </p>
+            </div>
+        </div>
 
-        <hr>
-
-        <p>
-            This website is a collection of aids to teaching 
-            object-oriented programming in the C++ programming language.
-        </p>
+        <div class="link-row">
+            <a href="lectures.html">Lecture videos</a>
+            <a href="code.html">Code samples</a>
+            <a href="courseinfo.html">Course info</a>
+            <a href="github.html">GitHub guide</a>
+            <a href="glossary.html">Glossary</a>
+            <a href="resources.html">Resources</a>
+        </div>
 
         <div>
              <h2 class="toc-head">
              Course Topics
              </h2>
 
-             <ol>
+             <ol class="topic-grid">
                  <li>
                      <a href="why.html">
                      Why bother studying a "hard" language like C++?

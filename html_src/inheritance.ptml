@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -14,10 +15,15 @@
         </h1>
 
         <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Method_overriding_in_subclass.svg/440px-Method_overriding_in_subclass.svg.png"
-            width="17%">
+            <img src="images/wiki/method-overriding.png" width="220"
+                alt="UML diagram: Dog overrides a method of Animal">
             <figcaption>
                 A dog IS-AN animal.
+                <span class="credit">
+                    Image:
+                    <a href="https://commons.wikimedia.org/wiki/File:Method_overriding_in_subclass.svg">
+                    Crashed greek</a>, CC BY 4.0
+                </span>
             </figcaption>
         </figure>
 
@@ -114,11 +120,30 @@
     object. However, any methods and fields unique to the derived will be lost.
     </p>
 
+        <figure>
+            <img src="images/BaseDerived.jpg" width="460"
+                alt="Two derived objects; only the base parts get copied">
+            <figcaption>
+                Slicing: assigning a derived object to a base object
+                copies only the base part.
+            </figcaption>
+        </figure>
+
     <p>
     <b>Multiple Inheritance</b>:
     <a href="https://isocpp.org/wiki/faq/multiple-inheritance">Here</a> is a
     good discussion. 
     </p>
+
+        <figure>
+            <img src="images/DiamonProb.jpg" width="240"
+                alt="Diamond: TA is-a Student and is-a Instructor, both of which are NYUers">
+            <figcaption>
+                The "diamond problem": a TA inherits from Student and Instructor,
+                so it gets two copies of NYUer unless we use virtual inheritance.
+            </figcaption>
+        </figure>
+
 
 
     </body>

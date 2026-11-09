@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -28,6 +29,15 @@
             some data structure has no methods associated with it, and classes
             where there are methods.
         </p>
+
+        <figure>
+            <img src="images/cookie-cutter.jpg" width="420"
+                alt="A cookie cutter next to the cookies it made">
+            <figcaption>
+                A class is like a cookie cutter: it defines the shape.
+                Each object is a cookie made with it.
+            </figcaption>
+        </figure>
 
         <p>
             Here are some code examples:

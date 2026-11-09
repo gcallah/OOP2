@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -16,12 +17,28 @@
         <figure>
             <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sierpinski_triangle.svg/500px-Sierpinski_triangle.svg.png"
-            width="16%">
+            width="260"
+            alt="Sierpinski triangle">
             <figcaption>
                 The <a href="https://en.wikipedia.org/wiki/Sierpiński_triangle">Sierpinski triangle</a>,
                 a recursively constructed figure.
             </figcaption>
         </figure>
+
+        <figure>
+            <img src="images/wiki/matryoshka.jpg" width="380"
+                alt="A set of nested Russian matryoshka dolls">
+            <figcaption>
+                Matryoshka dolls: each doll contains a smaller version of itself,
+                until we reach the base case.
+                <span class="credit">
+                    Image:
+                    <a href="https://commons.wikimedia.org/wiki/File:Russian-Matroshka_no_bg.jpg">
+                    Fanghong / Gnomz007</a>, CC BY-SA 3.0
+                </span>
+            </figcaption>
+        </figure>
+
 
         <p>
         Recursion means that a function calls itself. 

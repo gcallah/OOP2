@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -14,7 +15,8 @@
         </h1>
 
         <figure>
-            <img src="https://i.stack.imgur.com/HOY4C.png" width="40%">
+            <img src="https://i.stack.imgur.com/HOY4C.png" width="360"
+                alt="Program memory layout: text, data, heap, and stack">
             <figcaption>
                 A typical way to lay out program memory.
             </figcaption>

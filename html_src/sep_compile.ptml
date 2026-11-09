@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -14,10 +15,13 @@
         </h1>
 
         <figure>
-            <img src="http://www.cplusplus.com/articles/yAqpX9L8/Comp-link.png"
-                width="20%">
+            <img src="images/Comp-link.png" width="300"
+                alt="Several source files compiled and linked into one executable">
             <figcaption>
                 Separate compilation units creating one executable
+                <span class="credit">
+                    Image: <a href="https://cplusplus.com/articles/yAqpX9L8/">cplusplus.com</a>
+                </span>
             </figcaption>
         </figure>
 

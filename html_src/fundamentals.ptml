@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -12,6 +13,20 @@
         <h1>
             Fundamentals of Object-Oriented Programming (OOP)
         </h1>
+
+        <figure class="aside">
+            <img src="images/wiki/alan-kay.jpg"
+                alt="Photograph of Alan Kay">
+            <figcaption>
+                Alan Kay, who coined the term "object-oriented programming."
+                <span class="credit">
+                    Image:
+                    <a href="https://commons.wikimedia.org/wiki/File:Alan_Kay_(cropped).jpg">
+                    David Weekly</a>, CC BY 2.0
+                </span>
+            </figcaption>
+        </figure>
+
 
         <p>
             The following are the most fundamental reasons for adopting OOP:

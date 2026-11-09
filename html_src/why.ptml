@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--include head.txt -->
+        <title>
+            Why Study C++?
+        </title>
+    </head>
+
+    <body>
+<!--include logo.txt -->
+<!--include menu.txt -->
+        <h1>
+            Why Study C++?
+        </h1>
+
+        <figure class="aside">
+            <img src="images/wiki/stroustrup.jpg"
+                alt="Photograph of Bjarne Stroustrup">
+            <figcaption>
+                Bjarne Stroustrup, who created C++ at Bell Labs in 1979.
+                <span class="credit">
+                    Photo:
+                    <a href="https://commons.wikimedia.org/wiki/File:Bjarne-stroustrup.jpg">
+                    Julia Kryuchkova</a>, CC BY-SA 2.5
+                </span>
+            </figcaption>
+        </figure>
+        <p>
+        Given how much easier things are likely to seem to you in a language
+        like Python, why should we bother learning a "hard" language like C++?
+        Here are some reasons:
+        </p>
+
+        <ul>
+            <li>
+                "Easy" languages like Python are usually implemented in
+                "harder" languages like C++. (The main Python implementation
+                is <a href="https://en.wikipedia.org/wiki/CPython">CPython</a>,
+                written in C.) Thus, to fully understand the easy languages,
+                one must understand the hard languages!
+            </li>
+
+            <li>
+                A language like C++ also has many practical applications:
+                it is dominant in the game industry, where performance is
+                crucial, and is used extensively in embedded systems
+                (such as the <a href="https://youtu.be/3SdSKZFoUa8">Mars
+                    Rover</a>), and in the finance industry, in real-time
+                trading software.
+            </li>
+
+            <li>
+                Studying C++ aids in grasping many fundamental programming
+                concepts, such as memory allocation, pass-by-value versus
+                pass-by-reference, pointers, and how types are actually
+                implemented.
+            </li>
+
+            <li>
+                C++ is a compiled language. Separating the compile time from the run time would help you catch many errors at the compile time, so the program is less likely to crash while running. Moreover, the compiler translates the C++ code to the machine code. It tells the machine what function to call. The machine thus do not need to sacrifice the performance to figure out what function to run at the runtime. C++ also enforces the static typing. It helps you catch type mismatches sooner at compile time.
+            </li>
+
+            <li>
+                No memory management: Unlike Java and Python, C++ does not have the garbage collector. To allocate memory on the heap, you as the programmer has to take the responsibility to delete yourself. It gives your control over the memory management system. So your program does not sacrifice the performance. However, it also comes with a price. You would possibly run into memory leak. C++ is like driving a car with a manual transmission. If you just drive a normal car, you might think it is difficult to control the car. But if you are a race car driver, you probably want it to be manual to have more control over the car to maximize the performance.
+            </li>
+
+
+        </ul>
+    </body>
+</html>

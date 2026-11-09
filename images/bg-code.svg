@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">
+  <!-- Tileable background for the OOP in C++ site (original artwork):
+       faint C++ punctuation and a tiny class diagram on a dot grid. -->
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#d3deeb"/>
+    </pattern>
+  </defs>
+  <rect width="280" height="280" fill="#eef3f9"/>
+  <rect width="280" height="280" fill="url(#dots)"/>
+  <g font-family="Menlo, Consolas, monospace" font-weight="700" fill="#d6e1ee">
+    <text x="18" y="52" font-size="34">{ }</text>
+    <text x="178" y="40" font-size="22">::</text>
+    <text x="150" y="150" font-size="26">&lt;T&gt;</text>
+    <text x="24" y="196" font-size="24">++</text>
+    <text x="200" y="250" font-size="22">-&gt;</text>
+    <text x="96" y="262" font-size="18">&amp;</text>
+  </g>
+  <!-- tiny UML: Base <|- Derived -->
+  <g fill="#f4f7fb" stroke="#d0dbe8" stroke-width="2">
+    <rect x="70" y="80" width="56" height="34" rx="3"/>
+    <line x1="70" y1="92" x2="126" y2="92"/>
+    <rect x="70" y="150" width="56" height="34" rx="3"/>
+    <line x1="70" y1="162" x2="126" y2="162"/>
+    <line x1="98" y1="150" x2="98" y2="124"/>
+    <path d="M90 124 L98 114 L106 124 Z"/>
+  </g>
+</svg>

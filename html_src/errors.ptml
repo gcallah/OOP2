@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
 <!--include head.txt -->
@@ -12,6 +13,21 @@
         <h1>
             Handling Errors
         </h1>
+
+        <figure>
+            <img src="images/wiki/first-bug.jpg" width="460"
+                alt="Logbook page with a moth taped to it">
+            <figcaption>
+                The first actual computer "bug": a moth found in the Harvard
+                Mark II in 1947 and taped into its logbook.
+                <span class="credit">
+                    Image:
+                    <a href="https://commons.wikimedia.org/wiki/File:First_Computer_Bug,_1947.jpg">
+                    Naval Surface Warfare Center, Dahlgren</a>, public domain
+                </span>
+            </figcaption>
+        </figure>
+
 
         <p>
             While a program is running, bad things may happen. A file may not
