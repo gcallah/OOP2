@@ -18,3 +18,4 @@ code/weather/weather
 # Paradev
 .paradev/.run.pid
 .paradev/config.local.json
+.venv/

@@ -7,12 +7,15 @@ cd "$(dirname "$0")/.."
 echo "==> Initializing git submodules (utils/)"
 git submodule update --init --recursive
 
-echo "==> Ensuring Python dependencies (pygments, used by utils/cpp2html.py)"
-if ! python3 -c 'import pygments' 2>/dev/null; then
-  python3 -m pip install --user pygments \
-    || python3 -m pip install --user --break-system-packages pygments \
-    || echo "WARNING: could not install pygments; 'make local' code pages will fail" >&2
+echo "==> Creating .venv with build dependencies"
+# utils/cpp2html.py subclasses a pygments formatter using the pre-2.12 API,
+# so pygments >= 2.12 breaks 'make local'; < 2.9 also matches the markup
+# already committed (no whitespace spans). Keep a pinned copy in .venv.
+if [ ! -x .venv/bin/python3 ]; then
+  python3 -m venv .venv
 fi
+.venv/bin/python3 -m pip install --quiet --disable-pip-version-check 'pygments<2.9' \
+  || echo "WARNING: could not install pygments into .venv; 'make local' will fail" >&2
 
 echo "==> Copying untracked local files from root repo"
 if [ -n "${SUPERSET_ROOT_PATH:-}" ] && [ "$SUPERSET_ROOT_PATH" != "$PWD" ]; then
@@ -25,4 +28,4 @@ if [ -n "${SUPERSET_ROOT_PATH:-}" ] && [ "$SUPERSET_ROOT_PATH" != "$PWD" ]; then
   done
 fi
 
-echo "==> Setup complete"
+echo '==> Setup complete. Build the site with: PATH="$PWD/.venv/bin:$PATH" make local'
